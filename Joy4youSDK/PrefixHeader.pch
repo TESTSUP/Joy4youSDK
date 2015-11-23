@@ -1,0 +1,18 @@
+//
+//  PrefixHeader.pch
+//  JoySDK
+//
+//  Created by 孙永刚 on 15/11/18.
+//  Copyright © 2015年 LeHeng. All rights reserved.
+//
+
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+#import "JYLog.h"
+#import "JYConfig.h"
+
+#endif
