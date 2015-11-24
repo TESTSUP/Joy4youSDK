@@ -14,5 +14,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JYLog.h"
 #import "JYConfig.h"
+#import "JYDefine.h"
 
 #endif

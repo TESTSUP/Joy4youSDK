@@ -22,4 +22,11 @@ static dispatch_once_t token;
     return instance;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    
+}
+
 @end

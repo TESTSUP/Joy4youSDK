@@ -18,16 +18,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CFB0BC4D1BFF135700537293 /* PBXContainerItemProxy */ = {
+		248FCC661C04303500657ADD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CFF6AC7B1BF9B984006A7DA2 /* Joy4youSDK.xcodeproj */;
+			containerPortal = 248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = CFF6AC4C1BF9B944006A7DA2;
 			remoteInfo = Joy4youSDK;
 		};
+		248FCC741C0430C800657ADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 248FCC6C1C04307200657ADD;
+			remoteInfo = Joy4youBundle;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Joy4youSDK.xcodeproj; path = ../Joy4youSDK/Joy4youSDK.xcodeproj; sourceTree = "<group>"; };
 		CFF6AC611BF9B96F006A7DA2 /* Joy4youSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joy4youSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF6AC651BF9B96F006A7DA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFF6AC671BF9B96F006A7DA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,8 +46,6 @@
 		CFF6AC701BF9B96F006A7DA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFF6AC731BF9B96F006A7DA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFF6AC751BF9B96F006A7DA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFF6AC7B1BF9B984006A7DA2 /* Joy4youSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Joy4youSDK.xcodeproj; path = ../JoySDK/Joy4youSDK.xcodeproj; sourceTree = "<group>"; };
-		CFF6ACFD1BFC5426006A7DA2 /* Joy4youSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Joy4youSDK.h; path = "../../../Library/Developer/Xcode/DerivedData/JoySDKDemo-dsjuwyjxchfyuabujajfcqhwywwt/Build/Products/Debug-iphoneos/Joy4youSDK.h"; sourceTree = "<group>"; };
 		CFF6AD031BFC70E2006A7DA2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CFF6AD051BFC7114006A7DA2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -57,10 +63,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CFB0BC4A1BFF135700537293 /* Products */ = {
+		248FCC631C04303500657ADD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CFB0BC4E1BFF135700537293 /* libJoy4youSDK.a */,
+				248FCC671C04303500657ADD /* libJoy4youSDK.a */,
+				248FCC751C0430C800657ADD /* Joy4youBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,8 +77,7 @@
 			children = (
 				CFF6AD051BFC7114006A7DA2 /* MobileCoreServices.framework */,
 				CFF6AD031BFC70E2006A7DA2 /* SystemConfiguration.framework */,
-				CFF6ACFD1BFC5426006A7DA2 /* Joy4youSDK.h */,
-				CFF6AC7B1BF9B984006A7DA2 /* Joy4youSDK.xcodeproj */,
+				248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */,
 				CFF6AC631BF9B96F006A7DA2 /* JoySDKDemo */,
 				CFF6AC621BF9B96F006A7DA2 /* Products */,
 			);
@@ -156,8 +162,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = CFB0BC4A1BFF135700537293 /* Products */;
-					ProjectRef = CFF6AC7B1BF9B984006A7DA2 /* Joy4youSDK.xcodeproj */;
+					ProductGroup = 248FCC631C04303500657ADD /* Products */;
+					ProjectRef = 248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -168,11 +174,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		CFB0BC4E1BFF135700537293 /* libJoy4youSDK.a */ = {
+		248FCC671C04303500657ADD /* libJoy4youSDK.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libJoy4youSDK.a;
-			remoteRef = CFB0BC4D1BFF135700537293 /* PBXContainerItemProxy */;
+			remoteRef = 248FCC661C04303500657ADD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		248FCC751C0430C800657ADD /* Joy4youBundle.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Joy4youBundle.bundle;
+			remoteRef = 248FCC741C0430C800657ADD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

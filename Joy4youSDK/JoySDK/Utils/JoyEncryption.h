@@ -16,6 +16,6 @@
 
 //加密
 + (NSString *)DESEncryptString:(NSString *)dataStr WithKey:(NSString *)key;
-
++ (NSString *)DESEncryptDictionary:(NSDictionary *)param WithKey:(NSString *)key;
 
 @end

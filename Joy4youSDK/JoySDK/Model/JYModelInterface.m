@@ -9,6 +9,8 @@
 #import "JYModelInterface.h"
 #import "JYUserCache.h"
 #import "JoyRequest.h"
+#import "JYServiceData.h"
+#import "JYUtil.h"
 
 @interface JYModelInterface ()
 {
@@ -43,9 +45,19 @@ static dispatch_once_t token;
 
 #pragma mark - interface
 
-- (void)checkUsername:(NSString *)aName callbackBlock:(modelCallback)aCallback
+/**
+ *  检查用户名
+ *
+ *  @param aName     用户名
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)checkUsername:(NSString *)aName
+        callbackBlock:(modelCallback)aCallback
 {
-    [[JoyRequest shareInstance] requestWithPath:@""
+    NSDictionary *param = @{KEY_UN:aName};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestLoginWithUsername];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
                                         success:^(NSHTTPURLResponse *response, NSData *responseData) {
                                             
@@ -54,6 +66,43 @@ static dispatch_once_t token;
                                             
                                         }];
 }
+
+
+/**
+ *  用户名+密码登录接口
+ *
+ *  @param aName     用户名
+ *  @param aPassword 密码，MD5
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)loginWithUsername:(NSString *)aName
+              andPassword:(NSString *)aPassword
+            callbackBlcok:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[JYUtil md5:aPassword]};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestLoginWithUsername];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end

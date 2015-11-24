@@ -21,6 +21,9 @@ typedef enum JYRequestType {
     
 }JYRequestType;
 
+/**
+ *  请求相关类,组织拼接url，处理请求参数和返回数据
+ */
 @interface JYServiceData : NSObject
 
 /**
@@ -30,7 +33,7 @@ typedef enum JYRequestType {
  *
  *  @return <#return value description#>
  */
-+ (NSString *)paramStringWithRequestType:(JYRequestType)aType;
++ (NSString *)pathUrlWithParam:(NSDictionary *)aParam andRequestType:(JYRequestType)aType;
 
 
 

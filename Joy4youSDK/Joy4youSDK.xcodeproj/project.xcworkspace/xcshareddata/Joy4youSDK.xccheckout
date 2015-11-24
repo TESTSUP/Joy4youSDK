@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>84E257EE-2695-42C8-A72F-45179CCF0701</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Joy4youSDK</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1BEC36F2CD0F8D03A86F64BDDE7E5DF0C594A57B</key>
+		<string>https://github.com/TESTSUP/Joy4youSDK.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Joy4youSDK/Joy4youSDK.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1BEC36F2CD0F8D03A86F64BDDE7E5DF0C594A57B</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/TESTSUP/Joy4youSDK.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1BEC36F2CD0F8D03A86F64BDDE7E5DF0C594A57B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1BEC36F2CD0F8D03A86F64BDDE7E5DF0C594A57B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Joy4youSDK</string>
+		</dict>
+	</array>
+</dict>
+</plist>

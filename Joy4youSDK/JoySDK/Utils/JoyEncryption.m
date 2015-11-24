@@ -46,6 +46,23 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     }
 }
 
++ (NSString *)DESEncryptDictionary:(NSDictionary *)param WithKey:(NSString *)key
+{
+    if ([[param allKeys] count] && [key length]) {
+        NSError *error = nil;
+        NSData *orgData = [NSJSONSerialization dataWithJSONObject:param
+                                                       options:0
+                                                         error:&error];
+        NSData *encData = [JoyEncryption DESEncrypt:orgData WithKey:key];
+        NSString *HexStr = [JoyEncryption hexStringFromData:encData];
+        return HexStr;
+        
+    } else {
+        return nil;
+    }
+}
+
+
 #pragma mark - string-convert
 
 + (NSData *)dataFromHexString:(NSString *)hexString { //

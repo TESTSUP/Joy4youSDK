@@ -5,6 +5,8 @@
 //  Created by 孙永刚 on 15/11/18.
 //  Copyright © 2015年 LeHeng. All rights reserved.
 //
+//  SDK配置信息
+
 
 /**
  *  SDK版本号
