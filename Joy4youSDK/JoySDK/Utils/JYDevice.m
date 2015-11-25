@@ -56,7 +56,8 @@ static NSString *Joy4you_channelId = nil;
                                 KEY_OSV:osVer,
                                 KEY_BN:brand,
                                 KEY_SDKVER:sdkVer,
-                                KEY_VERSION:appVersion
+                                KEY_VERSION:appVersion,
+                                KEY_FROM:@"iOS"
                                 };
 
 

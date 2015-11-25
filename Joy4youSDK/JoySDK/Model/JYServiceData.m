@@ -9,100 +9,165 @@
 #import "JYServiceData.h"
 #import "JYDevice.h"
 #import "JoyEncryption.h"
+#import "JYUserCache.h"
 
 @implementation JYServiceData
-
-+ (NSString *)urlPathForType:(JYRequestType)aType
-{
-    switch (aType) {
-        case RequestCheckUserid:
-            return @"";
-            break;
-        case RequestLoginWithSid:
-            return @"";
-            break;
-        case RequestLoginWithTourist:
-            return @"";
-            break;
-        case RequestLoginWithUsername:
-            return @"";
-            break;
-        case RequestLoginWithPhone:
-            return @"";
-            break;
-        case RequestRegistWithUsername:
-            return @"";
-            break;
-        case RequestRegistWithPhone:
-            return @"";
-            break;
-        case RequestBindEmail:
-            return @"";
-            break;
-        case RequestFindPassword:
-            return @"";
-            
-        default:
-            break;
-    }
-}
 
 + (NSString *)pathUrlWithParam:(NSDictionary *)aParam andRequestType:(JYRequestType)aType
 {
     NSString *path = @"";
-    NSString *EncryptStr = @"";
+    NSDictionary *paramDic = nil;
     switch (aType) {
         case RequestCheckUserid:
         {
             path = PATH_CHECK;
-            NSDictionary *paramDic = @{KEY_UN:aParam[KEY_UN],
-                                       KEY_CKID:[JYDevice ckid]};
-            EncryptStr = [JoyEncryption DESEncryptDictionary:paramDic WithKey:JYEncryptionkey];
-            
+            paramDic = @{KEY_UN:aParam[KEY_UN],
+                         KEY_CKID:[JYDevice ckid]};
         }
             break;
         case RequestLoginWithSid:
-            return @"";
+        {
+            path = PATH_LOGIN_SID;
+            paramDic = @{KEY_UID:aParam[KEY_UID],
+                         KEY_SID:aParam[KEY_SID],
+                         KEY_APPID:[JYDevice appId],
+                         KEY_CHANNEL:[JYDevice channelId]};
+        }
             break;
         case RequestLoginWithTourist:
-            return @"";
+        {
+            path = PATH_LOGIN_TOURIST;
+            NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:[JYDevice deviceInfo]];
+            [temp setObject:aParam[KEY_TYPE] forKey:@"2"];
+            paramDic = temp;
+        }
             break;
         case RequestLoginWithUsername:
         {
             path = PATH_LOGIN;
-            NSDictionary *paramDic = @{KEY_UN:aParam[KEY_UN],
-                                       KEY_PW:aParam[KEY_PW],
-                                       KEY_APPID:[JYDevice appId],
-                                       KEY_CHANNEL:[JYDevice channelId]};
-            EncryptStr = [JoyEncryption DESEncryptDictionary:paramDic WithKey:JYEncryptionkey];
+            paramDic = @{KEY_UN:aParam[KEY_UN],
+                         KEY_PW:aParam[KEY_PW],
+                         KEY_APPID:[JYDevice appId],
+                         KEY_CHANNEL:[JYDevice channelId]};
         }
             break;
         case RequestLoginWithPhone:
             return @"";
             break;
         case RequestRegistWithUsername:
-            return @"";
+        {
+            path = PATH_REGIST_UN;
+            NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:[JYDevice deviceInfo]];
+            [temp setObject:aParam[KEY_UN] forKey:KEY_UN];
+            [temp setObject:aParam[KEY_PW] forKey:KEY_PW];
+            [temp setObject:aParam[KEY_TYPE] forKey:@"1"];
+            paramDic =temp;
+        }
             break;
         case RequestRegistWithPhone:
             return @"";
             break;
         case RequestBindEmail:
-            return @"";
+        {
+            path = PATH_BIND_EMAIL;
+            paramDic = @{KEY_UN:aParam[KEY_UN],
+                         KEY_PW:aParam[KEY_PW],
+                         KEY_EMAIL:aParam[KEY_EMAIL],
+                         KEY_CKID:[JYDevice ckid]};
+        }
+            break;
+        case RequestBindAccount:
+        {
+            path = PATH_BIND_ACCOUNT;
+            paramDic = @{KEY_UN:aParam[KEY_UN],
+                         KEY_PW:aParam[KEY_PW],
+                         KEY_UID:aParam[KEY_UID],
+                         KEY_CKID:[JYDevice ckid]};
+            
+        }
             break;
         case RequestFindPassword:
-            return @"";
+        {
+            path = PATH_LOGIN;
+            paramDic = @{KEY_UN:aParam[KEY_UN],
+                         KEY_EMAIL:aParam[KEY_EMAIL],
+                         KEY_CKID:[JYDevice ckid]};
+        }
+            break;
             
         default:
             break;
     }
     
+    JYDLog(@"requeset path = %@, param = %@", path, paramDic);
+    NSString* EncryptStr = [JoyEncryption DESEncryptDictionary:paramDic WithKey:JYEncryptionkey];
     return [NSString stringWithFormat:@"%@?param=%@", path, EncryptStr];
 }
 
 + (NSDictionary *)dictionaryWithResponseData:(NSData *)aData
                               andRequestType:(JYRequestType)aType
 {
+    NSDictionary* responseDic = [JoyEncryption DESDecryptData:aData WithKey:JYEncryptionkey];
+    JYDLog(@"response = %@", responseDic);
     
+    switch (aType) {
+        case RequestCheckUserid:
+        {
+            
+        }
+            break;
+        case RequestLoginWithSid:
+        {
+
+        }
+            break;
+        case RequestLoginWithTourist:
+        {
+
+        }
+            break;
+        case RequestLoginWithUsername:
+        {
+
+        }
+            break;
+        case RequestLoginWithPhone:
+        {
+            
+        }
+            break;
+        case RequestRegistWithUsername:
+        {
+
+        }
+            break;
+        case RequestRegistWithPhone:
+        {
+            
+        }
+            break;
+        case RequestBindEmail:
+        {
+
+        }
+            break;
+        case RequestBindAccount:
+        {
+
+            
+        }
+            break;
+        case RequestFindPassword:
+        {
+
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return nil;
 }
 
 @end

@@ -32,6 +32,27 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
     }
 }
 
++ (NSDictionary *)DESDecryptData:(NSData *)data WithKey:(NSString *)key
+{
+    if ([data length] && [key length]) {
+        
+        NSString *orgStr = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+        NSData *orgData = [JoyEncryption dataFromHexString:orgStr];
+        NSData *decData = [JoyEncryption DESDecrypt:orgData WithKey:key];
+        
+        NSError *error = nil;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:decData
+                                                            options:NSJSONReadingAllowFragments
+                                                              error:&error];
+        
+        return dic;
+        
+    } else {
+        return nil;
+    }
+}
+
 //加密
 + (NSString *)DESEncryptString:(NSString *)dataStr WithKey:(NSString *)key
 {

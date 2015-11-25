@@ -17,6 +17,7 @@ typedef enum JYRequestType {
     RequestRegistWithUsername,
     RequestRegistWithPhone,
     RequestBindEmail,
+    RequestBindAccount,
     RequestFindPassword
     
 }JYRequestType;

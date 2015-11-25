@@ -19,6 +19,8 @@
 #define KEY_TYPE        @"type"             //type=1 用户名注册  type=2游客登录  3手机号注册4 一键注册
 #define KEY_SEX         @"sex"              //性别 0 女  1男
 #define KEY_FROM        @"from"             //iOS或者Android
+#define KEY_SID         @"sessionid"        //缓存登录用的sid
+#define KEY_UID         @"userid"           //用户id
 //第三方相关
 #define KEY_TUID        @"tuid"             //第三方用户ID
 #define KEY_THD         @"thd"              //第三方id
@@ -61,7 +63,7 @@
 #define PATH_LOGIN_TOURIST      @"/UserApi/touristLogin/"           //游客登录
 #define PATH_LOGIN_SID          @"/UserApi/autoLogin/"              //缓存登录
 #define PATH_REGIST_UN          @"/UserApi/register/"               //用户名密码注册
-#define PATH_BIND_ACCOUNt       @"/UserApi/bindUserName/"           //绑定用户名
+#define PATH_BIND_ACCOUNT       @"/UserApi/bindUserName/"           //绑定用户名
 #define PATH_BIND_EMAIL         @"/UserApi/bindEmail/"              //绑定邮箱
 #define PATH_FIND_PW            @"/FindPwdApi/findPwd/"             //找回密码
 

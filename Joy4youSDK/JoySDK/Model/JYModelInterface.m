@@ -46,16 +46,19 @@ static dispatch_once_t token;
 #pragma mark - interface
 
 /**
- *  检查用户名
+ *  用户名+密码登录接口
  *
  *  @param aName     用户名
+ *  @param aPassword 密码，MD5
  *  @param aCallback <#aCallback description#>
  */
-- (void)checkUsername:(NSString *)aName
-        callbackBlock:(modelCallback)aCallback
+- (void)loginWithUsername:(NSString *)aName
+              andPassword:(NSString *)aPassword
+            callbackBlcok:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_UN:aName};
-    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestLoginWithUsername];
+    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[JYUtil md5:aPassword]};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param
+                                         andRequestType:RequestLoginWithUsername];
     
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
@@ -69,18 +72,38 @@ static dispatch_once_t token;
 
 
 /**
- *  用户名+密码登录接口
+ *  游客登录注册
  *
- *  @param aName     用户名
- *  @param aPassword 密码，MD5
  *  @param aCallback <#aCallback description#>
  */
-- (void)loginWithUsername:(NSString *)aName
-              andPassword:(NSString *)aPassword
-            callbackBlcok:(modelCallback)aCallback
+- (void)touristLoginWithCallbackBlcok:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[JYUtil md5:aPassword]};
-    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestLoginWithUsername];
+    NSString *urlPath = [JYServiceData pathUrlWithParam:nil
+                                         andRequestType:RequestLoginWithTourist];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
+
+/**
+ *  自动登录-sid登录
+ *
+ *  @param aSid      session id
+ *  @param aUid      user id
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)cacheLoginWithSessionId:(NSString *)aSid
+                      andUserId:(NSString *)aUid
+                  CallbackBlcok:(modelCallback)aCallback
+{
+    NSString *urlPath = [JYServiceData pathUrlWithParam:@{KEY_SID:aSid,KEY_UID:aUid}
+                                         andRequestType:RequestLoginWithSid];
     
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
@@ -94,14 +117,128 @@ static dispatch_once_t token;
 
 
 
+/**
+ *  检查用户名
+ *
+ *  @param aName     用户名
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)checkUsername:(NSString *)aName
+        callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_UN:aName};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestCheckUserid];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
 
+/**
+ *  用户名+密码注册
+ *
+ *  @param aName     用户名
+ *  @param aPassword 密码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)registWithUsername:(NSString *)aName
+              andPassword:(NSString *)aPassword
+            callbackBlcok:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[JYUtil md5:aPassword]};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param
+                                         andRequestType:RequestRegistWithUsername];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
 
+/**
+ *  找回密码
+ *
+ *  @param aUsername 用户名
+ *  @param aEmail    邮箱
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)findPasswordWithUsername:(NSString *)aUsername
+                        andEmail:(NSString *)aEmail
+                   callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_UN:aUsername, KEY_EMAIL:aEmail};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestFindPassword];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
 
+/**
+ *  游客绑定正式账号
+ *
+ *  @param aUsername 用户名
+ *  @param aPassword 密码
+ *  @param aUserId   用户id
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)bindAccountWithUsername:(NSString *)aUsername
+                       password:(NSString *)aPassword
+                         userId:(NSString *)aUserId
+                  callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:aPassword, KEY_UID:aUserId};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindAccount];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
 
-
-
-
-
+/**
+ *  绑定邮箱
+ *
+ *  @param aUsername 用户名
+ *  @param aPassword 密码
+ *  @param aEmail    邮箱地址
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)bindEmailWithUsername:(NSString *)aUsername
+                     password:(NSString *)aPassword
+                        email:(NSString *)aEmail
+                callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:aPassword, KEY_EMAIL:aEmail};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindEmail];
+    
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            
+                                        }];
+}
 
 
 

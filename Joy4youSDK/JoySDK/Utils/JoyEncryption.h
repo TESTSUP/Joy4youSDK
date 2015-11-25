@@ -13,6 +13,7 @@
 
 //解密
 + (NSString *)DESDecryptString:(NSString *)dataStr WithKey:(NSString *)key;
++ (NSDictionary *)DESDecryptData:(NSData *)data WithKey:(NSString *)key;
 
 //加密
 + (NSString *)DESEncryptString:(NSString *)dataStr WithKey:(NSString *)key;
