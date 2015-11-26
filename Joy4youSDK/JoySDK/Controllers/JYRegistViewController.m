@@ -7,6 +7,7 @@
 //
 
 #import "JYRegistViewController.h"
+#import "JYUtil.h"
 
 @interface JYRegistViewController ()
 
@@ -17,7 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self configTextField];
 }
+
+- (void)configTextField
+{    
+    self.usernameTextField.delegate = self;
+    self.passwordField.delegate = self;
+    
+    _upsideTextField = self.usernameTextField;
+    _undersideTextField = self.passwordField;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -34,4 +47,20 @@
 }
 */
 
+#pragma mark - button action
+
+- (IBAction)handleShowAgreementAction:(UIButton *)sender {
+}
+
+- (IBAction)handleShowPasswordAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+}
+
+- (IBAction)handleConfirmAgreementAction:(UIButton *)sender {
+     sender.selected = !sender.selected;
+}
+
+- (IBAction)handleRegistAction:(id)sender {
+}
 @end

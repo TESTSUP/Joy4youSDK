@@ -7,6 +7,9 @@
 //
 #import "Joy4youSDK.h"
 
+/**
+ *  主视图类
+ */
 @interface JoyMainViewController : UIViewController
 
 @property (nonatomic, weak)id<Joy4youCallback> callback;
@@ -14,6 +17,9 @@
 
 + (instancetype)shareInstance;
 
+/**
+ *  对外接口
+ */
 - (void)loginAction;
 
 @end

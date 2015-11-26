@@ -36,6 +36,8 @@
 + (UIImage*)imageNamedFromBundle:(NSString*)imageName {
     UIImage* aImg = nil;
     
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@/%@", JYBundleName, imageName]];
+    
     NSBundle *frameworkBundle = [NSBundle resourceBundle];
     
     NSString * resourcePath = [frameworkBundle pathForResource:imageName ofType:nil];

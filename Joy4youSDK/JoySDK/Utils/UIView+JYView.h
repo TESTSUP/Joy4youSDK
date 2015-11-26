@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #define CC_CORNERRADIUS 3.0
+#define DEFAULT_WIDTH   (310)
+#define DEFAULT_HEIGHT  (267)
 
 @interface UIView (JYView)
+
++ (UIView *)createNibView:(NSString *)aNibName;
 
 @end

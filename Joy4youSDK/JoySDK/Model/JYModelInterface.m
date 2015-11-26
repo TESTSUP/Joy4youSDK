@@ -33,6 +33,13 @@ static dispatch_once_t token;
     return instance;
 }
 
+
++ (void)clear
+{
+    token = 0;
+    instance = nil;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -44,6 +51,11 @@ static dispatch_once_t token;
 }
 
 #pragma mark - interface
+
+- (void)cancelAllRequest
+{
+    [[JoyRequest shareInstance] cancelAllOperations];
+}
 
 /**
  *  用户名+密码登录接口

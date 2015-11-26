@@ -18,6 +18,13 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
 
 + (instancetype)sharedInstance;
 
++ (void)clear;
+
+/**
+ *  取消所有请求
+ */
+- (void)cancelAllRequest;
+
 #pragma mark - 登录
 /**
  *  用户名+密码登录接口

@@ -8,6 +8,8 @@
 
 #import "NSBundle+JYBundle.h"
 
+const NSString* JYBundleName = @"Joy4youBundle.bundle";
+
 @implementation NSBundle (JYBundle)
 
 static NSBundle* frameworkBundle = nil;
@@ -17,12 +19,17 @@ static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         NSString* mainBundlePath = [[NSBundle mainBundle] resourcePath];
         
-        NSString* frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:@"Joy4youBundle.bundle"];
+        NSString* frameworkBundlePath = [mainBundlePath stringByAppendingPathComponent:(NSString *)JYBundleName];
         frameworkBundle = [NSBundle bundleWithPath:frameworkBundlePath];
     });
     
     return frameworkBundle;
 }
 
++ (void)clear
+{
+    frameworkBundle = nil;
+    predicate = 0;
+}
 
 @end

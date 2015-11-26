@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JYViewController.h"
 
-@interface JYLoginViewController : UIViewController
+@interface JYLoginViewController : JYViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *registButton;
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *findPasswordBtn;
+@property (weak, nonatomic) IBOutlet UIButton *touristLoginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UIButton *registBtn;
+
 
 - (IBAction)handleRegistAction:(id)sender;
 

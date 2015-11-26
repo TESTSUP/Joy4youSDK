@@ -7,100 +7,141 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYRegistViewController">
             <connections>
+                <outlet property="backButton" destination="LAR-rY-yXd" id="Ot1-TQ-wWi"/>
+                <outlet property="confirmAgreementBtn" destination="zCp-5Z-dOa" id="HOs-jp-OqT"/>
+                <outlet property="passwordField" destination="msV-0w-k3u" id="cSB-HY-P81"/>
+                <outlet property="registBtn" destination="aZ6-dK-B4A" id="0QB-vu-o8D"/>
+                <outlet property="showAgreementBtn" destination="ESv-a8-53B" id="7gi-jG-4Tr"/>
+                <outlet property="showPasswordBtn" destination="DY7-Ne-X6q" id="GmA-Xv-gC5"/>
+                <outlet property="usernameTextField" destination="N6y-4a-IXQ" id="hYi-d9-fCY"/>
                 <outlet property="view" destination="iN0-l3-epB" id="apT-Ve-sbl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="267"/>
+            <rect key="frame" x="0.0" y="0.0" width="310" height="266"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="4-20位英文字母、数字或_组合" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0MO-9G-2Su">
-                    <rect key="frame" x="98" y="71" width="186" height="30"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="乐恒互动" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXg-GT-WRU">
-                    <rect key="frame" x="148" y="22" width="70" height="21"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uav-Qw-lAd">
-                    <rect key="frame" x="69" y="8" width="71" height="49"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="rr3-cm-QL1" userLabel="logo">
+                    <rect key="frame" x="85" y="7" width="140" height="35"/>
                     <animations/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESv-a8-53B">
-                    <rect key="frame" x="211" y="159" width="60" height="30"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_img_edittext.png" translatesAutoresizingMaskIntoConstraints="NO" id="FvC-RG-zBE">
+                    <rect key="frame" x="105" y="60" width="174" height="35"/>
                     <animations/>
+                    <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_img_edittext.png" translatesAutoresizingMaskIntoConstraints="NO" id="CM3-bP-HMs">
+                    <rect key="frame" x="105" y="107" width="174" height="35"/>
+                    <animations/>
+                    <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="4-20位英文字母、数字或_组合" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="N6y-4a-IXQ">
+                    <rect key="frame" x="110" y="63" width="170" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="6-15位英文字母、数字或符号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="msV-0w-k3u">
+                    <rect key="frame" x="110" y="109" width="170" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESv-a8-53B">
+                    <rect key="frame" x="210" y="159" width="60" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="用户协议">
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
-                </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6-15位英文字母、数字或符号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-6E-BIJ">
-                    <rect key="frame" x="98" y="118" width="186" height="30"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZ6-dK-B4A">
-                    <rect key="frame" x="130" y="208" width="60" height="30"/>
-                    <animations/>
-                    <state key="normal" title="立即注册">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <connections>
+                        <action selector="handleShowAgreementAction:" destination="-1" eventType="touchUpInside" id="Ahy-v0-ZLW"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="同意" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCp-5Z-dOa">
-                    <rect key="frame" x="178" y="163" width="34" height="21"/>
+                    <rect key="frame" x="182" y="163" width="34" height="21"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="显示密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpb-KK-154">
-                    <rect key="frame" x="69" y="163" width="56" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DY7-Ne-X6q">
+                    <rect key="frame" x="45" y="159" width="30" height="30"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFX-GC-gkR">
-                    <rect key="frame" x="31" y="156" width="30" height="30"/>
-                    <animations/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <state key="normal" image="jy_img_checkbox_off.png"/>
+                    <state key="selected" image="jy_img_checkbox_on.png"/>
+                    <connections>
+                        <action selector="handleShowPasswordAction:" destination="-1" eventType="touchUpInside" id="wkh-AP-sYF"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rY-ka-lpZ">
-                    <rect key="frame" x="145" y="156" width="30" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="显示密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jpb-KK-154">
+                    <rect key="frame" x="72" y="163" width="56" height="21"/>
                     <animations/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JnL-V1-w51">
+                    <rect key="frame" x="155" y="159" width="30" height="30"/>
+                    <animations/>
+                    <state key="normal" image="jy_img_checkbox_off.png"/>
+                    <state key="selected" image="jy_img_checkbox_on.png"/>
+                    <connections>
+                        <action selector="handleConfirmAgreementAction:" destination="-1" eventType="touchUpInside" id="Dnw-tX-z7Y"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="输入密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZo-PO-2Lr">
-                    <rect key="frame" x="18" y="124" width="56" height="21"/>
+                    <rect key="frame" x="31" y="113" width="56" height="21"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="填写用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qus-jH-gkd">
-                    <rect key="frame" x="18" y="75" width="70" height="21"/>
+                    <rect key="frame" x="31" y="67" width="70" height="21"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-rY-yXd">
+                    <rect key="frame" x="8" y="8" width="30" height="30"/>
+                    <animations/>
+                    <state key="normal" image="jy_back.png"/>
+                    <state key="highlighted" image="jy_back_pressed.png"/>
+                    <connections>
+                        <action selector="handleBackAction:" destination="-1" eventType="touchUpInside" id="0XC-Vk-QxW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZ6-dK-B4A" customClass="JYButton">
+                    <rect key="frame" x="93" y="209" width="125" height="35"/>
+                    <animations/>
+                    <state key="normal" title="立即注册" backgroundImage="jy_button_orange.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="jy_button_orange_pressed.png"/>
+                    <connections>
+                        <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="k3a-4G-xF8"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="633" y="112.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="jy_back.png" width="14" height="14"/>
+        <image name="jy_back_pressed.png" width="14" height="14"/>
+        <image name="jy_button_orange.png" width="7" height="9"/>
+        <image name="jy_button_orange_pressed.png" width="7" height="9"/>
+        <image name="jy_img_checkbox_off.png" width="15" height="15"/>
+        <image name="jy_img_checkbox_on.png" width="15" height="15"/>
+        <image name="jy_img_edittext.png" width="8" height="25"/>
+        <image name="jy_logo.png" width="140" height="35"/>
+    </resources>
 </document>

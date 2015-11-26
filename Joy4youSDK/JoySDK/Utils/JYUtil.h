@@ -11,6 +11,8 @@
 #import "UIImage+JYImage.h"
 #import "UIView+JYView.h"
 #import "NSString+JYString.h"
+#import "JYAlertView.h"
+#import "UIColor+JYColor.h"
 
 @interface JYUtil : NSObject
 

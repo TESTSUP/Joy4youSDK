@@ -23,6 +23,8 @@ const NSString *JYEncryptionkey = @"562asd32";
  */
 const NSString *Joy4youHostUrl = @"http://123.59.56.120/joysdk/index.php/";
 
+//http://120.132.49.136/  用户系统正式地址
+
 /**
  *  用户信息缓存数量
  */

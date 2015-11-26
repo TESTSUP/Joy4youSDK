@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *JYBundleName;
+
 @interface NSBundle (JYBundle)
 
 /**
@@ -17,5 +19,6 @@
  */
 + (NSBundle *)resourceBundle;
 
++ (void)clear;
 
 @end

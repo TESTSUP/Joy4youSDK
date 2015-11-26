@@ -42,7 +42,7 @@
 {
     [super awakeFromNib];
     [self setExclusiveTouch:YES];
-    [self addTarget:self action:@selector(handleTouchEvent) forControlEvents:UIControlEventTouchDown |UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+//    [self addTarget:self action:@selector(handleTouchEvent) forControlEvents:UIControlEventTouchDown |UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
     
     [self setBackgroundImage:[[self backgroundImageForState:UIControlStateNormal] stretchBGImage]forState:UIControlStateNormal];
     [self setBackgroundImage:[[self backgroundImageForState:UIControlStateHighlighted] stretchBGImage]forState:UIControlStateHighlighted];
@@ -112,47 +112,47 @@
     }
 }
 
-- (void) drawRect:(CGRect)rect {
-    //圆角+填充色
-    CGContextRef contextRef = UIGraphicsGetCurrentContext();
-    CGFloat radius = CC_CORNERRADIUS;
-    CGContextSetRGBStrokeColor(contextRef, 1.0, 1.0, 1.0, 1);
-    UIColor *tempColor = [UIColor clearColor];
-    if (self.state == UIControlStateNormal) {
-        tempColor = _normalColor==nil? [UIColor clearColor]:_normalColor;
-    }
-    else
-    {
-        tempColor = _highlightedColor==nil? [UIColor clearColor]:_highlightedColor;
-    }
-    CGContextSetFillColorWithColor(contextRef, [tempColor CGColor]);
-    CGContextSetStrokeColorWithColor(contextRef, [tempColor CGColor]);
-    
-    CGFloat minx = CGRectGetMinX(rect), midx = CGRectGetMidX(rect), maxx = CGRectGetMaxX(rect);
-    CGFloat miny = CGRectGetMinY(rect), midy = CGRectGetMidY(rect), maxy = CGRectGetMaxY(rect);
-    CGContextMoveToPoint(contextRef, minx, midy);
-    CGContextAddArcToPoint(contextRef, minx, miny, midx, miny, radius);
-    CGContextAddArcToPoint(contextRef, maxx, miny, maxx, midy, radius);
-    CGContextAddArcToPoint(contextRef, maxx, maxy, midx, maxy, radius);
-    CGContextAddArcToPoint(contextRef, minx, maxy, minx, midy, radius);
-    CGContextClosePath(contextRef);
-    CGContextDrawPath(contextRef, kCGPathFillStroke);
-    
-    //下划线
-    if (_showUnderLine)
-    {
-        CGContextRef contextRef = UIGraphicsGetCurrentContext();
-        CGRect textRect = self.titleLabel.frame;
-        // need to put the line at top of descenders (negative value)
-        CGFloat descender = self.titleLabel.font.descender;
-        // set to same colour as text
-        CGContextSetStrokeColorWithColor(contextRef, self.titleLabel.textColor.CGColor);
-        CGContextMoveToPoint(contextRef, textRect.origin.x, textRect.origin.y + textRect.size.height+2 + descender);
-        CGContextAddLineToPoint(contextRef, textRect.origin.x + textRect.size.width, textRect.origin.y + textRect.size.height + descender+2);
-        CGContextClosePath(contextRef);
-        CGContextDrawPath(contextRef, kCGPathStroke);
-    }
-}
+//- (void) drawRect:(CGRect)rect {
+//    //圆角+填充色
+//    CGContextRef contextRef = UIGraphicsGetCurrentContext();
+//    CGFloat radius = CC_CORNERRADIUS;
+//    CGContextSetRGBStrokeColor(contextRef, 1.0, 1.0, 1.0, 1);
+//    UIColor *tempColor = [UIColor clearColor];
+//    if (self.state == UIControlStateNormal) {
+//        tempColor = _normalColor==nil? [UIColor clearColor]:_normalColor;
+//    }
+//    else
+//    {
+//        tempColor = _highlightedColor==nil? [UIColor clearColor]:_highlightedColor;
+//    }
+//    CGContextSetFillColorWithColor(contextRef, [tempColor CGColor]);
+//    CGContextSetStrokeColorWithColor(contextRef, [tempColor CGColor]);
+//    
+//    CGFloat minx = CGRectGetMinX(rect), midx = CGRectGetMidX(rect), maxx = CGRectGetMaxX(rect);
+//    CGFloat miny = CGRectGetMinY(rect), midy = CGRectGetMidY(rect), maxy = CGRectGetMaxY(rect);
+//    CGContextMoveToPoint(contextRef, minx, midy);
+//    CGContextAddArcToPoint(contextRef, minx, miny, midx, miny, radius);
+//    CGContextAddArcToPoint(contextRef, maxx, miny, maxx, midy, radius);
+//    CGContextAddArcToPoint(contextRef, maxx, maxy, midx, maxy, radius);
+//    CGContextAddArcToPoint(contextRef, minx, maxy, minx, midy, radius);
+//    CGContextClosePath(contextRef);
+//    CGContextDrawPath(contextRef, kCGPathFillStroke);
+//    
+//    //下划线
+//    if (_showUnderLine)
+//    {
+//        CGContextRef contextRef = UIGraphicsGetCurrentContext();
+//        CGRect textRect = self.titleLabel.frame;
+//        // need to put the line at top of descenders (negative value)
+//        CGFloat descender = self.titleLabel.font.descender;
+//        // set to same colour as text
+//        CGContextSetStrokeColorWithColor(contextRef, self.titleLabel.textColor.CGColor);
+//        CGContextMoveToPoint(contextRef, textRect.origin.x, textRect.origin.y + textRect.size.height+2 + descender);
+//        CGContextAddLineToPoint(contextRef, textRect.origin.x + textRect.size.width, textRect.origin.y + textRect.size.height + descender+2);
+//        CGContextClosePath(contextRef);
+//        CGContextDrawPath(contextRef, kCGPathStroke);
+//    }
+//}
 
 
 

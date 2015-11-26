@@ -7,22 +7,186 @@
 //
 
 #import "JYViewController.h"
+#import "UIView+JYView.h"
 
-@interface JYViewController ()
-
-@end
+NSString *const JYNotificationCloseSDK = @"joy4you_notification_closeSDK";
+NSString *const JYNotificationShowSuccess = @"joy4you_notification_login_success";
+NSString *const JYNotificationRemoveView = @"joy4you_notification_view_remove";
+NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 
 @implementation JYViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.layer.cornerRadius = CC_CORNERRADIUS;
+    self.view.center = self.view.superview.center;
+    
+    [self addObservers];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    
 }
+
+- (CGPoint)mainViewCenter
+{
+    return CGPointMake(self.navigationController.view.superview.bounds.size.width/2,
+                       self.navigationController.view.superview.bounds.size.height/2);
+}
+
+- (void)addObservers
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+    }
+}
+
+- (void)handleBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)handleClose
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationCloseSDK object:nil];
+}
+
+- (void)handleTap
+{
+    [self hideKeybord];
+}
+
+#pragma mark - keybord
+
+- (void)hideKeybord
+{
+    [_actionTextField resignFirstResponder];
+    _actionTextField = nil;
+}
+
+- (void)keyboardWillAppear:(NSNotification *)aNotify
+{
+    _keyBordRect = [[aNotify.userInfo objectForKey:@"UIKeyboardBoundsUserInfoKey"] CGRectValue];
+    
+    [self configViewPointWithKeybord];
+}
+
+- (void)keyboardWillDisappear:(NSNotification *)aNotify
+{
+    _keyBordRect = CGRectZero;
+    
+    [self configViewPointWithKeybord];
+}
+
+//解决所有界面键盘遮盖问题
+- (void)configViewPointWithKeybord
+{
+    [UIView animateWithDuration:0.25
+                          delay:0.0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         if (CGRectEqualToRect(_keyBordRect, CGRectZero)) {
+                             self.navigationController.view.center = [self mainViewCenter];
+                         }
+                         else
+                         {
+                             CGSize orgSize = self.navigationController.view.superview.bounds.size;
+                             CGFloat height = _actionTextField.frame.size.height;
+                             CGFloat newY = (orgSize.height - _keyBordRect.size.height) - height-10;
+                             CGPoint oldPoint = [self.navigationController.view.superview convertPoint:_actionTextField.frame.origin fromView:self.view];
+                             CGFloat length = oldPoint.y -newY;
+                             if (length > 0) {
+                                 self.navigationController.view.center = CGPointMake(self.navigationController.view.center.x,
+                                                                              self.navigationController.view.center.y - length);
+                             }
+                         }
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (NSUInteger)getLimitLengthWith:(UITextField *)aTextField
+{
+    
+    return 10;
+    
+//    NSUInteger length = NSUIntegerMax;
+//    
+//    if ([_surfaceActionView isKindOfClass:[CCRegistWithUsernameView class]])
+//    {
+//        if (aTextField == _upsideTextField)
+//        {
+//            length = CC_ACCLOUNT_LIMIT;
+//        }
+//        else
+//        {
+//            length = CC_PW_LIMIT;
+//        }
+//    }
+//    else if ([_surfaceActionView isKindOfClass:[CCForgetPhdCheckPhoneView class]])
+//    {
+//        CCForgetPhdCheckPhoneView *tempView = (CCForgetPhdCheckPhoneView *)_surfaceActionView;
+//        if (tempView.phdCodeField == aTextField)
+//        {
+//            length = CC_VCODE_LIMIT;
+//        }
+//    }
+//    
+//    return length;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    _actionTextField = textField;
+    
+    [self configViewPointWithKeybord];
+    
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSUInteger limitLength = [self getLimitLengthWith:textField];
+
+    if ([textField.text length] >= limitLength && ![string isEqualToString:@""])
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (_undersideTextField &&
+        _undersideTextField != _actionTextField) {
+        [_undersideTextField becomeFirstResponder];
+        _actionTextField = _undersideTextField;
+    }
+    else
+    {
+        [_actionTextField resignFirstResponder];
+        _actionTextField = nil;
+    }
+    
+    return YES;
+}
+
 
 /*
 #pragma mark - Navigation
@@ -34,4 +198,8 @@
 }
 */
 
+- (IBAction)handleBackAction:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end
