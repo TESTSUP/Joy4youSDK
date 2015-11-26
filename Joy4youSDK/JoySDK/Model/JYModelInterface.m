@@ -56,7 +56,7 @@ static dispatch_once_t token;
               andPassword:(NSString *)aPassword
             callbackBlcok:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[JYUtil md5:aPassword]};
+    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[aPassword MD5]};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param
                                          andRequestType:RequestLoginWithUsername];
     
@@ -150,7 +150,7 @@ static dispatch_once_t token;
               andPassword:(NSString *)aPassword
             callbackBlcok:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[JYUtil md5:aPassword]};
+    NSDictionary *param = @{KEY_UN:aName, KEY_PW:[aPassword MD5]};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param
                                          andRequestType:RequestRegistWithUsername];
     

@@ -7,16 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSBundle+JYBundle.h"
+#import "UIImage+JYImage.h"
+#import "UIView+JYView.h"
+#import "NSString+JYString.h"
 
 @interface JYUtil : NSObject
 
-/**
- *  字符串MD5
- *
- *  @param string <#string description#>
- *
- *  @return <#return value description#>
- */
-+ (NSString *)md5:(NSString *)string;
+
+
 
 @end

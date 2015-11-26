@@ -7,6 +7,8 @@
 //
 
 #import "JYLoginViewController.h"
+#import "JYRegistViewController.h"
+#import "JYUtil.h"
 
 @interface JYLoginViewController ()
 
@@ -17,13 +19,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.view.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleWidth |
+    UIViewAutoresizingFlexibleHeight;
+    
+    self.view.center = self.view.superview.center;
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+ -(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
+{
+    self.view.center = self.view.superview.center;
+}
 /*
 #pragma mark - Navigation
 
@@ -34,4 +62,10 @@
 }
 */
 
+- (IBAction)handleRegistAction:(id)sender {
+    JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
+    
+    [self.navigationController pushViewController:registVC animated:YES];
+    
+}
 @end

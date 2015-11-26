@@ -9,9 +9,11 @@
 
 @interface JoyMainViewController : UIViewController
 
-@property (nonatomic, weak)id<Joy4youCallback>delegate;
+@property (nonatomic, weak)id<Joy4youCallback> callback;
 @property (nonatomic, assign) BOOL isRemoving;
 
 + (instancetype)shareInstance;
+
+- (void)loginAction;
 
 @end

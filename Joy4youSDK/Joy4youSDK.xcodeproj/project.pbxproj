@@ -13,14 +13,22 @@
 		248FCC801C04317E00657ADD /* JYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC7F1C04317E00657ADD /* JYLoginViewController.m */; };
 		248FCC831C04320600657ADD /* JYRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC821C04320600657ADD /* JYRegistViewController.m */; };
 		248FCC851C0432BD00657ADD /* JYRegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC841C0432BD00657ADD /* JYRegistViewController.xib */; };
-		248FCC881C04357C00657ADD /* JYBindEmailAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC871C04357C00657ADD /* JYBindEmailAlertViewController.m */; };
 		248FCC8A1C04359100657ADD /* JYBindEmailAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC891C04359100657ADD /* JYBindEmailAlertViewController.xib */; };
-		248FCC8D1C04371300657ADD /* JYFindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC8C1C04371300657ADD /* JYFindPasswordViewController.m */; };
 		248FCC8F1C04371F00657ADD /* JYFindPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC8E1C04371F00657ADD /* JYFindPasswordViewController.xib */; };
-		248FCC921C04376F00657ADD /* JYBindEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC911C04376F00657ADD /* JYBindEmailViewController.m */; };
 		248FCC941C04378100657ADD /* JYBindEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC931C04378100657ADD /* JYBindEmailViewController.xib */; };
-		248FCC971C04382000657ADD /* JYServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC961C04382000657ADD /* JYServiceViewController.m */; };
 		248FCC991C04385B00657ADD /* JYServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC981C04385B00657ADD /* JYServiceViewController.xib */; };
+		3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB739B1C06976700C81D68 /* JYLoadingView.xib */; };
+		3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB739E1C06978400C81D68 /* JYNavigationController.m */; };
+		3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */; };
+		3FFB73BF1C06999900C81D68 /* JYBindEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC911C04376F00657ADD /* JYBindEmailViewController.m */; };
+		3FFB73C01C06999E00C81D68 /* JYBindEmailAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC871C04357C00657ADD /* JYBindEmailAlertViewController.m */; };
+		3FFB73C11C0699A100C81D68 /* JYFindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC8C1C04371300657ADD /* JYFindPasswordViewController.m */; };
+		3FFB73C21C0699A400C81D68 /* JYServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC961C04382000657ADD /* JYServiceViewController.m */; };
+		3FFB73C31C0699A900C81D68 /* JYLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A41C06978D00C81D68 /* JYLoadingView.m */; };
+		3FFB73C41C0699BF00C81D68 /* JYButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A71C0697AF00C81D68 /* JYButton.m */; };
+		3FFB73C51C0699C400C81D68 /* NSBundle+JYBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A91C0697AF00C81D68 /* NSBundle+JYBundle.m */; };
+		3FFB73C61C0699CB00C81D68 /* UIImage+JYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AD1C0697AF00C81D68 /* UIImage+JYImage.m */; };
+		3FFB73C71C0699CF00C81D68 /* UIView+JYView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AF1C0697AF00C81D68 /* UIView+JYView.m */; };
 		CF5744701BFF25D000BF4351 /* JYServiceData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF57446F1BFF25D000BF4351 /* JYServiceData.m */; };
 		CFF6AC501BF9B944006A7DA2 /* Joy4youSDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFF6AC4F1BF9B944006A7DA2 /* Joy4youSDK.h */; };
 		CFF6AC521BF9B944006A7DA2 /* Joy4youSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC511BF9B944006A7DA2 /* Joy4youSDK.m */; };
@@ -45,6 +53,16 @@
 		CFF6ACFB1BFC52AF006A7DA2 /* JYModelInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACFA1BFC52AF006A7DA2 /* JYModelInterface.m */; };
 		CFF6AD0C1BFEF0F2006A7DA2 /* JYUserContent.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AD0B1BFEF0F2006A7DA2 /* JYUserContent.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3FFB73B51C06980B00C81D68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CFF6AC441BF9B944006A7DA2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 248FCC6B1C04307200657ADD;
+			remoteInfo = Joy4youBundle;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CFF6AC4A1BF9B944006A7DA2 /* CopyFiles */ = {
@@ -85,6 +103,23 @@
 		248FCC951C04382000657ADD /* JYServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYServiceViewController.h; sourceTree = "<group>"; };
 		248FCC961C04382000657ADD /* JYServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYServiceViewController.m; sourceTree = "<group>"; };
 		248FCC981C04385B00657ADD /* JYServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYServiceViewController.xib; sourceTree = "<group>"; };
+		3FFB739B1C06976700C81D68 /* JYLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JYLoadingView.xib; path = xib/JYLoadingView.xib; sourceTree = "<group>"; };
+		3FFB739D1C06978400C81D68 /* JYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNavigationController.h; sourceTree = "<group>"; };
+		3FFB739E1C06978400C81D68 /* JYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNavigationController.m; sourceTree = "<group>"; };
+		3FFB739F1C06978400C81D68 /* JYViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYViewController.h; sourceTree = "<group>"; };
+		3FFB73A01C06978400C81D68 /* JYViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYViewController.m; sourceTree = "<group>"; };
+		3FFB73A31C06978D00C81D68 /* JYLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYLoadingView.h; sourceTree = "<group>"; };
+		3FFB73A41C06978D00C81D68 /* JYLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYLoadingView.m; sourceTree = "<group>"; };
+		3FFB73A61C0697AF00C81D68 /* JYButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYButton.h; sourceTree = "<group>"; };
+		3FFB73A71C0697AF00C81D68 /* JYButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYButton.m; sourceTree = "<group>"; };
+		3FFB73A81C0697AF00C81D68 /* NSBundle+JYBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+JYBundle.h"; sourceTree = "<group>"; };
+		3FFB73A91C0697AF00C81D68 /* NSBundle+JYBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+JYBundle.m"; sourceTree = "<group>"; };
+		3FFB73AA1C0697AF00C81D68 /* NSString+JYString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JYString.h"; sourceTree = "<group>"; };
+		3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JYString.m"; sourceTree = "<group>"; };
+		3FFB73AC1C0697AF00C81D68 /* UIImage+JYImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JYImage.h"; sourceTree = "<group>"; };
+		3FFB73AD1C0697AF00C81D68 /* UIImage+JYImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JYImage.m"; sourceTree = "<group>"; };
+		3FFB73AE1C0697AF00C81D68 /* UIView+JYView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JYView.h"; sourceTree = "<group>"; };
+		3FFB73AF1C0697AF00C81D68 /* UIView+JYView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JYView.m"; sourceTree = "<group>"; };
 		CF57446E1BFF25D000BF4351 /* JYServiceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYServiceData.h; sourceTree = "<group>"; };
 		CF57446F1BFF25D000BF4351 /* JYServiceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYServiceData.m; sourceTree = "<group>"; };
 		CFF6AC4C1BF9B944006A7DA2 /* libJoy4youSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJoy4youSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +208,7 @@
 		248FCC7A1C04313E00657ADD /* xib */ = {
 			isa = PBXGroup;
 			children = (
+				3FFB739B1C06976700C81D68 /* JYLoadingView.xib */,
 				248FCC7C1C04316900657ADD /* JYLoginViewController.xib */,
 				248FCC841C0432BD00657ADD /* JYRegistViewController.xib */,
 				248FCC891C04359100657ADD /* JYBindEmailAlertViewController.xib */,
@@ -229,6 +265,10 @@
 		CFF6AC811BF9BDD6006A7DA2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3FFB739D1C06978400C81D68 /* JYNavigationController.h */,
+				3FFB739E1C06978400C81D68 /* JYNavigationController.m */,
+				3FFB739F1C06978400C81D68 /* JYViewController.h */,
+				3FFB73A01C06978400C81D68 /* JYViewController.m */,
 				CFF6AC9E1BF9BF7E006A7DA2 /* JoyRootViewController.h */,
 				CFF6AC9F1BF9BF7E006A7DA2 /* JoyRootViewController.m */,
 				CFF6ACEC1BFC223D006A7DA2 /* JoyMainViewController.h */,
@@ -277,6 +317,16 @@
 		CFF6AC841BF9BDED006A7DA2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3FFB73A61C0697AF00C81D68 /* JYButton.h */,
+				3FFB73A71C0697AF00C81D68 /* JYButton.m */,
+				3FFB73A81C0697AF00C81D68 /* NSBundle+JYBundle.h */,
+				3FFB73A91C0697AF00C81D68 /* NSBundle+JYBundle.m */,
+				3FFB73AA1C0697AF00C81D68 /* NSString+JYString.h */,
+				3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */,
+				3FFB73AC1C0697AF00C81D68 /* UIImage+JYImage.h */,
+				3FFB73AD1C0697AF00C81D68 /* UIImage+JYImage.m */,
+				3FFB73AE1C0697AF00C81D68 /* UIView+JYView.h */,
+				3FFB73AF1C0697AF00C81D68 /* UIView+JYView.m */,
 				2480E5451C043DA200388900 /* JYDefine.h */,
 				CFF6AC861BF9BE25006A7DA2 /* JoyEncryption.h */,
 				CFF6AC871BF9BE25006A7DA2 /* JoyEncryption.m */,
@@ -295,6 +345,8 @@
 		CFF6AC851BF9BDED006A7DA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3FFB73A31C06978D00C81D68 /* JYLoadingView.h */,
+				3FFB73A41C06978D00C81D68 /* JYLoadingView.m */,
 				CFF6ACE01BFC1952006A7DA2 /* JYHitTestView.h */,
 				CFF6ACE11BFC1952006A7DA2 /* JYHitTestView.m */,
 			);
@@ -415,6 +467,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3FFB73B61C06980B00C81D68 /* PBXTargetDependency */,
 			);
 			name = Joy4youSDK;
 			productName = JoySDK;
@@ -462,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				248FCC8A1C04359100657ADD /* JYBindEmailAlertViewController.xib in Resources */,
+				3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */,
 				248FCC991C04385B00657ADD /* JYServiceViewController.xib in Resources */,
 				248FCC7D1C04316900657ADD /* JYLoginViewController.xib in Resources */,
 				248FCC8F1C04371F00657ADD /* JYFindPasswordViewController.xib in Resources */,
@@ -477,10 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248FCC921C04376F00657ADD /* JYBindEmailViewController.m in Sources */,
-				248FCC881C04357C00657ADD /* JYBindEmailAlertViewController.m in Sources */,
-				248FCC8D1C04371300657ADD /* JYFindPasswordViewController.m in Sources */,
-				248FCC971C04382000657ADD /* JYServiceViewController.m in Sources */,
+				3FFB73BF1C06999900C81D68 /* JYBindEmailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,42 +539,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */,
 				CFF6ACD71BFB0601006A7DA2 /* AFURLConnectionOperation.m in Sources */,
 				CFF6ACD51BFB0601006A7DA2 /* AFHTTPRequestOperation.m in Sources */,
+				3FFB73C41C0699BF00C81D68 /* JYButton.m in Sources */,
 				CFF6ACEE1BFC223D006A7DA2 /* JoyMainViewController.m in Sources */,
 				CFF6ACE21BFC1952006A7DA2 /* JYHitTestView.m in Sources */,
 				CFF6ACB91BF9DEC1006A7DA2 /* JYDevice.m in Sources */,
+				3FFB73C31C0699A900C81D68 /* JYLoadingView.m in Sources */,
 				CFF6ACD81BFB0601006A7DA2 /* AFHTTPSessionManager.m in Sources */,
 				CF5744701BFF25D000BF4351 /* JYServiceData.m in Sources */,
 				CFF6ACDB1BFB0601006A7DA2 /* AFSecurityPolicy.m in Sources */,
 				CFF6ACB61BF9DDAE006A7DA2 /* JoyRequest.m in Sources */,
 				CFF6ACEA1BFC1F75006A7DA2 /* JYLog.m in Sources */,
+				3FFB73C51C0699C400C81D68 /* NSBundle+JYBundle.m in Sources */,
 				CFF6ACDC1BFB0601006A7DA2 /* AFURLRequestSerialization.m in Sources */,
 				CFF6ACFB1BFC52AF006A7DA2 /* JYModelInterface.m in Sources */,
+				3FFB73C71C0699CF00C81D68 /* UIView+JYView.m in Sources */,
 				CFF6ACD91BFB0601006A7DA2 /* AFURLSessionManager.m in Sources */,
 				248FCC801C04317E00657ADD /* JYLoginViewController.m in Sources */,
 				2480E54D1C0461F300388900 /* JYUtil.m in Sources */,
+				3FFB73C21C0699A400C81D68 /* JYServiceViewController.m in Sources */,
 				CFF6AC881BF9BE25006A7DA2 /* JoyEncryption.m in Sources */,
+				3FFB73C11C0699A100C81D68 /* JYFindPasswordViewController.m in Sources */,
 				CFF6ACF11BFC2288006A7DA2 /* JYConfig.m in Sources */,
 				CFF6ACD61BFB0601006A7DA2 /* AFHTTPRequestOperationManager.m in Sources */,
 				CFF6ACA01BF9BF7E006A7DA2 /* JoyRootViewController.m in Sources */,
 				CFF6ACF81BFC5288006A7DA2 /* JYUserCache.m in Sources */,
 				248FCC831C04320600657ADD /* JYRegistViewController.m in Sources */,
+				3FFB73C01C06999E00C81D68 /* JYBindEmailAlertViewController.m in Sources */,
 				2480E5491C044E1D00388900 /* JYSTKeychain.m in Sources */,
+				3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */,
 				CFF6ACDA1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m in Sources */,
 				CFF6ACDD1BFB0601006A7DA2 /* AFURLResponseSerialization.m in Sources */,
 				CFF6AD0C1BFEF0F2006A7DA2 /* JYUserContent.m in Sources */,
 				CFF6AC521BF9B944006A7DA2 /* Joy4youSDK.m in Sources */,
+				3FFB73C61C0699CB00C81D68 /* UIImage+JYImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3FFB73B61C06980B00C81D68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 248FCC6B1C04307200657ADD /* Joy4youBundle */;
+			targetProxy = 3FFB73B51C06980B00C81D68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		248FCC701C04307300657ADD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -545,6 +615,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Joy4youBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;

@@ -10,4 +10,8 @@
 
 @interface JYLoginViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *registButton;
+
+- (IBAction)handleRegistAction:(id)sender;
+
 @end

@@ -1,18 +1,18 @@
 //
-//  JYServiceViewController.m
+//  JYViewController.m
 //  Joy4youSDK
 //
-//  Created by temp on 15/11/24.
-//  Copyright (c) 2015年 LeHeng. All rights reserved.
+//  Created by 孙永刚 on 15/11/25.
+//  Copyright © 2015年 LeHeng. All rights reserved.
 //
 
-#import "JYServiceViewController.h"
+#import "JYViewController.h"
 
-@interface JYServiceViewController ()
+@interface JYViewController ()
 
 @end
 
-@implementation JYServiceViewController
+@implementation JYViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
