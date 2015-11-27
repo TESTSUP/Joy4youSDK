@@ -8,8 +8,13 @@
 
 #import "JYLoginViewController.h"
 #import "JYRegistViewController.h"
+#import "JYBindEmailViewController.h"
+#import "JYFindPasswordViewController.h"
 #import "JYUtil.h"
 #import "JYUserCache.h"
+#import "JYModelInterface.h"
+#import "JYLoadingView.h"
+#import "JYAlertView.h"
 
 @interface JYLoginViewController ()
 
@@ -91,10 +96,51 @@
 }
 */
 
-- (IBAction)handleRegistAction:(id)sender {
+#pragma mark - button action
+
+- (IBAction)handleRegistAction:(id)sender
+{
     JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
     
     [self.navigationController pushViewController:registVC animated:YES];
     
 }
+
+- (IBAction)handleBindEmailACion:(id)sender
+{
+    JYBindEmailViewController *registVC = [[JYBindEmailViewController alloc] initWithNibName:@"JYBindEmailViewController" bundle:[NSBundle resourceBundle]];
+    
+    [self.navigationController pushViewController:registVC animated:YES];
+}
+
+- (IBAction)handleFindPasswordAction:(id)sender
+{
+    JYFindPasswordViewController *registVC = [[JYFindPasswordViewController alloc] initWithNibName:@"JYFindPasswordViewController" bundle:[NSBundle resourceBundle]];
+    
+    [self.navigationController pushViewController:registVC animated:YES];
+    
+}
+
+- (IBAction)handleTouristLoginAction:(id)sender {
+    
+    JYUserContent *cacheUser = [[JYUserCache sharedInstance] currentUser];
+    JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
+    cacheLoading.lodingType = CCLoading_cacheLogin;
+    cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"coco帐号" localizedString], [cacheUser.username length]==0? cacheUser.phone:cacheUser.username];
+    
+    JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
+    [alertView show];
+    
+    [[JYModelInterface sharedInstance] touristLoginWithCallbackBlcok:^(NSError *error, NSDictionary *responseData) {
+        
+    }];
+}
+
+- (IBAction)handleLoginAction:(id)sender
+{
+    
+    
+}
+
+
 @end

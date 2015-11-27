@@ -41,5 +41,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>Joy4youAppId</key>
+	<string>10000</string>
+	<key>Joy4youChannelId</key>
+	<string>000000</string>
 </dict>
 </plist>

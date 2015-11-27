@@ -38,7 +38,7 @@
         {
             path = PATH_LOGIN_TOURIST;
             NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:[JYDevice deviceInfo]];
-            [temp setObject:aParam[KEY_TYPE] forKey:@"2"];
+            [temp setObject:@"2" forKey:KEY_TYPE];
             paramDic = temp;
         }
             break;
@@ -60,7 +60,7 @@
             NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:[JYDevice deviceInfo]];
             [temp setObject:aParam[KEY_UN] forKey:KEY_UN];
             [temp setObject:aParam[KEY_PW] forKey:KEY_PW];
-            [temp setObject:aParam[KEY_TYPE] forKey:@"1"];
+            [temp setObject:@"1" forKey:KEY_TYPE];
             paramDic =temp;
         }
             break;

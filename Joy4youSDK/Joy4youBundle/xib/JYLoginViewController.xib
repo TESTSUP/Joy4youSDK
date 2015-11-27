@@ -60,6 +60,9 @@
                     <state key="normal" title="邮箱绑定">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="handleBindEmailACion:" destination="-1" eventType="touchUpInside" id="g4f-Uz-DBw"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bbr-Ui-3Nz" userLabel="忘记密码">
                     <rect key="frame" x="202" y="149" width="71" height="30"/>
@@ -69,9 +72,12 @@
                     <state key="normal" title="忘记密码?">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="handleFindPasswordAction:" destination="-1" eventType="touchUpInside" id="TMl-IN-HhV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="FZ1-w5-kza">
-                    <rect key="frame" x="37" y="231" width="80" height="30"/>
+                    <rect key="frame" x="43" y="231" width="68" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -79,6 +85,9 @@
                         <color key="titleColor" red="0.3529411764705882" green="0.3529411764705882" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="handleTouristLoginAction:" destination="-1" eventType="touchUpInside" id="jE8-Wr-vEj"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8YD-ac-IBM" customClass="JYButton">
                     <rect key="frame" x="37" y="185" width="236" height="35"/>
@@ -90,9 +99,12 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted" backgroundImage="jy_button_orange_pressed.png"/>
+                    <connections>
+                        <action selector="handleLoginAction:" destination="-1" eventType="touchUpInside" id="9bl-bh-iB3"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YK5-12-hu4" customClass="JYButton">
-                    <rect key="frame" x="192" y="231" width="80" height="30"/>
+                    <rect key="frame" x="198" y="231" width="70" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -100,9 +112,8 @@
                         <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" backgroundImage="jy_button_orange_pressed.png"/>
                     <connections>
-                        <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="4xg-81-08f"/>
+                        <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="gXV-Je-EOl"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" id="7SE-Ec-xWT" userLabel="line">

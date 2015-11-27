@@ -164,9 +164,9 @@ static NSString *Joy4you_channelId = nil;
 {
     if (Joy4you_appId == nil || [Joy4you_appId length] == 0)
     {
-        Joy4you_appId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CocosAppId"];
+        Joy4you_appId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Joy4youAppId"];
     }
-    NSAssert((Joy4you_appId != nil && [Joy4you_appId length]), @"Cocos Push SDK Error: app id can not be nil");
+    NSAssert((Joy4you_appId != nil && [Joy4you_appId length]), @"Joy4you SDK Error: app id can not be nil");
     return Joy4you_appId;
 }
 
@@ -175,10 +175,10 @@ static NSString *Joy4you_channelId = nil;
 {
     if (Joy4you_channelId == nil || [Joy4you_channelId length] == 0)
     {
-        Joy4you_channelId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CocosChannel"];
+        Joy4you_channelId = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"Joy4youChannelId"];
     }
     
-    NSAssert((Joy4you_channelId != nil && [Joy4you_channelId length]), @"Cocos Push SDK Error: channel id can not be nil");
+    NSAssert((Joy4you_channelId != nil && [Joy4you_channelId length]), @"Joy4you SDK SDK Error: channel id can not be nil");
     return Joy4you_channelId;
 }
 

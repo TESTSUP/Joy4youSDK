@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JYViewController.h"
 
-@interface JYFindPasswordViewController : UIViewController
+@interface JYFindPasswordViewController : JYViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+
+- (IBAction)handleFindAction:(id)sender;
+
+- (IBAction)handleShowServiceAction:(id)sender;
 
 @end

@@ -120,7 +120,9 @@ NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotificat
     if (JCiOS7OrLater) {
         originalImage = viewImage;
     } else {
-        originalImage = [UIImage imageWithCGImage:CGImageCreateWithImageInRect(viewImage.CGImage, CGRectMake(0, 20, 320, 460))];
+        CGImageRef imageRef = CGImageCreateWithImageInRect(viewImage.CGImage, CGRectMake(0, 20, 320, 460));
+        originalImage = [UIImage imageWithCGImage:imageRef];
+        CGImageRelease(imageRef);
     }
     
     CGFloat blurRadius = 4;

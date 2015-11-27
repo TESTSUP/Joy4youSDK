@@ -7,6 +7,8 @@
 //
 
 #import "JYFindPasswordViewController.h"
+#import "JYServiceViewController.h"
+#import "NSBundle+JYBundle.h"
 
 @interface JYFindPasswordViewController ()
 
@@ -34,4 +36,15 @@
 }
 */
 
+#pragma mark - button action
+
+- (IBAction)handleFindAction:(id)sender {
+}
+
+- (IBAction)handleShowServiceAction:(id)sender {
+    JYServiceViewController *serviceVC = [[JYServiceViewController alloc] initWithNibName:@"JYServiceViewController" bundle:[NSBundle resourceBundle]];
+    
+    [self.navigationController pushViewController:serviceVC animated:YES];
+    
+}
 @end

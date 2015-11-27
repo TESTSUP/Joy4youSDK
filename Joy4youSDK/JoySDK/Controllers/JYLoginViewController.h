@@ -22,4 +22,12 @@
 
 - (IBAction)handleRegistAction:(id)sender;
 
+- (IBAction)handleBindEmailACion:(id)sender;
+
+- (IBAction)handleFindPasswordAction:(id)sender;
+
+- (IBAction)handleTouristLoginAction:(id)sender;
+
+- (IBAction)handleLoginAction:(id)sender;
+
 @end

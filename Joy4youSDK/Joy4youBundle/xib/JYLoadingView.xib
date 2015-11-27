@@ -69,11 +69,11 @@
                 <outlet property="switchBtn" destination="9UD-zD-va8" id="Aiu-CJ-fYL"/>
                 <outlet property="titleLabel" destination="g8w-jf-nvi" id="E7E-bT-xvC"/>
             </connections>
-            <point key="canvasLocation" x="189" y="327"/>
+            <point key="canvasLocation" x="530" y="340"/>
         </view>
     </objects>
     <resources>
-        <image name="loading_circle_half.png" width="76" height="76"/>
-        <image name="loading_logo.png" width="76" height="76"/>
+        <image name="loading_circle_half.png" width="38" height="38"/>
+        <image name="loading_logo.png" width="6" height="18"/>
     </resources>
 </document>

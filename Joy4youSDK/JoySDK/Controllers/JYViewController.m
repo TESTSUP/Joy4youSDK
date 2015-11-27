@@ -8,11 +8,23 @@
 
 #import "JYViewController.h"
 #import "UIView+JYView.h"
+#import "JYPopView.h"
+#import "NSBundle+JYBundle.h"
 
 NSString *const JYNotificationCloseSDK = @"joy4you_notification_closeSDK";
 NSString *const JYNotificationShowSuccess = @"joy4you_notification_login_success";
 NSString *const JYNotificationRemoveView = @"joy4you_notification_view_remove";
 NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
+
+@interface JYViewController ()
+{
+    JYPopView *_popView;
+    NSTimer *_showTimer;
+    NSInteger _count;
+    BOOL _isShowPop;
+}
+
+@end
 
 @implementation JYViewController
 
@@ -46,8 +58,8 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
     }
 }
 
-- (void)handleBack
-{
+- (IBAction)handleBackAction:(id)sender {
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -59,6 +71,86 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 - (void)handleTap
 {
     [self hideKeybord];
+}
+
+#pragma mark - popview
+
+- (void)popViewDisplayAnimation:(BOOL)aShow;
+{
+    if (_isShowPop == aShow) {
+        return;
+    }
+    
+    if (aShow)
+    {
+        _popView.alpha = 0.0;
+        [self.view addSubview:_popView];
+        
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             _popView.alpha = 1.0;
+                         }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3
+                         animations:^{
+                             _popView.alpha = 0.0;
+                         } completion:^(BOOL finished) {
+                             [_popView removeFromSuperview];
+                         }];
+    }
+    
+    _isShowPop = aShow;
+}
+
+- (void)showPopText:(NSString *)aText withView:(UIView *)aView
+{
+    if (!_popView) {
+        _popView = (JYPopView *)[UIView createNibView:@"CCPopupView"];
+    }
+    _popView.popText = aText;
+    
+    CGRect rect = CGRectZero;
+    if (aView) {
+        rect = CGRectMake(aView.frame.origin.x,
+                          aView.frame.origin.y-_popView.frame.size.height,
+                          _popView.frame.size.width,
+                          _popView.frame.size.height);
+    }
+    else
+    {
+        rect = CGRectMake((self.view.frame.size.width - _popView.frame.size.width)/2,
+                          self.view.frame.size.height- _popView.frame.size.height,
+                          _popView.frame.size.width,
+                          _popView.frame.size.height);
+    }
+    _popView.frame = rect;
+    
+    if (_showTimer) {
+        [_showTimer invalidate];
+        _showTimer = nil;
+    }
+    [self popViewDisplayAnimation:YES];
+    
+    _count = 5;
+    _showTimer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(displayCount)
+                                                userInfo:nil
+                                                 repeats:YES];
+}
+
+- (void)displayCount
+{
+    NSLog(@"count --");
+    _count--;
+    if (0 == _count)
+    {
+        [self popViewDisplayAnimation:NO];
+        [_showTimer invalidate];
+        _showTimer = nil;
+    }
 }
 
 #pragma mark - keybord
@@ -198,8 +290,5 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 }
 */
 
-- (IBAction)handleBackAction:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 @end

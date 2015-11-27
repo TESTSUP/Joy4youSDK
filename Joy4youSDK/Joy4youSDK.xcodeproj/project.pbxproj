@@ -13,7 +13,6 @@
 		248FCC801C04317E00657ADD /* JYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC7F1C04317E00657ADD /* JYLoginViewController.m */; };
 		248FCC831C04320600657ADD /* JYRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC821C04320600657ADD /* JYRegistViewController.m */; };
 		248FCC851C0432BD00657ADD /* JYRegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC841C0432BD00657ADD /* JYRegistViewController.xib */; };
-		248FCC8A1C04359100657ADD /* JYBindEmailAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC891C04359100657ADD /* JYBindEmailAlertViewController.xib */; };
 		248FCC8F1C04371F00657ADD /* JYFindPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC8E1C04371F00657ADD /* JYFindPasswordViewController.xib */; };
 		248FCC941C04378100657ADD /* JYBindEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC931C04378100657ADD /* JYBindEmailViewController.xib */; };
 		248FCC991C04385B00657ADD /* JYServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC981C04385B00657ADD /* JYServiceViewController.xib */; };
@@ -33,12 +32,21 @@
 		3F4A78CD1C07006B00F4DB50 /* jy_img_checkbox_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78CB1C07006B00F4DB50 /* jy_img_checkbox_on@2x.png */; };
 		3F4A78D01C07088D00F4DB50 /* jy_login_pulldown_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78CE1C07088D00F4DB50 /* jy_login_pulldown_btn@2x.png */; };
 		3F4A78D11C07088D00F4DB50 /* jy_login_pulldown_del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78CF1C07088D00F4DB50 /* jy_login_pulldown_del@2x.png */; };
+		3F4A78D51C0712F700F4DB50 /* loading_circle_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78D21C0712F700F4DB50 /* loading_circle_full@2x.png */; };
+		3F4A78D61C0712F700F4DB50 /* loading_circle_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78D31C0712F700F4DB50 /* loading_circle_half@2x.png */; };
+		3F4A78D71C0712F700F4DB50 /* loading_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78D41C0712F700F4DB50 /* loading_success@2x.png */; };
+		3F4A78DA1C07EE4300F4DB50 /* jy_popBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78D81C07EE4300F4DB50 /* jy_popBg@2x.png */; };
+		3F4A78DB1C07EE4300F4DB50 /* jy_popBg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78D91C07EE4300F4DB50 /* jy_popBg@3x.png */; };
+		3F4A78DE1C07EE7400F4DB50 /* JYPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78DD1C07EE7400F4DB50 /* JYPopView.m */; };
+		3F4A78E31C07F54600F4DB50 /* JYBindAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78E21C07F54600F4DB50 /* JYBindAlertViewController.xib */; };
+		3F4A78E41C0806C700F4DB50 /* JYBindEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC911C04376F00657ADD /* JYBindEmailViewController.m */; };
+		3F4A78E51C0806D200F4DB50 /* JYBindAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78E01C07F52F00F4DB50 /* JYBindAlertViewController.m */; };
+		3F4A78E81C080C8500F4DB50 /* jy_show_service_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78E61C080C8500F4DB50 /* jy_show_service_pressed@2x.png */; };
+		3F4A78E91C080C8500F4DB50 /* jy_show_service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78E71C080C8500F4DB50 /* jy_show_service@2x.png */; };
 		3F8839271C06A72600A640A8 /* JYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A01C06978400C81D68 /* JYViewController.m */; };
 		3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB739B1C06976700C81D68 /* JYLoadingView.xib */; };
 		3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB739E1C06978400C81D68 /* JYNavigationController.m */; };
 		3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */; };
-		3FFB73BF1C06999900C81D68 /* JYBindEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC911C04376F00657ADD /* JYBindEmailViewController.m */; };
-		3FFB73C01C06999E00C81D68 /* JYBindEmailAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC871C04357C00657ADD /* JYBindEmailAlertViewController.m */; };
 		3FFB73C11C0699A100C81D68 /* JYFindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC8C1C04371300657ADD /* JYFindPasswordViewController.m */; };
 		3FFB73C21C0699A400C81D68 /* JYServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248FCC961C04382000657ADD /* JYServiceViewController.m */; };
 		3FFB73C31C0699A900C81D68 /* JYLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A41C06978D00C81D68 /* JYLoadingView.m */; };
@@ -108,9 +116,6 @@
 		248FCC811C04320600657ADD /* JYRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRegistViewController.h; sourceTree = "<group>"; };
 		248FCC821C04320600657ADD /* JYRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRegistViewController.m; sourceTree = "<group>"; };
 		248FCC841C0432BD00657ADD /* JYRegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYRegistViewController.xib; sourceTree = "<group>"; };
-		248FCC861C04357C00657ADD /* JYBindEmailAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBindEmailAlertViewController.h; sourceTree = "<group>"; };
-		248FCC871C04357C00657ADD /* JYBindEmailAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBindEmailAlertViewController.m; sourceTree = "<group>"; };
-		248FCC891C04359100657ADD /* JYBindEmailAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYBindEmailAlertViewController.xib; sourceTree = "<group>"; };
 		248FCC8B1C04371300657ADD /* JYFindPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFindPasswordViewController.h; sourceTree = "<group>"; };
 		248FCC8C1C04371300657ADD /* JYFindPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFindPasswordViewController.m; sourceTree = "<group>"; };
 		248FCC8E1C04371F00657ADD /* JYFindPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYFindPasswordViewController.xib; sourceTree = "<group>"; };
@@ -138,6 +143,18 @@
 		3F4A78CB1C07006B00F4DB50 /* jy_img_checkbox_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_img_checkbox_on@2x.png"; path = "images/jy_img_checkbox_on@2x.png"; sourceTree = "<group>"; };
 		3F4A78CE1C07088D00F4DB50 /* jy_login_pulldown_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_login_pulldown_btn@2x.png"; path = "images/jy_login_pulldown_btn@2x.png"; sourceTree = "<group>"; };
 		3F4A78CF1C07088D00F4DB50 /* jy_login_pulldown_del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_login_pulldown_del@2x.png"; path = "images/jy_login_pulldown_del@2x.png"; sourceTree = "<group>"; };
+		3F4A78D21C0712F700F4DB50 /* loading_circle_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_circle_full@2x.png"; path = "images/loading_circle_full@2x.png"; sourceTree = "<group>"; };
+		3F4A78D31C0712F700F4DB50 /* loading_circle_half@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_circle_half@2x.png"; path = "images/loading_circle_half@2x.png"; sourceTree = "<group>"; };
+		3F4A78D41C0712F700F4DB50 /* loading_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_success@2x.png"; path = "images/loading_success@2x.png"; sourceTree = "<group>"; };
+		3F4A78D81C07EE4300F4DB50 /* jy_popBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_popBg@2x.png"; path = "images/jy_popBg@2x.png"; sourceTree = "<group>"; };
+		3F4A78D91C07EE4300F4DB50 /* jy_popBg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_popBg@3x.png"; path = "images/jy_popBg@3x.png"; sourceTree = "<group>"; };
+		3F4A78DC1C07EE7400F4DB50 /* JYPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPopView.h; sourceTree = "<group>"; };
+		3F4A78DD1C07EE7400F4DB50 /* JYPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPopView.m; sourceTree = "<group>"; };
+		3F4A78DF1C07F52F00F4DB50 /* JYBindAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYBindAlertViewController.h; sourceTree = "<group>"; };
+		3F4A78E01C07F52F00F4DB50 /* JYBindAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYBindAlertViewController.m; sourceTree = "<group>"; };
+		3F4A78E21C07F54600F4DB50 /* JYBindAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYBindAlertViewController.xib; sourceTree = "<group>"; };
+		3F4A78E61C080C8500F4DB50 /* jy_show_service_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_show_service_pressed@2x.png"; path = "images/jy_show_service_pressed@2x.png"; sourceTree = "<group>"; };
+		3F4A78E71C080C8500F4DB50 /* jy_show_service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_show_service@2x.png"; path = "images/jy_show_service@2x.png"; sourceTree = "<group>"; };
 		3FFB739B1C06976700C81D68 /* JYLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JYLoadingView.xib; path = xib/JYLoadingView.xib; sourceTree = "<group>"; };
 		3FFB739D1C06978400C81D68 /* JYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNavigationController.h; sourceTree = "<group>"; };
 		3FFB739E1C06978400C81D68 /* JYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNavigationController.m; sourceTree = "<group>"; };
@@ -246,10 +263,10 @@
 				3FFB739B1C06976700C81D68 /* JYLoadingView.xib */,
 				248FCC7C1C04316900657ADD /* JYLoginViewController.xib */,
 				248FCC841C0432BD00657ADD /* JYRegistViewController.xib */,
-				248FCC891C04359100657ADD /* JYBindEmailAlertViewController.xib */,
 				248FCC8E1C04371F00657ADD /* JYFindPasswordViewController.xib */,
 				248FCC931C04378100657ADD /* JYBindEmailViewController.xib */,
 				248FCC981C04385B00657ADD /* JYServiceViewController.xib */,
+				3F4A78E21C07F54600F4DB50 /* JYBindAlertViewController.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -257,6 +274,11 @@
 		248FCC7B1C04314900657ADD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3F4A78D81C07EE4300F4DB50 /* jy_popBg@2x.png */,
+				3F4A78D91C07EE4300F4DB50 /* jy_popBg@3x.png */,
+				3F4A78D21C0712F700F4DB50 /* loading_circle_full@2x.png */,
+				3F4A78D31C0712F700F4DB50 /* loading_circle_half@2x.png */,
+				3F4A78D41C0712F700F4DB50 /* loading_success@2x.png */,
 				3F4A78AE1C06E48F00F4DB50 /* jy_logo@2x.png */,
 				3F4A78B41C06E7DF00F4DB50 /* jy_img_edittext@2x.png */,
 				3F4A78B61C06E9FE00F4DB50 /* jy_pwd_login@2x.png */,
@@ -267,6 +289,8 @@
 				3F4A78BD1C06F4F800F4DB50 /* jy_button_orange@2x.png */,
 				3F4A78C21C06FEDE00F4DB50 /* jy_back_pressed@2x.png */,
 				3F4A78C31C06FEDE00F4DB50 /* jy_back@2x.png */,
+				3F4A78E61C080C8500F4DB50 /* jy_show_service_pressed@2x.png */,
+				3F4A78E71C080C8500F4DB50 /* jy_show_service@2x.png */,
 				3F4A78CA1C07006B00F4DB50 /* jy_img_checkbox_off@2x.png */,
 				3F4A78CB1C07006B00F4DB50 /* jy_img_checkbox_on@2x.png */,
 				3F4A78CE1C07088D00F4DB50 /* jy_login_pulldown_btn@2x.png */,
@@ -325,10 +349,10 @@
 				248FCC7F1C04317E00657ADD /* JYLoginViewController.m */,
 				248FCC811C04320600657ADD /* JYRegistViewController.h */,
 				248FCC821C04320600657ADD /* JYRegistViewController.m */,
+				3F4A78DF1C07F52F00F4DB50 /* JYBindAlertViewController.h */,
+				3F4A78E01C07F52F00F4DB50 /* JYBindAlertViewController.m */,
 				248FCC901C04376F00657ADD /* JYBindEmailViewController.h */,
 				248FCC911C04376F00657ADD /* JYBindEmailViewController.m */,
-				248FCC861C04357C00657ADD /* JYBindEmailAlertViewController.h */,
-				248FCC871C04357C00657ADD /* JYBindEmailAlertViewController.m */,
 				248FCC8B1C04371300657ADD /* JYFindPasswordViewController.h */,
 				248FCC8C1C04371300657ADD /* JYFindPasswordViewController.m */,
 				248FCC951C04382000657ADD /* JYServiceViewController.h */,
@@ -399,6 +423,8 @@
 				CFF6ACE11BFC1952006A7DA2 /* JYHitTestView.m */,
 				3F4A78AB1C06D0F800F4DB50 /* JYAlertView.h */,
 				3F4A78AC1C06D0F800F4DB50 /* JYAlertView.m */,
+				3F4A78DC1C07EE7400F4DB50 /* JYPopView.h */,
+				3F4A78DD1C07EE7400F4DB50 /* JYPopView.m */,
 				3FFB73A61C0697AF00C81D68 /* JYButton.h */,
 				3FFB73A71C0697AF00C81D68 /* JYButton.m */,
 			);
@@ -558,27 +584,34 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248FCC8A1C04359100657ADD /* JYBindEmailAlertViewController.xib in Resources */,
 				3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */,
 				3F4A78C01C06F4F800F4DB50 /* jy_button_orange_pressed@2x.png in Resources */,
 				248FCC991C04385B00657ADD /* JYServiceViewController.xib in Resources */,
+				3F4A78D51C0712F700F4DB50 /* loading_circle_full@2x.png in Resources */,
 				248FCC7D1C04316900657ADD /* JYLoginViewController.xib in Resources */,
 				3F4A78BE1C06F4F800F4DB50 /* jy_button_blue_pressed@2x.png in Resources */,
 				248FCC8F1C04371F00657ADD /* JYFindPasswordViewController.xib in Resources */,
+				3F4A78E31C07F54600F4DB50 /* JYBindAlertViewController.xib in Resources */,
 				3F4A78D11C07088D00F4DB50 /* jy_login_pulldown_del@2x.png in Resources */,
+				3F4A78D71C0712F700F4DB50 /* loading_success@2x.png in Resources */,
 				3F4A78B91C06E9FE00F4DB50 /* jy_user_login@2x.png in Resources */,
+				3F4A78DB1C07EE4300F4DB50 /* jy_popBg@3x.png in Resources */,
 				3F4A78C11C06F4F800F4DB50 /* jy_button_orange@2x.png in Resources */,
 				248FCC851C0432BD00657ADD /* JYRegistViewController.xib in Resources */,
 				3F4A78BF1C06F4F800F4DB50 /* jy_button_blue@2x.png in Resources */,
 				3F4A78C41C06FEDE00F4DB50 /* jy_back_pressed@2x.png in Resources */,
 				3F4A78AF1C06E48F00F4DB50 /* jy_logo@2x.png in Resources */,
 				3F4A78C51C06FEDE00F4DB50 /* jy_back@2x.png in Resources */,
+				3F4A78DA1C07EE4300F4DB50 /* jy_popBg@2x.png in Resources */,
 				3F4A78CC1C07006B00F4DB50 /* jy_img_checkbox_off@2x.png in Resources */,
+				3F4A78E81C080C8500F4DB50 /* jy_show_service_pressed@2x.png in Resources */,
 				3F4A78B81C06E9FE00F4DB50 /* jy_pwd_login@2x.png in Resources */,
 				3F4A78B51C06E7DF00F4DB50 /* jy_img_edittext@2x.png in Resources */,
 				248FCC941C04378100657ADD /* JYBindEmailViewController.xib in Resources */,
 				3F4A78CD1C07006B00F4DB50 /* jy_img_checkbox_on@2x.png in Resources */,
 				3F4A78D01C07088D00F4DB50 /* jy_login_pulldown_btn@2x.png in Resources */,
+				3F4A78E91C080C8500F4DB50 /* jy_show_service@2x.png in Resources */,
+				3F4A78D61C0712F700F4DB50 /* loading_circle_half@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,7 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F4A78B31C06E5D600F4DB50 /* UIColor+JYColor.m in Sources */,
-				3FFB73BF1C06999900C81D68 /* JYBindEmailViewController.m in Sources */,
+				3F4A78DE1C07EE7400F4DB50 /* JYPopView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +652,7 @@
 				248FCC801C04317E00657ADD /* JYLoginViewController.m in Sources */,
 				2480E54D1C0461F300388900 /* JYUtil.m in Sources */,
 				3F4A78AD1C06D0F800F4DB50 /* JYAlertView.m in Sources */,
+				3F4A78E51C0806D200F4DB50 /* JYBindAlertViewController.m in Sources */,
 				3FFB73C21C0699A400C81D68 /* JYServiceViewController.m in Sources */,
 				CFF6AC881BF9BE25006A7DA2 /* JoyEncryption.m in Sources */,
 				3FFB73C11C0699A100C81D68 /* JYFindPasswordViewController.m in Sources */,
@@ -627,11 +661,11 @@
 				CFF6ACA01BF9BF7E006A7DA2 /* JoyRootViewController.m in Sources */,
 				CFF6ACF81BFC5288006A7DA2 /* JYUserCache.m in Sources */,
 				248FCC831C04320600657ADD /* JYRegistViewController.m in Sources */,
-				3FFB73C01C06999E00C81D68 /* JYBindEmailAlertViewController.m in Sources */,
 				2480E5491C044E1D00388900 /* JYSTKeychain.m in Sources */,
 				3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */,
 				3F8839271C06A72600A640A8 /* JYViewController.m in Sources */,
 				CFF6ACDA1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m in Sources */,
+				3F4A78E41C0806C700F4DB50 /* JYBindEmailViewController.m in Sources */,
 				CFF6ACDD1BFB0601006A7DA2 /* AFURLResponseSerialization.m in Sources */,
 				CFF6AD0C1BFEF0F2006A7DA2 /* JYUserContent.m in Sources */,
 				CFF6AC521BF9B944006A7DA2 /* Joy4youSDK.m in Sources */,

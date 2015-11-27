@@ -32,13 +32,22 @@ extern NSString *const JYNotificationHideKeybord;
 
 @property (nonatomic, assign) NSInteger undersideLimit;
 
-- (void)hideKeybord;    //隐藏键盘
+//隐藏键盘
+- (void)hideKeybord;
 
-- (void)handleBack;     //导航栏返回按钮事件
+//导航栏关闭按钮事件
+- (void)handleClose;
 
-- (void)handleClose;    //导航栏关闭按钮事件
-
+//导航栏返回按钮事件
 - (IBAction)handleBackAction:(id)sender;
+
+/**
+ *  显示错误提示
+ *
+ *  @param aText 文字
+ *  @param aView 所显示在的UIView
+ */
+- (void)showPopText:(NSString *)aText withView:(UIView *)aView;
 
 @end
 

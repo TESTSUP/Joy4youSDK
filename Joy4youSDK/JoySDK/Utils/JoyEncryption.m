@@ -98,8 +98,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
         [scanner scanHexInt:&anInt];
         myBuffer[i / 2] = (char)anInt;
     }
-    NSData *data = [NSData dataWithBytes:myBuffer length:length];
-
+    NSData *data = [NSData dataWithBytesNoCopy:myBuffer length:length];
+    free(myBuffer);
+    
     return data;
 }
 

@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JYViewController.h"
 
-@interface JYBindEmailViewController : UIViewController
+@interface JYBindEmailViewController : JYViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
+@property (weak, nonatomic) IBOutlet UIImageView *emailTextField;
+
+@property (weak, nonatomic) IBOutlet UIButton *bindButton;
+
+- (IBAction)handleBindAction:(id)sender;
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JYViewController.h"
 
-@interface JYServiceViewController : UIViewController
+@interface JYServiceViewController : JYViewController
 
 @end
