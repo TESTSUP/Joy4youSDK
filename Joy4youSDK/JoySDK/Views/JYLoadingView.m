@@ -86,7 +86,7 @@
     if (_loading != aLoading) {
         if (aLoading) {
             self.circleView.image = [UIImage imageNamedFromBundle:@"loading_circle_half.png"];
-            self.centerView.image = [UIImage imageNamedFromBundle:@"loading_logo.png"];
+//            self.centerView.image = [UIImage imageNamedFromBundle:@"loading_logo.png"];
         } else {
             self.circleView.image = [UIImage imageNamedFromBundle:@"loading_circle_full.png"];
             self.centerView.image = [UIImage imageNamedFromBundle:@"loading_success.png"];

@@ -56,15 +56,10 @@
     {
         UIButton *cacheBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
         [cacheBtn setImage:[UIImage imageNamedFromBundle:@"jy_login_pulldown_btn.png"] forState:UIControlStateNormal];
-        [cacheBtn addTarget:self action:@selector(handleShowCacheUser) forControlEvents:UIControlEventTouchUpInside];
         self.accountTextField.rightView = cacheBtn;
         self.accountTextField.rightViewMode = UITextFieldViewModeAlways;
+        [cacheBtn addTarget:self action:@selector(handleShowCacheListAction) forControlEvents:UIControlEventTouchUpInside];
     }
-}
-
-- (void)handleShowCacheUser
-{
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,6 +92,11 @@
 */
 
 #pragma mark - button action
+
+- (void)handleShowCacheListAction
+{
+    
+}
 
 - (IBAction)handleRegistAction:(id)sender
 {
@@ -163,6 +163,7 @@
                 }
                     break;
                 default:
+                    msg = responseData[KEY_MSG];
                     break;
             }
         }
@@ -172,8 +173,75 @@
 
 - (IBAction)handleLoginAction:(id)sender
 {
+    [self hideKeybord];
     
+    NSString *nickname = self.accountTextField.text;
+    NSString *password = self.passwordTextField.text;
+    NSString *popText = nil;
     
+    if ([nickname length] == 0 || [password length] == 0) {
+        popText = [@"帐号或密码不能为空" localizedString];
+    }else if ([nickname length] > 20 ||
+              [password length] < 6 ||
+              [password length] > 15) {
+        popText = [@"帐号或密码错误" localizedString];
+    }
+    
+    if ([popText length] > 0) {
+        [self showPopText:popText withView:self.accountTextField];;
+    } else {
+        
+        JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
+        loadingView.lodingType = CCLoading_loginWithUsername;
+        loadingView.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], nickname];
+        JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
+        [alertView show];
+        
+        [[JYModelInterface sharedInstance] loginWithUsername:nickname
+                                                 andPassword:password
+                                               callbackBlcok:^(NSError *error, NSDictionary *responseData) {
+                                                   
+//                                                   [alertView dismissWithCompletion:nil];
+                                                   [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                   
+                                                   NSString * msg= [@"登录失败" localizedString];
+                                                   if (error) {
+                                                       JYDLog(@"Tourist login error", error);
+                                                   }
+                                                   else {
+                                                       NSString* status = responseData[KEY_STATUS];
+                                                       
+                                                       switch (status.integerValue) {
+                                                           case 200:
+                                                           {
+                                                               NSString *param = [@"游客登录成功" localizedString];
+                                                               [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                                                               return;
+                                                           }
+                                                               break;
+                                                           case 101:
+                                                           case 102:
+                                                           case 103:
+                                                           {
+                                                               //101 appid不能为空
+                                                               //102 ckid不能为空
+                                                               //103 渠道id不能为空
+                                                           }
+                                                               break;
+                                                           case 104:
+                                                           {
+                                                               //appid不合法
+                                                               msg = [@"appid不合法" localizedString];
+                                                           }
+                                                               break;
+                                                           default:
+                                                               msg = responseData[KEY_MSG];
+                                                               break;
+                                                       }
+                                                   }
+                                                   [self showPopText:msg withView:nil];
+                                               }];
+    }
 }
 
 

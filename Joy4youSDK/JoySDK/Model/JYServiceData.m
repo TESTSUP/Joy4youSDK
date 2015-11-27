@@ -51,7 +51,8 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
             paramDic = @{KEY_UN:aParam[KEY_UN],
                          KEY_PW:aParam[KEY_PW],
                          KEY_APPID:[JYDevice appId],
-                         KEY_CHANNEL:[JYDevice channelId]};
+                         KEY_CHANNEL:[JYDevice channelId],
+                         KEY_CKID:[JYDevice ckid]};
         }
             break;
         case RequestLoginWithPhone:

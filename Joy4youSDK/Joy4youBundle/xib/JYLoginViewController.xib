@@ -58,7 +58,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="邮箱绑定">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="handleBindEmailACion:" destination="-1" eventType="touchUpInside" id="g4f-Uz-DBw"/>
@@ -70,7 +70,7 @@
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <state key="normal" title="忘记密码?">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="handleFindPasswordAction:" destination="-1" eventType="touchUpInside" id="TMl-IN-HhV"/>
