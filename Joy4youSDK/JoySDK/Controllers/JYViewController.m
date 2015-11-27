@@ -107,7 +107,12 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 - (void)showPopText:(NSString *)aText withView:(UIView *)aView
 {
     if (!_popView) {
-        _popView = (JYPopView *)[UIView createNibView:@"CCPopupView"];
+        _popView = [[JYPopView alloc] initWithFrame:CGRectMake(0, 0, 100, 18)];
+        _popView.autoresizingMask =
+        UIViewAutoresizingFlexibleLeftMargin |
+        UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleTopMargin |
+        UIViewAutoresizingFlexibleBottomMargin;
     }
     _popView.popText = aText;
     

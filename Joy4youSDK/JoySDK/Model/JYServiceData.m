@@ -11,6 +11,8 @@
 #import "JoyEncryption.h"
 #import "JYUserCache.h"
 
+const NSString * JYDesErrorDomain = @"com.joy4you.des";
+
 @implementation JYServiceData
 
 + (NSString *)pathUrlWithParam:(NSDictionary *)aParam andRequestType:(JYRequestType)aType
@@ -31,7 +33,8 @@
             paramDic = @{KEY_UID:aParam[KEY_UID],
                          KEY_SID:aParam[KEY_SID],
                          KEY_APPID:[JYDevice appId],
-                         KEY_CHANNEL:[JYDevice channelId]};
+                         KEY_CHANNEL:[JYDevice channelId],
+                         KEY_CKID:[JYDevice ckid]};
         }
             break;
         case RequestLoginWithTourist:
@@ -107,7 +110,17 @@
 + (NSDictionary *)dictionaryWithResponseData:(NSData *)aData
                               andRequestType:(JYRequestType)aType
 {
-    NSDictionary* responseDic = [JoyEncryption DESDecryptData:aData WithKey:JYEncryptionkey];
+    NSDictionary* responseDic = nil;
+    @try {
+        responseDic = [JoyEncryption DESDecryptData:aData WithKey:JYEncryptionkey];
+    }
+    @catch (NSException *exception) {
+        JYDLog(@"response data decrypt error, exception = %@", exception);
+    }
+    @finally {
+        return responseDic;
+    }
+
     JYDLog(@"response = %@", responseDic);
     
     switch (aType) {
@@ -167,7 +180,7 @@
             break;
     }
     
-    return nil;
+    return responseDic;
 }
 
 @end

@@ -11,6 +11,11 @@
 #define KEY_SDKVER      @"sdkverison"
 #define KEY_JSVER       @"sdkjsversion"
 
+//请求相关
+#define KEY_DATA        @"data"
+#define KEY_MSG         @"msg"
+#define KEY_STATUS      @"status"
+
 //用户相关
 #define KEY_UN          @"username"         //用户名
 #define KEY_PW          @"password"         //密码
@@ -58,14 +63,14 @@
 //钥匙串
 #define KEYCHAIN_SERVICE    @"keychainServiceName"
 //请求相关
-#define PATH_CHECK              @"/UserApi/checkUserName/"          //检查用户名
-#define PATH_LOGIN              @"/UserApi/login/"                  //用户名+密码登录
-#define PATH_LOGIN_TOURIST      @"/UserApi/touristLogin/"           //游客登录
-#define PATH_LOGIN_SID          @"/UserApi/autoLogin/"              //缓存登录
-#define PATH_REGIST_UN          @"/UserApi/register/"               //用户名密码注册
-#define PATH_BIND_ACCOUNT       @"/UserApi/bindUserName/"           //绑定用户名
-#define PATH_BIND_EMAIL         @"/UserApi/bindEmail/"              //绑定邮箱
-#define PATH_FIND_PW            @"/FindPwdApi/findPwd/"             //找回密码
+#define PATH_CHECK              @"/joysdk/index.php/UserApi/checkUserName/"          //检查用户名
+#define PATH_LOGIN              @"/joysdk/index.php/UserApi/login/"                  //用户名+密码登录
+#define PATH_LOGIN_TOURIST      @"/joysdk/index.php/UserApi/touristLogin/"           //游客登录
+#define PATH_LOGIN_SID          @"/joysdk/index.php/UserApi/autoLogin/"              //缓存登录
+#define PATH_REGIST_UN          @"/joysdk/index.php/UserApi/register/"               //用户名密码注册
+#define PATH_BIND_ACCOUNT       @"/joysdk/index.php/UserApi/bindUserName/"           //绑定用户名
+#define PATH_BIND_EMAIL         @"/joysdk/index.php/UserApi/bindEmail/"              //绑定邮箱
+#define PATH_FIND_PW            @"/joysdk/index.php/FindPwdApi/findPwd/"             //找回密码
 
 
 

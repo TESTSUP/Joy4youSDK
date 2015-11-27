@@ -45,6 +45,22 @@
                                              alpha:1];
     _popTextLabel.font = [UIFont systemFontOfSize:12];
     _popTextLabel.backgroundColor = [UIColor clearColor];
+    _popTextLabel.textAlignment = NSTextAlignmentCenter;
+    _popTextLabel.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleWidth |
+    UIViewAutoresizingFlexibleHeight;
+    
+    _popBg.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin |
+    UIViewAutoresizingFlexibleWidth |
+    UIViewAutoresizingFlexibleHeight;
     
     [self addSubview:_popBg];
     [self addSubview:_popTextLabel];

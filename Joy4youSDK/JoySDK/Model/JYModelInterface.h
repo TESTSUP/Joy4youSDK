@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JYUserCache.h"
 
 typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
 

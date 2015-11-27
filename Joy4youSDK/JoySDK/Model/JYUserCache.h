@@ -26,7 +26,7 @@
  *
  *  @param dictionary server返回数据
  */
--(void) saveCacheUserInfo:(NSMutableDictionary *)dictionary;
+-(void) saveCacheUserInfo:(NSDictionary *)dictionary isTourist:(BOOL)isTourist;
 
 /**
  *  通过用户id获取用户详情

@@ -171,7 +171,7 @@
         {
             self.showButton = NO;
             self.loading = YES;
-            self.detail = [@"游客登录中..." localizedString];
+            self.title = [@"游客登录中..." localizedString];
         }
             break;
         case CCLoading_loginWithUsernameResult:

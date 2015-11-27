@@ -29,20 +29,11 @@
     return self;
 }
 
-//- (void)awakeFromNib
-//{
-//    [super awakeFromNib];
-//    
-//    
-//    
-//    [self addTarget:self action:@selector(handleTouchEvent) forControlEvents:UIControlEventTouchDown |UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
-//}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     [self setExclusiveTouch:YES];
-//    [self addTarget:self action:@selector(handleTouchEvent) forControlEvents:UIControlEventTouchDown |UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
+    [self addTarget:self action:@selector(handleTouchEvent) forControlEvents:UIControlEventTouchDown |UIControlEventTouchUpInside | UIControlEventTouchUpOutside];
     
     [self setBackgroundImage:[[self backgroundImageForState:UIControlStateNormal] stretchBGImage]forState:UIControlStateNormal];
     [self setBackgroundImage:[[self backgroundImageForState:UIControlStateHighlighted] stretchBGImage]forState:UIControlStateHighlighted];

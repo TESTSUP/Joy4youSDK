@@ -7,6 +7,12 @@
 //
 #import "Joy4youSDK.h"
 
+@interface Joy4youSDK ()
+
++ (void)removeSDKFromRootView;
+
+@end
+
 /**
  *  主视图类
  */
@@ -16,6 +22,7 @@
 @property (nonatomic, assign) BOOL isRemoving;
 
 + (instancetype)shareInstance;
++ (void)clear;
 
 /**
  *  对外接口

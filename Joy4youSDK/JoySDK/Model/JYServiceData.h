@@ -22,6 +22,9 @@ typedef enum JYRequestType {
     
 }JYRequestType;
 
+//数据解析错误
+extern NSString *JYDesErrorDomain;
+
 /**
  *  请求相关类,组织拼接url，处理请求参数和返回数据
  */

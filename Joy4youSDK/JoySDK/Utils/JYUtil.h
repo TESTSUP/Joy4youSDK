@@ -13,6 +13,7 @@
 #import "NSString+JYString.h"
 #import "JYAlertView.h"
 #import "UIColor+JYColor.h"
+#import "NSString+JYString.h"
 
 @interface JYUtil : NSObject
 

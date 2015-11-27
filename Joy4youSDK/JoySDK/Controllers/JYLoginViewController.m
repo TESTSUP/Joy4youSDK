@@ -52,7 +52,7 @@
     _upsideTextField = self.accountTextField;
     _undersideTextField = self.passwordTextField;
     
-    if ([[JYUserCache sharedInstance].normalUserList count])
+//    if ([[JYUserCache sharedInstance].normalUserList count])
     {
         UIButton *cacheBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
         [cacheBtn setImage:[UIImage imageNamedFromBundle:@"jy_login_pulldown_btn.png"] forState:UIControlStateNormal];
@@ -122,17 +122,51 @@
 }
 
 - (IBAction)handleTouristLoginAction:(id)sender {
-    
-    JYUserContent *cacheUser = [[JYUserCache sharedInstance] currentUser];
     JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-    cacheLoading.lodingType = CCLoading_cacheLogin;
-    cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"coco帐号" localizedString], [cacheUser.username length]==0? cacheUser.phone:cacheUser.username];
-    
+    cacheLoading.lodingType = CCLoading_guestLogin;
+
     JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
     [alertView show];
     
     [[JYModelInterface sharedInstance] touristLoginWithCallbackBlcok:^(NSError *error, NSDictionary *responseData) {
         
+        [alertView dismissWithCompletion:nil];
+
+        NSString * msg= [@"游客登录失败" localizedString];
+        if (error) {
+            JYDLog(@"Tourist login error", error);
+        }
+        else {
+            NSString* status = responseData[KEY_STATUS];
+            
+            switch (status.integerValue) {
+                case 200:
+                {
+                    NSString *param = [@"游客登录成功" localizedString];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                    return;
+                }
+                    break;
+                case 101:
+                case 102:
+                case 103:
+                {
+                    //101 appid不能为空
+                    //102 ckid不能为空
+                    //103 渠道id不能为空
+                }
+                    break;
+                case 104:
+                {
+                    //appid不合法
+                    msg = [@"appid不合法" localizedString];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+        [self showPopText:msg withView:nil];
     }];
 }
 

@@ -30,6 +30,7 @@
 
 
 -(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeInteger:self.type forKey:@"type"];
     [aCoder encodeObject:self.userid forKey:@"userid"];
     [aCoder encodeObject:self.username forKey:@"username"];
     [aCoder encodeObject:self.phone forKey:@"phone"];
@@ -41,6 +42,7 @@
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
+    self.type = [aDecoder decodeIntegerForKey:@"type"];
     self.userid=[aDecoder decodeObjectForKey:@"userid"];
     self.username=[aDecoder decodeObjectForKey:@"username"];
     self.phone = [aDecoder decodeObjectForKey:@"phone"];

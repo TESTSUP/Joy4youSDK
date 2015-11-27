@@ -109,10 +109,18 @@ static dispatch_once_t onceToken;
     return userList;
 }
 
--(void) saveCacheUserInfo:(NSMutableDictionary *)dictionary
+-(void) saveCacheUserInfo:(NSDictionary *)dictionary isTourist:(BOOL)isTourist
 {
-    JYUserContent *userInfoData = [[JYUserContent alloc] initWithDictionary:dictionary];
+    if ([[dictionary allKeys] count] == 0) {
+        return;
+    }
     
+    JYUserContent *userInfoData = [[JYUserContent alloc] initWithDictionary:dictionary];
+    userInfoData.type = 1;
+    if (isTourist) {
+        userInfoData.type = isTourist? 2:1;
+        userInfoData.username = @"游客";
+    }
     _currentUid = userInfoData.userid;
     
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF.userid == %@", _currentUid];

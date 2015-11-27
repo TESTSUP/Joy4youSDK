@@ -35,7 +35,7 @@
     return rootVC;
 }
 
-+ (void)removeCocoFromRootView {
++ (void)removeSDKFromRootView {
     UIViewController* rootVC;
     BOOL needRemove = YES;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 6.0) {
@@ -73,7 +73,7 @@
     }
     
     if (needRemove) {
-        
+        [JoyMainViewController clear];
     }
 }
 

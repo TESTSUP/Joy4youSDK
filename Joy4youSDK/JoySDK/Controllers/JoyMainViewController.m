@@ -36,6 +36,12 @@ static dispatch_once_t token;
     return instance;
 }
 
++ (void)clear
+{
+    instance = nil;
+    token = 0;
+}
+
 - (void)dealloc
 {
     [JYModelInterface clear];
@@ -50,6 +56,8 @@ static dispatch_once_t token;
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap)];
     [self.view addGestureRecognizer:tap];
+    
+    [self addObservers];
 }
 
 - (void)addObservers
@@ -74,14 +82,65 @@ static dispatch_once_t token;
 
 - (void)delayCacheLogin:(JYUserContent *)cacheUser
 {
-    if ([_navigationVC.viewControllers count] == 0)
+    if ([_navigationVC.viewControllers count] == 1)
     {
         [[JYModelInterface sharedInstance] cacheLoginWithSessionId:cacheUser.sessionid
                                                          andUserId:cacheUser.userid
                                                      CallbackBlcok:^(NSError *error, NSDictionary *responseData) {
+                                                         
                                                          [_alertView dismissWithCompletion:nil];
                                                          
-                                                         JYDLog(@"");
+                                                         NSString * msg= [@"缓存登录失败" localizedString];
+                                                         if (error) {
+                                                             JYDLog(@"Tourist login error", error);
+                                                         }
+                                                         else {
+                                                             NSString* status = responseData[KEY_STATUS];
+                                                             switch (status.integerValue) {
+                                                                 case 200:
+                                                                 {
+                                                                     NSString *param = [@"登录成功" localizedString];
+                                                                     [self showSuccessAndEnter:param];
+                                                                     return;
+                                                                 }
+                                                                     break;
+                                                                 case 101:
+                                                                 case 102:
+                                                                 case 103:
+                                                                 case 104:
+                                                                 case 105:
+                                                                 {
+                                                                     //101 appid不能为空
+                                                                     //102sessionid不能为空
+                                                                     //103 userid不能为空
+                                                                     //104ckid不能为空
+                                                                     //105 渠道id不能为空
+                                                                 }
+                                                                     break;
+                                                                 case 106:
+                                                                 {
+                                                                     //appid不合法
+                                                                     msg = [@"appid不合法" localizedString];
+                                                                 }
+                                                                     break;
+                                                                 case 107:
+                                                                 {
+                                                                     //该用户不存在
+                                                                     msg = [@"该用户不存在" localizedString];
+                                                                 }
+                                                                     break;
+                                                                 case 108:
+                                                                 {
+                                                                     //108 sessionid已经过期:
+                                                                     msg = [@"sessionid已经过期" localizedString];
+                                                                 }
+                                                                     break;
+                                                                 default:
+                                                                     break;
+                                                             }
+                                                         }
+                                                         JYViewController *topVC = (JYViewController *)_navigationVC.topViewController;
+                                                         [topVC showPopText:msg withView:nil];
                                                      }];
     }
 }
@@ -92,6 +151,13 @@ static dispatch_once_t token;
     [topVC hideKeybord];
 }
 
+- (void)handleSwitchAccount:(UIButton *)aBtn
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [[JYModelInterface sharedInstance] cancelAllRequest];
+    
+    [_alertView dismissWithCompletion:nil];
+}
 
 - (void)reset
 {
@@ -103,6 +169,8 @@ static dispatch_once_t token;
     self.isRemoving = NO;
 }
 
+
+
 #pragma mark - handle view
 
 - (CGPoint)viewCenter
@@ -113,7 +181,98 @@ static dispatch_once_t token;
 
 - (void)removeAllviews
 {
+    [_navigationVC.view removeFromSuperview];
     
+//    if ([_tickTimer isValid]) {
+//        [_tickTimer invalidate];
+//        _tickTimer = nil;
+//    }
+    
+    [Joy4youSDK removeSDKFromRootView];
+}
+
+- (void)showSuccessAndEnter:(NSString *)aParam
+{
+    [_navigationVC.view removeFromSuperview];
+    
+    JYLoadingView *successView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
+    successView.lodingType = CCLoading_loginWithUsernameResult;
+    successView.title = aParam;
+    
+    UIView *aView = successView;
+    
+    aView.frame = CGRectMake((self.view.bounds.size.width-aView.frame.size.width)/2,
+                             40,
+                             aView.frame.size.width,
+                             aView.frame.size.height);
+    aView.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin;
+    [self.view addSubview:aView];
+    aView.alpha = 0;
+    
+    CGPoint center = aView.center;
+    
+    CGPoint realCenter = [self.view convertPoint:center toView:[self.view superview]];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view.bounds = aView.bounds;
+    self.view.center = realCenter;
+    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         aView.alpha = 1.0;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+    self.isRemoving = YES;
+    //回调
+    JYUserContent *user =[JYUserCache sharedInstance].currentUser;
+    [self.callback loginCallback:@{@"state": @"0", @"un":user.username, @"coco":user.userid, @"tkn":user.token}];
+    [self performSelector:@selector(loginSuccessRemove) withObject:nil afterDelay:2];;
+    
+}
+
+- (void)loginSuccessRemove
+{
+    if ([self shouldShowBindAlert])
+    {
+        //绑定提醒
+        self.view.frame = [[self.view superview] bounds];
+        self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        self.isRemoving = NO;
+        
+//        [_surfacePopView removeFromSuperview];
+//        self.view.frame = [[self.view superview] bounds];
+//        _backgroundView.frame = self.view.bounds;
+//        self.isRemoving = NO;
+//        
+//        CCUserInfo *user =[CCCacheManager sharedInstance].userInfoData;
+//        
+//        RegistShowType bindType = userBind;
+//        if ([user.gt isEqualToString:@"1"]) {
+//            bindType = guestBind;
+//        }
+//        CCRegistWithPhoneView *bindView = (CCRegistWithPhoneView *)[self createRegistWithPhoneView:bindType];
+//        
+//        [self pushView:bindView animated:YES];
+//        
+//        [[NSUserDefaults standardUserDefaults] setObject:[self getDate] forKey:[self bindDateKey]];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else
+    {
+        self.isRemoving = YES;
+        [self removeAllviews];
+    }
+}
+
+- (BOOL)shouldShowBindAlert
+{
+    return NO;
 }
 
 #pragma mark - notification
@@ -139,9 +298,9 @@ static dispatch_once_t token;
 
 - (void)showSuccessNotification:(NSNotification *)notify
 {
-    id param =  [notify object];
+    NSString* param =  [notify object];
     
-//    [self showSuccessAndEnter:param];
+    [self showSuccessAndEnter:param];
 }
 
 - (void)closeSDKNotification:(NSNotification *)notify
@@ -174,7 +333,8 @@ static dispatch_once_t token;
     {
         JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
         cacheLoading.lodingType = CCLoading_cacheLogin;
-        cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"coco帐号" localizedString], [cacheUser.username length]==0? cacheUser.phone:cacheUser.username];
+        cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], [cacheUser.username length]==0? cacheUser.phone:cacheUser.username];
+        [cacheLoading.switchBtn addTarget:self action:@selector(handleSwitchAccount:) forControlEvents:UIControlEventTouchUpInside];
         
         _alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
         [_alertView show];
