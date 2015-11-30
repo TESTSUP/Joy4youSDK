@@ -15,7 +15,7 @@
 #import "JYModelInterface.h"
 #import "JYLoadingView.h"
 
-@interface JoyMainViewController ()
+@interface JoyMainViewController () <UIGestureRecognizerDelegate>
 {
     JYNavigationController *_navigationVC;
     JYAlertView *_alertView;
@@ -56,6 +56,7 @@ static dispatch_once_t token;
     
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap)];
+    tap.delegate = self;
     [self.view addGestureRecognizer:tap];
     
     [self addObservers];
@@ -79,6 +80,15 @@ static dispatch_once_t token;
     return UIInterfaceOrientationMaskAll;
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {//如果当前是tableView
+        //做自己想做的事
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark - handle view
 

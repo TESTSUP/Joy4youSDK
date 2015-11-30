@@ -42,6 +42,11 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
         NSData *decData = [JoyEncryption DESDecrypt:orgData WithKey:key];
         
         NSError *error = nil;
+        NSString *temp = [[NSString alloc] initWithBytes:[decData bytes]
+                                                  length:[decData length]
+                                                encoding:NSUTF8StringEncoding];
+        JYDLog(@"request response string = %@", temp);
+        
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:decData
                                                             options:NSJSONReadingAllowFragments
                                                               error:&error];

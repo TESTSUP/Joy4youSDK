@@ -11,4 +11,6 @@
 
 @interface JYAgreementViewController : JYViewController
 
+@property (weak, nonatomic) IBOutlet UIWebView *license;
+
 @end

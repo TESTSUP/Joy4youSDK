@@ -249,6 +249,7 @@
                                                                 userId:user.userid
                                                          callbackBlock:^(NSError *error, NSDictionary *responseData) {
                                                              
+                                                             cacheLoading.lodingType = CCLoading_bindSuccess;
                                                              [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                              
                                                              NSString * msg= [@"绑定失败" localizedString];

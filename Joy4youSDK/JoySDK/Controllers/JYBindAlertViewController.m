@@ -14,7 +14,7 @@
 
 - (IBAction)handleRegistAction:(id)sender {
     JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
-    
+    registVC.isBind = YES;
     [self.navigationController pushViewController:registVC animated:YES];
 }
 

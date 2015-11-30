@@ -68,6 +68,7 @@
 		3F4A79201C0BEB7E00F4DB50 /* JYCacheCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A79151C0BE75C00F4DB50 /* JYCacheCellView.m */; };
 		3F4A79251C0BF4CF00F4DB50 /* JYAgreementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A79241C0BF4CF00F4DB50 /* JYAgreementViewController.xib */; };
 		3F4A79261C0BF4D300F4DB50 /* JYAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */; };
+		3F4A79281C0C557A00F4DB50 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A79271C0C557A00F4DB50 /* license.html */; };
 		3F8839271C06A72600A640A8 /* JYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A01C06978400C81D68 /* JYViewController.m */; };
 		3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB739B1C06976700C81D68 /* JYLoadingView.xib */; };
 		3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB739E1C06978400C81D68 /* JYNavigationController.m */; };
@@ -209,6 +210,7 @@
 		3F4A79211C0BF4B900F4DB50 /* JYAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAgreementViewController.h; sourceTree = "<group>"; };
 		3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAgreementViewController.m; sourceTree = "<group>"; };
 		3F4A79241C0BF4CF00F4DB50 /* JYAgreementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYAgreementViewController.xib; sourceTree = "<group>"; };
+		3F4A79271C0C557A00F4DB50 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
 		3FFB739B1C06976700C81D68 /* JYLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JYLoadingView.xib; path = xib/JYLoadingView.xib; sourceTree = "<group>"; };
 		3FFB739D1C06978400C81D68 /* JYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNavigationController.h; sourceTree = "<group>"; };
 		3FFB739E1C06978400C81D68 /* JYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNavigationController.m; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		248FCC6D1C04307300657ADD /* Joy4youBundle */ = {
 			isa = PBXGroup;
 			children = (
+				3F4A79271C0C557A00F4DB50 /* license.html */,
 				248FCC7B1C04314900657ADD /* images */,
 				248FCC7A1C04313E00657ADD /* xib */,
 				248FCC6E1C04307300657ADD /* Supporting Files */,
@@ -691,6 +694,7 @@
 				248FCC851C0432BD00657ADD /* JYRegistViewController.xib in Resources */,
 				3F4A78FF1C0841E600F4DB50 /* jy_back_pressed@3x.png in Resources */,
 				3F4A78BF1C06F4F800F4DB50 /* jy_button_blue@2x.png in Resources */,
+				3F4A79281C0C557A00F4DB50 /* license.html in Resources */,
 				3F4A79061C0841E600F4DB50 /* jy_img_checkbox_on@3x.png in Resources */,
 				3F4A78C41C06FEDE00F4DB50 /* jy_back_pressed@2x.png in Resources */,
 				3F4A79071C0841E600F4DB50 /* jy_logo@3x.png in Resources */,

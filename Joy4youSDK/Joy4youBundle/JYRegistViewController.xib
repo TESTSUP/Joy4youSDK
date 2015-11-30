@@ -138,7 +138,6 @@
                     <state key="highlighted" backgroundImage="jy_button_blue_pressed.png"/>
                     <connections>
                         <action selector="handleBindAccountAction:" destination="-1" eventType="touchUpInside" id="0Gw-tw-JEU"/>
-                        <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="2sL-T4-8da"/>
                     </connections>
                 </button>
             </subviews>

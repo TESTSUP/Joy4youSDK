@@ -265,7 +265,7 @@ static dispatch_once_t token;
                                             if (aCallback) {
                                                 NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
                                                                                                        andRequestType:RequestRegistWithUsername];
-                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:YES];
+                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
                                                 NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
                                                 aCallback(error, responseDic);
                                             }
