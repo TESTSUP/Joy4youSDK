@@ -140,7 +140,7 @@ static dispatch_once_t onceToken;
 
 -(NSArray *) deleteLoginCache:(NSString *)uid
 {
-    NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF.uid == %@", uid];
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF.userid == %@", uid];
     NSArray *temp = [_cacheUserList filteredArrayUsingPredicate:pre];
     [_cacheUserList removeObjectsInArray:temp];
     

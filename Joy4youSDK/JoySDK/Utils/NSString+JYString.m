@@ -46,5 +46,82 @@
     return value;
 }
 
+//纯英文
+- (BOOL)allEnString
+{
+    NSRegularExpression *regularexpression = [[NSRegularExpression alloc]
+                                              initWithPattern:@"^[a-zA-Z]{4,20}$"
+                                              options:NSRegularExpressionCaseInsensitive
+                                              error:nil];
+    
+    NSUInteger numberofMatch = [regularexpression numberOfMatchesInString:self
+                                                                  options:NSMatchingReportProgress
+                                                                    range:NSMakeRange(0, self.length)];
+    
+    if(numberofMatch > 0)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+//条件：4-20位字符，仅支持英文、数字，必须包含数字
+- (BOOL)validateUserAccount
+{
+//    if ([self allEnString]) {
+//        return NO;
+//    }
+    
+    NSRegularExpression *regularexpression = [[NSRegularExpression alloc]
+                                              initWithPattern:@"^(?![0-9]+$)[a-zA-Z0-9_]{4,20}$"
+                                              options:NSRegularExpressionCaseInsensitive
+                                              error:nil];
+    
+    NSUInteger numberofMatch = [regularexpression numberOfMatchesInString:self
+                                                                  options:NSMatchingReportProgress
+                                                                    range:NSMakeRange(0, self.length)];
+    
+    if(numberofMatch > 0)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)validateUserPassword
+{
+    //    NSRegularExpression *regularexpression = [[NSRegularExpression alloc]
+    //                                              initWithPattern:@"^[a-zA-Z0-9_]{6,15}$"
+    //                                              options:NSRegularExpressionCaseInsensitive
+    //                                              error:nil];
+    //
+    //    NSUInteger numberofMatch = [regularexpression numberOfMatchesInString:self
+    //                                                                  options:NSMatchingReportProgress
+    //                                                                    range:NSMakeRange(0, self.length)];
+    //
+    //    if(numberofMatch > 0)
+    //    {
+    //        return YES;
+    //    }
+    
+    NSString *ASSISS = @"!\"#$%&`()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\'abcdefghijklmnopqrstuvwxyz{|}~";
+    for (int i=0; i<self.length; i++) {
+        NSString *str = [self substringWithRange:NSMakeRange(i, 1)];
+        NSRange range = [ASSISS rangeOfString:str];
+        if (range.length <= 0)
+        {
+            return NO;
+        }
+    }
+    
+    if ([self length] < 6 || [self length] >15) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 @end

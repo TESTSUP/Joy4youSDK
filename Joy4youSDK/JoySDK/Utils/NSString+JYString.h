@@ -24,4 +24,18 @@
  */
 - (NSString *)localizedString;
 
+/**
+ *  注册时有效用户名
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)validateUserAccount;
+
+/**
+ *  注册时有效密码
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)validateUserPassword;
+
 @end

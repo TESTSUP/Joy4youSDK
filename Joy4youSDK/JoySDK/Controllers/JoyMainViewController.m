@@ -90,11 +90,11 @@ static dispatch_once_t token;
                                                          
                                                          [_alertView dismissWithCompletion:nil];
                                                          
-                                                         NSString * msg= [@"缓存登录失败" localizedString];
+                                                         NSString * msg= nil;
                                                          if (error) {
                                                              JYDLog(@"Tourist login error", error);
-                                                         }
-                                                         else {
+                                                             msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                         } else {
                                                              NSString* status = responseData[KEY_STATUS];
                                                              switch (status.integerValue) {
                                                                  case 200:
@@ -115,6 +115,7 @@ static dispatch_once_t token;
                                                                      //103 userid不能为空
                                                                      //104ckid不能为空
                                                                      //105 渠道id不能为空
+                                                                     msg = responseData[KEY_MSG];
                                                                  }
                                                                      break;
                                                                  case 106:
@@ -132,10 +133,11 @@ static dispatch_once_t token;
                                                                  case 108:
                                                                  {
                                                                      //108 sessionid已经过期:
-                                                                     msg = [@"sessionid已经过期" localizedString];
+                                                                     msg = [@"缓存过期，请重新登录" localizedString];
                                                                  }
                                                                      break;
                                                                  default:
+                                                                     msg = [@"缓存登录失败" localizedString];
                                                                      break;
                                                              }
                                                          }

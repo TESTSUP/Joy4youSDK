@@ -15,8 +15,14 @@
 #import "JYModelInterface.h"
 #import "JYLoadingView.h"
 #import "JYAlertView.h"
+#import "JYCacheListView.h"
 
-@interface JYLoginViewController ()
+@interface JYLoginViewController () <JYCacheUserListDelegate>
+{
+    JYCacheListView *_cacheView;
+    
+    BOOL    _showCache;
+}
 
 @end
 
@@ -27,6 +33,10 @@
     // Do any additional setup after loading the view from its nib.
     
     [self configTextField];
+    
+    [self configSubViews];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginKeyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)configTextField
@@ -52,14 +62,31 @@
     _upsideTextField = self.accountTextField;
     _undersideTextField = self.passwordTextField;
     
-//    if ([[JYUserCache sharedInstance].normalUserList count])
+    self.upsideLimit = 20;
+    self.undersideLimit = 15;
+    
+    if ([[JYUserCache sharedInstance].normalUserList count])
     {
         UIButton *cacheBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
         [cacheBtn setImage:[UIImage imageNamedFromBundle:@"jy_login_pulldown_btn.png"] forState:UIControlStateNormal];
         self.accountTextField.rightView = cacheBtn;
         self.accountTextField.rightViewMode = UITextFieldViewModeAlways;
-        [cacheBtn addTarget:self action:@selector(handleShowCacheListAction) forControlEvents:UIControlEventTouchUpInside];
+        [cacheBtn addTarget:self action:@selector(handleShowCacheListAction:) forControlEvents:UIControlEventTouchUpInside];
     }
+}
+
+- (void)configSubViews
+{
+    //下拉列表
+    NSArray *nibArray = [[NSBundle resourceBundle] loadNibNamed:@"JYCacheListView" owner:nil options:nil];
+    _cacheView = [nibArray firstObject];
+    _cacheView.delegate = self;
+    
+    _cacheView.frame = CGRectMake(self.accountBg.frame.origin.x,
+                                  self.accountBg.frame.origin.y+self.accountBg.frame.size.height,
+                                  self.accountBg.frame.size.width,
+                                  0);
+    [self.view addSubview:_cacheView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,35 +94,99 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotate
+
+#pragma cache list
+
+- (CGFloat)getListHeight
 {
-    return YES;
+    NSArray *cacheArray = [[JYUserCache sharedInstance] normalUserList];
+    
+    CGFloat height = 135;
+    
+    switch ([cacheArray count]) {
+        case 0:
+            height = 0;
+            break;
+        case 1:
+            height = 45;
+            break;
+        case 2:
+            height = 90;
+            break;
+        default:
+            height = 135;
+            break;
+    }
+    
+    return height;
 }
 
- -(UIInterfaceOrientationMask)supportedInterfaceOrientations
+- (void)showLoginCacheList:(BOOL)aShow
 {
-    return UIInterfaceOrientationMaskAll;
+    _showCache = aShow;
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         if (_showCache)
+                         {
+                             [_actionTextField resignFirstResponder];
+                             _cacheView.frame = CGRectMake(self.accountBg.frame.origin.x,
+                                                           self.accountBg.frame.origin.y+self.accountBg.frame.size.height,
+                                                           self.accountBg.frame.size.width,
+                                                           [self getListHeight]);
+                         }
+                         else
+                         {
+                             _cacheView.frame = CGRectMake(self.accountBg.frame.origin.x,
+                                                           self.accountBg.frame.origin.y+self.accountBg.frame.size.height,
+                                                           self.accountBg.frame.size.width,
+                                                           0);
+                         }
+                     }];
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator
-{
-    self.view.center = self.view.superview.center;
-}
-/*
-#pragma mark - Navigation
+#pragma mark - JYCacheUserListDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)JYCacheUserListDidSelectedUser:(JYUserContent *)aUser
+{
+    if ([aUser.username length]>0) {
+        self.accountTextField.text = aUser.username;
+    }else if ([aUser.phone length]){
+        self.accountTextField.text = aUser.phone;
+    }
+    
+    [self handleShowCacheListAction:(UIButton *)self.accountTextField.rightView];
+    
 }
-*/
+
+- (void)JYCacheUserListDidDeletedUser:(JYUserContent *)aUser
+{
+    NSArray* cacheArray = [[JYUserCache sharedInstance] normalUserList];
+    
+    if ([cacheArray count] == 0) {
+        [self showLoginCacheList:NO];
+        self.accountTextField.rightView = nil;
+        self.accountTextField.rightViewMode = UITextFieldViewModeWhileEditing;
+    }
+    else
+    {
+        [self showLoginCacheList:YES];
+    }
+}
+
+#pragma mark - notification
+
+- (void)loginKeyboardWillAppear:(NSNotification *)aNotify
+{
+    [self showLoginCacheList:NO];
+}
 
 #pragma mark - button action
 
-- (void)handleShowCacheListAction
+- (void)handleShowCacheListAction:(UIButton *)aBtn
 {
+    aBtn.selected = !aBtn.selected;
     
+    [self showLoginCacheList:!_showCache];
 }
 
 - (IBAction)handleRegistAction:(id)sender
@@ -134,7 +225,7 @@
 
         NSString * msg= [@"游客登录失败" localizedString];
         if (error) {
-            JYDLog(@"Tourist login error", error);
+            JYDLog(@"Tourist login error = %@", error);
         }
         else {
             NSString* status = responseData[KEY_STATUS];

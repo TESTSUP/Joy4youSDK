@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYLoginViewController">
             <connections>
+                <outlet property="accountBg" destination="3bW-1S-Zgn" id="ZcL-iA-jrJ"/>
                 <outlet property="accountTextField" destination="zii-UE-9dC" id="Yt1-O7-MEh"/>
                 <outlet property="findPasswordBtn" destination="Bbr-Ui-3Nz" id="c3j-G9-7va"/>
                 <outlet property="loginBtn" destination="8YD-ac-IBM" id="QgT-S7-k5h"/>

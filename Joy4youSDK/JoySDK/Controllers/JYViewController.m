@@ -212,32 +212,18 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 
 - (NSUInteger)getLimitLengthWith:(UITextField *)aTextField
 {
+    NSUInteger length = NSUIntegerMax;
     
-    return 10;
+    if (aTextField == _upsideTextField)
+    {
+        length = self.upsideLimit;
+    }
+    else
+    {
+        length = self.undersideLimit;
+    }
     
-//    NSUInteger length = NSUIntegerMax;
-//    
-//    if ([_surfaceActionView isKindOfClass:[CCRegistWithUsernameView class]])
-//    {
-//        if (aTextField == _upsideTextField)
-//        {
-//            length = CC_ACCLOUNT_LIMIT;
-//        }
-//        else
-//        {
-//            length = CC_PW_LIMIT;
-//        }
-//    }
-//    else if ([_surfaceActionView isKindOfClass:[CCForgetPhdCheckPhoneView class]])
-//    {
-//        CCForgetPhdCheckPhoneView *tempView = (CCForgetPhdCheckPhoneView *)_surfaceActionView;
-//        if (tempView.phdCodeField == aTextField)
-//        {
-//            length = CC_VCODE_LIMIT;
-//        }
-//    }
-//    
-//    return length;
+    return length;
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

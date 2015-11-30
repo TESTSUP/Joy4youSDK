@@ -12,6 +12,7 @@
 @interface JYLoginViewController : JYViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *registButton;
+@property (weak, nonatomic) IBOutlet UIImageView *accountBg;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *findPasswordBtn;
