@@ -11,6 +11,7 @@
 
 @interface JYFindPasswordViewController : JYViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *accountBg;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;

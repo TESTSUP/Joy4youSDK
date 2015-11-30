@@ -107,7 +107,7 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 - (void)showPopText:(NSString *)aText withView:(UIView *)aView
 {
     if (!_popView) {
-        _popView = [[JYPopView alloc] initWithFrame:CGRectMake(0, 0, 100, 18)];
+        _popView = [[JYPopView alloc] initWithFrame:CGRectMake(0, 0, 50, 14)];
         _popView.autoresizingMask =
         UIViewAutoresizingFlexibleLeftMargin |
         UIViewAutoresizingFlexibleRightMargin |
@@ -148,7 +148,6 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 
 - (void)displayCount
 {
-    NSLog(@"count --");
     _count--;
     if (0 == _count)
     {
@@ -216,11 +215,11 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
     
     if (aTextField == _upsideTextField)
     {
-        length = self.upsideLimit;
+        length = self.upsideLimit>0? self.upsideLimit:NSUIntegerMax;
     }
-    else
+    else if (aTextField == _undersideTextField)
     {
-        length = self.undersideLimit;
+        length = self.undersideLimit>0? self.undersideLimit:NSUIntegerMax;
     }
     
     return length;
@@ -256,16 +255,29 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (_undersideTextField &&
-        _undersideTextField != _actionTextField) {
+    if (textField == _upsideTextField &&
+        _undersideTextField!=nil) {
         [_undersideTextField becomeFirstResponder];
         _actionTextField = _undersideTextField;
-    }
-    else
-    {
+    } else if (textField == _undersideTextField &&
+               _bottomTextField!=nil) {
+        [_bottomTextField becomeFirstResponder];
+        _actionTextField = _bottomTextField;
+    } else {
         [_actionTextField resignFirstResponder];
         _actionTextField = nil;
     }
+    
+//    if (_undersideTextField &&
+//        _undersideTextField != _actionTextField) {
+//        [_undersideTextField becomeFirstResponder];
+//        _actionTextField = _undersideTextField;
+//    }
+//    else
+//    {
+//        [_actionTextField resignFirstResponder];
+//        _actionTextField = nil;
+//    }
     
     return YES;
 }

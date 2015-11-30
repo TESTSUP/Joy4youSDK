@@ -7,9 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYBindEmailViewController">
             <connections>
+                <outlet property="accountBg" destination="Upy-MT-fdm" id="aF2-SQ-G2i"/>
                 <outlet property="accountTextField" destination="G5p-E9-YIU" id="Sjq-z0-f79"/>
                 <outlet property="bindButton" destination="p6H-Ps-tfh" id="dsI-Rj-fjW"/>
-                <outlet property="emailTextField" destination="CMT-VJ-fHo" id="6XU-mx-Dsn"/>
+                <outlet property="emailTextField" destination="gjP-Q1-jxJ" id="l1z-Bd-gi6"/>
                 <outlet property="passwordTextField" destination="h7m-7T-h6W" id="GJH-qN-g0n"/>
                 <outlet property="view" destination="YKf-Xm-wL4" id="FCr-22-cjd"/>
             </connections>
@@ -33,6 +34,11 @@
                     <animations/>
                     <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_img_edittext.png" translatesAutoresizingMaskIntoConstraints="NO" id="CMT-VJ-fHo">
+                    <rect key="frame" x="93" y="154" width="185" height="35"/>
+                    <animations/>
+                    <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
+                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号/邮箱/用户名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="G5p-E9-YIU">
                     <rect key="frame" x="98" y="63" width="180" height="30"/>
                     <animations/>
@@ -43,7 +49,7 @@
                     <rect key="frame" x="98" y="109" width="180" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的邮箱账号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gjP-Q1-jxJ">
                     <rect key="frame" x="98" y="156" width="180" height="30"/>
@@ -86,11 +92,6 @@
                         <action selector="handleBindAction:" destination="-1" eventType="touchUpInside" id="WtF-Zn-Yru"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_img_edittext.png" translatesAutoresizingMaskIntoConstraints="NO" id="CMT-VJ-fHo">
-                    <rect key="frame" x="93" y="154" width="185" height="35"/>
-                    <animations/>
-                    <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邮箱账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvc-Li-Mqh">
                     <rect key="frame" x="33" y="161" width="56" height="21"/>
                     <animations/>
@@ -103,7 +104,7 @@
             <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="427" y="218"/>
+            <point key="canvasLocation" x="132" y="228"/>
         </view>
     </objects>
     <resources>

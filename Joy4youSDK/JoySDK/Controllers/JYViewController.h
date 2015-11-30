@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JYLoadingView.h"
+#import "JYModelInterface.h"
+#import "JYUtil.h"
 
 extern NSString *const JYNotificationCloseSDK;
 extern NSString *const JYNotificationShowSuccess;
@@ -21,6 +24,7 @@ extern NSString *const JYNotificationHideKeybord;
     __weak UITextField *_actionTextField;
     __weak UITextField *_upsideTextField;
     __weak UITextField *_undersideTextField;
+    __weak UITextField *_bottomTextField;
     CGRect _keyBordRect;
     CGRect _orgFrame;
     

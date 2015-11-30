@@ -65,6 +65,19 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
  */
 - (void)checkUsername:(NSString *)aName
         callbackBlock:(modelCallback)aCallback;
+
+/**
+ *  用户名+密码注册
+ *
+ *  @param aName     用户名
+ *  @param aPassword 密码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)registWithUsername:(NSString *)aName
+               andPassword:(NSString *)aPassword
+             callbackBlcok:(modelCallback)aCallback;
+
+
 #pragma mark - 绑定
 /**
  *  游客绑定正式账号

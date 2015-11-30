@@ -194,7 +194,6 @@
     JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
     
     [self.navigationController pushViewController:registVC animated:YES];
-    
 }
 
 - (IBAction)handleBindEmailACion:(id)sender
@@ -221,11 +220,12 @@
     
     [[JYModelInterface sharedInstance] touristLoginWithCallbackBlcok:^(NSError *error, NSDictionary *responseData) {
         
-        [alertView dismissWithCompletion:nil];
-
+        [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+        
         NSString * msg= [@"游客登录失败" localizedString];
         if (error) {
             JYDLog(@"Tourist login error = %@", error);
+            msg = [@"网络状态不好，请稍后重试" localizedString];
         }
         else {
             NSString* status = responseData[KEY_STATUS];
@@ -245,6 +245,7 @@
                     //101 appid不能为空
                     //102 ckid不能为空
                     //103 渠道id不能为空
+                    msg = responseData[KEY_MSG];
                 }
                     break;
                 case 104:
@@ -254,7 +255,7 @@
                 }
                     break;
                 default:
-                    msg = responseData[KEY_MSG];
+                    msg= [@"游客登录失败" localizedString];
                     break;
             }
         }
@@ -272,14 +273,15 @@
     
     if ([nickname length] == 0 || [password length] == 0) {
         popText = [@"帐号或密码不能为空" localizedString];
-    }else if ([nickname length] > 20 ||
+    }else if ([nickname length] < 4 ||
+              [nickname length] > 20 ||
               [password length] < 6 ||
               [password length] > 15) {
         popText = [@"帐号或密码错误" localizedString];
     }
     
     if ([popText length] > 0) {
-        [self showPopText:popText withView:self.accountTextField];;
+        [self showPopText:popText withView:self.accountBg];;
     } else {
         
         JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
@@ -295,9 +297,10 @@
 //                                                   [alertView dismissWithCompletion:nil];
                                                    [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                    
-                                                   NSString * msg= [@"登录失败" localizedString];
+                                                   NSString * msg = nil;
                                                    if (error) {
                                                        JYDLog(@"Tourist login error", error);
+                                                       msg = [@"网络状态不好，请稍后重试" localizedString];
                                                    }
                                                    else {
                                                        NSString* status = responseData[KEY_STATUS];
@@ -305,7 +308,7 @@
                                                        switch (status.integerValue) {
                                                            case 200:
                                                            {
-                                                               NSString *param = [@"游客登录成功" localizedString];
+                                                               NSString *param = [@"登录成功" localizedString];
                                                                [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
                                                                return;
                                                            }
@@ -317,6 +320,7 @@
                                                                //101 appid不能为空
                                                                //102 ckid不能为空
                                                                //103 渠道id不能为空
+                                                               msg = responseData[KEY_MSG];
                                                            }
                                                                break;
                                                            case 104:
@@ -326,7 +330,7 @@
                                                            }
                                                                break;
                                                            default:
-                                                               msg = responseData[KEY_MSG];
+                                                               msg= responseData[KEY_MSG];
                                                                break;
                                                        }
                                                    }

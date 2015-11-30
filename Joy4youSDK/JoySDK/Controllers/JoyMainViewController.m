@@ -9,6 +9,7 @@
 #import "JoyMainViewController.h"
 #import "JYNavigationController.h"
 #import "JYLoginViewController.h"
+#import "JYBindAlertViewController.h"
 #import "JYUserCache.h"
 #import "JYUtil.h"
 #import "JYModelInterface.h"
@@ -76,6 +77,102 @@ static dispatch_once_t token;
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
+}
+
+
+#pragma mark - handle view
+
+- (CGPoint)viewCenter
+{
+    return CGPointMake(self.view.bounds.size.width/2,
+                       self.view.bounds.size.height/2);
+}
+
+- (void)removeAllviews
+{
+    [_navigationVC.view removeFromSuperview];
+    
+//    if ([_tickTimer isValid]) {
+//        [_tickTimer invalidate];
+//        _tickTimer = nil;
+//    }
+    
+    [Joy4youSDK removeSDKFromRootView];
+}
+
+- (void)showSuccessAndEnter:(NSString *)aParam
+{
+    [_navigationVC.view removeFromSuperview];
+    
+    JYLoadingView *successView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
+    successView.lodingType = CCLoading_loginWithUsernameResult;
+    successView.title = aParam;
+    
+    UIView *aView = successView;
+    
+    aView.frame = CGRectMake((self.view.bounds.size.width-aView.frame.size.width)/2,
+                             40,
+                             aView.frame.size.width,
+                             aView.frame.size.height);
+    aView.autoresizingMask =
+    UIViewAutoresizingFlexibleLeftMargin |
+    UIViewAutoresizingFlexibleRightMargin |
+    UIViewAutoresizingFlexibleTopMargin |
+    UIViewAutoresizingFlexibleBottomMargin;
+    [self.view addSubview:aView];
+    aView.alpha = 0;
+    
+    CGPoint center = aView.center;
+    
+    CGPoint realCenter = [self.view convertPoint:center toView:[self.view superview]];
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view.bounds = aView.bounds;
+    self.view.center = realCenter;
+    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         aView.alpha = 1.0;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+    self.isRemoving = YES;
+    //回调
+    JYUserContent *user =[JYUserCache sharedInstance].currentUser;
+    [self.callback loginCallback:@{@"state": @"0", @"un":user.username, @"coco":user.userid, @"tkn":user.token}];
+    [self performSelector:@selector(loginSuccessRemove) withObject:nil afterDelay:2];;
+    
+}
+
+- (void)loginSuccessRemove
+{
+    if ([self shouldShowBindAlert])
+    {
+        //绑定账号提醒
+        self.view.frame = [[self.view superview] bounds];
+        self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        self.isRemoving = NO;
+        
+        JYBindAlertViewController *bindVC = [[JYBindAlertViewController alloc] initWithNibName:@"JYBindAlertViewController" bundle:[NSBundle resourceBundle]];
+        [self setNavigationWithRoot:bindVC];
+    }
+    else
+    {
+        self.isRemoving = YES;
+        [self removeAllviews];
+    }
+}
+
+- (BOOL)shouldShowBindAlert
+{
+    JYUserContent *user =[JYUserCache sharedInstance].currentUser;
+    
+    if (user.type == 2) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 #pragma mark - handle action
@@ -155,6 +252,7 @@ static dispatch_once_t token;
 
 - (void)handleSwitchAccount:(UIButton *)aBtn
 {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(delayCacheLogin:) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [[JYModelInterface sharedInstance] cancelAllRequest];
     
@@ -163,128 +261,20 @@ static dispatch_once_t token;
 
 - (void)reset
 {
+    self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [_navigationVC.view removeFromSuperview];
     _navigationVC = nil;
     [[JYModelInterface sharedInstance] cancelAllRequest];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeSDK) object:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(loginSuccessRemove) object:nil];
     self.isRemoving = NO;
 }
 
-
-
-#pragma mark - handle view
-
-- (CGPoint)viewCenter
-{
-    return CGPointMake(self.view.bounds.size.width/2,
-                       self.view.bounds.size.height/2);
-}
-
-- (void)removeAllviews
-{
-    [_navigationVC.view removeFromSuperview];
-    
-//    if ([_tickTimer isValid]) {
-//        [_tickTimer invalidate];
-//        _tickTimer = nil;
-//    }
-    
-    [Joy4youSDK removeSDKFromRootView];
-}
-
-- (void)showSuccessAndEnter:(NSString *)aParam
-{
-    [_navigationVC.view removeFromSuperview];
-    
-    JYLoadingView *successView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-    successView.lodingType = CCLoading_loginWithUsernameResult;
-    successView.title = aParam;
-    
-    UIView *aView = successView;
-    
-    aView.frame = CGRectMake((self.view.bounds.size.width-aView.frame.size.width)/2,
-                             40,
-                             aView.frame.size.width,
-                             aView.frame.size.height);
-    aView.autoresizingMask =
-    UIViewAutoresizingFlexibleLeftMargin |
-    UIViewAutoresizingFlexibleRightMargin |
-    UIViewAutoresizingFlexibleTopMargin |
-    UIViewAutoresizingFlexibleBottomMargin;
-    [self.view addSubview:aView];
-    aView.alpha = 0;
-    
-    CGPoint center = aView.center;
-    
-    CGPoint realCenter = [self.view convertPoint:center toView:[self.view superview]];
-    
-    self.view.backgroundColor = [UIColor clearColor];
-    self.view.bounds = aView.bounds;
-    self.view.center = realCenter;
-    
-    [UIView animateWithDuration:0.25
-                     animations:^{
-                         aView.alpha = 1.0;
-                     } completion:^(BOOL finished) {
-                         
-                     }];
-    
-    self.isRemoving = YES;
-    //回调
-    JYUserContent *user =[JYUserCache sharedInstance].currentUser;
-    [self.callback loginCallback:@{@"state": @"0", @"un":user.username, @"coco":user.userid, @"tkn":user.token}];
-    [self performSelector:@selector(loginSuccessRemove) withObject:nil afterDelay:2];;
-    
-}
-
-- (void)loginSuccessRemove
-{
-    if ([self shouldShowBindAlert])
-    {
-        //绑定提醒
-        self.view.frame = [[self.view superview] bounds];
-        self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-        self.isRemoving = NO;
-        
-//        [_surfacePopView removeFromSuperview];
-//        self.view.frame = [[self.view superview] bounds];
-//        _backgroundView.frame = self.view.bounds;
-//        self.isRemoving = NO;
-//        
-//        CCUserInfo *user =[CCCacheManager sharedInstance].userInfoData;
-//        
-//        RegistShowType bindType = userBind;
-//        if ([user.gt isEqualToString:@"1"]) {
-//            bindType = guestBind;
-//        }
-//        CCRegistWithPhoneView *bindView = (CCRegistWithPhoneView *)[self createRegistWithPhoneView:bindType];
-//        
-//        [self pushView:bindView animated:YES];
-//        
-//        [[NSUserDefaults standardUserDefaults] setObject:[self getDate] forKey:[self bindDateKey]];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    else
-    {
-        self.isRemoving = YES;
-        [self removeAllviews];
-    }
-}
-
-- (BOOL)shouldShowBindAlert
-{
-    return NO;
-}
-
 #pragma mark - notification
 
-- (void)setNavigationRootView
+- (void)setNavigationWithRoot:(UIViewController *)rootVC
 {
-    JYLoginViewController *loginVC = [[JYLoginViewController alloc] initWithNibName:@"JYLoginViewController" bundle:[NSBundle resourceBundle]];
-    _navigationVC = [[JYNavigationController alloc] initWithRootViewController:loginVC];
+    _navigationVC = [[JYNavigationController alloc] initWithRootViewController:rootVC];
     [_navigationVC setNavigationBarHidden:YES animated:NO];
-    
     _navigationVC.view.autoresizingMask =
     UIViewAutoresizingFlexibleLeftMargin |
     UIViewAutoresizingFlexibleRightMargin |
@@ -328,14 +318,15 @@ static dispatch_once_t token;
 {
     [self reset];
 
-    [self setNavigationRootView];
+    JYLoginViewController *loginVC = [[JYLoginViewController alloc] initWithNibName:@"JYLoginViewController" bundle:[NSBundle resourceBundle]];
+    [self setNavigationWithRoot:loginVC];
     
     JYUserContent *cacheUser = [[JYUserCache sharedInstance] currentUser];
     if (cacheUser)
     {
         JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
         cacheLoading.lodingType = CCLoading_cacheLogin;
-        cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], [cacheUser.username length]==0? cacheUser.phone:cacheUser.username];
+        cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], [cacheUser.username length]==0? @"":cacheUser.username];
         [cacheLoading.switchBtn addTarget:self action:@selector(handleSwitchAccount:) forControlEvents:UIControlEventTouchUpInside];
         
         _alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];

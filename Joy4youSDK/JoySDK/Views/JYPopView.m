@@ -43,7 +43,7 @@
                                              green:97.0/255.0
                                               blue:0
                                              alpha:1];
-    _popTextLabel.font = [UIFont systemFontOfSize:12];
+    _popTextLabel.font = [UIFont systemFontOfSize:10];
     _popTextLabel.backgroundColor = [UIColor clearColor];
     _popTextLabel.textAlignment = NSTextAlignmentCenter;
     _popTextLabel.autoresizingMask =
@@ -72,12 +72,14 @@
     
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
     {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+        NSDictionary *attributes = @{NSFontAttributeName:self.popTextLabel.font, NSParagraphStyleAttributeName:paragraphStyle.copy};
+        
         configSize = [aPopText boundingRectWithSize:CGSizeMake(320, self.bounds.size.height)
                                             options:
-                      NSStringDrawingTruncatesLastVisibleLine |
-                      NSStringDrawingUsesLineFragmentOrigin |
-                      NSStringDrawingUsesFontLeading
-                                         attributes:nil
+                      NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                         attributes:attributes
                                             context:nil].size;
     }
     else
@@ -90,7 +92,7 @@
     CGPoint center = self.center;
     self.frame = CGRectMake(self.frame.origin.x,
                             self.frame.origin.y,
-                            configSize.width+8,
+                            configSize.width+4,
                             self.frame.size.height);
     self.center = center;
     self.popTextLabel.text = aPopText;

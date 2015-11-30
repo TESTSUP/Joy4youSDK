@@ -109,6 +109,16 @@ NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotificat
     [self addAlertView];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return  YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
 - (void)addScreenShot{
     UIWindow *screenWindow = [UIApplication sharedApplication].windows.firstObject;
     UIGraphicsBeginImageContext(screenWindow.frame.size);
@@ -233,7 +243,7 @@ NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotificat
     UIViewAutoresizingFlexibleBottomMargin |
     UIViewAutoresizingFlexibleWidth |
     UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:self.screenShotView];
+//    [self.view addSubview:self.screenShotView];
 }
 
 - (void)addCoverView{
@@ -476,8 +486,10 @@ buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonTy
     self.vc = vc;
     
     [JYSingleTon shareSingleTon].backgroundWindow.frame = [UIScreen mainScreen].bounds;
-    [[JYSingleTon shareSingleTon].backgroundWindow makeKeyAndVisible];
     [JYSingleTon shareSingleTon].backgroundWindow.rootViewController = self.vc;
+    [[JYSingleTon shareSingleTon].backgroundWindow makeKeyAndVisible];
+    [JYSingleTon shareSingleTon].backgroundWindow.frame = [UIScreen mainScreen].bounds;
+    self.vc.view.frame = [UIScreen mainScreen].bounds;
     
     [self.vc showAlert];
 }

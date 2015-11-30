@@ -77,7 +77,7 @@ static dispatch_once_t token;
                                             if (aCallback) {
                                                 NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
                                                                                                        andRequestType:RequestLoginWithTourist];
-                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:YES];
+                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
                                                 NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
                                                 aCallback(error, responseDic);
                                             }
@@ -165,10 +165,17 @@ static dispatch_once_t token;
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
                                         success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            
+                                            if (aCallback) {
+                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
+                                                                                                       andRequestType:RequestCheckUserid];
+                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
+                                                aCallback(error, responseDic);
+                                            }
                                         }
                                         failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            
+                                            if (aCallback) {
+                                                aCallback(responseERROR, nil);
+                                            }
                                         }];
 }
 
@@ -190,10 +197,18 @@ static dispatch_once_t token;
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
                                         success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            
+                                            if (aCallback) {
+                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
+                                                                                                       andRequestType:RequestRegistWithUsername];
+                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
+                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
+                                                aCallback(error, responseDic);
+                                            }
                                         }
                                         failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            
+                                            if (aCallback) {
+                                                aCallback(responseERROR, nil);
+                                            }
                                         }];
 }
 
@@ -214,10 +229,17 @@ static dispatch_once_t token;
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
                                         success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            
+                                            if (aCallback) {
+                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
+                                                                                                       andRequestType:RequestFindPassword];
+                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
+                                                aCallback(error, responseDic);
+                                            }
                                         }
                                         failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            
+                                            if (aCallback) {
+                                                aCallback(responseERROR, nil);
+                                            }
                                         }];
 }
 
@@ -240,10 +262,18 @@ static dispatch_once_t token;
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
                                         success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            
+                                            if (aCallback) {
+                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
+                                                                                                       andRequestType:RequestRegistWithUsername];
+                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:YES];
+                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
+                                                aCallback(error, responseDic);
+                                            }
                                         }
                                         failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            
+                                            if (aCallback) {
+                                                aCallback(responseERROR, nil);
+                                            }
                                         }];
 }
 
@@ -266,10 +296,17 @@ static dispatch_once_t token;
     [[JoyRequest shareInstance] requestWithPath:urlPath
                                      Parameters:nil
                                         success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            
+                                            if (aCallback) {
+                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
+                                                                                                       andRequestType:RequestBindEmail];
+                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
+                                                aCallback(error, responseDic);
+                                            }
                                         }
                                         failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            
+                                            if (aCallback) {
+                                                aCallback(responseERROR, nil);
+                                            }
                                         }];
 }
 

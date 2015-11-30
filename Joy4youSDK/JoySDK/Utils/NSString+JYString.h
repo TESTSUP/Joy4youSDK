@@ -38,4 +38,10 @@
  */
 - (BOOL)validateUserPassword;
 
+/**
+ *  验证邮箱有效性
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL) validateEmailAddress;
 @end

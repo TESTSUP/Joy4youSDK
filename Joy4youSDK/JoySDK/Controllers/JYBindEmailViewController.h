@@ -12,10 +12,11 @@
 @interface JYBindEmailViewController : JYViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *accountBg;
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
-@property (weak, nonatomic) IBOutlet UIImageView *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *bindButton;
 

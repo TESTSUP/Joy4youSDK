@@ -92,7 +92,7 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
             break;
         case RequestFindPassword:
         {
-            path = PATH_LOGIN;
+            path = PATH_FIND_PW;
             paramDic = @{KEY_UN:aParam[KEY_UN],
                          KEY_EMAIL:aParam[KEY_EMAIL],
                          KEY_CKID:[JYDevice ckid]};

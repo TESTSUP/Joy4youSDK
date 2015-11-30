@@ -14,12 +14,15 @@
 
 @property (nonatomic, assign) BOOL isBind;  //判断此VC是注册页面还是游客绑定账号页面
 
+@property (weak, nonatomic) IBOutlet UIImageView *accountBg;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordBg;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIButton *showPasswordBtn;
-@property (weak, nonatomic) IBOutlet UILabel *confirmAgreementBtn;
+@property (weak, nonatomic) IBOutlet UIButton *confirmAgreementBtn;
 @property (weak, nonatomic) IBOutlet UIButton *showAgreementBtn;
 @property (weak, nonatomic) IBOutlet JYButton *registBtn;
+@property (weak, nonatomic) IBOutlet JYButton *bindButton;
 
 - (IBAction)handleShowAgreementAction:(id)sender;
 
@@ -28,5 +31,7 @@
 - (IBAction)handleConfirmAgreementAction:(id)sender;
 
 - (IBAction)handleRegistAction:(id)sender;
+
+- (IBAction)handleBindAccountAction:(id)sender;
 
 @end

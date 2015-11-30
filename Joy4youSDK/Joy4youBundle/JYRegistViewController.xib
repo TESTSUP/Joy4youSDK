@@ -7,8 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYRegistViewController">
             <connections>
+                <outlet property="accountBg" destination="FvC-RG-zBE" id="KUb-6i-F3o"/>
                 <outlet property="backButton" destination="LAR-rY-yXd" id="Ot1-TQ-wWi"/>
-                <outlet property="confirmAgreementBtn" destination="zCp-5Z-dOa" id="HOs-jp-OqT"/>
+                <outlet property="bindButton" destination="rPd-pg-VGs" id="OTB-Cu-hIW"/>
+                <outlet property="confirmAgreementBtn" destination="JnL-V1-w51" id="BSf-4b-Qf0"/>
+                <outlet property="passwordBg" destination="CM3-bP-HMs" id="05O-EJ-O6V"/>
                 <outlet property="passwordField" destination="msV-0w-k3u" id="cSB-HY-P81"/>
                 <outlet property="registBtn" destination="aZ6-dK-B4A" id="0QB-vu-o8D"/>
                 <outlet property="showAgreementBtn" destination="ESv-a8-53B" id="7gi-jG-4Tr"/>
@@ -27,26 +30,26 @@
                     <animations/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_img_edittext.png" translatesAutoresizingMaskIntoConstraints="NO" id="FvC-RG-zBE">
-                    <rect key="frame" x="105" y="60" width="174" height="35"/>
+                    <rect key="frame" x="88" y="60" width="184" height="35"/>
                     <animations/>
                     <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jy_img_edittext.png" translatesAutoresizingMaskIntoConstraints="NO" id="CM3-bP-HMs">
-                    <rect key="frame" x="105" y="107" width="174" height="35"/>
+                    <rect key="frame" x="88" y="107" width="184" height="35"/>
                     <animations/>
                     <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="4-20位英文字母、数字或_组合" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="N6y-4a-IXQ">
-                    <rect key="frame" x="110" y="63" width="170" height="30"/>
+                    <rect key="frame" x="93" y="63" width="180" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="6-15位英文字母、数字或符号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="msV-0w-k3u">
-                    <rect key="frame" x="110" y="109" width="170" height="30"/>
+                    <rect key="frame" x="93" y="109" width="180" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESv-a8-53B">
                     <rect key="frame" x="210" y="159" width="60" height="30"/>
@@ -92,15 +95,15 @@
                         <action selector="handleConfirmAgreementAction:" destination="-1" eventType="touchUpInside" id="Dnw-tX-z7Y"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="输入密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZo-PO-2Lr">
-                    <rect key="frame" x="31" y="113" width="56" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密   码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZo-PO-2Lr">
+                    <rect key="frame" x="36" y="113" width="44" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="填写用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qus-jH-gkd">
-                    <rect key="frame" x="31" y="67" width="70" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qus-jH-gkd">
+                    <rect key="frame" x="36" y="67" width="44" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                     <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,17 +129,31 @@
                         <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="k3a-4G-xF8"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPd-pg-VGs" customClass="JYButton">
+                    <rect key="frame" x="93" y="209" width="125" height="35"/>
+                    <animations/>
+                    <state key="normal" title="立即绑定" backgroundImage="jy_button_blue.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="jy_button_blue_pressed.png"/>
+                    <connections>
+                        <action selector="handleBindAccountAction:" destination="-1" eventType="touchUpInside" id="0Gw-tw-JEU"/>
+                        <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="2sL-T4-8da"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="633" y="112.5"/>
+            <point key="canvasLocation" x="633" y="112"/>
         </view>
     </objects>
     <resources>
         <image name="jy_back.png" width="14" height="14"/>
         <image name="jy_back_pressed.png" width="14" height="14"/>
+        <image name="jy_button_blue.png" width="7" height="9"/>
+        <image name="jy_button_blue_pressed.png" width="7" height="9"/>
         <image name="jy_button_orange.png" width="7" height="9"/>
         <image name="jy_button_orange_pressed.png" width="7" height="9"/>
         <image name="jy_img_checkbox_off.png" width="15" height="15"/>

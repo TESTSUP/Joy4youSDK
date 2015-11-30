@@ -7,12 +7,19 @@
 //
 
 #import "JYBindAlertViewController.h"
+#import "JYRegistViewController.h"
+#import "NSBundle+JYBundle.h"
 
 @implementation JYBindAlertViewController
 
 - (IBAction)handleRegistAction:(id)sender {
+    JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
+    
+    [self.navigationController pushViewController:registVC animated:YES];
 }
 
 - (IBAction)handleTouristAction:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationRemoveView object:nil];
 }
 @end
