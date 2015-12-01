@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.sdkVersion.text = Joy4youSDK_VERSION;
 }
 
 - (void)didReceiveMemoryWarning {

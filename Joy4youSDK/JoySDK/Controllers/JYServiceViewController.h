@@ -11,4 +11,6 @@
 
 @interface JYServiceViewController : JYViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *sdkVersion;
+
 @end

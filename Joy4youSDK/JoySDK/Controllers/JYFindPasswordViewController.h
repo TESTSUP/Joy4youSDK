@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *accountBg;
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
-
+@property (weak, nonatomic) IBOutlet JYButton *serviceButton;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 - (IBAction)handleFindAction:(id)sender;
