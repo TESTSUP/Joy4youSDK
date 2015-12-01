@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFHTTPSessionManager.h"
+#import "JYAFHTTPSessionManager.h"
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || TARGET_WATCH_OS
 
@@ -43,11 +43,11 @@
 #import <WatchKit/WatchKit.h>
 #endif
 
-@interface AFHTTPSessionManager ()
+@interface JYAFHTTPSessionManager ()
 @property (readwrite, nonatomic, strong) NSURL *baseURL;
 @end
 
-@implementation AFHTTPSessionManager
+@implementation JYAFHTTPSessionManager
 @dynamic responseSerializer;
 
 + (instancetype)manager {
@@ -81,8 +81,8 @@
 
     self.baseURL = url;
 
-    self.requestSerializer = [AFHTTPRequestSerializer serializer];
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
+    self.requestSerializer = [JYAFHTTPRequestSerializer serializer];
+    self.responseSerializer = [JYAFJSONResponseSerializer serializer];
 
     return self;
 }
@@ -92,13 +92,13 @@
 #ifdef _SYSTEMCONFIGURATION_H
 #endif
 
-- (void)setRequestSerializer:(AFHTTPRequestSerializer <AFURLRequestSerialization> *)requestSerializer {
+- (void)setRequestSerializer:(JYAFHTTPRequestSerializer <JYAFURLRequestSerialization> *)requestSerializer {
     NSParameterAssert(requestSerializer);
 
     _requestSerializer = requestSerializer;
 }
 
-- (void)setResponseSerializer:(AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
+- (void)setResponseSerializer:(JYAFHTTPResponseSerializer <JYAFURLResponseSerialization> *)responseSerializer {
     NSParameterAssert(responseSerializer);
 
     [super setResponseSerializer:responseSerializer];
@@ -148,7 +148,7 @@
 
 - (NSURLSessionDataTask *)POST:(NSString *)URLString
                     parameters:(id)parameters
-     constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block
+     constructingBodyWithBlock:(void (^)(id <JYAFMultipartFormData> formData))block
                        success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                        failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
 {
@@ -288,9 +288,9 @@
         return nil;
     }
 
-    self.requestSerializer = [decoder decodeObjectOfClass:[AFHTTPRequestSerializer class] forKey:NSStringFromSelector(@selector(requestSerializer))];
-    self.responseSerializer = [decoder decodeObjectOfClass:[AFHTTPResponseSerializer class] forKey:NSStringFromSelector(@selector(responseSerializer))];
-    AFSecurityPolicy *decodedPolicy = [decoder decodeObjectOfClass:[AFSecurityPolicy class] forKey:NSStringFromSelector(@selector(securityPolicy))];
+    self.requestSerializer = [decoder decodeObjectOfClass:[JYAFHTTPRequestSerializer class] forKey:NSStringFromSelector(@selector(requestSerializer))];
+    self.responseSerializer = [decoder decodeObjectOfClass:[JYAFHTTPResponseSerializer class] forKey:NSStringFromSelector(@selector(responseSerializer))];
+    JYAFSecurityPolicy *decodedPolicy = [decoder decodeObjectOfClass:[JYAFSecurityPolicy class] forKey:NSStringFromSelector(@selector(securityPolicy))];
     if (decodedPolicy) {
         self.securityPolicy = decodedPolicy;
     }
@@ -315,7 +315,7 @@
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFHTTPSessionManager *HTTPClient = [[[self class] allocWithZone:zone] initWithBaseURL:self.baseURL sessionConfiguration:self.session.configuration];
+    JYAFHTTPSessionManager *HTTPClient = [[[self class] allocWithZone:zone] initWithBaseURL:self.baseURL sessionConfiguration:self.session.configuration];
 
     HTTPClient.requestSerializer = [self.requestSerializer copyWithZone:zone];
     HTTPClient.responseSerializer = [self.responseSerializer copyWithZone:zone];

@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  For example, a JSON request serializer may set the HTTP body of the request to a JSON representation, and set the `Content-Type` HTTP header field value to `application/json`.
  */
-@protocol AFURLRequestSerialization <NSObject, NSSecureCoding, NSCopying>
+@protocol JYAFURLRequestSerialization <NSObject, NSSecureCoding, NSCopying>
 
 /**
  Returns a request with the specified parameters encoded into a copy of the original request.
@@ -62,14 +62,14 @@ typedef NS_ENUM(NSUInteger, AFHTTPRequestQueryStringSerializationStyle) {
     AFHTTPRequestQueryStringDefaultStyle = 0,
 };
 
-@protocol AFMultipartFormData;
+@protocol JYAFMultipartFormData;
 
 /**
  `AFHTTPRequestSerializer` conforms to the `AFURLRequestSerialization` & `AFURLResponseSerialization` protocols, offering a concrete base implementation of query string / URL form-encoded parameter serialization and default request headers, as well as response status code and content type validation.
 
  Any request or response serializer dealing with HTTP is encouraged to subclass `AFHTTPRequestSerializer` in order to ensure consistent default behavior.
  */
-@interface AFHTTPRequestSerializer : NSObject <AFURLRequestSerialization>
+@interface JYAFHTTPRequestSerializer : NSObject <JYAFURLRequestSerialization>
 
 /**
  The string encoding used to serialize parameters. `NSUTF8StringEncoding` by default.
@@ -234,7 +234,7 @@ forHTTPHeaderField:(NSString *)field;
 - (NSMutableURLRequest *)multipartFormRequestWithMethod:(NSString *)method
                                               URLString:(NSString *)URLString
                                              parameters:(NSDictionary *)parameters
-                              constructingBodyWithBlock:(void (^)(id <AFMultipartFormData> formData))block DEPRECATED_ATTRIBUTE;
+                              constructingBodyWithBlock:(void (^)(id <JYAFMultipartFormData> formData))block DEPRECATED_ATTRIBUTE;
 
 /**
  Creates an `NSMutableURLRequest` object with the specified HTTP method and URLString, and constructs a `multipart/form-data` HTTP body, using the specified parameters and multipart form data block. See http://www.w3.org/TR/html4/interact/forms.html#h-17.13.4.2
@@ -252,7 +252,7 @@ forHTTPHeaderField:(NSString *)field;
 - (NSMutableURLRequest *)multipartFormRequestWithMethod:(NSString *)method
                                               URLString:(NSString *)URLString
                                              parameters:(nullable NSDictionary *)parameters
-                              constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
+                              constructingBodyWithBlock:(nullable void (^)(id <JYAFMultipartFormData> formData))block
                                                   error:(NSError * __nullable __autoreleasing *)error;
 
 /**
@@ -277,7 +277,7 @@ forHTTPHeaderField:(NSString *)field;
 /**
  The `AFMultipartFormData` protocol defines the methods supported by the parameter in the block argument of `AFHTTPRequestSerializer -multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:`.
  */
-@protocol AFMultipartFormData
+@protocol JYAFMultipartFormData
 
 /**
  Appends the HTTP header `Content-Disposition: file; filename=#{generated filename}; name=#{name}"` and `Content-Type: #{generated mimeType}`, followed by the encoded file data and the multipart form boundary.
@@ -362,7 +362,7 @@ forHTTPHeaderField:(NSString *)field;
 /**
  Throttles request bandwidth by limiting the packet size and adding a delay for each chunk read from the upload stream.
 
- When uploading over a 3G or EDGE connection, requests may fail with "request body stream exhausted". Setting a maximum packet size and delay according to the recommended values (`kAFUploadStream3GSuggestedPacketSize` and `kAFUploadStream3GSuggestedDelay`) lowers the risk of the input stream exceeding its allocated bandwidth. Unfortunately, there is no definite way to distinguish between a 3G, EDGE, or LTE connection over `NSURLConnection`. As such, it is not recommended that you throttle bandwidth based solely on network reachability. Instead, you should consider checking for the "request body stream exhausted" in a failure block, and then retrying the request with throttled bandwidth.
+ When uploading over a 3G or EDGE connection, requests may fail with "request body stream exhausted". Setting a maximum packet size and delay according to the recommended values (`kJYAFUploadStream3GSuggestedPacketSize` and `kJYAFUploadStream3GSuggestedDelay`) lowers the risk of the input stream exceeding its allocated bandwidth. Unfortunately, there is no definite way to distinguish between a 3G, EDGE, or LTE connection over `NSURLConnection`. As such, it is not recommended that you throttle bandwidth based solely on network reachability. Instead, you should consider checking for the "request body stream exhausted" in a failure block, and then retrying the request with throttled bandwidth.
 
  @param numberOfBytes Maximum packet size, in number of bytes. The default packet size for an input stream is 16kb.
  @param delay Duration of delay each time a packet is read. By default, no delay is set.
@@ -377,7 +377,7 @@ forHTTPHeaderField:(NSString *)field;
 /**
  `AFJSONRequestSerializer` is a subclass of `AFHTTPRequestSerializer` that encodes parameters as JSON using `NSJSONSerialization`, setting the `Content-Type` of the encoded request to `application/json`.
  */
-@interface AFJSONRequestSerializer : AFHTTPRequestSerializer
+@interface JYAFJSONRequestSerializer : JYAFHTTPRequestSerializer
 
 /**
  Options for writing the request JSON data from Foundation objects. For possible values, see the `NSJSONSerialization` documentation section "NSJSONWritingOptions". `0` by default.
@@ -398,7 +398,7 @@ forHTTPHeaderField:(NSString *)field;
 /**
  `AFPropertyListRequestSerializer` is a subclass of `AFHTTPRequestSerializer` that encodes parameters as JSON using `NSPropertyListSerializer`, setting the `Content-Type` of the encoded request to `application/x-plist`.
  */
-@interface AFPropertyListRequestSerializer : AFHTTPRequestSerializer
+@interface JYAFPropertyListRequestSerializer : JYAFHTTPRequestSerializer
 
 /**
  The property list format. Possible values are described in "NSPropertyListFormat".
@@ -434,28 +434,28 @@ forHTTPHeaderField:(NSString *)field;
 
  The following error domain is predefined.
 
- - `NSString * const AFURLRequestSerializationErrorDomain`
+ - `NSString * const JYAFURLRequestSerializationErrorDomain`
 
  ### Constants
 
- `AFURLRequestSerializationErrorDomain`
- AFURLRequestSerializer errors. Error codes for `AFURLRequestSerializationErrorDomain` correspond to codes in `NSURLErrorDomain`.
+ `JYAFURLRequestSerializationErrorDomain`
+ AFURLRequestSerializer errors. Error codes for `JYAFURLRequestSerializationErrorDomain` correspond to codes in `NSURLErrorDomain`.
  */
-FOUNDATION_EXPORT NSString * const AFURLRequestSerializationErrorDomain;
+FOUNDATION_EXPORT NSString * const JYAFURLRequestSerializationErrorDomain;
 
 /**
  ## User info dictionary keys
 
  These keys may exist in the user info dictionary, in addition to those defined for NSError.
 
- - `NSString * const AFNetworkingOperationFailingURLRequestErrorKey`
+ - `NSString * const JYAFNetworkingOperationFailingURLRequestErrorKey`
 
  ### Constants
 
- `AFNetworkingOperationFailingURLRequestErrorKey`
- The corresponding value is an `NSURLRequest` containing the request of the operation associated with an error. This key is only present in the `AFURLRequestSerializationErrorDomain`.
+ `JYAFNetworkingOperationFailingURLRequestErrorKey`
+ The corresponding value is an `NSURLRequest` containing the request of the operation associated with an error. This key is only present in the `JYAFURLRequestSerializationErrorDomain`.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingOperationFailingURLRequestErrorKey;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingOperationFailingURLRequestErrorKey;
 
 /**
  ## Throttling Bandwidth for HTTP Request Input Streams
@@ -464,13 +464,13 @@ FOUNDATION_EXPORT NSString * const AFNetworkingOperationFailingURLRequestErrorKe
 
  ### Constants
 
- `kAFUploadStream3GSuggestedPacketSize`
+ `kJYAFUploadStream3GSuggestedPacketSize`
  Maximum packet size, in number of bytes. Equal to 16kb.
 
- `kAFUploadStream3GSuggestedDelay`
+ `kJYAFUploadStream3GSuggestedDelay`
  Duration of delay each time a packet is read. Equal to 0.2 seconds.
  */
-FOUNDATION_EXPORT NSUInteger const kAFUploadStream3GSuggestedPacketSize;
-FOUNDATION_EXPORT NSTimeInterval const kAFUploadStream3GSuggestedDelay;
+FOUNDATION_EXPORT NSUInteger const kJYAFUploadStream3GSuggestedPacketSize;
+FOUNDATION_EXPORT NSTimeInterval const kJYAFUploadStream3GSuggestedDelay;
 
 NS_ASSUME_NONNULL_END

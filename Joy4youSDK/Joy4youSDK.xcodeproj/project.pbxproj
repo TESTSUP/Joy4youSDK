@@ -85,13 +85,13 @@
 		CFF6ACA01BF9BF7E006A7DA2 /* JoyRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC9F1BF9BF7E006A7DA2 /* JoyRootViewController.m */; };
 		CFF6ACB61BF9DDAE006A7DA2 /* JoyRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACB51BF9DDAE006A7DA2 /* JoyRequest.m */; };
 		CFF6ACB91BF9DEC1006A7DA2 /* JYDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACB81BF9DEC1006A7DA2 /* JYDevice.m */; };
-		CFF6ACD51BFB0601006A7DA2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC01BFB0601006A7DA2 /* AFHTTPRequestOperation.m */; };
-		CFF6ACD61BFB0601006A7DA2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC21BFB0601006A7DA2 /* AFHTTPRequestOperationManager.m */; };
-		CFF6ACD71BFB0601006A7DA2 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC41BFB0601006A7DA2 /* AFURLConnectionOperation.m */; };
-		CFF6ACD81BFB0601006A7DA2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC71BFB0601006A7DA2 /* AFHTTPSessionManager.m */; };
-		CFF6ACD91BFB0601006A7DA2 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC91BFB0601006A7DA2 /* AFURLSessionManager.m */; };
-		CFF6ACDA1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACCC1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m */; };
-		CFF6ACDB1BFB0601006A7DA2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACCF1BFB0601006A7DA2 /* AFSecurityPolicy.m */; };
+		CFF6ACD51BFB0601006A7DA2 /* JYAFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC01BFB0601006A7DA2 /* JYAFHTTPRequestOperation.m */; };
+		CFF6ACD61BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC21BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.m */; };
+		CFF6ACD71BFB0601006A7DA2 /* JYAFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC41BFB0601006A7DA2 /* JYAFURLConnectionOperation.m */; };
+		CFF6ACD81BFB0601006A7DA2 /* JYAFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC71BFB0601006A7DA2 /* JYAFHTTPSessionManager.m */; };
+		CFF6ACD91BFB0601006A7DA2 /* JYAFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACC91BFB0601006A7DA2 /* JYAFURLSessionManager.m */; };
+		CFF6ACDA1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACCC1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.m */; };
+		CFF6ACDB1BFB0601006A7DA2 /* JYAFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACCF1BFB0601006A7DA2 /* JYAFSecurityPolicy.m */; };
 		CFF6ACDC1BFB0601006A7DA2 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACD21BFB0601006A7DA2 /* AFURLRequestSerialization.m */; };
 		CFF6ACDD1BFB0601006A7DA2 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACD41BFB0601006A7DA2 /* AFURLResponseSerialization.m */; };
 		CFF6ACE21BFC1952006A7DA2 /* JYHitTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6ACE11BFC1952006A7DA2 /* JYHitTestView.m */; };
@@ -238,20 +238,20 @@
 		CFF6ACB71BF9DEC1006A7DA2 /* JYDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYDevice.h; sourceTree = "<group>"; };
 		CFF6ACB81BF9DEC1006A7DA2 /* JYDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYDevice.m; sourceTree = "<group>"; };
 		CFF6ACBD1BFB0601006A7DA2 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		CFF6ACBF1BFB0601006A7DA2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		CFF6ACC01BFB0601006A7DA2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		CFF6ACC11BFB0601006A7DA2 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
-		CFF6ACC21BFB0601006A7DA2 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
-		CFF6ACC31BFB0601006A7DA2 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		CFF6ACC41BFB0601006A7DA2 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		CFF6ACC61BFB0601006A7DA2 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		CFF6ACC71BFB0601006A7DA2 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		CFF6ACC81BFB0601006A7DA2 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		CFF6ACC91BFB0601006A7DA2 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		CFF6ACCB1BFB0601006A7DA2 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		CFF6ACCC1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		CFF6ACCE1BFB0601006A7DA2 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
-		CFF6ACCF1BFB0601006A7DA2 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		CFF6ACBF1BFB0601006A7DA2 /* JYAFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		CFF6ACC01BFB0601006A7DA2 /* JYAFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		CFF6ACC11BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		CFF6ACC21BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		CFF6ACC31BFB0601006A7DA2 /* JYAFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFURLConnectionOperation.h; sourceTree = "<group>"; };
+		CFF6ACC41BFB0601006A7DA2 /* JYAFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFURLConnectionOperation.m; sourceTree = "<group>"; };
+		CFF6ACC61BFB0601006A7DA2 /* JYAFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFHTTPSessionManager.h; sourceTree = "<group>"; };
+		CFF6ACC71BFB0601006A7DA2 /* JYAFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFHTTPSessionManager.m; sourceTree = "<group>"; };
+		CFF6ACC81BFB0601006A7DA2 /* JYAFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFURLSessionManager.h; sourceTree = "<group>"; };
+		CFF6ACC91BFB0601006A7DA2 /* JYAFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFURLSessionManager.m; sourceTree = "<group>"; };
+		CFF6ACCB1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		CFF6ACCC1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		CFF6ACCE1BFB0601006A7DA2 /* JYAFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYAFSecurityPolicy.h; sourceTree = "<group>"; };
+		CFF6ACCF1BFB0601006A7DA2 /* JYAFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAFSecurityPolicy.m; sourceTree = "<group>"; };
 		CFF6ACD11BFB0601006A7DA2 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		CFF6ACD21BFB0601006A7DA2 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		CFF6ACD31BFB0601006A7DA2 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
@@ -526,12 +526,12 @@
 		CFF6ACBE1BFB0601006A7DA2 /* NSURLConnection */ = {
 			isa = PBXGroup;
 			children = (
-				CFF6ACBF1BFB0601006A7DA2 /* AFHTTPRequestOperation.h */,
-				CFF6ACC01BFB0601006A7DA2 /* AFHTTPRequestOperation.m */,
-				CFF6ACC31BFB0601006A7DA2 /* AFURLConnectionOperation.h */,
-				CFF6ACC41BFB0601006A7DA2 /* AFURLConnectionOperation.m */,
-				CFF6ACC11BFB0601006A7DA2 /* AFHTTPRequestOperationManager.h */,
-				CFF6ACC21BFB0601006A7DA2 /* AFHTTPRequestOperationManager.m */,
+				CFF6ACBF1BFB0601006A7DA2 /* JYAFHTTPRequestOperation.h */,
+				CFF6ACC01BFB0601006A7DA2 /* JYAFHTTPRequestOperation.m */,
+				CFF6ACC31BFB0601006A7DA2 /* JYAFURLConnectionOperation.h */,
+				CFF6ACC41BFB0601006A7DA2 /* JYAFURLConnectionOperation.m */,
+				CFF6ACC11BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.h */,
+				CFF6ACC21BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.m */,
 			);
 			path = NSURLConnection;
 			sourceTree = "<group>";
@@ -539,10 +539,10 @@
 		CFF6ACC51BFB0601006A7DA2 /* NSURLSession */ = {
 			isa = PBXGroup;
 			children = (
-				CFF6ACC61BFB0601006A7DA2 /* AFHTTPSessionManager.h */,
-				CFF6ACC71BFB0601006A7DA2 /* AFHTTPSessionManager.m */,
-				CFF6ACC81BFB0601006A7DA2 /* AFURLSessionManager.h */,
-				CFF6ACC91BFB0601006A7DA2 /* AFURLSessionManager.m */,
+				CFF6ACC61BFB0601006A7DA2 /* JYAFHTTPSessionManager.h */,
+				CFF6ACC71BFB0601006A7DA2 /* JYAFHTTPSessionManager.m */,
+				CFF6ACC81BFB0601006A7DA2 /* JYAFURLSessionManager.h */,
+				CFF6ACC91BFB0601006A7DA2 /* JYAFURLSessionManager.m */,
 			);
 			path = NSURLSession;
 			sourceTree = "<group>";
@@ -550,8 +550,8 @@
 		CFF6ACCA1BFB0601006A7DA2 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				CFF6ACCB1BFB0601006A7DA2 /* AFNetworkReachabilityManager.h */,
-				CFF6ACCC1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m */,
+				CFF6ACCB1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.h */,
+				CFF6ACCC1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.m */,
 			);
 			path = Reachability;
 			sourceTree = "<group>";
@@ -559,8 +559,8 @@
 		CFF6ACCD1BFB0601006A7DA2 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				CFF6ACCE1BFB0601006A7DA2 /* AFSecurityPolicy.h */,
-				CFF6ACCF1BFB0601006A7DA2 /* AFSecurityPolicy.m */,
+				CFF6ACCE1BFB0601006A7DA2 /* JYAFSecurityPolicy.h */,
+				CFF6ACCF1BFB0601006A7DA2 /* JYAFSecurityPolicy.m */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -732,26 +732,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */,
-				CFF6ACD71BFB0601006A7DA2 /* AFURLConnectionOperation.m in Sources */,
+				CFF6ACD71BFB0601006A7DA2 /* JYAFURLConnectionOperation.m in Sources */,
 				3F4A79201C0BEB7E00F4DB50 /* JYCacheCellView.m in Sources */,
-				CFF6ACD51BFB0601006A7DA2 /* AFHTTPRequestOperation.m in Sources */,
+				CFF6ACD51BFB0601006A7DA2 /* JYAFHTTPRequestOperation.m in Sources */,
 				3F4A79101C08571400F4DB50 /* JYPopView.m in Sources */,
 				3FFB73C41C0699BF00C81D68 /* JYButton.m in Sources */,
 				CFF6ACEE1BFC223D006A7DA2 /* JoyMainViewController.m in Sources */,
 				CFF6ACE21BFC1952006A7DA2 /* JYHitTestView.m in Sources */,
 				CFF6ACB91BF9DEC1006A7DA2 /* JYDevice.m in Sources */,
 				3FFB73C31C0699A900C81D68 /* JYLoadingView.m in Sources */,
-				CFF6ACD81BFB0601006A7DA2 /* AFHTTPSessionManager.m in Sources */,
+				CFF6ACD81BFB0601006A7DA2 /* JYAFHTTPSessionManager.m in Sources */,
 				3F4A791F1C0BEB7A00F4DB50 /* JYCacheListView.m in Sources */,
 				CF5744701BFF25D000BF4351 /* JYServiceData.m in Sources */,
-				CFF6ACDB1BFB0601006A7DA2 /* AFSecurityPolicy.m in Sources */,
+				CFF6ACDB1BFB0601006A7DA2 /* JYAFSecurityPolicy.m in Sources */,
 				CFF6ACB61BF9DDAE006A7DA2 /* JoyRequest.m in Sources */,
 				CFF6ACEA1BFC1F75006A7DA2 /* JYLog.m in Sources */,
 				3FFB73C51C0699C400C81D68 /* NSBundle+JYBundle.m in Sources */,
 				CFF6ACDC1BFB0601006A7DA2 /* AFURLRequestSerialization.m in Sources */,
 				CFF6ACFB1BFC52AF006A7DA2 /* JYModelInterface.m in Sources */,
 				3FFB73C71C0699CF00C81D68 /* UIView+JYView.m in Sources */,
-				CFF6ACD91BFB0601006A7DA2 /* AFURLSessionManager.m in Sources */,
+				CFF6ACD91BFB0601006A7DA2 /* JYAFURLSessionManager.m in Sources */,
 				248FCC801C04317E00657ADD /* JYLoginViewController.m in Sources */,
 				2480E54D1C0461F300388900 /* JYUtil.m in Sources */,
 				3F4A78AD1C06D0F800F4DB50 /* JYAlertView.m in Sources */,
@@ -760,14 +760,14 @@
 				CFF6AC881BF9BE25006A7DA2 /* JoyEncryption.m in Sources */,
 				3FFB73C11C0699A100C81D68 /* JYFindPasswordViewController.m in Sources */,
 				CFF6ACF11BFC2288006A7DA2 /* JYConfig.m in Sources */,
-				CFF6ACD61BFB0601006A7DA2 /* AFHTTPRequestOperationManager.m in Sources */,
+				CFF6ACD61BFB0601006A7DA2 /* JYAFHTTPRequestOperationManager.m in Sources */,
 				CFF6ACA01BF9BF7E006A7DA2 /* JoyRootViewController.m in Sources */,
 				CFF6ACF81BFC5288006A7DA2 /* JYUserCache.m in Sources */,
 				248FCC831C04320600657ADD /* JYRegistViewController.m in Sources */,
 				2480E5491C044E1D00388900 /* JYSTKeychain.m in Sources */,
 				3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */,
 				3F8839271C06A72600A640A8 /* JYViewController.m in Sources */,
-				CFF6ACDA1BFB0601006A7DA2 /* AFNetworkReachabilityManager.m in Sources */,
+				CFF6ACDA1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.m in Sources */,
 				3F4A79261C0BF4D300F4DB50 /* JYAgreementViewController.m in Sources */,
 				3F4A78E41C0806C700F4DB50 /* JYBindEmailViewController.m in Sources */,
 				CFF6ACDD1BFB0601006A7DA2 /* AFURLResponseSerialization.m in Sources */,

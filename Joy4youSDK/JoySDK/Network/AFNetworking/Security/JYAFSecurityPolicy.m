@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFSecurityPolicy.h"
+#import "JYAFSecurityPolicy.h"
 
 #import <AssertMacros.h>
 
@@ -148,12 +148,12 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
 #pragma mark -
 
-@interface AFSecurityPolicy()
-@property (readwrite, nonatomic, assign) AFSSLPinningMode SSLPinningMode;
+@interface JYAFSecurityPolicy()
+@property (readwrite, nonatomic, assign) JYAFSSLPinningMode SSLPinningMode;
 @property (readwrite, nonatomic, strong) NSArray *pinnedPublicKeys;
 @end
 
-@implementation AFSecurityPolicy
+@implementation JYAFSecurityPolicy
 
 + (NSArray *)defaultPinnedCertificates {
     static NSArray *_defaultPinnedCertificates = nil;
@@ -175,14 +175,14 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 }
 
 + (instancetype)defaultPolicy {
-    AFSecurityPolicy *securityPolicy = [[self alloc] init];
-    securityPolicy.SSLPinningMode = AFSSLPinningModeNone;
+    JYAFSecurityPolicy *securityPolicy = [[self alloc] init];
+    securityPolicy.SSLPinningMode = JYAFSSLPinningModeNone;
 
     return securityPolicy;
 }
 
-+ (instancetype)policyWithPinningMode:(AFSSLPinningMode)pinningMode {
-    AFSecurityPolicy *securityPolicy = [[self alloc] init];
++ (instancetype)policyWithPinningMode:(JYAFSSLPinningMode)pinningMode {
+    JYAFSecurityPolicy *securityPolicy = [[self alloc] init];
     securityPolicy.SSLPinningMode = pinningMode;
 
     [securityPolicy setPinnedCertificates:[self defaultPinnedCertificates]];
@@ -228,7 +228,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 - (BOOL)evaluateServerTrust:(SecTrustRef)serverTrust
                   forDomain:(NSString *)domain
 {
-    if (domain && self.allowInvalidCertificates && self.validatesDomainName && (self.SSLPinningMode == AFSSLPinningModeNone || [self.pinnedCertificates count] == 0)) {
+    if (domain && self.allowInvalidCertificates && self.validatesDomainName && (self.SSLPinningMode == JYAFSSLPinningModeNone || [self.pinnedCertificates count] == 0)) {
         // https://developer.apple.com/library/mac/documentation/NetworkingInternet/Conceptual/NetworkingTopics/Articles/OverridingSSLChainValidationCorrectly.html
         //  According to the docs, you should only trust your provided certs for evaluation.
         //  Pinned certificates are added to the trust. Without pinned certificates,
@@ -250,7 +250,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
     SecTrustSetPolicies(serverTrust, (__bridge CFArrayRef)policies);
 
-    if (self.SSLPinningMode == AFSSLPinningModeNone) {
+    if (self.SSLPinningMode == JYAFSSLPinningModeNone) {
         return self.allowInvalidCertificates || AFServerTrustIsValid(serverTrust);
     } else if (!AFServerTrustIsValid(serverTrust) && !self.allowInvalidCertificates) {
         return NO;
@@ -258,10 +258,10 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 
     NSArray *serverCertificates = AFCertificateTrustChainForServerTrust(serverTrust);
     switch (self.SSLPinningMode) {
-        case AFSSLPinningModeNone:
+        case JYAFSSLPinningModeNone:
         default:
             return NO;
-        case AFSSLPinningModeCertificate: {
+        case JYAFSSLPinningModeCertificate: {
             NSMutableArray *pinnedCertificates = [NSMutableArray array];
             for (NSData *certificateData in self.pinnedCertificates) {
                 [pinnedCertificates addObject:(__bridge_transfer id)SecCertificateCreateWithData(NULL, (__bridge CFDataRef)certificateData)];
@@ -280,7 +280,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
             }
             return trustedCertificateCount > 0;
         }
-        case AFSSLPinningModePublicKey: {
+        case JYAFSSLPinningModePublicKey: {
             NSUInteger trustedPublicKeyCount = 0;
             NSArray *publicKeys = AFPublicKeyTrustChainForServerTrust(serverTrust);
 
@@ -335,7 +335,7 @@ static NSArray * AFPublicKeyTrustChainForServerTrust(SecTrustRef serverTrust) {
 #pragma mark - NSCopying
 
 - (instancetype)copyWithZone:(NSZone *)zone {
-    AFSecurityPolicy *securityPolicy = [[[self class] allocWithZone:zone] init];
+    JYAFSecurityPolicy *securityPolicy = [[[self class] allocWithZone:zone] init];
     securityPolicy.SSLPinningMode = self.SSLPinningMode;
     securityPolicy.allowInvalidCertificates = self.allowInvalidCertificates;
     securityPolicy.validatesDomainName = self.validatesDomainName;

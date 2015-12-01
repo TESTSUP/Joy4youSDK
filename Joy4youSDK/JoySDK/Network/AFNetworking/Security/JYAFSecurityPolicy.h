@@ -22,10 +22,10 @@
 #import <Foundation/Foundation.h>
 #import <Security/Security.h>
 
-typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
-    AFSSLPinningModeNone,
-    AFSSLPinningModePublicKey,
-    AFSSLPinningModeCertificate,
+typedef NS_ENUM(NSUInteger, JYAFSSLPinningMode) {
+    JYAFSSLPinningModeNone,
+    JYAFSSLPinningModePublicKey,
+    JYAFSSLPinningModeCertificate,
 };
 
 /**
@@ -36,12 +36,12 @@ typedef NS_ENUM(NSUInteger, AFSSLPinningMode) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AFSecurityPolicy : NSObject <NSSecureCoding, NSCopying>
+@interface JYAFSecurityPolicy : NSObject <NSSecureCoding, NSCopying>
 
 /**
- The criteria by which server trust should be evaluated against the pinned SSL certificates. Defaults to `AFSSLPinningModeNone`.
+ The criteria by which server trust should be evaluated against the pinned SSL certificates. Defaults to `JYAFSSLPinningModeNone`.
  */
-@property (readonly, nonatomic, assign) AFSSLPinningMode SSLPinningMode;
+@property (readonly, nonatomic, assign) JYAFSSLPinningMode SSLPinningMode;
 
 /**
  The certificates used to evaluate server trust according to the SSL pinning mode. By default, this property is set to any (`.cer`) certificates included in the app bundle. Note that if you create an array with duplicate certificates, the duplicate certificates will be removed. Note that if pinning is enabled, `evaluateServerTrust:forDomain:` will return true if any pinned certificate matches.
@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @return A new security policy.
  */
-+ (instancetype)policyWithPinningMode:(AFSSLPinningMode)pinningMode;
++ (instancetype)policyWithPinningMode:(JYAFSSLPinningMode)pinningMode;
 
 ///------------------------------
 /// @name Evaluating Server Trust
@@ -123,20 +123,20 @@ NS_ASSUME_NONNULL_END
 /**
  ## SSL Pinning Modes
 
- The following constants are provided by `AFSSLPinningMode` as possible SSL pinning modes.
+ The following constants are provided by `JYAFSSLPinningMode` as possible SSL pinning modes.
 
  enum {
- AFSSLPinningModeNone,
- AFSSLPinningModePublicKey,
- AFSSLPinningModeCertificate,
+ JYAFSSLPinningModeNone,
+ JYAFSSLPinningModePublicKey,
+ JYAFSSLPinningModeCertificate,
  }
 
- `AFSSLPinningModeNone`
+ `JYAFSSLPinningModeNone`
  Do not used pinned certificates to validate servers.
 
- `AFSSLPinningModePublicKey`
+ `JYAFSSLPinningModePublicKey`
  Validate host certificates against public keys of pinned certificates.
 
- `AFSSLPinningModeCertificate`
+ `JYAFSSLPinningModeCertificate`
  Validate host certificates against pinned certificates.
 */

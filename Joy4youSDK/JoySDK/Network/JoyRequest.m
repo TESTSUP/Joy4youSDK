@@ -13,8 +13,8 @@
 
 @interface JoyRequest ()
 
-@property (nonatomic, strong)AFHTTPRequestOperationManager *connectionManager;  //此方法iOS9后不可用
-@property (nonatomic, strong)AFHTTPSessionManager *sessionManger;
+@property (nonatomic, strong)JYAFHTTPRequestOperationManager *connectionManager;  //此方法iOS9后不可用
+@property (nonatomic, strong)JYAFHTTPSessionManager *sessionManger;
 
 @end
 
@@ -40,13 +40,13 @@ static dispatch_once_t token;
         NSURL *baseUrl = [NSURL URLWithString:Joy4youHostUrl];
         
         if ([UIDevice currentDevice].systemVersion.floatValue > 7.0) {
-            self.sessionManger = [[AFHTTPSessionManager alloc] initWithBaseURL:baseUrl
+            self.sessionManger = [[JYAFHTTPSessionManager alloc] initWithBaseURL:baseUrl
                                                           sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-            self.sessionManger.responseSerializer = [AFHTTPResponseSerializer serializer];
+            self.sessionManger.responseSerializer = [JYAFHTTPResponseSerializer serializer];
             self.sessionManger.requestSerializer.timeoutInterval = TIME_OUT;
         } else {
-            self.connectionManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseUrl];
-            self.connectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            self.connectionManager = [[JYAFHTTPRequestOperationManager alloc] initWithBaseURL:baseUrl];
+            self.connectionManager.responseSerializer = [JYAFHTTPResponseSerializer serializer];
             self.connectionManager.requestSerializer.timeoutInterval = TIME_OUT;
         }
         
@@ -76,12 +76,12 @@ static dispatch_once_t token;
     } else {
         [self.connectionManager POST:aPath
                           parameters:aParam
-                             success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+                             success:^(JYAFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
                                  if (success) {
                                      success(operation.response, responseObject);
                                  }
                              }
-                             failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+                             failure:^(JYAFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
                                  if (faliure) {
                                      faliure(operation.response, error);
                                  }

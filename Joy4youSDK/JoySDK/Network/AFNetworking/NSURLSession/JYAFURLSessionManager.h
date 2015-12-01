@@ -23,9 +23,9 @@
 
 #import "AFURLResponseSerialization.h"
 #import "AFURLRequestSerialization.h"
-#import "AFSecurityPolicy.h"
+#import "JYAFSecurityPolicy.h"
 #if !TARGET_OS_WATCH
-#import "AFNetworkReachabilityManager.h"
+#import "JYAFNetworkReachabilityManager.h"
 #endif
 
 #ifndef NS_DESIGNATED_INITIALIZER
@@ -95,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || TARGET_OS_WATCH
 
-@interface AFURLSessionManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NSSecureCoding, NSCopying>
+@interface JYAFURLSessionManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, NSSecureCoding, NSCopying>
 
 /**
  The managed session.
@@ -112,7 +112,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @warning `responseSerializer` must not be `nil`.
  */
-@property (nonatomic, strong) id <AFURLResponseSerialization> responseSerializer;
+@property (nonatomic, strong) id <JYAFURLResponseSerialization> responseSerializer;
 
 ///-------------------------------
 /// @name Managing Security Policy
@@ -121,7 +121,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The security policy used by created request operations to evaluate server trust for secure connections. `AFURLSessionManager` uses the `defaultPolicy` unless otherwise specified.
  */
-@property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
+@property (nonatomic, strong) JYAFSecurityPolicy *securityPolicy;
 
 #if !TARGET_OS_WATCH
 ///--------------------------------------
@@ -131,7 +131,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The network reachability manager. `AFURLSessionManager` uses the `sharedManager` by default.
  */
-@property (readwrite, nonatomic, strong) AFNetworkReachabilityManager *reachabilityManager;
+@property (readwrite, nonatomic, strong) JYAFNetworkReachabilityManager *reachabilityManager;
 #endif
 
 ///----------------------------
@@ -426,7 +426,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Sets a block to be executed when a download task has completed a download, as handled by the `NSURLSessionDownloadDelegate` method `URLSession:downloadTask:didFinishDownloadingToURL:`.
 
- @param block A block object to be executed when a download task has completed. The block returns the URL the download should be moved to, and takes three arguments: the session, the download task, and the temporary location of the downloaded file. If the file manager encounters an error while attempting to move the temporary file to the destination, an `AFURLSessionDownloadTaskDidFailToMoveFileNotification` will be posted, with the download task as its object, and the user info of the error.
+ @param block A block object to be executed when a download task has completed. The block returns the URL the download should be moved to, and takes three arguments: the session, the download task, and the temporary location of the downloaded file. If the file manager encounters an error while attempting to move the temporary file to the destination, an `JYAFURLSessionDownloadTaskDidFailToMoveFileNotification` will be posted, with the download task as its object, and the user info of the error.
  */
 - (void)setDownloadTaskDidFinishDownloadingBlock:(nullable NSURL * __nullable  (^)(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, NSURL *location))block;
 
@@ -455,100 +455,100 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Posted when a task begins executing.
 
- @deprecated Use `AFNetworkingTaskDidResumeNotification` instead.
+ @deprecated Use `JYAFNetworkingTaskDidResumeNotification` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidStartNotification DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidStartNotification DEPRECATED_ATTRIBUTE;
 
 /**
  Posted when a task resumes.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidResumeNotification;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidResumeNotification;
 
 /**
  Posted when a task finishes executing. Includes a userInfo dictionary with additional information about the task.
 
- @deprecated Use `AFNetworkingTaskDidCompleteNotification` instead.
+ @deprecated Use `JYAFNetworkingTaskDidCompleteNotification` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidFinishNotification DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidFinishNotification DEPRECATED_ATTRIBUTE;
 
 /**
  Posted when a task finishes executing. Includes a userInfo dictionary with additional information about the task.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidCompleteNotification;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidCompleteNotification;
 
 /**
  Posted when a task suspends its execution.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidSuspendNotification;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidSuspendNotification;
 
 /**
  Posted when a session is invalidated.
  */
-FOUNDATION_EXPORT NSString * const AFURLSessionDidInvalidateNotification;
+FOUNDATION_EXPORT NSString * const JYAFURLSessionDidInvalidateNotification;
 
 /**
  Posted when a session download task encountered an error when moving the temporary download file to a specified destination.
  */
-FOUNDATION_EXPORT NSString * const AFURLSessionDownloadTaskDidFailToMoveFileNotification;
+FOUNDATION_EXPORT NSString * const JYAFURLSessionDownloadTaskDidFailToMoveFileNotification;
 
 /**
- The raw response data of the task. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if response data exists for the task.
+ The raw response data of the task. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if response data exists for the task.
 
- @deprecated Use `AFNetworkingTaskDidCompleteResponseDataKey` instead.
+ @deprecated Use `JYAFNetworkingTaskDidCompleteResponseDataKey` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidFinishResponseDataKey DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidFinishResponseDataKey DEPRECATED_ATTRIBUTE;
 
 /**
- The raw response data of the task. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if response data exists for the task.
+ The raw response data of the task. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if response data exists for the task.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidCompleteResponseDataKey;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidCompleteResponseDataKey;
 
 /**
- The serialized response object of the task. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if the response was serialized.
+ The serialized response object of the task. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if the response was serialized.
 
- @deprecated Use `AFNetworkingTaskDidCompleteSerializedResponseKey` instead.
+ @deprecated Use `JYAFNetworkingTaskDidCompleteSerializedResponseKey` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidFinishSerializedResponseKey DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidFinishSerializedResponseKey DEPRECATED_ATTRIBUTE;
 
 /**
- The serialized response object of the task. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if the response was serialized.
+ The serialized response object of the task. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if the response was serialized.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidCompleteSerializedResponseKey;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidCompleteSerializedResponseKey;
 
 /**
- The response serializer used to serialize the response. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if the task has an associated response serializer.
+ The response serializer used to serialize the response. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if the task has an associated response serializer.
 
- @deprecated Use `AFNetworkingTaskDidCompleteResponseSerializerKey` instead.
+ @deprecated Use `JYAFNetworkingTaskDidCompleteResponseSerializerKey` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidFinishResponseSerializerKey DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidFinishResponseSerializerKey DEPRECATED_ATTRIBUTE;
 
 /**
- The response serializer used to serialize the response. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if the task has an associated response serializer.
+ The response serializer used to serialize the response. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if the task has an associated response serializer.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidCompleteResponseSerializerKey;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidCompleteResponseSerializerKey;
 
 /**
- The file path associated with the download task. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if an the response data has been stored directly to disk.
+ The file path associated with the download task. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if an the response data has been stored directly to disk.
 
- @deprecated Use `AFNetworkingTaskDidCompleteAssetPathKey` instead.
+ @deprecated Use `JYAFNetworkingTaskDidCompleteAssetPathKey` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidFinishAssetPathKey DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidFinishAssetPathKey DEPRECATED_ATTRIBUTE;
 
 /**
- The file path associated with the download task. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if an the response data has been stored directly to disk.
+ The file path associated with the download task. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if an the response data has been stored directly to disk.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidCompleteAssetPathKey;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidCompleteAssetPathKey;
 
 /**
- Any error associated with the task, or the serialization of the response. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if an error exists.
+ Any error associated with the task, or the serialization of the response. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if an error exists.
 
- @deprecated Use `AFNetworkingTaskDidCompleteErrorKey` instead.
+ @deprecated Use `JYAFNetworkingTaskDidCompleteErrorKey` instead.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidFinishErrorKey DEPRECATED_ATTRIBUTE;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidFinishErrorKey DEPRECATED_ATTRIBUTE;
 
 /**
- Any error associated with the task, or the serialization of the response. Included in the userInfo dictionary of the `AFNetworkingTaskDidFinishNotification` if an error exists.
+ Any error associated with the task, or the serialization of the response. Included in the userInfo dictionary of the `JYAFNetworkingTaskDidFinishNotification` if an error exists.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingTaskDidCompleteErrorKey;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingTaskDidCompleteErrorKey;
 
 NS_ASSUME_NONNULL_END

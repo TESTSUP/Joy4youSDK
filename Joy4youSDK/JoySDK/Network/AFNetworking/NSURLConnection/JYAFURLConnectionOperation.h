@@ -24,7 +24,7 @@
 #import <Availability.h>
 #import "AFURLRequestSerialization.h"
 #import "AFURLResponseSerialization.h"
-#import "AFSecurityPolicy.h"
+#import "JYAFSecurityPolicy.h"
 
 #ifndef NS_DESIGNATED_INITIALIZER
 #if __has_attribute(objc_designated_initializer)
@@ -91,7 +91,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AFURLConnectionOperation : NSOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate, NSSecureCoding, NSCopying>
+@interface JYAFURLConnectionOperation : NSOperation <NSURLConnectionDelegate, NSURLConnectionDataDelegate, NSSecureCoding, NSCopying>
 
 ///-------------------------------
 /// @name Accessing Run Loop Modes
@@ -167,7 +167,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The security policy used to evaluate server trust for secure connections.
  */
-@property (nonatomic, strong) AFSecurityPolicy *securityPolicy;
+@property (nonatomic, strong) JYAFSecurityPolicy *securityPolicy;
 
 ///------------------------
 /// @name Accessing Streams
@@ -334,11 +334,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Posted when an operation begins executing.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingOperationDidStartNotification;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingOperationDidStartNotification;
 
 /**
  Posted when an operation finishes.
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingOperationDidFinishNotification;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingOperationDidFinishNotification;
 
 NS_ASSUME_NONNULL_END

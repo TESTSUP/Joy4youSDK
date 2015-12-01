@@ -29,9 +29,9 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-NSString * const AFURLResponseSerializationErrorDomain = @"com.alamofire.error.serialization.response";
-NSString * const AFNetworkingOperationFailingURLResponseErrorKey = @"com.alamofire.serialization.response.error.response";
-NSString * const AFNetworkingOperationFailingURLResponseDataErrorKey = @"com.alamofire.serialization.response.error.data";
+NSString * const JYAFURLResponseSerializationErrorDomain = @"com.alamofire.error.serialization.response";
+NSString * const JYJYAFNetworkingOperationFailingURLResponseErrorKey = @"com.alamofire.serialization.response.error.response";
+NSString * const JYAFNetworkingOperationFailingURLResponseDataErrorKey = @"com.alamofire.serialization.response.error.data";
 
 static NSError * AFErrorWithUnderlyingError(NSError *error, NSError *underlyingError) {
     if (!error) {
@@ -83,7 +83,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
     return JSONObject;
 }
 
-@implementation AFHTTPResponseSerializer
+@implementation JYAFHTTPResponseSerializer
 
 + (instancetype)serializer {
     return [[self alloc] init];
@@ -118,13 +118,13 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                 NSMutableDictionary *mutableUserInfo = [@{
                                                           NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Request failed: unacceptable content-type: %@", @"AFNetworking", nil), [response MIMEType]],
                                                           NSURLErrorFailingURLErrorKey:[response URL],
-                                                          AFNetworkingOperationFailingURLResponseErrorKey: response,
+                                                          JYJYAFNetworkingOperationFailingURLResponseErrorKey: response,
                                                         } mutableCopy];
                 if (data) {
-                    mutableUserInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] = data;
+                    mutableUserInfo[JYAFNetworkingOperationFailingURLResponseDataErrorKey] = data;
                 }
 
-                validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:mutableUserInfo], validationError);
+                validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:JYAFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:mutableUserInfo], validationError);
             }
 
             responseIsValid = NO;
@@ -134,14 +134,14 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
             NSMutableDictionary *mutableUserInfo = [@{
                                                NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Request failed: %@ (%ld)", @"AFNetworking", nil), [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode], (long)response.statusCode],
                                                NSURLErrorFailingURLErrorKey:[response URL],
-                                               AFNetworkingOperationFailingURLResponseErrorKey: response,
+                                               JYJYAFNetworkingOperationFailingURLResponseErrorKey: response,
                                        } mutableCopy];
 
             if (data) {
-                mutableUserInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] = data;
+                mutableUserInfo[JYAFNetworkingOperationFailingURLResponseDataErrorKey] = data;
             }
 
-            validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorBadServerResponse userInfo:mutableUserInfo], validationError);
+            validationError = AFErrorWithUnderlyingError([NSError errorWithDomain:JYAFURLResponseSerializationErrorDomain code:NSURLErrorBadServerResponse userInfo:mutableUserInfo], validationError);
 
             responseIsValid = NO;
         }
@@ -191,7 +191,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFHTTPResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
+    JYAFHTTPResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
     serializer.acceptableStatusCodes = [self.acceptableStatusCodes copyWithZone:zone];
     serializer.acceptableContentTypes = [self.acceptableContentTypes copyWithZone:zone];
 
@@ -202,14 +202,14 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 
 #pragma mark -
 
-@implementation AFJSONResponseSerializer
+@implementation JYAFJSONResponseSerializer
 
 + (instancetype)serializer {
     return [self serializerWithReadingOptions:(NSJSONReadingOptions)0];
 }
 
 + (instancetype)serializerWithReadingOptions:(NSJSONReadingOptions)readingOptions {
-    AFJSONResponseSerializer *serializer = [[self alloc] init];
+    JYAFJSONResponseSerializer *serializer = [[self alloc] init];
     serializer.readingOptions = readingOptions;
 
     return serializer;
@@ -233,7 +233,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, JYAFURLResponseSerializationErrorDomain)) {
             return nil;
         }
     }
@@ -269,7 +269,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                                            NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:NSLocalizedStringFromTable(@"Could not decode string: %@", @"AFNetworking", nil), responseString]
                                            };
 
-                serializationError = [NSError errorWithDomain:AFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
+                serializationError = [NSError errorWithDomain:JYAFURLResponseSerializationErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
             }
         }
     }
@@ -309,7 +309,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFJSONResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
+    JYAFJSONResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
     serializer.readingOptions = self.readingOptions;
     serializer.removesKeysWithNullValues = self.removesKeysWithNullValues;
 
@@ -320,10 +320,10 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 
 #pragma mark -
 
-@implementation AFXMLParserResponseSerializer
+@implementation JYAFXMLParserResponseSerializer
 
 + (instancetype)serializer {
-    AFXMLParserResponseSerializer *serializer = [[self alloc] init];
+    JYAFXMLParserResponseSerializer *serializer = [[self alloc] init];
 
     return serializer;
 }
@@ -346,7 +346,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, JYAFURLResponseSerializationErrorDomain)) {
             return nil;
         }
     }
@@ -391,7 +391,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, JYAFURLResponseSerializationErrorDomain)) {
             return nil;
         }
     }
@@ -440,7 +440,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 
 #pragma mark -
 
-@implementation AFPropertyListResponseSerializer
+@implementation JYAFPropertyListResponseSerializer
 
 + (instancetype)serializer {
     return [self serializerWithFormat:NSPropertyListXMLFormat_v1_0 readOptions:0];
@@ -449,7 +449,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 + (instancetype)serializerWithFormat:(NSPropertyListFormat)format
                          readOptions:(NSPropertyListReadOptions)readOptions
 {
-    AFPropertyListResponseSerializer *serializer = [[self alloc] init];
+    JYAFPropertyListResponseSerializer *serializer = [[self alloc] init];
     serializer.format = format;
     serializer.readOptions = readOptions;
 
@@ -474,7 +474,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, JYAFURLResponseSerializationErrorDomain)) {
             return nil;
         }
     }
@@ -517,7 +517,7 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFPropertyListResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
+    JYAFPropertyListResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
     serializer.format = self.format;
     serializer.readOptions = self.readOptions;
 
@@ -657,7 +657,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
 #endif
 
 
-@implementation AFImageResponseSerializer
+@implementation JYAFImageResponseSerializer
 
 - (instancetype)init {
     self = [super init];
@@ -685,7 +685,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
                           error:(NSError *__autoreleasing *)error
 {
     if (![self validateResponse:(NSHTTPURLResponse *)response data:data error:error]) {
-        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, AFURLResponseSerializationErrorDomain)) {
+        if (!error || AFErrorOrUnderlyingErrorHasCodeInDomain(*error, NSURLErrorCannotDecodeContentData, JYAFURLResponseSerializationErrorDomain)) {
             return nil;
         }
     }
@@ -742,7 +742,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFImageResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
+    JYAFImageResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     serializer.imageScale = self.imageScale;
@@ -756,14 +756,14 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
 
 #pragma mark -
 
-@interface AFCompoundResponseSerializer ()
+@interface JYAFCompoundResponseSerializer ()
 @property (readwrite, nonatomic, copy) NSArray *responseSerializers;
 @end
 
-@implementation AFCompoundResponseSerializer
+@implementation JYAFCompoundResponseSerializer
 
 + (instancetype)compoundSerializerWithResponseSerializers:(NSArray *)responseSerializers {
-    AFCompoundResponseSerializer *serializer = [[self alloc] init];
+    JYAFCompoundResponseSerializer *serializer = [[self alloc] init];
     serializer.responseSerializers = responseSerializers;
 
     return serializer;
@@ -775,8 +775,8 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
                            data:(NSData *)data
                           error:(NSError *__autoreleasing *)error
 {
-    for (id <AFURLResponseSerialization> serializer in self.responseSerializers) {
-        if (![serializer isKindOfClass:[AFHTTPResponseSerializer class]]) {
+    for (id <JYAFURLResponseSerialization> serializer in self.responseSerializers) {
+        if (![serializer isKindOfClass:[JYAFHTTPResponseSerializer class]]) {
             continue;
         }
 
@@ -816,7 +816,7 @@ static UIImage * AFInflatedImageFromResponseWithDataAtScale(NSHTTPURLResponse *r
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFCompoundResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
+    JYAFCompoundResponseSerializer *serializer = [[[self class] allocWithZone:zone] init];
     serializer.responseSerializers = self.responseSerializers;
 
     return serializer;

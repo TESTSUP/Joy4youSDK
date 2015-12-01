@@ -32,11 +32,11 @@
 #endif
 #endif
 
-typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
-    AFNetworkReachabilityStatusUnknown          = -1,
-    AFNetworkReachabilityStatusNotReachable     = 0,
-    AFNetworkReachabilityStatusReachableViaWWAN = 1,
-    AFNetworkReachabilityStatusReachableViaWiFi = 2,
+typedef NS_ENUM(NSInteger, JYAFNetworkReachabilityStatus) {
+    JYAFNetworkReachabilityStatusUnknown          = -1,
+    JYAFNetworkReachabilityStatusNotReachable     = 0,
+    JYAFNetworkReachabilityStatusReachableViaWWAN = 1,
+    JYAFNetworkReachabilityStatusReachableViaWiFi = 2,
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -50,12 +50,12 @@ NS_ASSUME_NONNULL_BEGIN
 
  @warning Instances of `AFNetworkReachabilityManager` must be started with `-startMonitoring` before reachability status can be determined.
  */
-@interface AFNetworkReachabilityManager : NSObject
+@interface JYAFNetworkReachabilityManager : NSObject
 
 /**
  The current network reachability status.
  */
-@property (readonly, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;
+@property (readonly, nonatomic, assign) JYAFNetworkReachabilityStatus networkReachabilityStatus;
 
 /**
  Whether or not the network is currently reachable.
@@ -140,7 +140,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param block A block object to be executed when the network availability of the `baseURL` host changes.. This block has no return value and takes a single argument which represents the various reachability states from the device to the `baseURL`.
  */
-- (void)setReachabilityStatusChangeBlock:(nullable void (^)(AFNetworkReachabilityStatus status))block;
+- (void)setReachabilityStatusChangeBlock:(nullable void (^)(JYAFNetworkReachabilityStatus status))block;
 
 @end
 
@@ -154,31 +154,31 @@ NS_ASSUME_NONNULL_BEGIN
  The following constants are provided by `AFNetworkReachabilityManager` as possible network reachability statuses.
 
  enum {
- AFNetworkReachabilityStatusUnknown,
- AFNetworkReachabilityStatusNotReachable,
- AFNetworkReachabilityStatusReachableViaWWAN,
- AFNetworkReachabilityStatusReachableViaWiFi,
+ JYAFNetworkReachabilityStatusUnknown,
+ JYAFNetworkReachabilityStatusNotReachable,
+ JYAFNetworkReachabilityStatusReachableViaWWAN,
+ JYAFNetworkReachabilityStatusReachableViaWiFi,
  }
 
- `AFNetworkReachabilityStatusUnknown`
+ `JYAFNetworkReachabilityStatusUnknown`
  The `baseURL` host reachability is not known.
 
- `AFNetworkReachabilityStatusNotReachable`
+ `JYAFNetworkReachabilityStatusNotReachable`
  The `baseURL` host cannot be reached.
 
- `AFNetworkReachabilityStatusReachableViaWWAN`
+ `JYAFNetworkReachabilityStatusReachableViaWWAN`
  The `baseURL` host can be reached via a cellular connection, such as EDGE or GPRS.
 
- `AFNetworkReachabilityStatusReachableViaWiFi`
+ `JYAFNetworkReachabilityStatusReachableViaWiFi`
  The `baseURL` host can be reached via a Wi-Fi connection.
 
  ### Keys for Notification UserInfo Dictionary
 
  Strings that are used as keys in a `userInfo` dictionary in a network reachability status change notification.
 
- `AFNetworkingReachabilityNotificationStatusItem`
- A key in the userInfo dictionary in a `AFNetworkingReachabilityDidChangeNotification` notification.
- The corresponding value is an `NSNumber` object representing the `AFNetworkReachabilityStatus` value for the current reachability status.
+ `JYAFNetworkingReachabilityNotificationStatusItem`
+ A key in the userInfo dictionary in a `JYAFNetworkingReachabilityDidChangeNotification` notification.
+ The corresponding value is an `NSNumber` object representing the `JYAFNetworkReachabilityStatus` value for the current reachability status.
  */
 
 ///--------------------
@@ -187,21 +187,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  Posted when network reachability changes.
- This notification assigns no notification object. The `userInfo` dictionary contains an `NSNumber` object under the `AFNetworkingReachabilityNotificationStatusItem` key, representing the `AFNetworkReachabilityStatus` value for the current network reachability.
+ This notification assigns no notification object. The `userInfo` dictionary contains an `NSNumber` object under the `JYAFNetworkingReachabilityNotificationStatusItem` key, representing the `JYAFNetworkReachabilityStatus` value for the current network reachability.
 
  @warning In order for network reachability to be monitored, include the `SystemConfiguration` framework in the active target's "Link Binary With Library" build phase, and add `#import <SystemConfiguration/SystemConfiguration.h>` to the header prefix of the project (`Prefix.pch`).
  */
-FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityDidChangeNotification;
-FOUNDATION_EXPORT NSString * const AFNetworkingReachabilityNotificationStatusItem;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingReachabilityDidChangeNotification;
+FOUNDATION_EXPORT NSString * const JYAFNetworkingReachabilityNotificationStatusItem;
 
 ///--------------------
 /// @name Functions
 ///--------------------
 
 /**
- Returns a localized string representation of an `AFNetworkReachabilityStatus` value.
+ Returns a localized string representation of an `JYAFNetworkReachabilityStatus` value.
  */
-FOUNDATION_EXPORT NSString * AFStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status);
+FOUNDATION_EXPORT NSString * JYAFStringFromNetworkReachabilityStatus(JYAFNetworkReachabilityStatus status);
 
 NS_ASSUME_NONNULL_END
 #endif

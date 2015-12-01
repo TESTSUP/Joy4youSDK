@@ -31,7 +31,7 @@
 #import <CoreServices/CoreServices.h>
 #endif
 
-#import "AFURLSessionManager.h"
+#import "JYAFURLSessionManager.h"
 
 #ifndef NS_DESIGNATED_INITIALIZER
 #if __has_attribute(objc_designated_initializer)
@@ -83,7 +83,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AFHTTPSessionManager : AFURLSessionManager <NSSecureCoding, NSCopying>
+@interface JYAFHTTPSessionManager : JYAFURLSessionManager <NSSecureCoding, NSCopying>
 
 /**
  The URL used to construct requests from relative paths in methods like `requestWithMethod:URLString:parameters:`, and the `GET` / `POST` / et al. convenience methods.
@@ -95,14 +95,14 @@ NS_ASSUME_NONNULL_BEGIN
 
  @warning `requestSerializer` must not be `nil`.
  */
-@property (nonatomic, strong) AFHTTPRequestSerializer <AFURLRequestSerialization> * requestSerializer;
+@property (nonatomic, strong) JYAFHTTPRequestSerializer <JYAFURLRequestSerialization> * requestSerializer;
 
 /**
  Responses sent from the server in data tasks created with `dataTaskWithRequest:success:failure:` and run using the `GET` / `POST` / et al. convenience methods are automatically validated and serialized by the response serializer. By default, this property is set to an instance of `AFJSONResponseSerializer`.
 
  @warning `responseSerializer` must not be `nil`.
  */
-@property (nonatomic, strong) AFHTTPResponseSerializer <AFURLResponseSerialization> * responseSerializer;
+@property (nonatomic, strong) JYAFHTTPResponseSerializer <JYAFURLResponseSerialization> * responseSerializer;
 
 ///---------------------
 /// @name Initialization
@@ -197,7 +197,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSURLSessionDataTask *)POST:(NSString *)URLString
                     parameters:(nullable id)parameters
-     constructingBodyWithBlock:(nullable void (^)(id <AFMultipartFormData> formData))block
+     constructingBodyWithBlock:(nullable void (^)(id <JYAFMultipartFormData> formData))block
                        success:(nullable void (^)(NSURLSessionDataTask *task, id responseObject))success
                        failure:(nullable void (^)(NSURLSessionDataTask * __nullable task, NSError *error))failure;
 

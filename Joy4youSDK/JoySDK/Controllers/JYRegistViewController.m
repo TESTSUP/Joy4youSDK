@@ -31,6 +31,7 @@
         self.bindButton.hidden = YES;
         self.registBtn.hidden = NO;
     }
+    self.confirmAgreementBtn.selected = YES;
 }
 
 - (void)configTextField

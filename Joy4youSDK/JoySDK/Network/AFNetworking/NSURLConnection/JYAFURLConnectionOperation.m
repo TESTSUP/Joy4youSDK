@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFURLConnectionOperation.h"
+#import "JYAFURLConnectionOperation.h"
 
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 #import <UIKit/UIKit.h>
@@ -30,7 +30,7 @@
 // You can turn on ARC for only AFNetworking files by adding -fobjc-arc to the build phase for each of its files.
 #endif
 
-typedef NS_ENUM(NSInteger, AFOperationState) {
+typedef NS_ENUM(NSInteger, JYAFOperationState) {
     AFOperationPausedState      = -1,
     AFOperationReadyState       = 1,
     AFOperationExecutingState   = 2,
@@ -57,18 +57,18 @@ static dispatch_queue_t url_request_operation_completion_queue() {
     return af_url_request_operation_completion_queue;
 }
 
-static NSString * const kAFNetworkingLockName = @"com.alamofire.networking.operation.lock";
+static NSString * const kJYAFNetworkingLockName = @"com.alamofire.networking.operation.lock";
 
-NSString * const AFNetworkingOperationDidStartNotification = @"com.alamofire.networking.operation.start";
-NSString * const AFNetworkingOperationDidFinishNotification = @"com.alamofire.networking.operation.finish";
+NSString * const JYAFNetworkingOperationDidStartNotification = @"com.alamofire.networking.operation.start";
+NSString * const JYAFNetworkingOperationDidFinishNotification = @"com.alamofire.networking.operation.finish";
 
-typedef void (^AFURLConnectionOperationProgressBlock)(NSUInteger bytes, long long totalBytes, long long totalBytesExpected);
-typedef void (^AFURLConnectionOperationAuthenticationChallengeBlock)(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge);
-typedef NSCachedURLResponse * (^AFURLConnectionOperationCacheResponseBlock)(NSURLConnection *connection, NSCachedURLResponse *cachedResponse);
-typedef NSURLRequest * (^AFURLConnectionOperationRedirectResponseBlock)(NSURLConnection *connection, NSURLRequest *request, NSURLResponse *redirectResponse);
-typedef void (^AFURLConnectionOperationBackgroundTaskCleanupBlock)();
+typedef void (^JYAFURLConnectionOperationProgressBlock)(NSUInteger bytes, long long totalBytes, long long totalBytesExpected);
+typedef void (^JYAFURLConnectionOperationAuthenticationChallengeBlock)(NSURLConnection *connection, NSURLAuthenticationChallenge *challenge);
+typedef NSCachedURLResponse * (^JYAFURLConnectionOperationCacheResponseBlock)(NSURLConnection *connection, NSCachedURLResponse *cachedResponse);
+typedef NSURLRequest * (^JYAFURLConnectionOperationRedirectResponseBlock)(NSURLConnection *connection, NSURLRequest *request, NSURLResponse *redirectResponse);
+typedef void (^JYAFURLConnectionOperationBackgroundTaskCleanupBlock)();
 
-static inline NSString * AFKeyPathFromOperationState(AFOperationState state) {
+static inline NSString * AFKeyPathFromOperationState(JYAFOperationState state) {
     switch (state) {
         case AFOperationReadyState:
             return @"isReady";
@@ -87,7 +87,7 @@ static inline NSString * AFKeyPathFromOperationState(AFOperationState state) {
     }
 }
 
-static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperationState toState, BOOL isCancelled) {
+static inline BOOL AFStateTransitionIsValid(JYAFOperationState fromState, JYAFOperationState toState, BOOL isCancelled) {
     switch (fromState) {
         case AFOperationReadyState:
             switch (toState) {
@@ -128,8 +128,8 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     }
 }
 
-@interface AFURLConnectionOperation ()
-@property (readwrite, nonatomic, assign) AFOperationState state;
+@interface JYAFURLConnectionOperation ()
+@property (readwrite, nonatomic, assign) JYAFOperationState state;
 @property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
 @property (readwrite, nonatomic, strong) NSURLConnection *connection;
 @property (readwrite, nonatomic, strong) NSURLRequest *request;
@@ -139,19 +139,19 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 @property (readwrite, nonatomic, copy) NSString *responseString;
 @property (readwrite, nonatomic, assign) NSStringEncoding responseStringEncoding;
 @property (readwrite, nonatomic, assign) long long totalBytesRead;
-@property (readwrite, nonatomic, copy) AFURLConnectionOperationBackgroundTaskCleanupBlock backgroundTaskCleanup;
-@property (readwrite, nonatomic, copy) AFURLConnectionOperationProgressBlock uploadProgress;
-@property (readwrite, nonatomic, copy) AFURLConnectionOperationProgressBlock downloadProgress;
-@property (readwrite, nonatomic, copy) AFURLConnectionOperationAuthenticationChallengeBlock authenticationChallenge;
-@property (readwrite, nonatomic, copy) AFURLConnectionOperationCacheResponseBlock cacheResponse;
-@property (readwrite, nonatomic, copy) AFURLConnectionOperationRedirectResponseBlock redirectResponse;
+@property (readwrite, nonatomic, copy) JYAFURLConnectionOperationBackgroundTaskCleanupBlock backgroundTaskCleanup;
+@property (readwrite, nonatomic, copy) JYAFURLConnectionOperationProgressBlock uploadProgress;
+@property (readwrite, nonatomic, copy) JYAFURLConnectionOperationProgressBlock downloadProgress;
+@property (readwrite, nonatomic, copy) JYAFURLConnectionOperationAuthenticationChallengeBlock authenticationChallenge;
+@property (readwrite, nonatomic, copy) JYAFURLConnectionOperationCacheResponseBlock cacheResponse;
+@property (readwrite, nonatomic, copy) JYAFURLConnectionOperationRedirectResponseBlock redirectResponse;
 
 - (void)operationDidStart;
 - (void)finish;
 - (void)cancelConnection;
 @end
 
-@implementation AFURLConnectionOperation
+@implementation JYAFURLConnectionOperation
 @synthesize outputStream = _outputStream;
 
 + (void)networkRequestThreadEntryPoint:(id)__unused object {
@@ -186,7 +186,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     _state = AFOperationReadyState;
 
     self.lock = [[NSRecursiveLock alloc] init];
-    self.lock.name = kAFNetworkingLockName;
+    self.lock.name = kJYAFNetworkingLockName;
 
     self.runLoopModes = [NSSet setWithObject:NSRunLoopCommonModes];
 
@@ -194,7 +194,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
     self.shouldUseCredentialStorage = YES;
 
-    self.securityPolicy = [AFSecurityPolicy defaultPolicy];
+    self.securityPolicy = [JYAFSecurityPolicy defaultPolicy];
 
     return self;
 }
@@ -319,7 +319,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
 #pragma mark -
 
-- (void)setState:(AFOperationState)state {
+- (void)setState:(JYAFOperationState)state {
     if (!AFStateTransitionIsValid(self.state, state, [self isCancelled])) {
         return;
     }
@@ -347,7 +347,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
         dispatch_async(dispatch_get_main_queue(), ^{
             NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-            [notificationCenter postNotificationName:AFNetworkingOperationDidFinishNotification object:self];
+            [notificationCenter postNotificationName:JYAFNetworkingOperationDidFinishNotification object:self];
         });
     }
 
@@ -473,7 +473,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:AFNetworkingOperationDidStartNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:JYAFNetworkingOperationDidStartNotification object:self];
     });
 }
 
@@ -483,7 +483,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     [self.lock unlock];
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:AFNetworkingOperationDidFinishNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:JYAFNetworkingOperationDidFinishNotification object:self];
     });
 }
 
@@ -543,7 +543,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
         });
     }];
 
-    for (AFURLConnectionOperation *operation in operations) {
+    for (JYAFURLConnectionOperation *operation in operations) {
         operation.completionGroup = group;
         void (^originalCompletionBlock)(void) = [operation.completionBlock copy];
         __weak __typeof(operation)weakOperation = operation;
@@ -743,7 +743,7 @@ didReceiveResponse:(NSURLResponse *)response
         return nil;
     }
 
-    self.state = (AFOperationState)[[decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(state))] integerValue];
+    self.state = (JYAFOperationState)[[decoder decodeObjectOfClass:[NSNumber class] forKey:NSStringFromSelector(@selector(state))] integerValue];
     self.response = [decoder decodeObjectOfClass:[NSHTTPURLResponse class] forKey:NSStringFromSelector(@selector(response))];
     self.error = [decoder decodeObjectOfClass:[NSError class] forKey:NSStringFromSelector(@selector(error))];
     self.responseData = [decoder decodeObjectOfClass:[NSData class] forKey:NSStringFromSelector(@selector(responseData))];
@@ -776,7 +776,7 @@ didReceiveResponse:(NSURLResponse *)response
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFURLConnectionOperation *operation = [(AFURLConnectionOperation *)[[self class] allocWithZone:zone] initWithRequest:self.request];
+    JYAFURLConnectionOperation *operation = [(JYAFURLConnectionOperation *)[[self class] allocWithZone:zone] initWithRequest:self.request];
 
     operation.uploadProgress = self.uploadProgress;
     operation.downloadProgress = self.downloadProgress;

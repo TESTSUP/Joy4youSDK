@@ -19,7 +19,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "AFHTTPRequestOperation.h"
+#import "JYAFHTTPRequestOperation.h"
 
 static dispatch_queue_t http_request_operation_processing_queue() {
     static dispatch_queue_t af_http_request_operation_processing_queue;
@@ -43,19 +43,19 @@ static dispatch_group_t http_request_operation_completion_group() {
 
 #pragma mark -
 
-@interface AFURLConnectionOperation ()
+@interface JYAFURLConnectionOperation ()
 @property (readwrite, nonatomic, strong) NSURLRequest *request;
 @property (readwrite, nonatomic, strong) NSURLResponse *response;
 @end
 
-@interface AFHTTPRequestOperation ()
+@interface JYAFHTTPRequestOperation ()
 @property (readwrite, nonatomic, strong) NSHTTPURLResponse *response;
 @property (readwrite, nonatomic, strong) id responseObject;
 @property (readwrite, nonatomic, strong) NSError *responseSerializationError;
 @property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
 @end
 
-@implementation AFHTTPRequestOperation
+@implementation JYAFHTTPRequestOperation
 @dynamic response;
 @dynamic lock;
 
@@ -65,12 +65,12 @@ static dispatch_group_t http_request_operation_completion_group() {
         return nil;
     }
 
-    self.responseSerializer = [AFHTTPResponseSerializer serializer];
+    self.responseSerializer = [JYAFHTTPResponseSerializer serializer];
 
     return self;
 }
 
-- (void)setResponseSerializer:(AFHTTPResponseSerializer <AFURLResponseSerialization> *)responseSerializer {
+- (void)setResponseSerializer:(JYAFHTTPResponseSerializer <JYAFURLResponseSerialization> *)responseSerializer {
     NSParameterAssert(responseSerializer);
 
     [self.lock lock];
@@ -104,8 +104,8 @@ static dispatch_group_t http_request_operation_completion_group() {
 
 #pragma mark - AFHTTPRequestOperation
 
-- (void)setCompletionBlockWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                              failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+- (void)setCompletionBlockWithSuccess:(void (^)(JYAFHTTPRequestOperation *operation, id responseObject))success
+                              failure:(void (^)(JYAFHTTPRequestOperation *operation, NSError *error))failure
 {
     // completionBlock is manually nilled out in AFURLConnectionOperation to break the retain cycle.
 #pragma clang diagnostic push
@@ -180,7 +180,7 @@ static dispatch_group_t http_request_operation_completion_group() {
         return nil;
     }
 
-    self.responseSerializer = [decoder decodeObjectOfClass:[AFHTTPResponseSerializer class] forKey:NSStringFromSelector(@selector(responseSerializer))];
+    self.responseSerializer = [decoder decodeObjectOfClass:[JYAFHTTPResponseSerializer class] forKey:NSStringFromSelector(@selector(responseSerializer))];
 
     return self;
 }
@@ -194,7 +194,7 @@ static dispatch_group_t http_request_operation_completion_group() {
 #pragma mark - NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    AFHTTPRequestOperation *operation = [super copyWithZone:zone];
+    JYAFHTTPRequestOperation *operation = [super copyWithZone:zone];
 
     operation.responseSerializer = [self.responseSerializer copyWithZone:zone];
     operation.completionQueue = self.completionQueue;
