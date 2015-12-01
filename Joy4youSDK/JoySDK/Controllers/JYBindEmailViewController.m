@@ -76,7 +76,7 @@
     } else {
         
         JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        loadingView.lodingType = CCLoading_loginWithUsername;
+        loadingView.lodingType = JYLoading_Binding;
         loadingView.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], nickname];
         JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
         [alertView show];
@@ -85,22 +85,21 @@
                                                         password:password
                                                            email:email
                                                    callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                       
-                                                       [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
-                                                       
+
                                                        NSString * msg = nil;
-                                                       if (error) {
-                                                           JYDLog(@"Tourist login error", error);
-                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                       }
-                                                       else {
+                                                       if (!error)
+                                                       {
                                                            NSString* status = responseData[KEY_STATUS];
                                                            
                                                            switch (status.integerValue) {
                                                                case 200:
                                                                {
-                                                                   NSString *param = [@"登录成功" localizedString];
-                                                                   [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                                                                   loadingView.lodingType = JYLoading_bindSuccess;
+                                                                   [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                                   withObject:^{
+                                                                                       [self.navigationController popViewControllerAnimated:YES];
+                                                                                   }
+                                                                                   afterDelay:1];
                                                                    return;
                                                                }
                                                                    break;
@@ -137,6 +136,13 @@
                                                                    break;
                                                            }
                                                        }
+                                                       else
+                                                       {
+                                                           JYDLog(@"Tourist login error", error);
+                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                       }
+
+                                                       [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                        [self showPopText:msg withView:nil];
                                                    }];
     }

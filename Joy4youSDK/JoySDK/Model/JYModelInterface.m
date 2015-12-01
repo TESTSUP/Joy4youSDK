@@ -256,7 +256,7 @@ static dispatch_once_t token;
                          userId:(NSString *)aUserId
                   callbackBlock:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:aPassword, KEY_UID:aUserId};
+    NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:[aPassword MD5], KEY_UID:aUserId};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindAccount];
     
     [[JoyRequest shareInstance] requestWithPath:urlPath
@@ -290,7 +290,7 @@ static dispatch_once_t token;
                         email:(NSString *)aEmail
                 callbackBlock:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:aPassword, KEY_EMAIL:aEmail};
+    NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:[aPassword MD5], KEY_EMAIL:aEmail};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindEmail];
     
     [[JoyRequest shareInstance] requestWithPath:urlPath

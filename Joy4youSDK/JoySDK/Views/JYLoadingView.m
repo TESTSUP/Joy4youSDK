@@ -8,6 +8,7 @@
 
 #import "JYLoadingView.h"
 #import "JYUtil.h"
+#import "JYUserCache.h"
 
 #define CC_ANIMATION_KEY @"rotation_key"
 #define CC_LOADING_HEIGHT 67;
@@ -138,145 +139,84 @@
 
 - (void)setLodingType:(JYLoadingType)aLodingType
 {
+    JYUserContent *userInfo = [[JYUserCache sharedInstance] currentUser];
+    NSString *username = userInfo.type == 2? @"游客":userInfo.username;
+    NSString *title = [NSString stringWithFormat:@"账号：%@", username];
+    
     switch (aLodingType) {
-        case CCLoading_cacheLogin:
+        case JYLoading_cacheLogin:
         {
             self.showButton = YES;
             self.loading = YES;
             self.detail = [@"正在登录..." localizedString];
         }
             break;
-        case CCLoading_registWithUsername:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.title = [@"正在注册..." localizedString];
-        }
-            break;
-        case CCLoading_registWithUsernameResult:
-        {
-            self.showButton = NO;
-            self.loading = NO;
-            self.detail = [@"注册成功" localizedString];
-        }
-            break;
-        case CCLoading_loginWithUsername:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.detail = [@"正在登录..." localizedString];
-        }
-            break;
-        case CCLoading_guestLogin:
+        case JYLoading_guestLogin:
         {
             self.showButton = NO;
             self.loading = YES;
             self.title = [@"游客登录中..." localizedString];
         }
             break;
-        case CCLoading_loginWithUsernameResult:
+        case JYLoading_registWithUsername:
+        {
+            self.showButton = NO;
+            self.loading = YES;
+            self.title = [@"正在注册..." localizedString];
+        }
+            break;
+        case JYLoading_registWithUsernameSuccess:
         {
             self.showButton = NO;
             self.loading = NO;
+            self.title = title;
+            self.detail = [@"注册成功" localizedString];
+        }
+            break;
+        case JYLoading_loginWithUsername:
+        {
+            self.showButton = NO;
+            self.loading = YES;
+            self.detail = [@"正在登录..." localizedString];
+        }
+            break;
+        case JYLoading_loginWithUsernameSuccess:
+        {
+            self.showButton = NO;
+            self.loading = NO;
+            self.title = title;
             self.detail = [@"登录成功" localizedString];
         }
             break;
-        case CCLoading_registWithPhoneGetCode:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.detail = [@"正在验证..." localizedString];
-        }
-            break;
-        case CCLoading_registWithOneKey:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.detail = [@"正在注册..." localizedString];
-        }
-            break;
-        case CCLoading_registWithPhone:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.detail = [@"正在创建帐号" localizedString];
-        }
-            break;
-        case CCLoading_setNewPassword:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.title = [@"请稍后..." localizedString];
-        }
-            break;
-        case CCLoading_forgetPWSetPassword:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.title = [@"正在重设密码" localizedString];
-        }
-            break;
-        case CCLoading_forgetSetPWLogin:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.title = [@"密码重设成功" localizedString];
-            self.detail = [@"正在登录" localizedString];
-        }
-            break;
-        case CCLoading_registPWSetPassword:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.title = [@"正在设定密码" localizedString];
-        }
-            break;
-        case CCLoading_registPWSetPasswordLogin:
-        {
-            self.showButton = NO;
-            self.loading = YES;
-            self.title = [@"密码设置成功" localizedString];
-            self.detail = [@"正在登录" localizedString];
-        }
-            break;
-        case CCLoading_Binding:
-        case CCLoading_bindEmail:
+        case JYLoading_Binding:
         {
             self.showButton = NO;
             self.loading = YES;
             self.title = [@"正在绑定" localizedString];
         }
             break;
-        case CCLoading_UserBind:
-        case CCLoading_bindSuccess:
+        case JYLoading_bindSuccess:
         {
             self.showButton = NO;
             self.loading = NO;
+            self.title = title;
             self.detail = [@"绑定成功" localizedString];
         }
             break;
-        case CCLoading_SendSuccess:
-        {
-            self.showButton = NO;
-            self.loading = NO;
-            self.title = [@"密码重设邮件已发送,请查收" localizedString];
-            //            self.mainLabel.adjustsFontSizeToFitWidth = YES;
-            self.mainLabel.font = [UIFont systemFontOfSize:15];
-        }
-            break;
-        case CCLoading_SendEmail:
+        case JYLoading_Sending:
         {
             self.showButton = NO;
             self.loading = YES;
             self.title = [@"正在发送" localizedString];
         }
             break;
-        case CCLoading_PhoneBind:
+            
+        case JYLoading_SendSuccess:
         {
             self.showButton = NO;
             self.loading = NO;
-            self.detailLabel.font = [UIFont systemFontOfSize:13];
-            self.detail = [@"绑定成功,下次请使用该帐号登录" localizedString];
+            self.title = [@"密码重设邮件已发送,请查收" localizedString];
+            self.mainLabel.font = [UIFont systemFontOfSize:15];
         }
             break;
         default:

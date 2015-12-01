@@ -110,16 +110,14 @@ static dispatch_once_t token;
     [Joy4youSDK removeSDKFromRootView];
 }
 
-- (void)showSuccessAndEnter:(NSString *)aParam
+- (void)showSuccessWithLoadingType:(JYLoadingType)aType
 {
     [_navigationVC.view removeFromSuperview];
     
     JYLoadingView *successView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-    successView.lodingType = CCLoading_loginWithUsernameResult;
-    successView.title = aParam;
-    
+    successView.lodingType = aType;
+
     UIView *aView = successView;
-    
     aView.frame = CGRectMake((self.view.bounds.size.width-aView.frame.size.width)/2,
                              40,
                              aView.frame.size.width,
@@ -150,7 +148,7 @@ static dispatch_once_t token;
     self.isRemoving = YES;
     //回调
     JYUserContent *user =[JYUserCache sharedInstance].currentUser;
-    [self.callback loginCallback:@{@"state": @"0", @"un":user.username, @"coco":user.userid, @"tkn":user.token}];
+    [self.callback loginCallback:@{@"state": @"0", @"username":user.username, @"token":user.token}];
     [self performSelector:@selector(loginSuccessRemove) withObject:nil afterDelay:2];;
     
 }
@@ -206,8 +204,7 @@ static dispatch_once_t token;
                                                              switch (status.integerValue) {
                                                                  case 200:
                                                                  {
-                                                                     NSString *param = [@"登录成功" localizedString];
-                                                                     [self showSuccessAndEnter:param];
+                                                                     [self showSuccessWithLoadingType:JYLoading_loginWithUsernameSuccess];
                                                                      return;
                                                                  }
                                                                      break;
@@ -300,9 +297,9 @@ static dispatch_once_t token;
 
 - (void)showSuccessNotification:(NSNotification *)notify
 {
-    NSString* param =  [notify object];
+    NSNumber* param =  [notify object];
     
-    [self showSuccessAndEnter:param];
+    [self showSuccessWithLoadingType:(JYLoadingType)[param integerValue]];
 }
 
 - (void)closeSDKNotification:(NSNotification *)notify
@@ -335,8 +332,7 @@ static dispatch_once_t token;
     if (cacheUser)
     {
         JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        cacheLoading.lodingType = CCLoading_cacheLogin;
-        cacheLoading.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], [cacheUser.username length]==0? @"":cacheUser.username];
+        cacheLoading.lodingType = JYLoading_cacheLogin;
         [cacheLoading.switchBtn addTarget:self action:@selector(handleSwitchAccount:) forControlEvents:UIControlEventTouchUpInside];
         
         _alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];

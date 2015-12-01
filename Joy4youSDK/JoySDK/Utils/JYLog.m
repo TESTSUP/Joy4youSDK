@@ -23,7 +23,7 @@ void JYDLog(NSString *formatStr, ...)
         
         va_end(arglist);
         
-        NSLog(@"Joy4youSDK log -->%@", outStr);
+        NSLog(@"Joy4youSDK log:%@", outStr);
     }
 }
 

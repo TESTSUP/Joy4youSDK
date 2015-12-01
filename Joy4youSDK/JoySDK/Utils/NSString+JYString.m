@@ -43,7 +43,7 @@
     }
     
     value = [[NSBundle bundleWithPath:path] localizedStringForKey:self value:@"" table:nil];
-    return value;
+    return value==nil? self:value;
 }
 
 //纯英文

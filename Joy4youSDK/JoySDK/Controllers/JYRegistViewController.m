@@ -118,7 +118,7 @@
             [self showPopText:[@"密码必须为6—15位，仅支持英文、数字和符号" localizedString] withView:self.passwordBg];
         }else{
             JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-            cacheLoading.lodingType = CCLoading_registWithUsername;
+            cacheLoading.lodingType = JYLoading_registWithUsername;
             JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
             [alertView show];
             
@@ -141,6 +141,7 @@
                                                                                                          andPassword:self.passwordField.text
                                                                                                        callbackBlcok:^(NSError *error, NSDictionary *responseData) {
                                                                                                            
+                                                                                                           cacheLoading.lodingType = JYLoading_registWithUsernameSuccess;
                                                                                                            [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                                                                            
                                                                                                            NSString * msg = nil;
@@ -154,8 +155,7 @@
                                                                                                                switch (status.integerValue) {
                                                                                                                    case 200:
                                                                                                                    {
-                                                                                                                       NSString *param = [@"注册成功" localizedString];
-                                                                                                                       [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                                                                                                                       [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_registWithUsernameSuccess]];
                                                                                                                        return;
                                                                                                                    }
                                                                                                                        break;
@@ -206,7 +206,7 @@
                                                            case 104:
                                                            {
                                                                //104用户名已存在
-                                                               msg = [@"104用户名已存在" localizedString];
+                                                               msg = [@"用户名已存在" localizedString];
                                                            }
                                                                break;
                                                            default:
@@ -239,7 +239,7 @@
             [self showPopText:[@"密码必须为6—15位，仅支持英文、数字和符号" localizedString] withView:self.passwordBg];
         }else{
             JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-            cacheLoading.lodingType = CCLoading_Binding;
+            cacheLoading.lodingType = JYLoading_Binding;
             JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
             [alertView show];
             
@@ -248,8 +248,6 @@
                                                               password:self.passwordField.text
                                                                 userId:user.userid
                                                          callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                             
-                                                             cacheLoading.lodingType = CCLoading_bindSuccess;
                                                              [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                              
                                                              NSString * msg= [@"绑定失败" localizedString];
@@ -263,8 +261,8 @@
                                                                  switch (status.integerValue) {
                                                                      case 200:
                                                                      {
-                                                                         NSString *param = [@"绑定成功" localizedString];
-                                                                         [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                                                                         cacheLoading.lodingType = JYLoading_bindSuccess;
+                                                                         [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_bindSuccess]];
                                                                          return;
                                                                      }
                                                                          break;
@@ -280,7 +278,7 @@
                                                                          //101 用户id不能为空
                                                                          //102 ckid不能为空
                                                                          //103 用户名不能为空
-                                                                         //104用户名不合法
+                                                                         //104 用户名不合法
                                                                          //105 密码不能为空
                                                                          //106 该用户已经绑定过
                                                                          //107 查无此用户

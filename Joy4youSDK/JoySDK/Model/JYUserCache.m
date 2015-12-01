@@ -118,7 +118,7 @@ static dispatch_once_t onceToken;
     JYUserContent *userInfoData = [[JYUserContent alloc] initWithDictionary:dictionary];
     userInfoData.type = 1;
     if (isTourist) {
-        userInfoData.type = isTourist? 2:1;
+        userInfoData.type = 2;
         userInfoData.username = @"游客";
     }
     _currentUid = userInfoData.userid;

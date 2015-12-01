@@ -9,6 +9,7 @@
 #import "JoyRequest.h"
 #import "AFNetworking/AFNetworking.h"
 
+#define TIME_OUT    (15)
 
 @interface JoyRequest ()
 
@@ -42,10 +43,13 @@ static dispatch_once_t token;
             self.sessionManger = [[AFHTTPSessionManager alloc] initWithBaseURL:baseUrl
                                                           sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
             self.sessionManger.responseSerializer = [AFHTTPResponseSerializer serializer];
+            self.sessionManger.requestSerializer.timeoutInterval = TIME_OUT;
         } else {
             self.connectionManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseUrl];
             self.connectionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            self.connectionManager.requestSerializer.timeoutInterval = TIME_OUT;
         }
+        
     }
     
     return self;

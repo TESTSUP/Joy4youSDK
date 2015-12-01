@@ -213,7 +213,7 @@
 
 - (IBAction)handleTouristLoginAction:(id)sender {
     JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-    cacheLoading.lodingType = CCLoading_guestLogin;
+    cacheLoading.lodingType = JYLoading_guestLogin;
 
     JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
     [alertView show];
@@ -233,8 +233,7 @@
             switch (status.integerValue) {
                 case 200:
                 {
-                    NSString *param = [@"游客登录成功" localizedString];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
                     return;
                 }
                     break;
@@ -285,8 +284,8 @@
     } else {
         
         JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        loadingView.lodingType = CCLoading_loginWithUsername;
-        loadingView.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], nickname];
+        loadingView.lodingType = JYLoading_loginWithUsername;
+        loadingView.title = [NSString stringWithFormat:@"%@ %@", [@"帐号:" localizedString], nickname];
         JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
         [alertView show];
         
@@ -294,7 +293,6 @@
                                                  andPassword:password
                                                callbackBlcok:^(NSError *error, NSDictionary *responseData) {
                                                    
-//                                                   [alertView dismissWithCompletion:nil];
                                                    [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                    
                                                    NSString * msg = nil;
@@ -308,8 +306,7 @@
                                                        switch (status.integerValue) {
                                                            case 200:
                                                            {
-                                                               NSString *param = [@"登录成功" localizedString];
-                                                               [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                                                               [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
                                                                return;
                                                            }
                                                                break;

@@ -66,7 +66,7 @@
     } else {
         
         JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        loadingView.lodingType = CCLoading_SendEmail;
+        loadingView.lodingType = JYLoading_Sending;
         JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
         [alertView show];
         
@@ -74,22 +74,22 @@
                                                            andEmail:email
                                                       callbackBlock:^(NSError *error, NSDictionary *responseData) {
                                                           
-                                                          [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                          
                                                           
                                                           NSString * msg = nil;
-                                                          if (error) {
-                                                              JYDLog(@"Tourist login error", error);
-                                                              msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                          }
-                                                          else {
+                                                          if (!error)
+                                                          {
                                                               NSString* status = responseData[KEY_STATUS];
                                                               
                                                               switch (status.integerValue) {
                                                                   case 200:
                                                                   {
-                                                                      loadingView.lodingType = CCLoading_SendSuccess;
-                                                                      NSString *param = [@"绑定成功" localizedString];
-                                                                      [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:param];
+                                                                      loadingView.lodingType = JYLoading_SendSuccess;
+                                                                      [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                                      withObject:^{
+                                                                                          [self.navigationController popViewControllerAnimated:YES];
+                                                                                      }
+                                                                                      afterDelay:1];
                                                                       return;
                                                                   }
                                                                       break;
@@ -126,6 +126,15 @@
                                                                       break;
                                                               }
                                                           }
+                                                          else
+                                                          {
+                                                              JYDLog(@"Tourist login error", error);
+                                                              msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                          }
+                                                          
+                                                          [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                          withObject:nil
+                                                                          afterDelay:1];
                                                           [self showPopText:msg withView:nil];
                                                       }];
     }
