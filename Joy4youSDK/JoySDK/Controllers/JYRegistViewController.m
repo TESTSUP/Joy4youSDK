@@ -106,6 +106,7 @@
     
     if (!self.confirmAgreementBtn.selected) {
         [self showPopText:[@"请同意《乐恒帐户使用协议》" localizedString] withView:nil];
+        self.confirmAgreementBtn.selected = YES;
     }else{
         if ([self.usernameTextField.text length] == 0 || [self.passwordField.text length] == 0) {
             [self showPopText:[@"帐号或密码不能为空" localizedString] withView:self.accountBg];
@@ -227,6 +228,7 @@
 - (IBAction)handleBindAccountAction:(id)sender {
     if (!self.confirmAgreementBtn.selected) {
         [self showPopText:[@"请同意《乐恒帐户使用协议》" localizedString] withView:nil];
+        self.confirmAgreementBtn.selected = YES;
     }else{
         if ([self.usernameTextField.text length] == 0 || [self.passwordField.text length] == 0) {
             [self showPopText:[@"帐号或密码不能为空" localizedString] withView:self.accountBg];

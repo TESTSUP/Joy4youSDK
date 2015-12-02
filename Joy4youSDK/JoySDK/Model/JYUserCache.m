@@ -42,7 +42,9 @@ static dispatch_once_t onceToken;
 
 - (void)dealloc
 {
-
+    [_cacheUserList removeAllObjects];
+    _cacheUserList = nil;
+    _currentUid = nil;
 }
 
 - (id)init {
@@ -79,7 +81,12 @@ static dispatch_once_t onceToken;
     }
     
     [userInfoDef setObject:tempArray forKey:cacheUserListKey];
-    [userInfoDef setObject:_currentUid forKey:currentUserIdKey];
+    //游客不能进行缓存登录
+    if (self.currentUser.type == 2) {
+        [userInfoDef setObject:@"" forKey:currentUserIdKey];
+    } else {
+        [userInfoDef setObject:_currentUid forKey:currentUserIdKey];
+    }
     [userInfoDef synchronize];
 }
 

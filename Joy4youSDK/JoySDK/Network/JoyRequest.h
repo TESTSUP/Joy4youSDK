@@ -13,6 +13,7 @@ typedef void (^requestCallback)(NSError *error, id responseData);
 @interface JoyRequest : NSObject
 
 + (instancetype)shareInstance;
++ (void)clear;
 
 - (void)requestWithPath:(NSString *)aPath
              Parameters:(NSDictionary *)aParam
@@ -20,5 +21,6 @@ typedef void (^requestCallback)(NSError *error, id responseData);
                 failure:(void(^)(NSHTTPURLResponse *response, NSError *responseERROR))Faliure;
 
 - (void)cancelAllOperations;
+
 
 @end

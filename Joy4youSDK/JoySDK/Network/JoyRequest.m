@@ -33,6 +33,18 @@ static dispatch_once_t token;
     return  instance;
 }
 
++ (void)clear
+{
+    instance = nil;
+    token = 0;
+}
+
+- (void)dealloc
+{
+    self.connectionManager = nil;
+    self.sessionManger = nil;
+}
+
 - (instancetype)init
 {
     self = [super init];

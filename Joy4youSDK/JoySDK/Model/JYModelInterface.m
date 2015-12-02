@@ -49,6 +49,12 @@ static dispatch_once_t token;
     return self;
 }
 
+- (void)dealloc
+{
+    [JoyRequest clear];
+    [JYUserCache clear];
+}
+
 #pragma mark - interface
 
 - (void)cancelAllRequest

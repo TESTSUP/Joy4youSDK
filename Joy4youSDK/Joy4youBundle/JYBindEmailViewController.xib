@@ -49,13 +49,13 @@
                     <rect key="frame" x="98" y="109" width="180" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next" secureTextEntry="YES"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的邮箱账号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gjP-Q1-jxJ">
                     <rect key="frame" x="98" y="156" width="180" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoX-oF-jd7">
                     <rect key="frame" x="33" y="113" width="36" height="21"/>

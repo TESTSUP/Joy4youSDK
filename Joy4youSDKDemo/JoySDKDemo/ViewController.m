@@ -40,7 +40,7 @@
 - (IBAction)handleLogin:(id)sender {
     
     [Joy4youSDK login:self];
-    [Joy4youSDK setLogEnabled:NO];
+//    [Joy4youSDK setLogEnabled:NO];
 }
 
 - (NSDateFormatter *)dateFormatter

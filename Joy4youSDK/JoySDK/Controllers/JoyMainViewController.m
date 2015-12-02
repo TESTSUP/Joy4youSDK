@@ -213,12 +213,14 @@ static dispatch_once_t token;
                                                                  case 103:
                                                                  case 104:
                                                                  case 105:
+                                                                 case 108:
                                                                  {
                                                                      //101 appid不能为空
                                                                      //102sessionid不能为空
                                                                      //103 userid不能为空
                                                                      //104ckid不能为空
                                                                      //105 渠道id不能为空
+                                                                     //108 sessionid已经过期:
                                                                      msg = responseData[KEY_MSG];
                                                                  }
                                                                      break;
@@ -226,18 +228,6 @@ static dispatch_once_t token;
                                                                  {
                                                                      //appid不合法
                                                                      msg = [@"appid不合法" localizedString];
-                                                                 }
-                                                                     break;
-                                                                 case 107:
-                                                                 {
-                                                                     //该用户不存在
-                                                                     msg = [@"该用户不存在" localizedString];
-                                                                 }
-                                                                     break;
-                                                                 case 108:
-                                                                 {
-                                                                     //108 sessionid已经过期:
-                                                                     msg = [@"缓存过期，请重新登录" localizedString];
                                                                  }
                                                                      break;
                                                                  default:
