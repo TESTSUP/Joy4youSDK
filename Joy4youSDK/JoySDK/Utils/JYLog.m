@@ -29,9 +29,9 @@ void JYDLog(NSString *formatStr, ...)
 
 @implementation JYLog
 
-+ (void)setLogOff:(BOOL)isOff
++ (void)setLogEnable:(BOOL)enable
 {
-    JY_ShowLog = !isOff;
+    JY_ShowLog = enable;
 }
 
 @end

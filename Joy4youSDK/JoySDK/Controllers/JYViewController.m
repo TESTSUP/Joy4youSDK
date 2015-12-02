@@ -199,6 +199,8 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
                              if (length > 0) {
                                  self.navigationController.view.center = CGPointMake(self.navigationController.view.center.x,
                                                                               self.navigationController.view.center.y - length);
+                             } else {
+                                 self.navigationController.view.center  = self.navigationController.view.center;
                              }
                          }
                      } completion:^(BOOL finished) {

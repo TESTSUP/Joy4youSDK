@@ -13,6 +13,6 @@ extern void JYDLog(NSString *formatStr, ...);
 
 @interface JYLog : NSObject
 
-+ (void)setLogOff:(BOOL)isOff;
++ (void)setLogEnable:(BOOL)enable;
 
 @end

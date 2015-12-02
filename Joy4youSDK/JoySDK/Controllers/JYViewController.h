@@ -21,7 +21,7 @@ extern NSString *const JYNotificationHideKeybord;
  */
 @interface JYViewController : UIViewController <UITextFieldDelegate>
 {
-    __weak UITextField *_actionTextField;
+    UITextField *_actionTextField;
     __weak UITextField *_upsideTextField;
     __weak UITextField *_undersideTextField;
     __weak UITextField *_bottomTextField;

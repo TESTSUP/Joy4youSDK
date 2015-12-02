@@ -19,7 +19,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 //解密
 + (NSString *)DESDecryptString:(NSString *)dataStr WithKey:(NSString *)key
 {
-    NSLog(@"%s, string = %@", __func__, dataStr);
+    JYDLog(@"%s, string = %@", __func__, dataStr);
     
     if ([dataStr length] && [key length]) {
         NSData *orgData = [JoyEncryption dataFromHexString:dataStr];
@@ -138,7 +138,7 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
         myBuffer[i / 2] = (char)anInt;
     }
     NSString *unicodeString = [NSString stringWithCString:myBuffer encoding:4];
-    NSLog(@"------字符串=======%@",unicodeString);
+    JYDLog(@"------字符串=======%@",unicodeString);
     free(myBuffer);
     return unicodeString;
 }

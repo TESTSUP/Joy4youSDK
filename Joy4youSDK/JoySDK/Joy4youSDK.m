@@ -51,7 +51,7 @@
             JYDLog(@"%s --- %d", __func__, 31);
             [[[[UIApplication sharedApplication] delegate] window] setRootViewController:nil];
         } else {
-            NSLog(@"%s --- %d", __func__, 5);
+            JYDLog(@"%s --- %d", __func__, 5);
             NSArray* arr = rootVC.view.subviews;
             for (id view in arr) {
                 id vc = [view nextResponder];
@@ -63,7 +63,7 @@
                     else
                     {
                         needRemove = NO;
-                        NSLog(@"%s ---- remove coco view cancel", __func__);
+                        JYDLog(@"%s ---- remove coco view cancel", __func__);
                     }
                 }
             }
@@ -104,6 +104,11 @@
 + (NSString *)sdkVersion
 {
     return Joy4youSDK_VERSION;
+}
+
++ (void)setLogEnabled:(BOOL)enable
+{
+    [JYLog setLogEnable:enable];
 }
 
 @end

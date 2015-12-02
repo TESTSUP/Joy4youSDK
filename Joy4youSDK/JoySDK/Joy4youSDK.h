@@ -35,4 +35,11 @@
  */
 + (NSString *)sdkVersion;
 
+/**
+ *  设置log开关
+ *
+ *  @param enable enable 默认是开启状态
+ */
++ (void)setLogEnabled:(BOOL)enable;
+
 @end

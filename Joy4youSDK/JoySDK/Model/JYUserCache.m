@@ -42,7 +42,7 @@ static dispatch_once_t onceToken;
 
 - (void)dealloc
 {
-    NSLog(@"%s", __func__);
+
 }
 
 - (id)init {

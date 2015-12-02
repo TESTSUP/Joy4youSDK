@@ -119,68 +119,10 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
         JYDLog(@"response data decrypt error, exception = %@", exception);
     }
     @finally {
-        return responseDic;
+        
     }
 
     JYDLog(@"response = %@", responseDic);
-    
-    switch (aType) {
-        case RequestCheckUserid:
-        {
-            
-        }
-            break;
-        case RequestLoginWithSid:
-        {
-
-        }
-            break;
-        case RequestLoginWithTourist:
-        {
-
-        }
-            break;
-        case RequestLoginWithUsername:
-        {
-
-        }
-            break;
-        case RequestLoginWithPhone:
-        {
-            
-        }
-            break;
-        case RequestRegistWithUsername:
-        {
-
-        }
-            break;
-        case RequestRegistWithPhone:
-        {
-            
-        }
-            break;
-        case RequestBindEmail:
-        {
-
-        }
-            break;
-        case RequestBindAccount:
-        {
-
-            
-        }
-            break;
-        case RequestFindPassword:
-        {
-
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
     return responseDic;
 }
 
