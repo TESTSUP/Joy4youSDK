@@ -62,7 +62,7 @@
     
     if ([nickname length] == 0 || [password length] == 0 || [email length] == 0) {
         popText = [@"帐号或密码或邮箱不能为空" localizedString];
-    }else if ([nickname length] < 4 ||
+    }else if ([nickname length] < 6 ||
               [nickname length] > 20 ||
               [password length] < 6 ||
               [password length] > 15) {

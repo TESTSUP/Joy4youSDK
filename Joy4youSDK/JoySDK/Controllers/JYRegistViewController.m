@@ -109,7 +109,7 @@
     }else{
         if ([self.usernameTextField.text length] == 0 || [self.passwordField.text length] == 0) {
             [self showPopText:[@"帐号或密码不能为空" localizedString] withView:self.accountBg];
-        }else if ([self.usernameTextField.text length] < 4 || [self.usernameTextField.text length] > 20){
+        }else if ([self.usernameTextField.text length] < 6 || [self.usernameTextField.text length] > 20){
             [self showPopText:[@"帐号为6–20位，请修改" localizedString] withView:self.accountBg];
         }else if ([self.passwordField.text length]<6 || [self.passwordField.text length]>15){
             [self showPopText:[@"密码为6—15位，请修改" localizedString] withView:self.passwordBg];

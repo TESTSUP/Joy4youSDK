@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 // maybe useful
-UIKIT_EXTERN NSString *const JCAlertViewWillShowNotification;
+UIKIT_EXTERN NSString *const JYAlertViewWillShowNotification;
 
 typedef void(^clickHandle)(void);
 
 typedef void(^clickHandleWithIndex)(NSInteger index);
 
-typedef NS_ENUM(NSInteger, JCAlertViewButtonType) {
-    JCAlertViewButtonTypeDefault = 0,
-    JCAlertViewButtonTypeCancel,
-    JCAlertViewButtonTypeWarn
+typedef NS_ENUM(NSInteger, JYAlertViewButtonType) {
+    JYAlertViewButtonTypeDefault = 0,
+    JYAlertViewButtonTypeCancel,
+    JYAlertViewButtonTypeWarn
 };
 
 @interface JYAlertView : UIView
@@ -26,13 +26,13 @@ typedef NS_ENUM(NSInteger, JCAlertViewButtonType) {
 // ------------------------Show AlertView with title and message----------------------
 
 // show alertView with 1 button
-+ (void)showOneButtonWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JCAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click;
++ (void)showOneButtonWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JYAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click;
 
 // show alertView with 2 buttons
-+ (void)showTwoButtonsWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JCAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonType:(JCAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonType Click:(clickHandle)click;
++ (void)showTwoButtonsWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JYAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonType:(JYAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonType Click:(clickHandle)click;
 
 // show alertView with greater than or equal to 3 buttons
-// parameter of 'buttons' , pass by NSDictionary like @{JCAlertViewButtonTypeDefault : @"ok"}
+// parameter of 'buttons' , pass by NSDictionary like @{JYAlertViewButtonTypeDefault : @"ok"}
 + (void)showMultipleButtonsWithTitle:(NSString *)title Message:(NSString *)message Click:(clickHandleWithIndex)click Buttons:(NSDictionary *)buttons,... NS_REQUIRES_NIL_TERMINATION;
 
 // ------------------------Show AlertView with customView-----------------------------

@@ -9,7 +9,7 @@
 #import "JYAlertView.h"
 #import <Accelerate/Accelerate.h>
 
-NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotification";
+NSString *const JYAlertViewWillShowNotification = @"JYAlertViewWillShowNotification";
 
 #define JCColor(r, g, b) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0]
 #define JCScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -113,6 +113,22 @@ NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotificat
 {
     return  YES;
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    UIViewController *rootVC = [JYSingleTon shareSingleTon].oldKeyWindow.rootViewController;
+    
+    return [rootVC preferredStatusBarStyle];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    UIViewController *rootVC = [JYSingleTon shareSingleTon].oldKeyWindow.rootViewController;
+    
+    return [rootVC prefersStatusBarHidden];
+}
+
+//[JYSingleTon shareSingleTon].oldKeyWindow
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
@@ -392,7 +408,7 @@ NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotificat
     }];
 }
 
-+ (void)showOneButtonWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JCAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click{
++ (void)showOneButtonWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JYAlertViewButtonType)buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click{
     id newClick = click;
     if (!newClick) {
         newClick = [NSNull null];
@@ -401,8 +417,8 @@ NSString *const JCAlertViewWillShowNotification = @"JCAlertViewWillShowNotificat
     [alertView configAlertViewPropertyWithTitle:title Message:message Buttons:@[@{[NSString stringWithFormat:@"%zi", buttonType] : buttonTitle}] Clicks:@[newClick] ClickWithIndex:nil];
 }
 
-+ (void)showTwoButtonsWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JCAlertViewButtonType)
-buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonType:(JCAlertViewButtonType)buttonType1 ButtonTitle:(NSString *)buttonTitle1 Click:(clickHandle)click1{
++ (void)showTwoButtonsWithTitle:(NSString *)title Message:(NSString *)message ButtonType:(JYAlertViewButtonType)
+buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonType:(JYAlertViewButtonType)buttonType1 ButtonTitle:(NSString *)buttonTitle1 Click:(clickHandle)click1{
     id newClick = click;
     if (!newClick) {
         newClick = [NSNull null];
@@ -452,7 +468,7 @@ buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonTy
 }
 
 - (void)showAlert{
-    [[NSNotificationCenter defaultCenter] postNotificationName:JCAlertViewWillShowNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:JYAlertViewWillShowNotification object:self];
     
     NSInteger count = [JYSingleTon shareSingleTon].alertStack.count;
     JYAlertView *previousAlert = nil;
@@ -666,22 +682,22 @@ buttonType ButtonTitle:(NSString *)buttonTitle Click:(clickHandle)click ButtonTy
     }
 }
 
-- (void)setButton:(UIButton *)btn BackgroundWithButonType:(JCAlertViewButtonType)buttonType{
+- (void)setButton:(UIButton *)btn BackgroundWithButonType:(JYAlertViewButtonType)buttonType{
     UIColor *textColor = nil;
     UIImage *normalImage = nil;
     UIImage *highImage = nil;
     switch (buttonType) {
-        case JCAlertViewButtonTypeDefault:
+        case JYAlertViewButtonTypeDefault:
             normalImage = [UIImage imageNamed:@"JCAlertView.bundle/default_nor"];
             highImage = [UIImage imageNamed:@"JCAlertView.bundle/default_high"];
             textColor = JCColor(255, 255, 255);
             break;
-        case JCAlertViewButtonTypeCancel:
+        case JYAlertViewButtonTypeCancel:
             normalImage = [UIImage imageNamed:@"JCAlertView.bundle/cancel_nor"];
             highImage = [UIImage imageNamed:@"JCAlertView.bundle/cancel_high"];
             textColor = JCColor(255, 255, 255);
             break;
-        case JCAlertViewButtonTypeWarn:
+        case JYAlertViewButtonTypeWarn:
             normalImage = [UIImage imageNamed:@"JCAlertView.bundle/warn_nor"];
             highImage = [UIImage imageNamed:@"JCAlertView.bundle/warn_high"];
             textColor = JCColor(255, 255, 255);
