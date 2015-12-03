@@ -22,9 +22,9 @@ const NSString *JYEncryptionkey = @"562asd32";
  *  服务器地址
  */
 //线上沙箱
-const NSString *Joy4youHostUrl = @"http://123.59.56.120/joysdk/index.php/";
+//const NSString *Joy4youHostUrl = @"http://123.59.56.120/joysdk/index.php/";
 //线上正式
-//const NSString *Joy4youHostUrl = @"http://api.joy4you.com/joysdk/index.php/";
+const NSString *Joy4youHostUrl = @"http://api.joy4you.com/joysdk/index.php/";
 
 /**
  *  用户信息缓存数量

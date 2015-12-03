@@ -41,12 +41,14 @@ static NSString *Joy4you_channelId = nil;
     NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     NSString *channel = [JYDevice channelId];
     NSString *pkgName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
-
+    NSString *idfa = [JYDevice idfa];
+    
     NSDictionary* deviceDic = @{KEY_APPID:appid,
                                 KEY_CHANNEL:channel,
                                 KEY_PKG:pkgName,
                                 KEY_CKID:ckid,
                                 KEY_DVID:ckid,
+                                KEY_IDFA:idfa,
                                 KEY_TEL:carrier,
                                 KEY_NET:net,
                                 KEY_SCREEN_W:srW,
@@ -74,6 +76,19 @@ static NSString *Joy4you_channelId = nil;
         [JYSTKeychain storeUsername:KEY_IDFV andPassword:idfv forServiceName:KEYCHAIN_SERVICE updateExisting:YES error:nil];
     }
     return idfv;
+}
+
+//idfa
++ (NSString *)getIdfa
+{
+#ifdef IDFA
+    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    idfa = idfa?idfa:@"";
+    
+    return idfa;
+#else
+    return @"";
+#endif
 }
 
 // 获取ckid
