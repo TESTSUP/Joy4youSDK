@@ -79,7 +79,7 @@ static NSString *Joy4you_channelId = nil;
 }
 
 //idfa
-+ (NSString *)getIdfa
++ (NSString *)idfa
 {
 #ifdef IDFA
     NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
@@ -195,20 +195,6 @@ static NSString *Joy4you_channelId = nil;
     
     NSAssert((Joy4you_channelId != nil && [Joy4you_channelId length]), @"Joy4you SDK SDK Error: channel id can not be nil");
     return Joy4you_channelId;
-}
-
-
-//idfa
-+ (NSString *)idfa
-{
-#ifdef IDFA
-    NSString *idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    idfa = idfa?idfa:@"";
-    
-    return idfa;
-#else
-    return @"";
-#endif
 }
 
 //屏幕宽度

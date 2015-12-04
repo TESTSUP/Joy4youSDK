@@ -52,6 +52,7 @@
 }
 
 #pragma mark - Joy4youCallback
+//回调实现
 - (void)loginCallback:(NSDictionary *)jsonDic
 {
 //    NSString *newLog = [NSString stringWithFormat:@"\n%@", jsonDic];
