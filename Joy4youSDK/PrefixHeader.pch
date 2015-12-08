@@ -15,5 +15,6 @@
 #import "JYLog.h"
 #import "JYConfig.h"
 #import "JYDefine.h"
+#import "TalkingDataAppCpa.h"
 
 #endif

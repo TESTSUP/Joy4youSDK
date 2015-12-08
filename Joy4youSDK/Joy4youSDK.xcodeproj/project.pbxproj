@@ -68,6 +68,7 @@
 		3F4A79261C0BF4D300F4DB50 /* JYAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */; };
 		3F4A79281C0C557A00F4DB50 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A79271C0C557A00F4DB50 /* license.html */; };
 		3F8839271C06A72600A640A8 /* JYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A01C06978400C81D68 /* JYViewController.m */; };
+		3FE90FC71C167C74000F3B15 /* libTalkingDataAppCpa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */; };
 		3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB739B1C06976700C81D68 /* JYLoadingView.xib */; };
 		3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB739E1C06978400C81D68 /* JYNavigationController.m */; };
 		3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */; };
@@ -207,6 +208,8 @@
 		3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAgreementViewController.m; sourceTree = "<group>"; };
 		3F4A79241C0BF4CF00F4DB50 /* JYAgreementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYAgreementViewController.xib; sourceTree = "<group>"; };
 		3F4A79271C0C557A00F4DB50 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
+		3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingDataAppCpa.a; sourceTree = "<group>"; };
+		3FE90FC61C167C74000F3B15 /* TalkingDataAppCpa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingDataAppCpa.h; sourceTree = "<group>"; };
 		3FFB739B1C06976700C81D68 /* JYLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JYLoadingView.xib; path = xib/JYLoadingView.xib; sourceTree = "<group>"; };
 		3FFB739D1C06978400C81D68 /* JYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNavigationController.h; sourceTree = "<group>"; };
 		3FFB739E1C06978400C81D68 /* JYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNavigationController.m; sourceTree = "<group>"; };
@@ -285,6 +288,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE90FC71C167C74000F3B15 /* libTalkingDataAppCpa.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +376,15 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		3FE90FC41C167C74000F3B15 /* 3rd */ = {
+			isa = PBXGroup;
+			children = (
+				3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */,
+				3FE90FC61C167C74000F3B15 /* TalkingDataAppCpa.h */,
+			);
+			path = 3rd;
+			sourceTree = "<group>";
+		};
 		CFF6AC431BF9B944006A7DA2 = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +407,7 @@
 		CFF6AC4E1BF9B944006A7DA2 /* JoySDK */ = {
 			isa = PBXGroup;
 			children = (
+				3FE90FC41C167C74000F3B15 /* 3rd */,
 				CFF6AC4F1BF9B944006A7DA2 /* Joy4youSDK.h */,
 				CFF6AC511BF9B944006A7DA2 /* Joy4youSDK.m */,
 				CFF6ACEF1BFC2288006A7DA2 /* JYConfig.h */,
@@ -950,6 +964,10 @@
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JoySDK/3rd",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -969,6 +987,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JoySDK/3rd",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
