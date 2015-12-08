@@ -157,6 +157,7 @@
                                                                                                                switch (status.integerValue) {
                                                                                                                    case 200:
                                                                                                                    {
+                                                                                                                       [TalkingDataAppCpa onRegister:[JYUserCache sharedInstance].currentUser.userid];
                                                                                                                        [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_registWithUsernameSuccess]];
                                                                                                                        return;
                                                                                                                    }
@@ -264,6 +265,7 @@
                                                                  switch (status.integerValue) {
                                                                      case 200:
                                                                      {
+                                                                         [TalkingDataAppCpa onRegister:[JYUserCache sharedInstance].currentUser.userid];
                                                                          cacheLoading.lodingType = JYLoading_bindSuccess;
                                                                          [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_bindSuccess]];
                                                                          return;

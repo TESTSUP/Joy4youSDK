@@ -204,6 +204,7 @@ static dispatch_once_t token;
                                                              switch (status.integerValue) {
                                                                  case 200:
                                                                  {
+                                                                     [TalkingDataAppCpa onLogin:cacheUser.userid];
                                                                      [self showSuccessWithLoadingType:JYLoading_loginWithUsernameSuccess];
                                                                      return;
                                                                  }

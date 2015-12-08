@@ -233,6 +233,7 @@
             switch (status.integerValue) {
                 case 200:
                 {
+                    [TalkingDataAppCpa onLogin:[JYUserCache sharedInstance].currentUser.userid];
                     [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
                     return;
                 }
@@ -306,6 +307,7 @@
                                                        switch (status.integerValue) {
                                                            case 200:
                                                            {
+                                                               [TalkingDataAppCpa onLogin:[JYUserCache sharedInstance].currentUser.userid];
                                                                [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
                                                                return;
                                                            }

@@ -11,7 +11,7 @@
 /**
  *  SDK版本号
  */
-const NSString *Joy4youSDK_VERSION = @"1.0.0";
+const NSString *Joy4youSDK_VERSION = @"1.1.0";
 
 /**
  *  加解密Key

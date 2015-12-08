@@ -18,11 +18,25 @@
 + (NSDictionary *)deviceInfo;
 
 /**
+ *  设置应用ID
+ *
+ *  @param appId <#appId description#>
+ */
++ (void)setAppId:(NSString *)appId;
+
+/**
  *  应用id
  *
  *  @return <#return value description#>
  */
 + (NSString *)appId;
+
+/**
+ *  设置渠道号
+ *
+ *  @param channelId <#channelId description#>
+ */
++ (void)setChannelId:(NSString *)channelId;
 
 /**
  *  渠道id

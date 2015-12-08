@@ -172,7 +172,10 @@ static NSString *Joy4you_channelId = nil;
     return isWiFi ? @"WiFi" : @"Cellular";
 }
 
-
++ (void)setAppId:(NSString *)appId
+{
+    Joy4you_appId = appId;
+}
 
 // 获取appid
 + (NSString *)appId
@@ -183,6 +186,11 @@ static NSString *Joy4you_channelId = nil;
     }
     NSAssert((Joy4you_appId != nil && [Joy4you_appId length]), @"Joy4you SDK Error: app id can not be nil");
     return Joy4you_appId;
+}
+
++ (void)setChannelId:(NSString *)channelId
+{
+    Joy4you_channelId = channelId;
 }
 
 //获取渠道号
