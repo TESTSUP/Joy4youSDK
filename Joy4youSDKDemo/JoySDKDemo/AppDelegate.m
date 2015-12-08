@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Joy4youSDK.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Joy4youSDK initWithAppId:@"10000"
+                    channelId:@"000000"
+                      andADId:@"abc89421641e428c8c4dfdc7ac1b25c7"];
+    
     return YES;
 }
 

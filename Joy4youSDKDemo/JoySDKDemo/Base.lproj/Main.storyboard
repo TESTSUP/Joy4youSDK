@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nds-pi-A2w">
-                                <rect key="frame" x="220" y="40" width="160" height="44"/>
+                                <rect key="frame" x="20" y="20" width="160" height="44"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.074509803920000006" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -33,6 +34,7 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="CH8-g3-3sx"/>
                                         <exclude reference="ngu-td-1Es"/>
                                     </mask>
                                 </variation>
@@ -47,17 +49,77 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WM3-4u-nhP">
+                                <rect key="frame" x="220" y="20" width="160" height="44"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WM3-4u-nhP" secondAttribute="height" multiplier="88:15" id="7vo-Rp-iwB"/>
+                                    <constraint firstAttribute="height" constant="44" id="Nm6-3B-sKW"/>
+                                    <constraint firstAttribute="width" constant="160" id="udI-wY-Q1Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="创建角色">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="udI-wY-Q1Q"/>
+                                        <exclude reference="7vo-Rp-iwB"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="handleCreateRole:" destination="BYZ-38-t0r" eventType="touchUpInside" id="viz-71-HGK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sF4-Q2-JiL">
+                                <rect key="frame" x="420" y="20" width="160" height="44"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.51372549020000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ime-qE-HuF"/>
+                                    <constraint firstAttribute="width" secondItem="sF4-Q2-JiL" secondAttribute="height" multiplier="88:15" id="JHU-ck-6pJ"/>
+                                    <constraint firstAttribute="width" constant="160" id="eT4-U4-RS2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="支付">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="eT4-U4-RS2"/>
+                                        <exclude reference="JHU-ck-6pJ"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="handlePayAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QSR-XH-xSy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nds-pi-A2w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="RB7-sZ-gMz"/>
+                            <constraint firstAttribute="trailing" secondItem="sF4-Q2-JiL" secondAttribute="trailing" constant="20" id="IRU-oz-btv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="nds-pi-A2w" secondAttribute="leading" id="J42-6C-5xl"/>
+                            <constraint firstItem="WM3-4u-nhP" firstAttribute="width" secondItem="nds-pi-A2w" secondAttribute="width" id="MNL-s3-6dZ"/>
+                            <constraint firstItem="WM3-4u-nhP" firstAttribute="width" secondItem="sF4-Q2-JiL" secondAttribute="width" id="P0h-Aj-eId"/>
+                            <constraint firstItem="WM3-4u-nhP" firstAttribute="leading" secondItem="nds-pi-A2w" secondAttribute="trailing" constant="40" id="PN4-OU-SSP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WM3-4u-nhP" secondAttribute="trailing" id="QAp-Zk-Vis"/>
+                            <constraint firstItem="nds-pi-A2w" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="RB7-sZ-gMz"/>
+                            <constraint firstItem="WM3-4u-nhP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="TL1-lB-rD5"/>
+                            <constraint firstItem="sF4-Q2-JiL" firstAttribute="leading" secondItem="WM3-4u-nhP" secondAttribute="trailing" constant="40" id="TmA-4a-g5G"/>
                             <constraint firstAttribute="trailing" secondItem="ma5-BS-auQ" secondAttribute="trailing" constant="20" id="UJQ-Mf-FJx"/>
-                            <constraint firstItem="nds-pi-A2w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xs0-lc-RjE"/>
-                            <constraint firstItem="ma5-BS-auQ" firstAttribute="top" secondItem="nds-pi-A2w" secondAttribute="top" constant="60" id="laz-tB-X59"/>
+                            <constraint firstItem="sF4-Q2-JiL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="W3l-4N-f7Y"/>
+                            <constraint firstItem="ma5-BS-auQ" firstAttribute="top" secondItem="nds-pi-A2w" secondAttribute="top" constant="80" id="laz-tB-X59"/>
+                            <constraint firstItem="WM3-4u-nhP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lep-0h-NjI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ma5-BS-auQ" secondAttribute="bottom" constant="20" id="zAv-gN-MhQ"/>
                             <constraint firstItem="ma5-BS-auQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="zNL-EY-cEz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QAp-Zk-Vis"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="logView" destination="ma5-BS-auQ" id="sS8-1t-6KB"/>

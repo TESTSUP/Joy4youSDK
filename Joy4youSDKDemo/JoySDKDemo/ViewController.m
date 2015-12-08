@@ -43,6 +43,15 @@
 //    [Joy4youSDK setLogEnabled:NO];
 }
 
+- (IBAction)handleCreateRole:(id)sender {
+    [Joy4youSDK onCreateRole:@"角色"];
+}
+
+- (IBAction)handlePayAction:(id)sender {
+    NSString *time = [NSString stringWithFormat:@"%@", [NSDate date]];
+    [Joy4youSDK onPay:@"user" withOrderId:time withAmount:600 withCurrencyType:@"CNY" withPayType:@"AliPay"];
+}
+
 - (NSDateFormatter *)dateFormatter
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

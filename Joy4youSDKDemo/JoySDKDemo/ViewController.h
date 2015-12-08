@@ -16,5 +16,9 @@
 
 - (IBAction)handleLogin:(id)sender;
 
+- (IBAction)handleCreateRole:(id)sender;
+
+- (IBAction)handlePayAction:(id)sender;
+
 @end
 

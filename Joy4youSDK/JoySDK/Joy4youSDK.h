@@ -28,7 +28,9 @@
  *  @param channelId 渠道号
  *  @param adId      talkingData后台创建的应用ID
  */
-+ (void)initWithAppId:(NSString *)appId channelId:(NSString *)channelId andADId:(NSString *)adId;
++ (void)initWithAppId:(NSString *)appId
+            channelId:(NSString *)channelId
+              andADId:(NSString *)adId;
 
 /**
  *	显示SDK接口
