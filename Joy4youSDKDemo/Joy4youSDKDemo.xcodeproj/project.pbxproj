@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3FE90FC91C167CE7000F3B15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC81C167CE7000F3B15 /* libz.tbd */; };
 		3FE90FCD1C167CF7000F3B15 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */; };
-		3FFB73B91C0698A900C81D68 /* Joy4youBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB73B71C0698A900C81D68 /* Joy4youBundle.bundle */; };
+		3FE90FF41C1821CD000F3B15 /* Joy4youBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF21C1821CD000F3B15 /* Joy4youBundle.bundle */; };
 		3FFB73BC1C0698D000C81D68 /* libJoy4youSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 248FCC671C04303500657ADD /* libJoy4youSDK.a */; };
 		CFF6AC661BF9B96F006A7DA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC651BF9B96F006A7DA2 /* main.m */; };
 		CFF6AC691BF9B96F006A7DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC681BF9B96F006A7DA2 /* AppDelegate.m */; };
@@ -42,8 +42,8 @@
 		248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Joy4youSDK.xcodeproj; path = ../Joy4youSDK/Joy4youSDK.xcodeproj; sourceTree = "<group>"; };
 		3FE90FC81C167CE7000F3B15 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		3FFB73B71C0698A900C81D68 /* Joy4youBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Joy4youBundle.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphonesimulator/Joy4youBundle.bundle"; sourceTree = "<group>"; };
-		3FFB73B81C0698A900C81D68 /* Joy4youSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Joy4youSDK.h; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphonesimulator/Joy4youSDK.h"; sourceTree = "<group>"; };
+		3FE90FF21C1821CD000F3B15 /* Joy4youBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Joy4youBundle.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphoneos/Joy4youBundle.bundle"; sourceTree = "<group>"; };
+		3FE90FF31C1821CD000F3B15 /* Joy4youSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Joy4youSDK.h; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphoneos/Joy4youSDK.h"; sourceTree = "<group>"; };
 		CFF6AC611BF9B96F006A7DA2 /* Joy4youSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joy4youSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF6AC651BF9B96F006A7DA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFF6AC671BF9B96F006A7DA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,10 +86,10 @@
 		CFF6AC581BF9B96F006A7DA2 = {
 			isa = PBXGroup;
 			children = (
+				3FE90FF21C1821CD000F3B15 /* Joy4youBundle.bundle */,
+				3FE90FF31C1821CD000F3B15 /* Joy4youSDK.h */,
 				3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */,
 				3FE90FC81C167CE7000F3B15 /* libz.tbd */,
-				3FFB73B71C0698A900C81D68 /* Joy4youBundle.bundle */,
-				3FFB73B81C0698A900C81D68 /* Joy4youSDK.h */,
 				CFF6AD051BFC7114006A7DA2 /* MobileCoreServices.framework */,
 				CFF6AD031BFC70E2006A7DA2 /* SystemConfiguration.framework */,
 				248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */,
@@ -211,8 +211,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE90FF41C1821CD000F3B15 /* Joy4youBundle.bundle in Resources */,
 				CFF6AC741BF9B96F006A7DA2 /* LaunchScreen.storyboard in Resources */,
-				3FFB73B91C0698A900C81D68 /* Joy4youBundle.bundle in Resources */,
 				CFF6AC711BF9B96F006A7DA2 /* Assets.xcassets in Resources */,
 				CFF6AC6F1BF9B96F006A7DA2 /* Main.storyboard in Resources */,
 			);
@@ -340,9 +340,17 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YU MIAO LU (TL83AGE7TM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YU MIAO LU (TL83AGE7TM)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = JoySDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joy4you.AccountSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -358,9 +366,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YU MIAO LU (TL83AGE7TM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YU MIAO LU (TL83AGE7TM)";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = JoySDKDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joy4you.AccountSDK;
 				PRODUCT_NAME = "$(TARGET_NAME)";

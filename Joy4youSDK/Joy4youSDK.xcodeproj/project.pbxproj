@@ -52,8 +52,6 @@
 		3F4A79061C0841E600F4DB50 /* jy_img_checkbox_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78F91C0841E600F4DB50 /* jy_img_checkbox_on@3x.png */; };
 		3F4A79071C0841E600F4DB50 /* jy_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78FA1C0841E600F4DB50 /* jy_logo@3x.png */; };
 		3F4A79081C0841E600F4DB50 /* jy_pwd_login@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78FB1C0841E600F4DB50 /* jy_pwd_login@3x.png */; };
-		3F4A79091C0841E600F4DB50 /* jy_show_service_pressed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78FC1C0841E600F4DB50 /* jy_show_service_pressed@3x.png */; };
-		3F4A790A1C0841E600F4DB50 /* jy_show_service@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78FD1C0841E600F4DB50 /* jy_show_service@3x.png */; };
 		3F4A790B1C0841E600F4DB50 /* jy_user_login@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78FE1C0841E600F4DB50 /* jy_user_login@3x.png */; };
 		3F4A790E1C08425E00F4DB50 /* jy_login_pulldown_btn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A790C1C08425E00F4DB50 /* jy_login_pulldown_btn@3x.png */; };
 		3F4A790F1C08425E00F4DB50 /* jy_login_pulldown_del@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A790D1C08425E00F4DB50 /* jy_login_pulldown_del@3x.png */; };
@@ -69,6 +67,28 @@
 		3F4A79281C0C557A00F4DB50 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A79271C0C557A00F4DB50 /* license.html */; };
 		3F8839271C06A72600A640A8 /* JYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A01C06978400C81D68 /* JYViewController.m */; };
 		3FE90FC71C167C74000F3B15 /* libTalkingDataAppCpa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */; };
+		3FE9100B1C18274E000F3B15 /* jy_back_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF51C18274E000F3B15 /* jy_back_pressed.png */; };
+		3FE9100C1C18274E000F3B15 /* jy_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF61C18274E000F3B15 /* jy_back.png */; };
+		3FE9100D1C18274E000F3B15 /* jy_button_blue_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF71C18274E000F3B15 /* jy_button_blue_pressed.png */; };
+		3FE9100E1C18274E000F3B15 /* jy_button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF81C18274E000F3B15 /* jy_button_blue.png */; };
+		3FE9100F1C18274E000F3B15 /* jy_button_orange_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF91C18274E000F3B15 /* jy_button_orange_pressed.png */; };
+		3FE910101C18274E000F3B15 /* jy_button_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FFA1C18274E000F3B15 /* jy_button_orange.png */; };
+		3FE910111C18274E000F3B15 /* jy_img_checkbox_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FFB1C18274E000F3B15 /* jy_img_checkbox_off.png */; };
+		3FE910121C18274E000F3B15 /* jy_img_checkbox_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FFC1C18274E000F3B15 /* jy_img_checkbox_on.png */; };
+		3FE910131C18274E000F3B15 /* jy_img_edittext.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FFD1C18274E000F3B15 /* jy_img_edittext.png */; };
+		3FE910141C18274E000F3B15 /* jy_login_pulldown_bound.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FFE1C18274E000F3B15 /* jy_login_pulldown_bound.png */; };
+		3FE910151C18274E000F3B15 /* jy_login_pulldown_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FFF1C18274E000F3B15 /* jy_login_pulldown_btn.png */; };
+		3FE910161C18274E000F3B15 /* jy_login_pulldown_del.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910001C18274E000F3B15 /* jy_login_pulldown_del.png */; };
+		3FE910171C18274E000F3B15 /* jy_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910011C18274E000F3B15 /* jy_logo.png */; };
+		3FE910181C18274E000F3B15 /* jy_popBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910021C18274E000F3B15 /* jy_popBg.png */; };
+		3FE910191C18274E000F3B15 /* jy_pwd_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910031C18274E000F3B15 /* jy_pwd_login.png */; };
+		3FE9101A1C18274E000F3B15 /* jy_user_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910041C18274E000F3B15 /* jy_user_login.png */; };
+		3FE9101B1C18274E000F3B15 /* loading_circle_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910051C18274E000F3B15 /* loading_circle_full.png */; };
+		3FE9101C1C18274E000F3B15 /* loading_circle_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910061C18274E000F3B15 /* loading_circle_full@3x.png */; };
+		3FE9101D1C18274E000F3B15 /* loading_circle_half.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910071C18274E000F3B15 /* loading_circle_half.png */; };
+		3FE9101E1C18274E000F3B15 /* loading_circle_half@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910081C18274E000F3B15 /* loading_circle_half@3x.png */; };
+		3FE9101F1C18274E000F3B15 /* loading_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910091C18274E000F3B15 /* loading_success.png */; };
+		3FE910201C18274E000F3B15 /* loading_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE9100A1C18274E000F3B15 /* loading_success@3x.png */; };
 		3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB739B1C06976700C81D68 /* JYLoadingView.xib */; };
 		3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB739E1C06978400C81D68 /* JYNavigationController.m */; };
 		3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */; };
@@ -191,8 +211,6 @@
 		3F4A78F91C0841E600F4DB50 /* jy_img_checkbox_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_img_checkbox_on@3x.png"; path = "images/jy_img_checkbox_on@3x.png"; sourceTree = "<group>"; };
 		3F4A78FA1C0841E600F4DB50 /* jy_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_logo@3x.png"; path = "images/jy_logo@3x.png"; sourceTree = "<group>"; };
 		3F4A78FB1C0841E600F4DB50 /* jy_pwd_login@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_pwd_login@3x.png"; path = "images/jy_pwd_login@3x.png"; sourceTree = "<group>"; };
-		3F4A78FC1C0841E600F4DB50 /* jy_show_service_pressed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_show_service_pressed@3x.png"; path = "images/jy_show_service_pressed@3x.png"; sourceTree = "<group>"; };
-		3F4A78FD1C0841E600F4DB50 /* jy_show_service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_show_service@3x.png"; path = "images/jy_show_service@3x.png"; sourceTree = "<group>"; };
 		3F4A78FE1C0841E600F4DB50 /* jy_user_login@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_user_login@3x.png"; path = "images/jy_user_login@3x.png"; sourceTree = "<group>"; };
 		3F4A790C1C08425E00F4DB50 /* jy_login_pulldown_btn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_login_pulldown_btn@3x.png"; path = "images/jy_login_pulldown_btn@3x.png"; sourceTree = "<group>"; };
 		3F4A790D1C08425E00F4DB50 /* jy_login_pulldown_del@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_login_pulldown_del@3x.png"; path = "images/jy_login_pulldown_del@3x.png"; sourceTree = "<group>"; };
@@ -210,6 +228,28 @@
 		3F4A79271C0C557A00F4DB50 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
 		3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingDataAppCpa.a; sourceTree = "<group>"; };
 		3FE90FC61C167C74000F3B15 /* TalkingDataAppCpa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingDataAppCpa.h; sourceTree = "<group>"; };
+		3FE90FF51C18274E000F3B15 /* jy_back_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_back_pressed.png; path = images/jy_back_pressed.png; sourceTree = "<group>"; };
+		3FE90FF61C18274E000F3B15 /* jy_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_back.png; path = images/jy_back.png; sourceTree = "<group>"; };
+		3FE90FF71C18274E000F3B15 /* jy_button_blue_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_button_blue_pressed.png; path = images/jy_button_blue_pressed.png; sourceTree = "<group>"; };
+		3FE90FF81C18274E000F3B15 /* jy_button_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_button_blue.png; path = images/jy_button_blue.png; sourceTree = "<group>"; };
+		3FE90FF91C18274E000F3B15 /* jy_button_orange_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_button_orange_pressed.png; path = images/jy_button_orange_pressed.png; sourceTree = "<group>"; };
+		3FE90FFA1C18274E000F3B15 /* jy_button_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_button_orange.png; path = images/jy_button_orange.png; sourceTree = "<group>"; };
+		3FE90FFB1C18274E000F3B15 /* jy_img_checkbox_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_img_checkbox_off.png; path = images/jy_img_checkbox_off.png; sourceTree = "<group>"; };
+		3FE90FFC1C18274E000F3B15 /* jy_img_checkbox_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_img_checkbox_on.png; path = images/jy_img_checkbox_on.png; sourceTree = "<group>"; };
+		3FE90FFD1C18274E000F3B15 /* jy_img_edittext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_img_edittext.png; path = images/jy_img_edittext.png; sourceTree = "<group>"; };
+		3FE90FFE1C18274E000F3B15 /* jy_login_pulldown_bound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_login_pulldown_bound.png; path = images/jy_login_pulldown_bound.png; sourceTree = "<group>"; };
+		3FE90FFF1C18274E000F3B15 /* jy_login_pulldown_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_login_pulldown_btn.png; path = images/jy_login_pulldown_btn.png; sourceTree = "<group>"; };
+		3FE910001C18274E000F3B15 /* jy_login_pulldown_del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_login_pulldown_del.png; path = images/jy_login_pulldown_del.png; sourceTree = "<group>"; };
+		3FE910011C18274E000F3B15 /* jy_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_logo.png; path = images/jy_logo.png; sourceTree = "<group>"; };
+		3FE910021C18274E000F3B15 /* jy_popBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_popBg.png; path = images/jy_popBg.png; sourceTree = "<group>"; };
+		3FE910031C18274E000F3B15 /* jy_pwd_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_pwd_login.png; path = images/jy_pwd_login.png; sourceTree = "<group>"; };
+		3FE910041C18274E000F3B15 /* jy_user_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_user_login.png; path = images/jy_user_login.png; sourceTree = "<group>"; };
+		3FE910051C18274E000F3B15 /* loading_circle_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading_circle_full.png; path = images/loading_circle_full.png; sourceTree = "<group>"; };
+		3FE910061C18274E000F3B15 /* loading_circle_full@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_circle_full@3x.png"; path = "images/loading_circle_full@3x.png"; sourceTree = "<group>"; };
+		3FE910071C18274E000F3B15 /* loading_circle_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading_circle_half.png; path = images/loading_circle_half.png; sourceTree = "<group>"; };
+		3FE910081C18274E000F3B15 /* loading_circle_half@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_circle_half@3x.png"; path = "images/loading_circle_half@3x.png"; sourceTree = "<group>"; };
+		3FE910091C18274E000F3B15 /* loading_success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading_success.png; path = images/loading_success.png; sourceTree = "<group>"; };
+		3FE9100A1C18274E000F3B15 /* loading_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_success@3x.png"; path = "images/loading_success@3x.png"; sourceTree = "<group>"; };
 		3FFB739B1C06976700C81D68 /* JYLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = JYLoadingView.xib; path = xib/JYLoadingView.xib; sourceTree = "<group>"; };
 		3FFB739D1C06978400C81D68 /* JYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYNavigationController.h; sourceTree = "<group>"; };
 		3FFB739E1C06978400C81D68 /* JYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYNavigationController.m; sourceTree = "<group>"; };
@@ -335,6 +375,28 @@
 		248FCC7B1C04314900657ADD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				3FE90FF51C18274E000F3B15 /* jy_back_pressed.png */,
+				3FE90FF61C18274E000F3B15 /* jy_back.png */,
+				3FE90FF71C18274E000F3B15 /* jy_button_blue_pressed.png */,
+				3FE90FF81C18274E000F3B15 /* jy_button_blue.png */,
+				3FE90FF91C18274E000F3B15 /* jy_button_orange_pressed.png */,
+				3FE90FFA1C18274E000F3B15 /* jy_button_orange.png */,
+				3FE90FFB1C18274E000F3B15 /* jy_img_checkbox_off.png */,
+				3FE90FFC1C18274E000F3B15 /* jy_img_checkbox_on.png */,
+				3FE90FFD1C18274E000F3B15 /* jy_img_edittext.png */,
+				3FE90FFE1C18274E000F3B15 /* jy_login_pulldown_bound.png */,
+				3FE90FFF1C18274E000F3B15 /* jy_login_pulldown_btn.png */,
+				3FE910001C18274E000F3B15 /* jy_login_pulldown_del.png */,
+				3FE910011C18274E000F3B15 /* jy_logo.png */,
+				3FE910021C18274E000F3B15 /* jy_popBg.png */,
+				3FE910031C18274E000F3B15 /* jy_pwd_login.png */,
+				3FE910041C18274E000F3B15 /* jy_user_login.png */,
+				3FE910051C18274E000F3B15 /* loading_circle_full.png */,
+				3FE910061C18274E000F3B15 /* loading_circle_full@3x.png */,
+				3FE910071C18274E000F3B15 /* loading_circle_half.png */,
+				3FE910081C18274E000F3B15 /* loading_circle_half@3x.png */,
+				3FE910091C18274E000F3B15 /* loading_success.png */,
+				3FE9100A1C18274E000F3B15 /* loading_success@3x.png */,
 				3F4A791B1C0BE9CF00F4DB50 /* jy_login_pulldown_bound@2x.png */,
 				3F4A791C1C0BE9CF00F4DB50 /* jy_login_pulldown_bound@3x.png */,
 				3F4A78D81C07EE4300F4DB50 /* jy_popBg@2x.png */,
@@ -367,8 +429,6 @@
 				3F4A78F91C0841E600F4DB50 /* jy_img_checkbox_on@3x.png */,
 				3F4A78FA1C0841E600F4DB50 /* jy_logo@3x.png */,
 				3F4A78FB1C0841E600F4DB50 /* jy_pwd_login@3x.png */,
-				3F4A78FC1C0841E600F4DB50 /* jy_show_service_pressed@3x.png */,
-				3F4A78FD1C0841E600F4DB50 /* jy_show_service@3x.png */,
 				3F4A78FE1C0841E600F4DB50 /* jy_user_login@3x.png */,
 				3F4A790C1C08425E00F4DB50 /* jy_login_pulldown_btn@3x.png */,
 				3F4A790D1C08425E00F4DB50 /* jy_login_pulldown_del@3x.png */,
@@ -683,23 +743,34 @@
 				3F4A78C01C06F4F800F4DB50 /* jy_button_orange_pressed@2x.png in Resources */,
 				3F4A79041C0841E600F4DB50 /* jy_button_orange@3x.png in Resources */,
 				3F4A790F1C08425E00F4DB50 /* jy_login_pulldown_del@3x.png in Resources */,
+				3FE910121C18274E000F3B15 /* jy_img_checkbox_on.png in Resources */,
 				248FCC991C04385B00657ADD /* JYServiceViewController.xib in Resources */,
 				3F4A790E1C08425E00F4DB50 /* jy_login_pulldown_btn@3x.png in Resources */,
 				3F4A78D51C0712F700F4DB50 /* loading_circle_full@2x.png in Resources */,
-				3F4A790A1C0841E600F4DB50 /* jy_show_service@3x.png in Resources */,
 				248FCC7D1C04316900657ADD /* JYLoginViewController.xib in Resources */,
 				3F4A78BE1C06F4F800F4DB50 /* jy_button_blue_pressed@2x.png in Resources */,
 				248FCC8F1C04371F00657ADD /* JYFindPasswordViewController.xib in Resources */,
+				3FE9101B1C18274E000F3B15 /* loading_circle_full.png in Resources */,
 				3F4A78E31C07F54600F4DB50 /* JYBindAlertViewController.xib in Resources */,
+				3FE910181C18274E000F3B15 /* jy_popBg.png in Resources */,
 				3F4A79031C0841E600F4DB50 /* jy_button_orange_pressed@3x.png in Resources */,
 				3F4A78D11C07088D00F4DB50 /* jy_login_pulldown_del@2x.png in Resources */,
 				3F4A78D71C0712F700F4DB50 /* loading_success@2x.png in Resources */,
+				3FE9101D1C18274E000F3B15 /* loading_circle_half.png in Resources */,
+				3FE9100B1C18274E000F3B15 /* jy_back_pressed.png in Resources */,
 				3F4A78B91C06E9FE00F4DB50 /* jy_user_login@2x.png in Resources */,
+				3FE9101C1C18274E000F3B15 /* loading_circle_full@3x.png in Resources */,
+				3FE910171C18274E000F3B15 /* jy_logo.png in Resources */,
 				3F4A78F11C083E6900F4DB50 /* jy_img_edittext@3x.png in Resources */,
+				3FE910151C18274E000F3B15 /* jy_login_pulldown_btn.png in Resources */,
 				3F4A78DB1C07EE4300F4DB50 /* jy_popBg@3x.png in Resources */,
 				3F4A79011C0841E600F4DB50 /* jy_button_blue_pressed@3x.png in Resources */,
+				3FE9100C1C18274E000F3B15 /* jy_back.png in Resources */,
 				3F4A791E1C0BE9CF00F4DB50 /* jy_login_pulldown_bound@3x.png in Resources */,
+				3FE9101F1C18274E000F3B15 /* loading_success.png in Resources */,
+				3FE910141C18274E000F3B15 /* jy_login_pulldown_bound.png in Resources */,
 				3F4A78C11C06F4F800F4DB50 /* jy_button_orange@2x.png in Resources */,
+				3FE9101A1C18274E000F3B15 /* jy_user_login.png in Resources */,
 				248FCC851C0432BD00657ADD /* JYRegistViewController.xib in Resources */,
 				3F4A78FF1C0841E600F4DB50 /* jy_back_pressed@3x.png in Resources */,
 				3F4A78BF1C06F4F800F4DB50 /* jy_button_blue@2x.png in Resources */,
@@ -707,9 +778,15 @@
 				3F4A79061C0841E600F4DB50 /* jy_img_checkbox_on@3x.png in Resources */,
 				3F4A78C41C06FEDE00F4DB50 /* jy_back_pressed@2x.png in Resources */,
 				3F4A79071C0841E600F4DB50 /* jy_logo@3x.png in Resources */,
+				3FE910111C18274E000F3B15 /* jy_img_checkbox_off.png in Resources */,
 				3F4A78AF1C06E48F00F4DB50 /* jy_logo@2x.png in Resources */,
+				3FE910191C18274E000F3B15 /* jy_pwd_login.png in Resources */,
+				3FE910101C18274E000F3B15 /* jy_button_orange.png in Resources */,
 				3F4A79051C0841E600F4DB50 /* jy_img_checkbox_off@3x.png in Resources */,
+				3FE910161C18274E000F3B15 /* jy_login_pulldown_del.png in Resources */,
+				3FE9100D1C18274E000F3B15 /* jy_button_blue_pressed.png in Resources */,
 				3F4A790B1C0841E600F4DB50 /* jy_user_login@3x.png in Resources */,
+				3FE9100F1C18274E000F3B15 /* jy_button_orange_pressed.png in Resources */,
 				3F4A78C51C06FEDE00F4DB50 /* jy_back@2x.png in Resources */,
 				3F4A78DA1C07EE4300F4DB50 /* jy_popBg@2x.png in Resources */,
 				3F4A79021C0841E600F4DB50 /* jy_button_blue@3x.png in Resources */,
@@ -717,17 +794,20 @@
 				3F4A791D1C0BE9CF00F4DB50 /* jy_login_pulldown_bound@2x.png in Resources */,
 				3F4A79081C0841E600F4DB50 /* jy_pwd_login@3x.png in Resources */,
 				3F4A78B81C06E9FE00F4DB50 /* jy_pwd_login@2x.png in Resources */,
+				3FE9100E1C18274E000F3B15 /* jy_button_blue.png in Resources */,
+				3FE9101E1C18274E000F3B15 /* loading_circle_half@3x.png in Resources */,
 				3F4A78EC1C082BA300F4DB50 /* Localizable.strings in Resources */,
 				3F4A78B51C06E7DF00F4DB50 /* jy_img_edittext@2x.png in Resources */,
 				248FCC941C04378100657ADD /* JYBindEmailViewController.xib in Resources */,
 				3F4A78CD1C07006B00F4DB50 /* jy_img_checkbox_on@2x.png in Resources */,
+				3FE910201C18274E000F3B15 /* loading_success@3x.png in Resources */,
 				3F4A791A1C0BE7A200F4DB50 /* JYCacheListView.xib in Resources */,
 				3F4A78D01C07088D00F4DB50 /* jy_login_pulldown_btn@2x.png in Resources */,
 				3F4A79191C0BE7A200F4DB50 /* JYCacheCellView.xib in Resources */,
-				3F4A79091C0841E600F4DB50 /* jy_show_service_pressed@3x.png in Resources */,
 				3F4A78D61C0712F700F4DB50 /* loading_circle_half@2x.png in Resources */,
 				3F4A79251C0BF4CF00F4DB50 /* JYAgreementViewController.xib in Resources */,
 				3F4A79001C0841E600F4DB50 /* jy_back@3x.png in Resources */,
+				3FE910131C18274E000F3B15 /* jy_img_edittext.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,6 +1035,7 @@
 					"$(ARCHS_STANDARD)",
 					armv7s,
 				);
+				DEPLOYMENT_POSTPROCESSING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -962,6 +1043,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"IDFA=1",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -982,10 +1064,12 @@
 					"$(ARCHS_STANDARD)",
 					armv7s,
 				);
+				DEPLOYMENT_POSTPROCESSING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "IDFA=1";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
