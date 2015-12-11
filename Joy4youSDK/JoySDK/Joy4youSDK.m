@@ -85,6 +85,8 @@
         NSLog(@"Joy4youSDK init error, parameter can not be nil");
         return;
     }
+    
+    NSLog(@"Joy4youSDK init, version = %@", Joy4youSDK_VERSION);
     [TalkingDataAppCpa init:adId withChannelId:@"AppStore"];
     [JYDevice setAppId:appId];
     [JYDevice setChannelId:channelId];
