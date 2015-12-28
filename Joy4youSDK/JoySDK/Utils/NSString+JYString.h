@@ -44,4 +44,19 @@
  *  @return <#return value description#>
  */
 - (BOOL) validateEmailAddress;
+
+/**
+ *  手机号是否有效
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)validatePhoneNumber;
+
+/**
+ *  验证码是否有效
+ *
+ *  @return <#return value description#>
+ */
+- (BOOL)validateVerifyCode;
+
 @end

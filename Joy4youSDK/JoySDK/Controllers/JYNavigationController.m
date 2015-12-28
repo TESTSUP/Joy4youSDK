@@ -10,7 +10,6 @@
 
 @implementation JYNavigationController
 
-
 - (BOOL)shouldAutorotate
 {
     return self.topViewController.shouldAutorotate;

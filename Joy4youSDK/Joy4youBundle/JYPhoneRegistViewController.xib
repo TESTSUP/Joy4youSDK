@@ -5,19 +5,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYRegistViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYPhoneRegistViewController">
             <connections>
-                <outlet property="accountBg" destination="FvC-RG-zBE" id="KUb-6i-F3o"/>
-                <outlet property="backButton" destination="LAR-rY-yXd" id="Ot1-TQ-wWi"/>
-                <outlet property="bindButton" destination="rPd-pg-VGs" id="OTB-Cu-hIW"/>
-                <outlet property="confirmAgreementBtn" destination="JnL-V1-w51" id="BSf-4b-Qf0"/>
-                <outlet property="passwordBg" destination="CM3-bP-HMs" id="05O-EJ-O6V"/>
-                <outlet property="passwordField" destination="msV-0w-k3u" id="cSB-HY-P81"/>
-                <outlet property="registBtn" destination="aZ6-dK-B4A" id="0QB-vu-o8D"/>
-                <outlet property="showAgreementBtn" destination="ESv-a8-53B" id="7gi-jG-4Tr"/>
-                <outlet property="showPasswordBtn" destination="DY7-Ne-X6q" id="GmA-Xv-gC5"/>
-                <outlet property="usernameTextField" destination="N6y-4a-IXQ" id="hYi-d9-fCY"/>
-                <outlet property="view" destination="iN0-l3-epB" id="apT-Ve-sbl"/>
+                <outlet property="VerifyBtn" destination="rPd-pg-VGs" id="HWI-da-JmK"/>
+                <outlet property="accountRegistBtn" destination="vfb-IK-fHX" id="7Rd-5o-ewF"/>
+                <outlet property="backButton" destination="LAR-rY-yXd" id="6Zw-3k-2hU"/>
+                <outlet property="codeBg" destination="CM3-bP-HMs" id="H3j-iV-XfV"/>
+                <outlet property="codeButton" destination="uiV-vz-VAf" id="tOv-M3-Y0p"/>
+                <outlet property="codeField" destination="msV-0w-k3u" id="uGA-Xz-dev"/>
+                <outlet property="confirmAgreementBtn" destination="JnL-V1-w51" id="hLm-Sj-UyR"/>
+                <outlet property="phoneBg" destination="FvC-RG-zBE" id="nqx-vC-meE"/>
+                <outlet property="phoneField" destination="N6y-4a-IXQ" id="0Gw-10-IMW"/>
+                <outlet property="showAgreementBtn" destination="ESv-a8-53B" id="6IK-mD-hxt"/>
+                <outlet property="view" destination="iN0-l3-epB" id="5IX-Cu-7U9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,6 +25,16 @@
             <rect key="frame" x="0.0" y="0.0" width="310" height="266"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LAR-rY-yXd">
+                    <rect key="frame" x="8" y="8" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <state key="normal" image="jy_back.png"/>
+                    <state key="highlighted" image="jy_back_pressed.png"/>
+                    <connections>
+                        <action selector="handleBackAction:" destination="-1" eventType="touchUpInside" id="0XC-Vk-QxW"/>
+                    </connections>
+                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jy_logo.png" id="rr3-cm-QL1" userLabel="logo">
                     <rect key="frame" x="85" y="7" width="140" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -42,22 +52,22 @@
                     <animations/>
                     <rect key="contentStretch" x="0.20000000000000001" y="0.40000000000000002" width="0.20000000000000001" height="0.5"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="6-20位英文字母、数字或_组合" minimumFontSize="17" clearButtonMode="whileEditing" id="N6y-4a-IXQ">
-                    <rect key="frame" x="93" y="63" width="180" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号" minimumFontSize="17" clearButtonMode="whileEditing" id="N6y-4a-IXQ">
+                    <rect key="frame" x="93" y="63" width="115" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="next"/>
+                    <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="6-15位英文字母、数字或符号" minimumFontSize="17" clearButtonMode="whileEditing" id="msV-0w-k3u">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的验证码" minimumFontSize="17" clearButtonMode="whileEditing" id="msV-0w-k3u">
                     <rect key="frame" x="93" y="109" width="180" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ESv-a8-53B">
-                    <rect key="frame" x="210" y="159" width="60" height="30"/>
+                    <rect key="frame" x="220" y="149" width="53" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -66,46 +76,28 @@
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="handleShowAgreementAction:" destination="-1" eventType="touchUpInside" id="Ahy-v0-ZLW"/>
+                        <action selector="handleShowAgreementAction:" destination="-1" eventType="touchUpInside" id="ncu-z8-bwO"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="同意" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zCp-5Z-dOa">
-                    <rect key="frame" x="182" y="163" width="34" height="21"/>
+                    <rect key="frame" x="193" y="154" width="27" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DY7-Ne-X6q">
-                    <rect key="frame" x="45" y="159" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JnL-V1-w51">
+                    <rect key="frame" x="165" y="150" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <state key="normal" image="jy_img_checkbox_off.png"/>
                     <state key="selected" image="jy_img_checkbox_on.png"/>
                     <connections>
-                        <action selector="handleShowPasswordAction:" destination="-1" eventType="touchUpInside" id="wkh-AP-sYF"/>
+                        <action selector="handleConfirmAgreementAction:" destination="-1" eventType="touchUpInside" id="ao8-sq-9Yx"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jpb-KK-154">
-                    <rect key="frame" x="72" y="163" width="56" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JnL-V1-w51">
-                    <rect key="frame" x="155" y="159" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <state key="normal" image="jy_img_checkbox_off.png"/>
-                    <state key="selected" image="jy_img_checkbox_on.png"/>
-                    <connections>
-                        <action selector="handleConfirmAgreementAction:" destination="-1" eventType="touchUpInside" id="Dnw-tX-z7Y"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密   码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZo-PO-2Lr">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZo-PO-2Lr">
                     <rect key="frame" x="36" y="113" width="44" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
@@ -113,7 +105,7 @@
                     <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qus-jH-gkd">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qus-jH-gkd">
                     <rect key="frame" x="36" y="67" width="44" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
@@ -121,38 +113,48 @@
                     <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LAR-rY-yXd">
-                    <rect key="frame" x="8" y="8" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rPd-pg-VGs" customClass="JYButton">
+                    <rect key="frame" x="93" y="182" width="125" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
-                    <state key="normal" image="jy_back.png"/>
-                    <state key="highlighted" image="jy_back_pressed.png"/>
-                    <connections>
-                        <action selector="handleBackAction:" destination="-1" eventType="touchUpInside" id="0XC-Vk-QxW"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aZ6-dK-B4A" customClass="JYButton">
-                    <rect key="frame" x="93" y="209" width="125" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <state key="normal" title="立即注册" backgroundImage="jy_button_orange.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="jy_button_orange_pressed.png"/>
-                    <connections>
-                        <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="k3a-4G-xF8"/>
-                    </connections>
-                </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rPd-pg-VGs" customClass="JYButton">
-                    <rect key="frame" x="93" y="209" width="125" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <state key="normal" title="立即绑定" backgroundImage="jy_button_blue.png">
+                    <state key="normal" title="验证并登录" backgroundImage="jy_button_blue.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted" backgroundImage="jy_button_blue_pressed.png"/>
                     <connections>
-                        <action selector="handleBindAccountAction:" destination="-1" eventType="touchUpInside" id="0Gw-tw-JEU"/>
+                        <action selector="handleVerifyCodeAction:" destination="-1" eventType="touchUpInside" id="U9R-Xz-fX2"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" id="fLS-ae-yDF" userLabel="line">
+                    <rect key="frame" x="0.0" y="225" width="310" height="1"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vfb-IK-fHX" customClass="JYButton">
+                    <rect key="frame" x="0.0" y="225" width="310" height="41"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.75294117647058822" green="0.75294117647058822" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="您也可以选择账号注册                                   &gt;&gt;">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="handleShowAccountRegist:" destination="-1" eventType="touchUpInside" id="5pB-mH-r83"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uiV-vz-VAf" customClass="JYButton">
+                    <rect key="frame" x="205" y="61" width="66" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.49411764705882355" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="获取验证码">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="handleGetCodeAction:" destination="-1" eventType="touchUpInside" id="s0C-8f-M8h"/>
                     </connections>
                 </button>
             </subviews>
@@ -168,8 +170,6 @@
         <image name="jy_back_pressed.png" width="14" height="14"/>
         <image name="jy_button_blue.png" width="8" height="9"/>
         <image name="jy_button_blue_pressed.png" width="8" height="9"/>
-        <image name="jy_button_orange.png" width="8" height="9"/>
-        <image name="jy_button_orange_pressed.png" width="8" height="9"/>
         <image name="jy_img_checkbox_off.png" width="15" height="15"/>
         <image name="jy_img_checkbox_on.png" width="15" height="15"/>
         <image name="jy_img_edittext.png" width="9" height="25"/>

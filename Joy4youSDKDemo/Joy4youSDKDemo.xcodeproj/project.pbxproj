@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2AB8651C293F5A0068330B /* Joy4youBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F2AB8631C293F5A0068330B /* Joy4youBundle.bundle */; };
+		3F2AB8661C293F680068330B /* libJoy4youSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 248FCC671C04303500657ADD /* libJoy4youSDK.a */; };
+		3FB752B51C292C1000F47159 /* Joy4youSDK_Unity3d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3FB752B41C292C1000F47159 /* Joy4youSDK_Unity3d.mm */; };
 		3FE90FC91C167CE7000F3B15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC81C167CE7000F3B15 /* libz.tbd */; };
 		3FE90FCD1C167CF7000F3B15 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */; };
-		3FE90FF41C1821CD000F3B15 /* Joy4youBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF21C1821CD000F3B15 /* Joy4youBundle.bundle */; };
-		3FFB73BC1C0698D000C81D68 /* libJoy4youSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 248FCC671C04303500657ADD /* libJoy4youSDK.a */; };
 		CFF6AC661BF9B96F006A7DA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC651BF9B96F006A7DA2 /* main.m */; };
 		CFF6AC691BF9B96F006A7DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC681BF9B96F006A7DA2 /* AppDelegate.m */; };
 		CFF6AC6C1BF9B96F006A7DA2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC6B1BF9B96F006A7DA2 /* ViewController.m */; };
@@ -40,10 +41,12 @@
 
 /* Begin PBXFileReference section */
 		248FCC621C04303500657ADD /* Joy4youSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Joy4youSDK.xcodeproj; path = ../Joy4youSDK/Joy4youSDK.xcodeproj; sourceTree = "<group>"; };
+		3F2AB8631C293F5A0068330B /* Joy4youBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Joy4youBundle.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphonesimulator/Joy4youBundle.bundle"; sourceTree = "<group>"; };
+		3F2AB8641C293F5A0068330B /* Joy4youSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Joy4youSDK.h; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphonesimulator/Joy4youSDK.h"; sourceTree = "<group>"; };
+		3FB752B31C292C1000F47159 /* Joy4youSDK_Unity3d.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Joy4youSDK_Unity3d.h; sourceTree = "<group>"; };
+		3FB752B41C292C1000F47159 /* Joy4youSDK_Unity3d.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Joy4youSDK_Unity3d.mm; sourceTree = "<group>"; };
 		3FE90FC81C167CE7000F3B15 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		3FE90FF21C1821CD000F3B15 /* Joy4youBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Joy4youBundle.bundle; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphoneos/Joy4youBundle.bundle"; sourceTree = "<group>"; };
-		3FE90FF31C1821CD000F3B15 /* Joy4youSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Joy4youSDK.h; path = "../../../../Library/Developer/Xcode/DerivedData/Joy4youSDKDemo-djbhehuswitkuvcmfgfefmwlpvpm/Build/Products/Debug-iphoneos/Joy4youSDK.h"; sourceTree = "<group>"; };
 		CFF6AC611BF9B96F006A7DA2 /* Joy4youSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Joy4youSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF6AC651BF9B96F006A7DA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFF6AC671BF9B96F006A7DA2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -63,9 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2AB8661C293F680068330B /* libJoy4youSDK.a in Frameworks */,
 				3FE90FCD1C167CF7000F3B15 /* AdSupport.framework in Frameworks */,
 				3FE90FC91C167CE7000F3B15 /* libz.tbd in Frameworks */,
-				3FFB73BC1C0698D000C81D68 /* libJoy4youSDK.a in Frameworks */,
 				CFF6AD061BFC7114006A7DA2 /* MobileCoreServices.framework in Frameworks */,
 				CFF6AD041BFC70E2006A7DA2 /* SystemConfiguration.framework in Frameworks */,
 			);
@@ -86,8 +89,10 @@
 		CFF6AC581BF9B96F006A7DA2 = {
 			isa = PBXGroup;
 			children = (
-				3FE90FF21C1821CD000F3B15 /* Joy4youBundle.bundle */,
-				3FE90FF31C1821CD000F3B15 /* Joy4youSDK.h */,
+				3F2AB8631C293F5A0068330B /* Joy4youBundle.bundle */,
+				3F2AB8641C293F5A0068330B /* Joy4youSDK.h */,
+				3FB752B31C292C1000F47159 /* Joy4youSDK_Unity3d.h */,
+				3FB752B41C292C1000F47159 /* Joy4youSDK_Unity3d.mm */,
 				3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */,
 				3FE90FC81C167CE7000F3B15 /* libz.tbd */,
 				CFF6AD051BFC7114006A7DA2 /* MobileCoreServices.framework */,
@@ -211,8 +216,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE90FF41C1821CD000F3B15 /* Joy4youBundle.bundle in Resources */,
 				CFF6AC741BF9B96F006A7DA2 /* LaunchScreen.storyboard in Resources */,
+				3F2AB8651C293F5A0068330B /* Joy4youBundle.bundle in Resources */,
 				CFF6AC711BF9B96F006A7DA2 /* Assets.xcassets in Resources */,
 				CFF6AC6F1BF9B96F006A7DA2 /* Main.storyboard in Resources */,
 			);
@@ -226,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFF6AC6C1BF9B96F006A7DA2 /* ViewController.m in Sources */,
+				3FB752B51C292C1000F47159 /* Joy4youSDK_Unity3d.mm in Sources */,
 				CFF6AC691BF9B96F006A7DA2 /* AppDelegate.m in Sources */,
 				CFF6AC661BF9B96F006A7DA2 /* main.m in Sources */,
 			);

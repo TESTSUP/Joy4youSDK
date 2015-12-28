@@ -16,9 +16,13 @@ typedef enum JYRequestType {
     RequestLoginWithPhone,
     RequestRegistWithUsername,
     RequestRegistWithPhone,
+    RequestPhoneBindEmail,
     RequestBindEmail,
     RequestBindAccount,
-    RequestFindPassword
+    RequestFindPassword,
+    RequestGetVerifyCode,
+    RequestVerifyCode,
+    RequesSetNewPassword
     
 }JYRequestType;
 
@@ -39,17 +43,13 @@ extern NSString *JYDesErrorDomain;
  */
 + (NSString *)pathUrlWithParam:(NSDictionary *)aParam andRequestType:(JYRequestType)aType;
 
-
-
 /**
  *  返回数据解析
  *
  *  @param aData <#aData description#>
- *  @param aType <#aType description#>
  *
  *  @return <#return value description#>
  */
-+ (NSDictionary *)dictionaryWithResponseData:(NSData *)aData
-                                 andRequestType:(JYRequestType)aType;
++ (NSDictionary *)dictionaryWithResponseData:(NSData *)aData;
 
 @end

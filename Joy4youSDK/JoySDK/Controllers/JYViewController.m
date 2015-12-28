@@ -11,6 +11,7 @@
 #import "JYPopView.h"
 #import "NSBundle+JYBundle.h"
 
+
 NSString *const JYNotificationCloseSDK = @"joy4you_notification_closeSDK";
 NSString *const JYNotificationShowSuccess = @"joy4you_notification_login_success";
 NSString *const JYNotificationRemoveView = @"joy4you_notification_view_remove";
@@ -18,6 +19,7 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 
 @interface JYViewController ()
 {
+    JYAlertView*_loadingView;
     JYPopView *_popView;
     NSTimer *_showTimer;
     NSInteger _count;
@@ -33,7 +35,7 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
     // Do any additional setup after loading the view.
     self.view.layer.cornerRadius = CC_CORNERRADIUS;
     self.view.center = self.view.superview.center;
-    
+    self.view.clipsToBounds = YES;
     [self addObservers];
 }
 
@@ -155,6 +157,19 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
         [_showTimer invalidate];
         _showTimer = nil;
     }
+}
+
+- (void)showLoadingViewWith:(JYLoadingType)aType
+{
+    JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
+    cacheLoading.lodingType = aType;
+    _loadingView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
+    [_loadingView show];
+}
+
+- (void)dismissWithCompletion:(void(^)(void))completion
+{
+    [_loadingView dismissWithCompletion:completion];
 }
 
 #pragma mark - keybord

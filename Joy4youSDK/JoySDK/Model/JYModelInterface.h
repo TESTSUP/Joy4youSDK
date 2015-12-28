@@ -39,6 +39,17 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
             callbackBlcok:(modelCallback)aCallback;
 
 /**
+ *  手机号+密码登录接口
+ *
+ *  @param aPhone    手机号
+ *  @param aPassword 密码，MD5
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)loginWithPhoneNumber:(NSString *)aPhone
+                 andPassword:(NSString *)aPassword
+               callbackBlcok:(modelCallback)aCallback;
+
+/**
  *  游客登录注册
  *
  *  @param aCallback <#aCallback description#>
@@ -77,6 +88,17 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
                andPassword:(NSString *)aPassword
              callbackBlcok:(modelCallback)aCallback;
 
+/**
+ *  手机号+验证码注册
+ *
+ *  @param number    手机号
+ *  @param code      验证码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)registPhoneNumber:(NSString *)number
+            andVerifyCode:(NSString *)code
+            callbackBlcok:(modelCallback)aCallback;
+
 
 #pragma mark - 绑定
 /**
@@ -105,6 +127,19 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
                         email:(NSString *)aEmail
                 callbackBlock:(modelCallback)aCallback;
 
+/**
+ *  手机号绑定邮箱
+ *
+ *  @param aPhone    手机号
+ *  @param aPassword 密码
+ *  @param aEmail    邮箱
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)bindEmailWithPhoneNUmber:(NSString *)aPhone
+                        password:(NSString *)aPassword
+                           email:(NSString *)aEmail
+                   callbackBlock:(modelCallback)aCallback;
+
 #pragma mark - 找回密码
 /**
  *  找回密码
@@ -117,5 +152,30 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
                         andEmail:(NSString *)aEmail
                    callbackBlock:(modelCallback)aCallback;
 
+/**
+ *  获取验证码
+ *
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)getVerifyCodeWithPhone:(NSString *)aPhone
+                 callbackBlock:(modelCallback)aCallback;
 
+/**
+ *  验证验证码
+ *
+ *  @param aCode     验证码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)verifyCodeWithPhone:(NSString *)aPhone
+                       code:(NSString *)aCode
+              callbackBlock:(modelCallback)aCallback;
+
+/**
+ *  设置新密码
+ *
+ *  @param aPassword 密码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)setNewPassword:(NSString *)aPassword
+         callbackBlock:(modelCallback)aCallback;
 @end

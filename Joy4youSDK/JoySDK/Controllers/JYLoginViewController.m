@@ -8,7 +8,9 @@
 
 #import "JYLoginViewController.h"
 #import "JYRegistViewController.h"
+#import "JYPhoneRegistViewController.h"
 #import "JYBindEmailViewController.h"
+#import "JYFindPWByPhoneViewController.h"
 #import "JYFindPasswordViewController.h"
 #import "JYUtil.h"
 #import "JYUserCache.h"
@@ -31,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+
     [self configTextField];
     
     [self configSubViews];
@@ -191,7 +193,7 @@
 
 - (IBAction)handleRegistAction:(id)sender
 {
-    JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
+    JYPhoneRegistViewController *registVC = [[JYPhoneRegistViewController alloc] initWithNibName:@"JYPhoneRegistViewController" bundle:[NSBundle resourceBundle]];
     
     [self.navigationController pushViewController:registVC animated:YES];
 }
@@ -205,7 +207,7 @@
 
 - (IBAction)handleFindPasswordAction:(id)sender
 {
-    JYFindPasswordViewController *registVC = [[JYFindPasswordViewController alloc] initWithNibName:@"JYFindPasswordViewController" bundle:[NSBundle resourceBundle]];
+    JYFindPWByPhoneViewController *registVC = [[JYFindPWByPhoneViewController alloc] initWithNibName:@"JYFindPWByPhoneViewController" bundle:[NSBundle resourceBundle]];
     
     [self.navigationController pushViewController:registVC animated:YES];
     
@@ -290,51 +292,99 @@
         JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
         [alertView show];
         
-        [[JYModelInterface sharedInstance] loginWithUsername:nickname
-                                                 andPassword:password
-                                               callbackBlcok:^(NSError *error, NSDictionary *responseData) {
-                                                   
-                                                   [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
-                                                   
-                                                   NSString * msg = nil;
-                                                   if (error) {
-                                                       JYDLog(@"Tourist login error", error);
-                                                       msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                   }
-                                                   else {
-                                                       NSString* status = responseData[KEY_STATUS];
+        if ([nickname validatePhoneNumber]) {
+            [[JYModelInterface sharedInstance] loginWithPhoneNumber:nickname
+                                                        andPassword:password
+                                                      callbackBlcok:^(NSError *error, NSDictionary *responseData) {
+                                                          
+                                                          [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                          
+                                                          NSString * msg = nil;
+                                                          if (error) {
+                                                              JYDLog(@"Tourist login error", error);
+                                                              msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                          }
+                                                          else {
+                                                              NSString* status = responseData[KEY_STATUS];
+                                                              
+                                                              switch (status.integerValue) {
+                                                                  case 200:
+                                                                  {
+                                                                      [TalkingDataAppCpa onLogin:[JYUserCache sharedInstance].currentUser.userid];
+                                                                      [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
+                                                                      return;
+                                                                  }
+                                                                      break;
+                                                                  case 101:
+                                                                  case 102:
+                                                                  case 103:
+                                                                  {
+                                                                      //101 appid不能为空
+                                                                      //102 ckid不能为空
+                                                                      //103 渠道id不能为空
+                                                                      msg = responseData[KEY_MSG];
+                                                                  }
+                                                                      break;
+                                                                  case 104:
+                                                                  {
+                                                                      //appid不合法
+                                                                      msg = [@"appid不合法" localizedString];
+                                                                  }
+                                                                      break;
+                                                                  default:
+                                                                      msg= responseData[KEY_MSG];
+                                                                      break;
+                                                              }
+                                                          }
+                                                          [self showPopText:msg withView:nil];
+                                                      }];
+        } else {
+            [[JYModelInterface sharedInstance] loginWithUsername:nickname
+                                                     andPassword:password
+                                                   callbackBlcok:^(NSError *error, NSDictionary *responseData) {
                                                        
-                                                       switch (status.integerValue) {
-                                                           case 200:
-                                                           {
-                                                               [TalkingDataAppCpa onLogin:[JYUserCache sharedInstance].currentUser.userid];
-                                                               [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
-                                                               return;
-                                                           }
-                                                               break;
-                                                           case 101:
-                                                           case 102:
-                                                           case 103:
-                                                           {
-                                                               //101 appid不能为空
-                                                               //102 ckid不能为空
-                                                               //103 渠道id不能为空
-                                                               msg = responseData[KEY_MSG];
-                                                           }
-                                                               break;
-                                                           case 104:
-                                                           {
-                                                               //appid不合法
-                                                               msg = [@"appid不合法" localizedString];
-                                                           }
-                                                               break;
-                                                           default:
-                                                               msg= responseData[KEY_MSG];
-                                                               break;
+                                                       [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                       
+                                                       NSString * msg = nil;
+                                                       if (error) {
+                                                           JYDLog(@"Tourist login error", error);
+                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
                                                        }
-                                                   }
-                                                   [self showPopText:msg withView:nil];
-                                               }];
+                                                       else {
+                                                           NSString* status = responseData[KEY_STATUS];
+                                                           
+                                                           switch (status.integerValue) {
+                                                               case 200:
+                                                               {
+                                                                   [TalkingDataAppCpa onLogin:[JYUserCache sharedInstance].currentUser.userid];
+                                                                   [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_loginWithUsernameSuccess]];
+                                                                   return;
+                                                               }
+                                                                   break;
+                                                               case 101:
+                                                               case 102:
+                                                               case 103:
+                                                               {
+                                                                   //101 appid不能为空
+                                                                   //102 ckid不能为空
+                                                                   //103 渠道id不能为空
+                                                                   msg = responseData[KEY_MSG];
+                                                               }
+                                                                   break;
+                                                               case 104:
+                                                               {
+                                                                   //appid不合法
+                                                                   msg = [@"appid不合法" localizedString];
+                                                               }
+                                                                   break;
+                                                               default:
+                                                                   msg= responseData[KEY_MSG];
+                                                                   break;
+                                                           }
+                                                       }
+                                                       [self showPopText:msg withView:nil];
+                                                   }];
+        }
     }
 }
 

@@ -55,6 +55,46 @@ static dispatch_once_t token;
     [JYUserCache clear];
 }
 
+/**
+ *  发送请求
+ *
+ *  @param urlPath   <#urlPath description#>
+ *  @param aType     <#aType description#>
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)requestWith:(NSString *)urlPath requestType:(JYRequestType)aType andCallbacl:(modelCallback)aCallback
+{
+    [[JoyRequest shareInstance] requestWithPath:urlPath
+                                     Parameters:nil
+                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
+                                            if (aCallback) {
+                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData];
+                                                switch (aType) {
+                                                    case RequestLoginWithUsername:
+                                                    case RequestLoginWithPhone:
+                                                    case RequestLoginWithTourist:
+                                                    case RequestRegistWithUsername:
+                                                    case RequestRegistWithPhone:
+                                                    case RequestBindAccount:
+                                                    {
+                                                        [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
+                                                    }
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                                
+                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
+                                                aCallback(error, responseDic);
+                                            }
+                                        }
+                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
+                                            if (aCallback) {
+                                                aCallback(responseERROR, nil);
+                                            }
+                                        }];
+}
+
 #pragma mark - interface
 
 - (void)cancelAllRequest
@@ -77,22 +117,25 @@ static dispatch_once_t token;
     NSString *urlPath = [JYServiceData pathUrlWithParam:param
                                          andRequestType:RequestLoginWithUsername];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestLoginWithTourist];
-                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestLoginWithUsername andCallbacl:aCallback];
+}
+
+/**
+ *  手机号+密码登录接口
+ *
+ *  @param aPhone    手机号
+ *  @param aPassword 密码，MD5
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)loginWithPhoneNumber:(NSString *)aPhone
+              andPassword:(NSString *)aPassword
+            callbackBlcok:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:aPhone, KEY_PW:[aPassword MD5]};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param
+                                         andRequestType:RequestLoginWithPhone];
+    
+    [self requestWith:urlPath requestType:RequestLoginWithPhone andCallbacl:aCallback];
 }
 
 /**
@@ -105,22 +148,7 @@ static dispatch_once_t token;
     NSString *urlPath = [JYServiceData pathUrlWithParam:nil
                                          andRequestType:RequestLoginWithTourist];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestLoginWithTourist];
-                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:YES];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestLoginWithTourist andCallbacl:aCallback];
 }
 
 /**
@@ -137,24 +165,8 @@ static dispatch_once_t token;
     NSString *urlPath = [JYServiceData pathUrlWithParam:@{KEY_SID:aSid,KEY_UID:aUid}
                                          andRequestType:RequestLoginWithSid];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestLoginWithTourist];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestLoginWithSid andCallbacl:aCallback];
 }
-
-
 
 /**
  *  检查用户名
@@ -168,21 +180,7 @@ static dispatch_once_t token;
     NSDictionary *param = @{KEY_UN:aName};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestCheckUserid];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestCheckUserid];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestCheckUserid andCallbacl:aCallback];
 }
 
 /**
@@ -200,22 +198,25 @@ static dispatch_once_t token;
     NSString *urlPath = [JYServiceData pathUrlWithParam:param
                                          andRequestType:RequestRegistWithUsername];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestRegistWithUsername];
-                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestRegistWithUsername andCallbacl:aCallback];
+}
+
+/**
+ *  手机号+验证码注册
+ *
+ *  @param number    手机号
+ *  @param code      验证码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)registPhoneNumber:(NSString *)number
+            andVerifyCode:(NSString *)code
+            callbackBlcok:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:number, KEY_CODE:code};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param
+                                         andRequestType:RequestRegistWithPhone];
+    
+    [self requestWith:urlPath requestType:RequestRegistWithPhone andCallbacl:aCallback];
 }
 
 /**
@@ -232,21 +233,7 @@ static dispatch_once_t token;
     NSDictionary *param = @{KEY_UN:aUsername, KEY_EMAIL:aEmail};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestFindPassword];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestFindPassword];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestFindPassword andCallbacl:aCallback];
 }
 
 /**
@@ -265,26 +252,11 @@ static dispatch_once_t token;
     NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:[aPassword MD5], KEY_UID:aUserId};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindAccount];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestRegistWithUsername];
-                                                [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestBindAccount andCallbacl:aCallback];
 }
 
 /**
- *  绑定邮箱
+ *  用户名绑定邮箱
  *
  *  @param aUsername 用户名
  *  @param aPassword 密码
@@ -299,23 +271,72 @@ static dispatch_once_t token;
     NSDictionary *param = @{KEY_UN:aUsername, KEY_PW:[aPassword MD5], KEY_EMAIL:aEmail};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindEmail];
     
-    [[JoyRequest shareInstance] requestWithPath:urlPath
-                                     Parameters:nil
-                                        success:^(NSHTTPURLResponse *response, NSData *responseData) {
-                                            if (aCallback) {
-                                                NSDictionary *responseDic = [JYServiceData dictionaryWithResponseData:responseData
-                                                                                                       andRequestType:RequestBindEmail];
-                                                NSError *error = responseDic? nil:[NSError errorWithDomain:JYDesErrorDomain code:-1 userInfo:nil];
-                                                aCallback(error, responseDic);
-                                            }
-                                        }
-                                        failure:^(NSHTTPURLResponse *response, NSError *responseERROR) {
-                                            if (aCallback) {
-                                                aCallback(responseERROR, nil);
-                                            }
-                                        }];
+    [self requestWith:urlPath requestType:RequestBindEmail andCallbacl:aCallback];
 }
 
+/**
+ *  手机号绑定邮箱
+ *
+ *  @param aPhone    手机号
+ *  @param aPassword 密码
+ *  @param aEmail    邮箱
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)bindEmailWithPhoneNUmber:(NSString *)aPhone
+                        password:(NSString *)aPassword
+                           email:(NSString *)aEmail
+                   callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:aPhone, KEY_PW:[aPassword MD5], KEY_EMAIL:aEmail};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestPhoneBindEmail];
+    
+    [self requestWith:urlPath requestType:RequestPhoneBindEmail andCallbacl:aCallback];
+    
+}
 
+/**
+ *  获取验证码
+ *
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)getVerifyCodeWithPhone:(NSString *)aPhone
+                 callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:aPhone};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestGetVerifyCode];
+    
+    [self requestWith:urlPath requestType:RequestGetVerifyCode andCallbacl:aCallback];
+}
+
+/**
+ *  验证验证码
+ *
+ *  @param aCode     验证码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)verifyCodeWithPhone:(NSString *)aPhone
+                       code:(NSString *)aCode
+               callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:aPhone, KEY_CODE:aCode};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestVerifyCode];
+    
+    [self requestWith:urlPath requestType:RequestVerifyCode andCallbacl:aCallback];
+}
+
+/**
+ *  设置新密码
+ *
+ *  @param aPassword 密码
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)setNewPassword:(NSString *)aPassword
+         callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PW:[aPassword MD5]};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequesSetNewPassword];
+    
+    [self requestWith:urlPath requestType:RequesSetNewPassword andCallbacl:aCallback];
+}
 
 @end

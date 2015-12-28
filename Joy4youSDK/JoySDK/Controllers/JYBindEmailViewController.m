@@ -81,70 +81,137 @@
         JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
         [alertView show];
         
-        [[JYModelInterface sharedInstance] bindEmailWithUsername:nickname
-                                                        password:password
-                                                           email:email
-                                                   callbackBlock:^(NSError *error, NSDictionary *responseData) {
-
-                                                       NSString * msg = nil;
-                                                       if (!error)
-                                                       {
-                                                           NSString* status = responseData[KEY_STATUS];
+        if ([nickname validatePhoneNumber]) {
+            [[JYModelInterface sharedInstance] bindEmailWithPhoneNUmber:nickname
+                                                               password:password
+                                                                  email:email
+                                                          callbackBlock:^(NSError *error, NSDictionary *responseData) {
+                                                              
+                                                              NSString * msg = nil;
+                                                              if (!error)
+                                                              {
+                                                                  NSString* status = responseData[KEY_STATUS];
+                                                                  
+                                                                  switch (status.integerValue) {
+                                                                      case 200:
+                                                                      {
+                                                                          loadingView.lodingType = JYLoading_bindSuccess;
+                                                                          [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                                          withObject:^{
+                                                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                                                          }
+                                                                                          afterDelay:1];
+                                                                          return;
+                                                                      }
+                                                                          break;
+                                                                      case 101:
+                                                                      case 102:
+                                                                      case 103:
+                                                                      case 104:
+                                                                      case 105:
+                                                                      case 106:
+                                                                      {
+                                                                          //101 ckid不能为空
+                                                                          //102  用户名不能为空
+                                                                          //103 用户名不合法
+                                                                          //104 密码不能为空
+                                                                          //105 邮箱不能为空
+                                                                          //106 您输入的电子邮件地址不合法
+                                                                          msg = responseData[KEY_MSG];
+                                                                      }
+                                                                          break;
+                                                                      case 107:
+                                                                      {
+                                                                          //该用户已经绑定过邮箱
+                                                                          msg = [@"该用户已经绑定过邮箱" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      case 108:
+                                                                      {
+                                                                          //用户名密码不正确，请核对后在填
+                                                                          msg = [@"用户名密码不正确，请核对后再填" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      default:
+                                                                          msg= responseData[KEY_MSG];
+                                                                          break;
+                                                                  }
+                                                              }
+                                                              else
+                                                              {
+                                                                  JYDLog(@"Tourist login error", error);
+                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                              }
+                                                              
+                                                              [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                              [self showPopText:msg withView:nil];
+                                                          }];
+        } else {
+            [[JYModelInterface sharedInstance] bindEmailWithUsername:nickname
+                                                            password:password
+                                                               email:email
+                                                       callbackBlock:^(NSError *error, NSDictionary *responseData) {
                                                            
-                                                           switch (status.integerValue) {
-                                                               case 200:
-                                                               {
-                                                                   loadingView.lodingType = JYLoading_bindSuccess;
-                                                                   [alertView performSelector:@selector(dismissWithCompletion:)
-                                                                                   withObject:^{
-                                                                                       [self.navigationController popViewControllerAnimated:YES];
-                                                                                   }
-                                                                                   afterDelay:1];
-                                                                   return;
+                                                           NSString * msg = nil;
+                                                           if (!error)
+                                                           {
+                                                               NSString* status = responseData[KEY_STATUS];
+                                                               
+                                                               switch (status.integerValue) {
+                                                                   case 200:
+                                                                   {
+                                                                       loadingView.lodingType = JYLoading_bindSuccess;
+                                                                       [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                                       withObject:^{
+                                                                                           [self.navigationController popViewControllerAnimated:YES];
+                                                                                       }
+                                                                                       afterDelay:1];
+                                                                       return;
+                                                                   }
+                                                                       break;
+                                                                   case 101:
+                                                                   case 102:
+                                                                   case 103:
+                                                                   case 104:
+                                                                   case 105:
+                                                                   case 106:
+                                                                   {
+                                                                       //101 ckid不能为空
+                                                                       //102  用户名不能为空
+                                                                       //103 用户名不合法
+                                                                       //104 密码不能为空
+                                                                       //105 邮箱不能为空
+                                                                       //106 您输入的电子邮件地址不合法
+                                                                       msg = responseData[KEY_MSG];
+                                                                   }
+                                                                       break;
+                                                                   case 107:
+                                                                   {
+                                                                       //该用户已经绑定过邮箱
+                                                                       msg = [@"该用户已经绑定过邮箱" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   case 108:
+                                                                   {
+                                                                       //用户名密码不正确，请核对后在填
+                                                                       msg = [@"用户名密码不正确，请核对后再填" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   default:
+                                                                       msg= responseData[KEY_MSG];
+                                                                       break;
                                                                }
-                                                                   break;
-                                                               case 101:
-                                                               case 102:
-                                                               case 103:
-                                                               case 104:
-                                                               case 105:
-                                                               case 106:
-                                                               {
-                                                                   //101 ckid不能为空
-                                                                   //102  用户名不能为空
-                                                                   //103 用户名不合法
-                                                                   //104 密码不能为空
-                                                                   //105 邮箱不能为空
-                                                                   //106 您输入的电子邮件地址不合法
-                                                                   msg = responseData[KEY_MSG];
-                                                               }
-                                                                   break;
-                                                               case 107:
-                                                               {
-                                                                   //该用户已经绑定过邮箱
-                                                                   msg = [@"该用户已经绑定过邮箱" localizedString];
-                                                               }
-                                                                   break;
-                                                               case 108:
-                                                               {
-                                                                   //用户名密码不正确，请核对后在填
-                                                                   msg = [@"用户名密码不正确，请核对后再填" localizedString];
-                                                               }
-                                                                   break;
-                                                               default:
-                                                                   msg= responseData[KEY_MSG];
-                                                                   break;
                                                            }
-                                                       }
-                                                       else
-                                                       {
-                                                           JYDLog(@"Tourist login error", error);
-                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                       }
-
-                                                       [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
-                                                       [self showPopText:msg withView:nil];
-                                                   }];
+                                                           else
+                                                           {
+                                                               JYDLog(@"Tourist login error", error);
+                                                               msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                           }
+                                                           
+                                                           [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                           [self showPopText:msg withView:nil];
+                                                       }];
+        }
     }
 }
 @end

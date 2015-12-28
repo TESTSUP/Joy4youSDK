@@ -140,10 +140,32 @@
 - (void)setLodingType:(JYLoadingType)aLodingType
 {
     JYUserContent *userInfo = [[JYUserCache sharedInstance] currentUser];
-    NSString *username = userInfo.type == 2? @"游客":userInfo.username;
+    NSString *account = userInfo.username? userInfo.username:userInfo.phone;
+    NSString *username = userInfo.type == 2? @"游客":account;
     NSString *title = [NSString stringWithFormat:@"账号：%@", username];
     
     switch (aLodingType) {
+        case JYLoading_Setting:
+        {
+            self.showButton = NO;
+            self.loading = YES;
+            self.detail = [@"正在设置..." localizedString];
+        }
+            break;
+        case JYLoading_GetCode:
+        {
+            self.showButton = NO;
+            self.loading = YES;
+            self.detail = [@"正在获取..." localizedString];
+        }
+            break;
+        case JYLoading_VerifyCode:
+        {
+            self.showButton = NO;
+            self.loading = YES;
+            self.detail = [@"正在验证..." localizedString];
+        }
+            break;
         case JYLoading_cacheLogin:
         {
             self.showButton = YES;

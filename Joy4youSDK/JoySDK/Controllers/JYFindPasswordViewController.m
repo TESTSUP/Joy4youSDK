@@ -19,8 +19,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configTextField];
-    
-    self.serviceButton.showUnderLine = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,8 +73,6 @@
         [[JYModelInterface sharedInstance] findPasswordWithUsername:nickname
                                                            andEmail:email
                                                       callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                          
-                                                          
                                                           
                                                           NSString * msg = nil;
                                                           if (!error)

@@ -64,8 +64,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="udI-wY-Q1Q"/>
                                         <exclude reference="7vo-Rp-iwB"/>
+                                        <exclude reference="udI-wY-Q1Q"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -87,8 +87,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="eT4-U4-RS2"/>
                                         <exclude reference="JHU-ck-6pJ"/>
+                                        <exclude reference="eT4-U4-RS2"/>
                                     </mask>
                                 </variation>
                                 <connections>

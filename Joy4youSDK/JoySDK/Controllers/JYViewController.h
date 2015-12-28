@@ -53,5 +53,19 @@ extern NSString *const JYNotificationHideKeybord;
  */
 - (void)showPopText:(NSString *)aText withView:(UIView *)aView;
 
+/**
+ *  显示loading框
+ *
+ *  @param aType <#aType description#>
+ */
+- (void)showLoadingViewWith:(JYLoadingType)aType;
+
+/**
+ *  隐藏loading框
+ *
+ *  @param completion <#completion description#>
+ */
+- (void)dismissWithCompletion:(void(^)(void))completion;
+
 @end
 

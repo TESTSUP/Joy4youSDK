@@ -53,7 +53,8 @@ static dispatch_once_t token;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.view.layer.cornerRadius = CC_CORNERRADIUS;
+    self.view.clipsToBounds = YES;
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap)];
     tap.delegate = self;
@@ -282,6 +283,7 @@ static dispatch_once_t token;
     _navigationVC.view.frame = CGRectMake(0, 0, DEFAULT_WIDTH, DEFAULT_HEIGHT);
     _navigationVC.view.backgroundColor = [UIColor clearColor];
     _navigationVC.view.center = [self viewCenter];
+    _navigationVC.view.layer.cornerRadius = CC_CORNERRADIUS;
     _navigationVC.view.clipsToBounds = YES;
     [self.view addSubview:_navigationVC.view];
 }

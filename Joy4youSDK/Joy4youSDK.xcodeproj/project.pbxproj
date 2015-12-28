@@ -16,6 +16,10 @@
 		248FCC8F1C04371F00657ADD /* JYFindPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC8E1C04371F00657ADD /* JYFindPasswordViewController.xib */; };
 		248FCC941C04378100657ADD /* JYBindEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC931C04378100657ADD /* JYBindEmailViewController.xib */; };
 		248FCC991C04385B00657ADD /* JYServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 248FCC981C04385B00657ADD /* JYServiceViewController.xib */; };
+		3F2AB8711C2B944D0068330B /* JYFindPWByPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2AB8701C2B944D0068330B /* JYFindPWByPhoneViewController.m */; };
+		3F2AB8741C2B94770068330B /* JYSetNewPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2AB8731C2B94770068330B /* JYSetNewPWViewController.m */; };
+		3F2AB8771C2B94CA0068330B /* JYFindPWByPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2AB8751C2B94CA0068330B /* JYFindPWByPhoneViewController.xib */; };
+		3F2AB8781C2B94CA0068330B /* JYSetNewPWViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2AB8761C2B94CA0068330B /* JYSetNewPWViewController.xib */; };
 		3F4A78AD1C06D0F800F4DB50 /* JYAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78AC1C06D0F800F4DB50 /* JYAlertView.m */; };
 		3F4A78AF1C06E48F00F4DB50 /* jy_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78AE1C06E48F00F4DB50 /* jy_logo@2x.png */; };
 		3F4A78B31C06E5D600F4DB50 /* UIColor+JYColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78B21C06E5D600F4DB50 /* UIColor+JYColor.m */; };
@@ -66,7 +70,9 @@
 		3F4A79261C0BF4D300F4DB50 /* JYAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */; };
 		3F4A79281C0C557A00F4DB50 /* license.html in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A79271C0C557A00F4DB50 /* license.html */; };
 		3F8839271C06A72600A640A8 /* JYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73A01C06978400C81D68 /* JYViewController.m */; };
-		3FE90FC71C167C74000F3B15 /* libTalkingDataAppCpa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */; };
+		3FB752AF1C292B9000F47159 /* JYPhoneRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB752AE1C292B9000F47159 /* JYPhoneRegistViewController.m */; };
+		3FB752B11C292BC000F47159 /* JYPhoneRegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB752B01C292BC000F47159 /* JYPhoneRegistViewController.xib */; };
+		3FB752CA1C2938D400F47159 /* libTalkingDataAppCpa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB752C91C2938D400F47159 /* libTalkingDataAppCpa.a */; };
 		3FE9100B1C18274E000F3B15 /* jy_back_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF51C18274E000F3B15 /* jy_back_pressed.png */; };
 		3FE9100C1C18274E000F3B15 /* jy_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF61C18274E000F3B15 /* jy_back.png */; };
 		3FE9100D1C18274E000F3B15 /* jy_button_blue_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE90FF71C18274E000F3B15 /* jy_button_blue_pressed.png */; };
@@ -170,6 +176,12 @@
 		248FCC951C04382000657ADD /* JYServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYServiceViewController.h; sourceTree = "<group>"; };
 		248FCC961C04382000657ADD /* JYServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYServiceViewController.m; sourceTree = "<group>"; };
 		248FCC981C04385B00657ADD /* JYServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYServiceViewController.xib; sourceTree = "<group>"; };
+		3F2AB86F1C2B944D0068330B /* JYFindPWByPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFindPWByPhoneViewController.h; sourceTree = "<group>"; };
+		3F2AB8701C2B944D0068330B /* JYFindPWByPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFindPWByPhoneViewController.m; sourceTree = "<group>"; };
+		3F2AB8721C2B94770068330B /* JYSetNewPWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYSetNewPWViewController.h; sourceTree = "<group>"; };
+		3F2AB8731C2B94770068330B /* JYSetNewPWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYSetNewPWViewController.m; sourceTree = "<group>"; };
+		3F2AB8751C2B94CA0068330B /* JYFindPWByPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYFindPWByPhoneViewController.xib; sourceTree = "<group>"; };
+		3F2AB8761C2B94CA0068330B /* JYSetNewPWViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYSetNewPWViewController.xib; sourceTree = "<group>"; };
 		3F4A78AB1C06D0F800F4DB50 /* JYAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JYAlertView.h; path = ../Utils/JYAlertView.h; sourceTree = "<group>"; };
 		3F4A78AC1C06D0F800F4DB50 /* JYAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JYAlertView.m; path = ../Utils/JYAlertView.m; sourceTree = "<group>"; };
 		3F4A78AE1C06E48F00F4DB50 /* jy_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "jy_logo@2x.png"; path = "images/jy_logo@2x.png"; sourceTree = "<group>"; };
@@ -226,7 +238,10 @@
 		3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYAgreementViewController.m; sourceTree = "<group>"; };
 		3F4A79241C0BF4CF00F4DB50 /* JYAgreementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYAgreementViewController.xib; sourceTree = "<group>"; };
 		3F4A79271C0C557A00F4DB50 /* license.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
-		3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingDataAppCpa.a; sourceTree = "<group>"; };
+		3FB752AD1C292B9000F47159 /* JYPhoneRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYPhoneRegistViewController.h; sourceTree = "<group>"; };
+		3FB752AE1C292B9000F47159 /* JYPhoneRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYPhoneRegistViewController.m; sourceTree = "<group>"; };
+		3FB752B01C292BC000F47159 /* JYPhoneRegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYPhoneRegistViewController.xib; sourceTree = "<group>"; };
+		3FB752C91C2938D400F47159 /* libTalkingDataAppCpa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingDataAppCpa.a; sourceTree = "<group>"; };
 		3FE90FC61C167C74000F3B15 /* TalkingDataAppCpa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingDataAppCpa.h; sourceTree = "<group>"; };
 		3FE90FF51C18274E000F3B15 /* jy_back_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_back_pressed.png; path = images/jy_back_pressed.png; sourceTree = "<group>"; };
 		3FE90FF61C18274E000F3B15 /* jy_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jy_back.png; path = images/jy_back.png; sourceTree = "<group>"; };
@@ -328,7 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FE90FC71C167C74000F3B15 /* libTalkingDataAppCpa.a in Frameworks */,
+				3FB752CA1C2938D400F47159 /* libTalkingDataAppCpa.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,8 +378,11 @@
 				3FFB739B1C06976700C81D68 /* JYLoadingView.xib */,
 				248FCC7C1C04316900657ADD /* JYLoginViewController.xib */,
 				248FCC841C0432BD00657ADD /* JYRegistViewController.xib */,
+				3FB752B01C292BC000F47159 /* JYPhoneRegistViewController.xib */,
 				248FCC8E1C04371F00657ADD /* JYFindPasswordViewController.xib */,
 				248FCC931C04378100657ADD /* JYBindEmailViewController.xib */,
+				3F2AB8751C2B94CA0068330B /* JYFindPWByPhoneViewController.xib */,
+				3F2AB8761C2B94CA0068330B /* JYSetNewPWViewController.xib */,
 				248FCC981C04385B00657ADD /* JYServiceViewController.xib */,
 				3F4A78E21C07F54600F4DB50 /* JYBindAlertViewController.xib */,
 				3F4A79241C0BF4CF00F4DB50 /* JYAgreementViewController.xib */,
@@ -439,8 +457,8 @@
 		3FE90FC41C167C74000F3B15 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
-				3FE90FC51C167C74000F3B15 /* libTalkingDataAppCpa.a */,
 				3FE90FC61C167C74000F3B15 /* TalkingDataAppCpa.h */,
+				3FB752C91C2938D400F47159 /* libTalkingDataAppCpa.a */,
 			);
 			path = 3rd;
 			sourceTree = "<group>";
@@ -496,12 +514,18 @@
 				248FCC7F1C04317E00657ADD /* JYLoginViewController.m */,
 				248FCC811C04320600657ADD /* JYRegistViewController.h */,
 				248FCC821C04320600657ADD /* JYRegistViewController.m */,
+				3FB752AD1C292B9000F47159 /* JYPhoneRegistViewController.h */,
+				3FB752AE1C292B9000F47159 /* JYPhoneRegistViewController.m */,
 				3F4A78DF1C07F52F00F4DB50 /* JYBindAlertViewController.h */,
 				3F4A78E01C07F52F00F4DB50 /* JYBindAlertViewController.m */,
 				248FCC901C04376F00657ADD /* JYBindEmailViewController.h */,
 				248FCC911C04376F00657ADD /* JYBindEmailViewController.m */,
 				248FCC8B1C04371300657ADD /* JYFindPasswordViewController.h */,
 				248FCC8C1C04371300657ADD /* JYFindPasswordViewController.m */,
+				3F2AB86F1C2B944D0068330B /* JYFindPWByPhoneViewController.h */,
+				3F2AB8701C2B944D0068330B /* JYFindPWByPhoneViewController.m */,
+				3F2AB8721C2B94770068330B /* JYSetNewPWViewController.h */,
+				3F2AB8731C2B94770068330B /* JYSetNewPWViewController.m */,
 				3F4A79211C0BF4B900F4DB50 /* JYAgreementViewController.h */,
 				3F4A79221C0BF4B900F4DB50 /* JYAgreementViewController.m */,
 				248FCC951C04382000657ADD /* JYServiceViewController.h */,
@@ -757,8 +781,10 @@
 				3F4A78D11C07088D00F4DB50 /* jy_login_pulldown_del@2x.png in Resources */,
 				3F4A78D71C0712F700F4DB50 /* loading_success@2x.png in Resources */,
 				3FE9101D1C18274E000F3B15 /* loading_circle_half.png in Resources */,
+				3FB752B11C292BC000F47159 /* JYPhoneRegistViewController.xib in Resources */,
 				3FE9100B1C18274E000F3B15 /* jy_back_pressed.png in Resources */,
 				3F4A78B91C06E9FE00F4DB50 /* jy_user_login@2x.png in Resources */,
+				3F2AB8771C2B94CA0068330B /* JYFindPWByPhoneViewController.xib in Resources */,
 				3FE9101C1C18274E000F3B15 /* loading_circle_full@3x.png in Resources */,
 				3FE910171C18274E000F3B15 /* jy_logo.png in Resources */,
 				3F4A78F11C083E6900F4DB50 /* jy_img_edittext@3x.png in Resources */,
@@ -789,6 +815,7 @@
 				3FE9100F1C18274E000F3B15 /* jy_button_orange_pressed.png in Resources */,
 				3F4A78C51C06FEDE00F4DB50 /* jy_back@2x.png in Resources */,
 				3F4A78DA1C07EE4300F4DB50 /* jy_popBg@2x.png in Resources */,
+				3F2AB8781C2B94CA0068330B /* JYSetNewPWViewController.xib in Resources */,
 				3F4A79021C0841E600F4DB50 /* jy_button_blue@3x.png in Resources */,
 				3F4A78CC1C07006B00F4DB50 /* jy_img_checkbox_off@2x.png in Resources */,
 				3F4A791D1C0BE9CF00F4DB50 /* jy_login_pulldown_bound@2x.png in Resources */,
@@ -864,6 +891,7 @@
 				3FFB73C71C0699CF00C81D68 /* UIView+JYView.m in Sources */,
 				CFF6ACD91BFB0601006A7DA2 /* JYAFURLSessionManager.m in Sources */,
 				248FCC801C04317E00657ADD /* JYLoginViewController.m in Sources */,
+				3FB752AF1C292B9000F47159 /* JYPhoneRegistViewController.m in Sources */,
 				2480E54D1C0461F300388900 /* JYUtil.m in Sources */,
 				3F4A78AD1C06D0F800F4DB50 /* JYAlertView.m in Sources */,
 				3F4A78E51C0806D200F4DB50 /* JYBindAlertViewController.m in Sources */,
@@ -875,7 +903,9 @@
 				CFF6ACA01BF9BF7E006A7DA2 /* JoyRootViewController.m in Sources */,
 				CFF6ACF81BFC5288006A7DA2 /* JYUserCache.m in Sources */,
 				248FCC831C04320600657ADD /* JYRegistViewController.m in Sources */,
+				3F2AB8711C2B944D0068330B /* JYFindPWByPhoneViewController.m in Sources */,
 				2480E5491C044E1D00388900 /* JYSTKeychain.m in Sources */,
+				3F2AB8741C2B94770068330B /* JYSetNewPWViewController.m in Sources */,
 				3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */,
 				3F8839271C06A72600A640A8 /* JYViewController.m in Sources */,
 				CFF6ACDA1BFB0601006A7DA2 /* JYAFNetworkReachabilityManager.m in Sources */,
@@ -1035,9 +1065,11 @@
 					"$(ARCHS_STANDARD)",
 					armv7s,
 				);
-				DEPLOYMENT_POSTPROCESSING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1064,9 +1096,10 @@
 					"$(ARCHS_STANDARD)",
 					armv7s,
 				);
-				DEPLOYMENT_POSTPROCESSING = YES;
+				DEPLOYMENT_POSTPROCESSING = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "IDFA=1";

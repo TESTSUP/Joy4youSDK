@@ -131,4 +131,26 @@
     return a;
 }
 
+- (BOOL)validatePhoneNumber
+{
+    NSString *phoneRegex = @"^1[0-9]{10}";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    if ([phoneTest evaluateWithObject:self])
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)validateVerifyCode
+{
+    NSString *phoneRegex = @"^[0-9]{6}";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    if ([phoneTest evaluateWithObject:self])
+    {
+        return YES;
+    }
+    return NO;
+}
+
 @end
