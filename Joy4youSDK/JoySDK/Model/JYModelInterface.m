@@ -72,12 +72,16 @@ static dispatch_once_t token;
                                                 switch (aType) {
                                                     case RequestLoginWithUsername:
                                                     case RequestLoginWithPhone:
-                                                    case RequestLoginWithTourist:
                                                     case RequestRegistWithUsername:
                                                     case RequestRegistWithPhone:
                                                     case RequestBindAccount:
                                                     {
                                                         [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
+                                                    }
+                                                        break;
+                                                    case RequestLoginWithTourist:
+                                                    {
+                                                        [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:YES];
                                                     }
                                                         break;
                                                     default:

@@ -161,15 +161,21 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 
 - (void)showLoadingViewWith:(JYLoadingType)aType
 {
-    JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-    cacheLoading.lodingType = aType;
-    _loadingView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
-    [_loadingView show];
+    if (_loadingView == nil) {
+        JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
+        cacheLoading.lodingType = aType;
+        _loadingView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
+        [_loadingView show];
+    } else {
+        JYLoadingView *cacheLoading = (JYLoadingView *)_loadingView.customView;
+        cacheLoading.lodingType = aType;
+    }
 }
 
 - (void)dismissWithCompletion:(void(^)(void))completion
 {
     [_loadingView dismissWithCompletion:completion];
+    _loadingView = nil;
 }
 
 #pragma mark - keybord

@@ -11,6 +11,9 @@
 #import "JYFindPasswordViewController.h"
 #import "JYSetNewPWViewController.h"
 
+#define TICKS_KEY          @"joy_PW_tick_key"
+#define TICKS_DATE_KEY     @"joy_PW_tick_date_key"
+
 @interface JYFindPWByPhoneViewController ()
 {
     NSTimer *_codeTimer;
@@ -45,6 +48,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
     [_codeTimer invalidate];
     _codeTimer = nil;
     
@@ -118,11 +122,7 @@
     }else if ([self.codeField.text length] > 6){
         [self showPopText:[@"验证码为6位数字" localizedString] withView:self.codeBg];
     }else{
-        JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        cacheLoading.lodingType = JYLoading_VerifyCode;
-        JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
-        [alertView show];
-        
+        [self showLoadingViewWith:JYLoading_VerifyCode];
         [[JYModelInterface sharedInstance] verifyCodeWithPhone:self.phoneField.text
                                                           code:self.codeField.text
                                                  callbackBlock:^(NSError *error, NSDictionary *responseData) {
@@ -135,7 +135,7 @@
                                                          switch (status.integerValue) {
                                                              case 200:
                                                              {
-                                                                 [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                 [self performSelector:@selector(dismissWithCompletion:)
                                                                                  withObject:^{
                                                                                      JYSetNewPWViewController *setVC = [[JYSetNewPWViewController alloc] initWithNibName:@"JYSetNewPWViewController" bundle:[NSBundle resourceBundle]];
                                                                                      [self.navigationController pushViewController:setVC animated:YES];
@@ -183,7 +183,7 @@
                                                          msg = [@"网络状态不好，请稍后重试" localizedString];
                                                      }
                                                      
-                                                     [alertView performSelector:@selector(dismissWithCompletion:)
+                                                     [self performSelector:@selector(dismissWithCompletion:)
                                                                      withObject:nil
                                                                      afterDelay:1];
                                                      [self showPopText:msg withView:nil];
@@ -205,14 +205,10 @@
     }else if (![self.phoneField.text validatePhoneNumber]){
         [self showPopText:[@"请填写正确的手机号" localizedString] withView:self.accountBG];
     } else {
-        JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        cacheLoading.lodingType = JYLoading_GetCode;
-        JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
-        [alertView show];
-        
+        [self showLoadingViewWith:JYLoading_GetCode];
         [[JYModelInterface sharedInstance] getVerifyCodeWithPhone:self.phoneField.text
                                                     callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                        [alertView dismissWithCompletion:nil];
+                                                        [self dismissWithCompletion:nil];
                                                         
                                                         NSString * msg = nil;
                                                         if (error) {

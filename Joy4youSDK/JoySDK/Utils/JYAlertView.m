@@ -390,6 +390,8 @@ NSString *const JYAlertViewWillShowNotification = @"JYAlertViewWillShowNotificat
         self.center = CGPointMake(JCScreenWidth / 2, JCScreenHeight / 2);
         self.customAlert = YES;
         self.dismissWhenTouchBackground = dismissWhenTouchBackground;
+        
+        _customView = customView;
     }
     return self;
 }

@@ -79,7 +79,6 @@
 #define PATH_VERIFY_CODE        @"" //验证验证码
 #define PARH_SET_PW             @"" //设置新密码
 
-#define TICKS_KEY          @"joy_tick_key"
-#define TICKS_DATE_KEY     @"joy_tick_date_key"
+
 
 

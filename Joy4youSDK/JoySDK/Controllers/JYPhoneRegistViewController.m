@@ -10,6 +10,9 @@
 #import "JYAgreementViewController.h"
 #import "JYRegistViewController.h"
 
+#define TICKS_KEY          @"joy_tick_key"
+#define TICKS_DATE_KEY     @"joy_tick_date_key"
+
 @interface JYPhoneRegistViewController ()
 {
     NSTimer *_codeTimer;
@@ -49,6 +52,8 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [_codeTimer invalidate];
     _codeTimer = nil;
     

@@ -327,7 +327,6 @@ static dispatch_once_t token;
         JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
         cacheLoading.lodingType = JYLoading_cacheLogin;
         [cacheLoading.switchBtn addTarget:self action:@selector(handleSwitchAccount:) forControlEvents:UIControlEventTouchUpInside];
-        
         _alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
         [_alertView show];
         

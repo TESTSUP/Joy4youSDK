@@ -214,17 +214,14 @@
 }
 
 - (IBAction)handleTouristLoginAction:(id)sender {
-    JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-    cacheLoading.lodingType = JYLoading_guestLogin;
 
-    JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
-    [alertView show];
+    [self showLoadingViewWith:JYLoading_guestLogin];
     
     [[JYModelInterface sharedInstance] touristLoginWithCallbackBlcok:^(NSError *error, NSDictionary *responseData) {
         
-        [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+        [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
         
-        NSString * msg= [@"游客登录失败" localizedString];
+        NSString * msg= nil;
         if (error) {
             JYDLog(@"Tourist login error = %@", error);
             msg = [@"网络状态不好，请稍后重试" localizedString];
@@ -285,19 +282,14 @@
     if ([popText length] > 0) {
         [self showPopText:popText withView:self.accountBg];;
     } else {
-        
-        JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        loadingView.lodingType = JYLoading_loginWithUsername;
-        loadingView.title = [NSString stringWithFormat:@"%@ %@", [@"帐号:" localizedString], nickname];
-        JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
-        [alertView show];
+        [self showLoadingViewWith:JYLoading_loginWithUsername];
         
         if ([nickname validatePhoneNumber]) {
             [[JYModelInterface sharedInstance] loginWithPhoneNumber:nickname
                                                         andPassword:password
                                                       callbackBlcok:^(NSError *error, NSDictionary *responseData) {
                                                           
-                                                          [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                          [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                           
                                                           NSString * msg = nil;
                                                           if (error) {
@@ -343,7 +335,7 @@
                                                      andPassword:password
                                                    callbackBlcok:^(NSError *error, NSDictionary *responseData) {
                                                        
-                                                       [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                       [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                        
                                                        NSString * msg = nil;
                                                        if (error) {

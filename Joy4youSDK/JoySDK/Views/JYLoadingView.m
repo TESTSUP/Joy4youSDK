@@ -170,6 +170,7 @@
         {
             self.showButton = YES;
             self.loading = YES;
+            self.title = title;
             self.detail = [@"正在登录..." localizedString];
         }
             break;

@@ -64,11 +64,7 @@
     if ([popText length] > 0) {
         [self showPopText:popText withView:self.accountBg];;
     } else {
-        
-        JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        loadingView.lodingType = JYLoading_Sending;
-        JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
-        [alertView show];
+        [self showLoadingViewWith:JYLoading_Sending];
         
         [[JYModelInterface sharedInstance] findPasswordWithUsername:nickname
                                                            andEmail:email
@@ -82,8 +78,8 @@
                                                               switch (status.integerValue) {
                                                                   case 200:
                                                                   {
-                                                                      loadingView.lodingType = JYLoading_SendSuccess;
-                                                                      [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                      [self showLoadingViewWith:JYLoading_SendSuccess];
+                                                                      [self performSelector:@selector(dismissWithCompletion:)
                                                                                       withObject:^{
                                                                                           [self.navigationController popViewControllerAnimated:YES];
                                                                                       }
@@ -130,7 +126,7 @@
                                                               msg = [@"网络状态不好，请稍后重试" localizedString];
                                                           }
                                                           
-                                                          [alertView performSelector:@selector(dismissWithCompletion:)
+                                                          [self performSelector:@selector(dismissWithCompletion:)
                                                                           withObject:nil
                                                                           afterDelay:1];
                                                           [self showPopText:msg withView:nil];

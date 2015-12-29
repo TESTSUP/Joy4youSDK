@@ -74,12 +74,7 @@
     if ([popText length] > 0) {
         [self showPopText:popText withView:self.accountBg];;
     } else {
-        
-        JYLoadingView *loadingView = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-        loadingView.lodingType = JYLoading_Binding;
-        loadingView.title = [NSString stringWithFormat:@"%@ %@", [@"帐号" localizedString], nickname];
-        JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:loadingView dismissWhenTouchedBackground:NO];
-        [alertView show];
+        [self showLoadingViewWith:JYLoading_Binding];
         
         if ([nickname validatePhoneNumber]) {
             [[JYModelInterface sharedInstance] bindEmailWithPhoneNUmber:nickname
@@ -95,8 +90,8 @@
                                                                   switch (status.integerValue) {
                                                                       case 200:
                                                                       {
-                                                                          loadingView.lodingType = JYLoading_bindSuccess;
-                                                                          [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                          [self showLoadingViewWith:JYLoading_bindSuccess];
+                                                                          [self performSelector:@selector(dismissWithCompletion:)
                                                                                           withObject:^{
                                                                                               [self.navigationController popViewControllerAnimated:YES];
                                                                                           }
@@ -143,7 +138,7 @@
                                                                   msg = [@"网络状态不好，请稍后重试" localizedString];
                                                               }
                                                               
-                                                              [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                              [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                               [self showPopText:msg withView:nil];
                                                           }];
         } else {
@@ -160,8 +155,8 @@
                                                                switch (status.integerValue) {
                                                                    case 200:
                                                                    {
-                                                                       loadingView.lodingType = JYLoading_bindSuccess;
-                                                                       [alertView performSelector:@selector(dismissWithCompletion:)
+                                                                       [self showLoadingViewWith:JYLoading_bindSuccess];
+                                                                       [self performSelector:@selector(dismissWithCompletion:)
                                                                                        withObject:^{
                                                                                            [self.navigationController popViewControllerAnimated:YES];
                                                                                        }
@@ -208,7 +203,7 @@
                                                                msg = [@"网络状态不好，请稍后重试" localizedString];
                                                            }
                                                            
-                                                           [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                           [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                            [self showPopText:msg withView:nil];
                                                        }];
         }

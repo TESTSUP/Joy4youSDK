@@ -119,10 +119,7 @@
         }else if (NO == [self.passwordField.text validateUserPassword]){
             [self showPopText:[@"密码必须为6—15位，仅支持英文、数字和符号" localizedString] withView:self.passwordBg];
         }else{
-            JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-            cacheLoading.lodingType = JYLoading_registWithUsername;
-            JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
-            [alertView show];
+            [self showLoadingViewWith:JYLoading_registWithUsername];
             
             [[JYModelInterface sharedInstance] checkUsername:self.usernameTextField.text
                                                callbackBlock:^(NSError *error, NSDictionary *responseData) {
@@ -131,7 +128,7 @@
                                                    if (error) {
                                                        JYDLog(@"check username error", error);
                                                        msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                       [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                       [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                    }
                                                    else {
                                                        NSString* status = responseData[KEY_STATUS];
@@ -142,9 +139,7 @@
                                                                [[JYModelInterface sharedInstance] registWithUsername:self.usernameTextField.text
                                                                                                          andPassword:self.passwordField.text
                                                                                                        callbackBlcok:^(NSError *error, NSDictionary *responseData) {
-                                                                                                           
-                                                                                                           cacheLoading.lodingType = JYLoading_registWithUsernameSuccess;
-                                                                                                           [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                                                                           [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                                                                            
                                                                                                            NSString * msg = nil;
                                                                                                            if (error) {
@@ -217,7 +212,7 @@
                                                                break;
                                                        }
                                                    }
-                                                   [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                   [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                    [self showPopText:msg withView:nil];
                                                }];
             
@@ -242,19 +237,16 @@
         }else if (NO == [self.passwordField.text validateUserPassword]){
             [self showPopText:[@"密码必须为6—15位，仅支持英文、数字和符号" localizedString] withView:self.passwordBg];
         }else{
-            JYLoadingView *cacheLoading = (JYLoadingView *)[UIView createNibView:@"JYLoadingView"];
-            cacheLoading.lodingType = JYLoading_Binding;
-            JYAlertView *alertView = [[JYAlertView alloc] initWithCustomView:cacheLoading dismissWhenTouchedBackground:NO];
-            [alertView show];
+            [self showLoadingViewWith:JYLoading_Binding];
             
             JYUserContent *user = [[JYUserCache sharedInstance] currentUser];
             [[JYModelInterface sharedInstance] bindAccountWithUsername:self.usernameTextField.text
                                                               password:self.passwordField.text
                                                                 userId:user.userid
                                                          callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                             [alertView performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                             [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                              
-                                                             NSString * msg= [@"绑定失败" localizedString];
+                                                             NSString * msg= nil;
                                                              if (error) {
                                                                  JYDLog(@"Tourist login error = %@", error);
                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
@@ -266,7 +258,7 @@
                                                                      case 200:
                                                                      {
                                                                          [TalkingDataAppCpa onRegister:[JYUserCache sharedInstance].currentUser.userid];
-                                                                         cacheLoading.lodingType = JYLoading_bindSuccess;
+                                                                         [self showLoadingViewWith:JYLoading_bindSuccess];
                                                                          [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_bindSuccess]];
                                                                          return;
                                                                      }

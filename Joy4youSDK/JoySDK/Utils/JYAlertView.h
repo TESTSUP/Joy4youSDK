@@ -23,6 +23,8 @@ typedef NS_ENUM(NSInteger, JYAlertViewButtonType) {
 
 @interface JYAlertView : UIView
 
+@property (nonatomic, strong) UIView *customView;
+
 // ------------------------Show AlertView with title and message----------------------
 
 // show alertView with 1 button
