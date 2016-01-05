@@ -148,7 +148,7 @@ static dispatch_once_t token;
     self.isRemoving = YES;
     //回调
     JYUserContent *user =[JYUserCache sharedInstance].currentUser;
-    [self.callback loginCallback:@{@"state": @"0", @"username":user.username, @"token":user.token}];
+    [self.callback loginCallback:@{@"state": @"0", @"username":user.username, @"phone":user.phone , @"email":user.email, @"token":user.token}];
     [self performSelector:@selector(loginSuccessRemove) withObject:nil afterDelay:2];;
     
 }
