@@ -295,7 +295,7 @@ NSString *const JYAlertViewWillShowNotification = @"JYAlertViewWillShowNotificat
 - (void)showAlert{
     self.alertView.alertReady = NO;
     
-    CGFloat duration = 0.3;
+    CGFloat duration = 0.2;
     
     for (UIButton *btn in self.alertView.subviews) {
         btn.userInteractionEnabled = NO;

@@ -10,6 +10,8 @@
 
 @interface JYPhoneRegistViewController : JYViewController
 
+@property (nonatomic, assign) BOOL isBind;  //判断此VC是注册页面还是游客绑定账号页面
+
 @property (weak, nonatomic) IBOutlet UIImageView *phoneBg;
 @property (weak, nonatomic) IBOutlet UIImageView *codeBg;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;

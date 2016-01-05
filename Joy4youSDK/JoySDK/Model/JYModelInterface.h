@@ -99,7 +99,14 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
             andVerifyCode:(NSString *)code
             callbackBlcok:(modelCallback)aCallback;
 
-
+/**
+ *  手机号注册获取验证码
+ *
+ *  @param aPhone    手机号
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)registGetVerifyCodeWithPhone:(NSString *)aPhone
+                       callbackBlock:(modelCallback)aCallback;
 #pragma mark - 绑定
 /**
  *  游客绑定正式账号
@@ -157,8 +164,8 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
  *
  *  @param aCallback <#aCallback description#>
  */
-- (void)getVerifyCodeWithPhone:(NSString *)aPhone
-                 callbackBlock:(modelCallback)aCallback;
+- (void)findPasswordGetVerifyCodeWithPhone:(NSString *)aPhone
+                             callbackBlock:(modelCallback)aCallback;
 
 /**
  *  验证验证码

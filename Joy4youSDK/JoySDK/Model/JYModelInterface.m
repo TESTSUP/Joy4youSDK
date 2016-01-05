@@ -72,9 +72,11 @@ static dispatch_once_t token;
                                                 switch (aType) {
                                                     case RequestLoginWithUsername:
                                                     case RequestLoginWithPhone:
+                                                    case RequestLoginWithSid:
                                                     case RequestRegistWithUsername:
                                                     case RequestRegistWithPhone:
                                                     case RequestBindAccount:
+                                                    case RequestBindPhone:
                                                     {
                                                         [[JYUserCache sharedInstance] saveCacheUserInfo:responseDic[KEY_DATA] isTourist:NO];
                                                     }
@@ -216,11 +218,28 @@ static dispatch_once_t token;
             andVerifyCode:(NSString *)code
             callbackBlcok:(modelCallback)aCallback
 {
+    NSLog(@"code = %@", code);
     NSDictionary *param = @{KEY_PHONE:number, KEY_CODE:code};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param
                                          andRequestType:RequestRegistWithPhone];
     
     [self requestWith:urlPath requestType:RequestRegistWithPhone andCallbacl:aCallback];
+}
+
+/**
+ *  手机号注册获取验证码
+ *
+ *  @param aPhone    手机号
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)registGetVerifyCodeWithPhone:(NSString *)aPhone
+                       callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:aPhone};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param
+                                         andRequestType:RequestRegistGetVerifyCode];
+    
+    [self requestWith:urlPath requestType:RequestRegistGetVerifyCode andCallbacl:aCallback];
 }
 
 /**
@@ -303,8 +322,8 @@ static dispatch_once_t token;
  *
  *  @param aCallback <#aCallback description#>
  */
-- (void)getVerifyCodeWithPhone:(NSString *)aPhone
-                 callbackBlock:(modelCallback)aCallback
+- (void)findPasswordGetVerifyCodeWithPhone:(NSString *)aPhone
+                             callbackBlock:(modelCallback)aCallback
 {
     NSDictionary *param = @{KEY_PHONE:aPhone};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestGetVerifyCode];

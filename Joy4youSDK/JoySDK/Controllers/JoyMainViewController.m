@@ -149,7 +149,7 @@ static dispatch_once_t token;
     self.isRemoving = YES;
     //回调
     JYUserContent *user =[JYUserCache sharedInstance].currentUser;
-    [self.callback loginCallback:@{@"state": @"0", @"username":user.username, @"token":user.token}];
+    [self.callback loginCallback:@{@"state": @"0", @"username":user.username, @"phone":user.phone , @"email":user.email, @"token":user.token}];
     [self performSelector:@selector(loginSuccessRemove) withObject:nil afterDelay:2];;
     
 }
@@ -215,14 +215,12 @@ static dispatch_once_t token;
                                                                  case 103:
                                                                  case 104:
                                                                  case 105:
-                                                                 case 108:
                                                                  {
                                                                      //101 appid不能为空
                                                                      //102sessionid不能为空
                                                                      //103 userid不能为空
                                                                      //104ckid不能为空
                                                                      //105 渠道id不能为空
-                                                                     //108 sessionid已经过期:
                                                                      msg = responseData[KEY_MSG];
                                                                  }
                                                                      break;
@@ -232,6 +230,19 @@ static dispatch_once_t token;
                                                                      msg = [@"appid不合法" localizedString];
                                                                  }
                                                                      break;
+                                                                 case 107:
+                                                                 {
+                                                                     //该用户不存在
+                                                                     msg = [@"该用户不存在" localizedString];
+                                                                 }
+                                                                     break;
+                                                                 case 108:
+                                                                 {
+                                                                     //sessionid已经过期
+                                                                     msg = [@"缓存登录已过期，请输入账号密码登录" localizedString];
+                                                                 }
+                                                                     break;
+                                                                     
                                                                  default:
                                                                      msg = [@"缓存登录失败" localizedString];
                                                                      break;

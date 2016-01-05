@@ -8,6 +8,8 @@
 
 #import "JYConfig.h"
 
+#define HOST    3   //1:本地；2：线上沙箱；其它正式环境
+
 /**
  *  SDK版本号
  */
@@ -21,10 +23,17 @@ const NSString *JYEncryptionkey = @"562asd32";
 /**
  *  服务器地址
  */
+#if (HOST == 1)
+//本地环境
+const NSString *Joy4youHostUrl = @"http://192.168.17.232/joysdk/index.php/";
+#elif (HOST == 2)
 //线上沙箱
-//const NSString *Joy4youHostUrl = @"http://123.59.56.120/joysdk/index.php/";
+const NSString *Joy4youHostUrl = @"http://123.59.56.120/joysdk/index.php/";
+#else
 //线上正式
 const NSString *Joy4youHostUrl = @"http://api.joy4you.com/joysdk/index.php/";
+#endif
+
 
 /**
  *  用户信息缓存数量

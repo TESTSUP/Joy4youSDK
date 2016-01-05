@@ -309,18 +309,40 @@
                                                                       break;
                                                                   case 101:
                                                                   case 102:
-                                                                  case 103:
+                                                                  case 104:
+                                                                  case 105:
+                                                                  case 106:
                                                                   {
                                                                       //101 appid不能为空
-                                                                      //102 ckid不能为空
-                                                                      //103 渠道id不能为空
+                                                                      //102手机号不能为空
+                                                                      //104密码不能为空
+                                                                      //105 ckid不能为空
+                                                                      //106渠道id不能为空
                                                                       msg = responseData[KEY_MSG];
                                                                   }
                                                                       break;
-                                                                  case 104:
+                                                                  case 103:
                                                                   {
-                                                                      //appid不合法
+                                                                      //103手机号不合法
+                                                                      msg = [@"手机号不合法" localizedString]; 
+                                                                  }
+                                                                      break;
+                                                                  case 107:
+                                                                  {
+                                                                      //107 appid不合法
                                                                       msg = [@"appid不合法" localizedString];
+                                                                  }
+                                                                      break;
+                                                                  case 108:
+                                                                  {
+                                                                      //108手机号不存在
+                                                                      msg = [@"手机号不存在" localizedString];
+                                                                  }
+                                                                      break;
+                                                                  case 109:
+                                                                  {
+                                                                      //109手机号不存在
+                                                                      msg = [@"手机号密码不匹配" localizedString];
                                                                   }
                                                                       break;
                                                                   default:
@@ -356,17 +378,36 @@
                                                                case 101:
                                                                case 102:
                                                                case 103:
+                                                               case 104:
+                                                               case 105:
+                                                               case 106:
                                                                {
                                                                    //101 appid不能为空
-                                                                   //102 ckid不能为空
-                                                                   //103 渠道id不能为空
+                                                                   //102用户名不能为空
+                                                                   //103 用户名不合法
+                                                                   //104密码不能为空
+                                                                   //105 ckid不能为空
+                                                                   //106渠道id不能为空
+                                                                   
                                                                    msg = responseData[KEY_MSG];
                                                                }
                                                                    break;
-                                                               case 104:
+                                                               case 107:
                                                                {
                                                                    //appid不合法
                                                                    msg = [@"appid不合法" localizedString];
+                                                               }
+                                                                   break;
+                                                               case 108:
+                                                               {
+                                                                   //108用户名不存在
+                                                                   msg = [@"用户名不存在" localizedString];
+                                                               }
+                                                                   break;
+                                                               case 109:
+                                                               {
+                                                                   //109 用户名密码不匹配
+                                                                   msg = [@"用户名密码不匹配" localizedString];
                                                                }
                                                                    break;
                                                                default:

@@ -14,11 +14,23 @@
 {
     self = [super init];
     if (self) {
-        //用户名中文编码
-        NSString *un = [aUserData[@"username"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        self.username = un;
+        id tusername = aUserData[@"username"];
+        if (tusername != [NSNull null]) {
+            //用户名中文编码
+            NSString *un = [aUserData[@"username"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            self.username = un;
+        } else {
+            self.username = @"";
+        }
+        
+        id tPhone = aUserData[@"phone"];
+        if (tPhone != [NSNull null]) {
+            self.phone = tPhone;
+        } else {
+            self.username = @"";
+        }
+        
         self.userid = (NSString *) aUserData[@"userid"];
-        self.phone = aUserData[@"phone"];
         self.email = aUserData[@"email"];
         self.ckid = aUserData[@"ckid"];
         self.sessionid = aUserData[@"sessionid"];

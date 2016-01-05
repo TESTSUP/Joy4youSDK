@@ -203,6 +203,11 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 //解决所有界面键盘遮盖问题
 - (void)configViewPointWithKeybord
 {
+    if (_actionTextField == nil) {
+        self.navigationController.view.center  = self.navigationController.view.center;
+        return;
+    }
+    
     [UIView animateWithDuration:0.25
                           delay:0.0
                         options:UIViewAnimationOptionBeginFromCurrentState

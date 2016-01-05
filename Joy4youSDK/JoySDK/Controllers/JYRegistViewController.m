@@ -268,19 +268,31 @@
                                                                      case 103:
                                                                      case 104:
                                                                      case 105:
-                                                                     case 106:
-                                                                     case 107:
-                                                                     case 108:
                                                                      {
                                                                          //101 用户id不能为空
                                                                          //102 ckid不能为空
                                                                          //103 用户名不能为空
                                                                          //104 用户名不合法
                                                                          //105 密码不能为空
-                                                                         //106 该用户已经绑定过
-                                                                         //107 查无此用户
-                                                                         //108用户名存在，请更换用户名在绑定 （新增）
                                                                          msg = responseData[KEY_MSG];
+                                                                     }
+                                                                         break;
+                                                                     case 106:
+                                                                     {
+                                                                         //106 该用户已经绑定过
+                                                                         msg= [@"该用户已经绑定过" localizedString];
+                                                                     }
+                                                                         break;
+                                                                     case 107:
+                                                                     {
+                                                                         //107 查无此用户
+                                                                         msg= [@"查无此用户" localizedString];
+                                                                     }
+                                                                         break;
+                                                                     case 108:
+                                                                     {
+                                                                         //108用户名存在，请更换用户名在绑定 （新增）
+                                                                         msg= [@"用户名存在，请更换用户名在绑定" localizedString];
                                                                      }
                                                                          break;
                                                                      default:

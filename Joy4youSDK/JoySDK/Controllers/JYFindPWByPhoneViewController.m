@@ -74,7 +74,7 @@
 - (void)timeCountAction
 {
     _timeCount--;
-    NSLog(@"code count = %ld", (long)_timeCount);
+    JYDLog(@"code count = %ld", (long)_timeCount);
     
     if (_timeCount <= 0) {
         [self stopTimer];
@@ -147,29 +147,24 @@
                                                              case 101:
                                                              case 102:
                                                              case 103:
-                                                             case 104:
-                                                             case 105:
                                                              {
-                                                                 //101 ckid不能为空
-                                                                 //102用户名不能为空
-                                                                 //103 用户名不合法
-                                                                 //104邮箱不能为空
-                                                                 //105 您输入的电子邮件地址不合法
+                                                                 //101 手机号不能为空
+                                                                 //102 手机号不合法
+                                                                 //103 验证码不能为空
                                                                  msg = responseData[KEY_MSG];
                                                              }
                                                                  break;
-                                                             case 106:
+                                                             case 104:
                                                              {
-                                                                 
-                                                                 //106 输入的邮箱与绑定的邮箱不一致
-                                                                 msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
+                                                                 //104 验证码已经失效
+                                                                 msg = [@"验证码已经失效" localizedString];
                                                                  
                                                              }
                                                                  break;
-                                                             case 107:
+                                                             case 105:
                                                              {
-                                                                 //107 该用户没有绑定过邮箱
-                                                                 msg = [@"该用户没有绑定过邮箱" localizedString];
+                                                                 //105 验证码不正确
+                                                                 msg = [@"验证码不正确" localizedString];
                                                              }
                                                                  break;
                                                              default:
@@ -206,57 +201,59 @@
         [self showPopText:[@"请填写正确的手机号" localizedString] withView:self.accountBG];
     } else {
         [self showLoadingViewWith:JYLoading_GetCode];
-        [[JYModelInterface sharedInstance] getVerifyCodeWithPhone:self.phoneField.text
-                                                    callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                        [self dismissWithCompletion:nil];
-                                                        
-                                                        NSString * msg = nil;
-                                                        if (error) {
-                                                            JYDLog(@"regist error", error);
-                                                            msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                        }
-                                                        else {
-                                                            NSString* status = responseData[KEY_STATUS];
-                                                            
-                                                            switch (status.integerValue) {
-                                                                case 200:
-                                                                {
-                                                                    _timeCount = 60;
-                                                                    [self startTimer];
-                                                                    return;
-                                                                }
-                                                                    break;
-                                                                case 101:
-                                                                case 102:
-                                                                case 103:
-                                                                case 104:
-                                                                case 105:
-                                                                case 106:
-                                                                case 107:
-                                                                {
-                                                                    //101 appid不能为空
-                                                                    //102 用户名不能为空
-                                                                    //103 用户名不合法
-                                                                    //104 密码不能为空
-                                                                    //105 ckid不能为空
-                                                                    //106 渠道id不能为空
-                                                                    //107 appid不合法
-                                                                    msg = responseData[KEY_MSG];
-                                                                }
-                                                                    break;
-                                                                case 108:
-                                                                {
-                                                                    //108用户名已存在
-                                                                    msg = [@"用户名已存在" localizedString];
-                                                                }
-                                                                    break;
-                                                                default:
-                                                                    msg= responseData[KEY_MSG];
-                                                                    break;
-                                                            }
-                                                        }
-                                                        [self showPopText:msg withView:nil];
-                                                    }];
+        [[JYModelInterface sharedInstance] findPasswordGetVerifyCodeWithPhone:self.phoneField.text
+                                                                callbackBlock:^(NSError *error, NSDictionary *responseData) {
+                                                                    [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:0.5];
+                                                                    
+                                                                    NSString * msg = nil;
+                                                                    if (error) {
+                                                                        JYDLog(@"regist error", error);
+                                                                        msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                                    }
+                                                                    else {
+                                                                        NSString* status = responseData[KEY_STATUS];
+                                                                        
+                                                                        switch (status.integerValue) {
+                                                                            case 200:
+                                                                            {
+                                                                                _timeCount = 60;
+                                                                                [self startTimer];
+                                                                                return;
+                                                                            }
+                                                                                break;
+                                                                            case 101:
+                                                                            case 102:
+                                                                            case 103:
+                                                                            case 106:
+                                                                            case 107:
+                                                                            {
+                                                                                //101 手机号不能为空
+                                                                                //102 手机号不合法
+                                                                                //103 ckid不能为空
+                                                                                //106 为第三方返回的错误信息  （请客户端直接使用msg）
+                                                                                //107 appid不合法
+                                                                                msg = responseData[KEY_MSG];
+                                                                            }
+                                                                                break;
+                                                                            case 104:
+                                                                            {
+                                                                                //104 电话号没有注册过账号，请核对手机号
+                                                                                msg = [@"电话号没有注册过账号，请核对手机号" localizedString];
+                                                                            }
+                                                                                break;
+                                                                            case 105:
+                                                                            {
+                                                                                //105 两次发送时间间隔不能少于1分钟
+                                                                                msg = [@"两次发送时间间隔不能少于1分钟" localizedString];
+                                                                            }
+                                                                                break;
+                                                                            default:
+                                                                                msg= responseData[KEY_MSG];
+                                                                                break;
+                                                                        }
+                                                                    }
+                                                                    [self showPopText:msg withView:nil];
+                                                                }];
     }
 }
 

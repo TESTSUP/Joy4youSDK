@@ -7,13 +7,13 @@
 //
 
 #import "JYBindAlertViewController.h"
-#import "JYRegistViewController.h"
+#import "JYPhoneRegistViewController.h"
 #import "NSBundle+JYBundle.h"
 
 @implementation JYBindAlertViewController
 
 - (IBAction)handleRegistAction:(id)sender {
-    JYRegistViewController *registVC = [[JYRegistViewController alloc] initWithNibName:@"JYRegistViewController" bundle:[NSBundle resourceBundle]];
+    JYPhoneRegistViewController *registVC = [[JYPhoneRegistViewController alloc] initWithNibName:@"JYPhoneRegistViewController" bundle:[NSBundle resourceBundle]];
     registVC.isBind = YES;
     [self.navigationController pushViewController:registVC animated:YES];
 }

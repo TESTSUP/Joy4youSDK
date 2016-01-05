@@ -18,8 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
-    NSLog(@"SDK Version = %@", [Joy4youSDK sdkVersion]);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3F2AB8651C293F5A0068330B /* Joy4youBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3F2AB8631C293F5A0068330B /* Joy4youBundle.bundle */; };
 		3F2AB8661C293F680068330B /* libJoy4youSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 248FCC671C04303500657ADD /* libJoy4youSDK.a */; };
+		3F2DFFC81C33D10000FF07FC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC81C167CE7000F3B15 /* libz.tbd */; };
 		3FB752B51C292C1000F47159 /* Joy4youSDK_Unity3d.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3FB752B41C292C1000F47159 /* Joy4youSDK_Unity3d.mm */; };
-		3FE90FC91C167CE7000F3B15 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FC81C167CE7000F3B15 /* libz.tbd */; };
 		3FE90FCD1C167CF7000F3B15 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE90FCC1C167CF7000F3B15 /* AdSupport.framework */; };
 		CFF6AC661BF9B96F006A7DA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC651BF9B96F006A7DA2 /* main.m */; };
 		CFF6AC691BF9B96F006A7DA2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF6AC681BF9B96F006A7DA2 /* AppDelegate.m */; };
@@ -66,9 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2DFFC81C33D10000FF07FC /* libz.tbd in Frameworks */,
 				3F2AB8661C293F680068330B /* libJoy4youSDK.a in Frameworks */,
 				3FE90FCD1C167CF7000F3B15 /* AdSupport.framework in Frameworks */,
-				3FE90FC91C167CE7000F3B15 /* libz.tbd in Frameworks */,
 				CFF6AD061BFC7114006A7DA2 /* MobileCoreServices.framework in Frameworks */,
 				CFF6AD041BFC70E2006A7DA2 /* SystemConfiguration.framework in Frameworks */,
 			);

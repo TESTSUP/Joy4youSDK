@@ -20,7 +20,7 @@
 #define KEY_UN          @"username"         //用户名
 #define KEY_PW          @"password"         //密码
 #define KEY_PHONE       @"phone"            //手机号
-#define KEY_CODE        @"phone"            //验证码
+#define KEY_CODE        @"code"            //验证码
 #define KEY_EMAIL       @"email"            //邮箱
 #define KEY_TYPE        @"type"             //type=1 用户名注册  type=2游客登录  3手机号注册4 一键注册
 #define KEY_SEX         @"sex"              //性别 0 女  1男
@@ -64,20 +64,22 @@
 //钥匙串
 #define KEYCHAIN_SERVICE    @"keychainServiceName"
 //请求相关
-#define PATH_CHECK              @"/joysdk/index.php/UserApi/checkUserName/"          //检查用户名
-#define PATH_LOGIN              @"/joysdk/index.php/UserApi/login/"                  //用户名+密码登录
-#define PATH_LOGIN_TOURIST      @"/joysdk/index.php/UserApi/touristLogin/"           //游客登录
-#define PATH_LOGIN_SID          @"/joysdk/index.php/UserApi/autoLogin/"              //缓存登录
-#define PATH_LOGIN_PHONE        @"" //手机号密码登录
-#define PATH_REGIST_UN          @"/joysdk/index.php/UserApi/register/"               //用户名密码注册
-#define PATH_REGIST_PHONE       @"" //手机号验证码注册
-#define PATH_BIND_ACCOUNT       @"/joysdk/index.php/UserApi/bindUserName/"           //绑定用户名
-#define PATH_PHONE_BIND_EMAIL   @"" //手机号绑定邮箱
-#define PATH_BIND_EMAIL         @"/joysdk/index.php/UserApi/bindEmail/"              //绑定邮箱
-#define PATH_FIND_PW            @"/joysdk/index.php/FindPwdApi/findPwd/"             //找回密码
-#define PATH_GET_CODE           @"" //获取验证码
-#define PATH_VERIFY_CODE        @"" //验证验证码
-#define PARH_SET_PW             @"" //设置新密码
+#define PATH_CHECK              @"/joysdk/index.php/UserApi/checkUserName/"             //检查用户名
+#define PATH_LOGIN              @"/joysdk/index.php/UserApi/login/"                     //用户名+密码登录
+#define PATH_LOGIN_TOURIST      @"/joysdk/index.php/UserApi/touristLogin/"              //游客登录
+#define PATH_LOGIN_SID          @"/joysdk/index.php/UserApi/autoLogin/"                 //缓存登录
+#define PATH_LOGIN_PHONE        @"/joysdk/index.php/UserApi/phoneLogin/"                //手机号密码登录
+#define PATH_REGIST_UN          @"/joysdk/index.php/UserApi/register/"                  //用户名密码注册
+#define PATH_REGIST_PHONE       @"/joysdk/index.php/UserApi/phoneRegister"              //手机号验证码注册
+#define PATH_BIND_ACCOUNT       @"/joysdk/index.php/UserApi/bindUserName/"              //绑定用户名
+#define PATH_BIND_PHONE         @"/joysdk/index.php/UserApi/bindPhone/"                 //绑定手机号
+#define PATH_PHONE_BIND_EMAIL   @"/joysdk/index.php/UserApi/phoneBindEmail/"            //手机号绑定邮箱
+#define PATH_BIND_EMAIL         @"/joysdk/index.php/UserApi/bindEmail/"                 //绑定邮箱
+#define PATH_FIND_PW            @"/joysdk/index.php/FindPwdApi/findPwd/"                //找回密码
+#define PATH_REGIST_GET_CODE    @"/joysdk/index.php/UserApi/getVerifyCodeForRegister/"  //手机号注册时获取验证码
+#define PATH_FIND_PW_GET_CODE   @"/joysdk/index.php/UserApi/getVerifyCodeForFindPwd/"   //通过手机找回密码时获取验证码
+#define PATH_VERIFY_CODE        @"/joysdk/index.php/UserApi/CheckVerifyCode/"           //验证验证码
+#define PARH_SET_PW             @"/joysdk/index.php/UserApi/phoneUpdPwd/"               //设置新密码
 
 
 

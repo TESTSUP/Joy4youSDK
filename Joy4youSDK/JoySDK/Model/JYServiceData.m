@@ -81,7 +81,7 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
             NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithDictionary:[JYDevice deviceInfo]];
             [temp setObject:aParam[KEY_PHONE] forKey:KEY_PHONE];
             [temp setObject:aParam[KEY_CODE] forKey:KEY_CODE];
-            [temp setObject:@"3" forKey:KEY_TYPE];
+            [temp setObject:@"1" forKey:KEY_TYPE];
             paramDic =temp;
         }
             break;
@@ -113,6 +113,12 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
             
         }
             break;
+        case RequestBindPhone:
+        {
+            path = PATH_BIND_PHONE;
+            paramDic = @{};
+        }
+            break;
         case RequestFindPassword:
         {
             path = PATH_FIND_PW;
@@ -121,9 +127,16 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
                          KEY_CKID:[JYDevice ckid]};
         }
             break;
+        case RequestRegistGetVerifyCode:
+        {
+            path = PATH_REGIST_GET_CODE;
+            paramDic = @{KEY_PHONE:aParam[KEY_PHONE],
+                         KEY_CKID:[JYDevice ckid]};
+        }
+            break;
         case RequestGetVerifyCode:
         {
-            path = PATH_GET_CODE;
+            path = PATH_FIND_PW_GET_CODE;
             paramDic = @{KEY_PHONE:aParam[KEY_PHONE],
                          KEY_CKID:[JYDevice ckid]};
         }
@@ -132,8 +145,7 @@ const NSString * JYDesErrorDomain = @"com.joy4you.des";
         {
             path = PATH_VERIFY_CODE;
             paramDic = @{KEY_PHONE:aParam[KEY_PHONE],
-                         KEY_CODE:aParam[KEY_CODE],
-                         KEY_CKID:[JYDevice ckid]};
+                         KEY_CODE:aParam[KEY_CODE]};
         }
             break;
         case RequesSetNewPassword:

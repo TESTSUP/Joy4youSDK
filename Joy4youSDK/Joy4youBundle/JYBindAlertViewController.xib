@@ -37,7 +37,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <state key="normal" title="用户名注册" backgroundImage="jy_button_orange.png">
+                    <state key="normal" title="用户注册" backgroundImage="jy_button_orange.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted" backgroundImage="jy_button_orange_pressed.png"/>
@@ -67,8 +67,8 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：点击用户名注册即可绑定当前游客账号" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Csh-6l-1X4">
-                    <rect key="frame" x="26" y="141" width="257" height="34"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：点击用户注册即可绑定当前游客账号" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Csh-6l-1X4">
+                    <rect key="frame" x="26" y="132" width="257" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -102,7 +102,7 @@
         </view>
     </objects>
     <resources>
-        <image name="jy_button_orange.png" width="7" height="9"/>
-        <image name="jy_button_orange_pressed.png" width="7" height="9"/>
+        <image name="jy_button_orange.png" width="8" height="9"/>
+        <image name="jy_button_orange_pressed.png" width="8" height="9"/>
     </resources>
 </document>
