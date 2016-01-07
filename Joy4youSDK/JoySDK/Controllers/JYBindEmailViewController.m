@@ -93,7 +93,7 @@
                                                                           [self showLoadingViewWith:JYLoading_bindSuccess];
                                                                           [self performSelector:@selector(dismissWithCompletion:)
                                                                                           withObject:^{
-                                                                                              [self.navigationController popViewControllerAnimated:YES];
+                                                                                              [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                           }
                                                                                           afterDelay:1];
                                                                           return;
@@ -166,7 +166,7 @@
                                                                        [self showLoadingViewWith:JYLoading_bindSuccess];
                                                                        [self performSelector:@selector(dismissWithCompletion:)
                                                                                        withObject:^{
-                                                                                           [self.navigationController popViewControllerAnimated:YES];
+                                                                                           [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                        }
                                                                                        afterDelay:1];
                                                                        return;

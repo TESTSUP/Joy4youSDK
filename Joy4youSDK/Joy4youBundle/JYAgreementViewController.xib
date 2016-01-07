@@ -49,6 +49,6 @@
     <resources>
         <image name="jy_back.png" width="14" height="14"/>
         <image name="jy_back_pressed.png" width="14" height="14"/>
-        <image name="jy_logo.png" width="140" height="35"/>
+        <image name="jy_logo.png" width="140" height="36"/>
     </resources>
 </document>

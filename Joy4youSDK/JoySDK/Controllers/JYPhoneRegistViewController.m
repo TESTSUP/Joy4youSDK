@@ -149,6 +149,8 @@
 
 
 - (IBAction)handleGetCodeAction:(id)sender {
+    [self hideKeybord];
+    
     if ([self.phoneField.text length] == 0) {
         [self showPopText:[@"手机号不能为空" localizedString] withView:self.phoneBg];
     }else if (![self.phoneField.text validatePhoneNumber]){
@@ -188,7 +190,7 @@
                                                                           //104 电话号已经被注册过，请重新输入
                                                                           //105 两次发送时间间隔不能少于1分钟
                                                                           //106 为第三方返回的错误信息  （请客户端直接使用msg）
-                                                                          //107 appid不合法
+                                                                          //107 获取验证码次数过多，请明天再试
                                                                           msg = responseData[KEY_MSG];
                                                                       }
                                                                           break;
@@ -227,78 +229,146 @@
             [self showPopText:[@"验证码为6位数字" localizedString] withView:self.codeBg];
         }else{
             if (_isBind) {
-                
+                [self showLoadingViewWith:JYLoading_Binding];
+                JYUserContent *user = [[JYUserCache sharedInstance] currentUser];
+                [[JYModelInterface sharedInstance] bindTouristWithPhone:self.phoneField.text
+                                                             verifyCode:self.codeField.text
+                                                                 userId:user.userid
+                                                          callbackBlock:^(NSError *error, NSDictionary *responseData) {
+                                                              [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                              
+                                                              NSString * msg= nil;
+                                                              if (error) {
+                                                                  JYDLog(@"Tourist login error = %@", error);
+                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                              }
+                                                              else {
+                                                                  NSString* status = responseData[KEY_STATUS];
+                                                                  
+                                                                  switch (status.integerValue) {
+                                                                      case 200:
+                                                                      {
+                                                                          [TalkingDataAppCpa onRegister:[JYUserCache sharedInstance].currentUser.userid];
+                                                                          [self showLoadingViewWith:JYLoading_bindSuccess];
+                                                                          [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_bindSuccess]];
+                                                                          return;
+                                                                      }
+                                                                          break;
+                                                                      case 101:
+                                                                      case 102:
+                                                                      case 103:
+                                                                      case 104:
+                                                                      case 105:
+                                                                      case 109:
+                                                                      {
+                                                                          //101 用户id不能为空
+                                                                          //102 ckid不能为空
+                                                                          //103 手机号不能为空
+                                                                          //104 手机号不合法
+                                                                          //105 密码不能为空
+                                                                          msg = responseData[KEY_MSG];
+                                                                      }
+                                                                          break;
+                                                                      case 106:
+                                                                      {
+                                                                          //106  验证码已经失效
+                                                                          msg= [@"验证码已经失效" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      case 107:
+                                                                      {
+                                                                          //106  验证码不正确
+                                                                          msg= [@"验证码不正确" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      case 108:
+                                                                      {
+                                                                          //106 该手机已经绑定过
+                                                                          msg= [@"该手机已经绑定过" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      case 110:
+                                                                      {
+                                                                          //108用户名存在，请更换用户名在绑定 （新增）
+                                                                          msg= [@"手机号存在，请更换手机号在绑定" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      default:
+                                                                          msg = responseData[KEY_MSG];
+                                                                          break;
+                                                                  }
+                                                              }
+                                                              [self showPopText:msg withView:nil];
+                                                          }];
             } else {
+                [self showLoadingViewWith:JYLoading_registWithUsername];
                 
-            }
-            
-            [self showLoadingViewWith:JYLoading_registWithUsername];
-            
-            [[JYModelInterface sharedInstance] registPhoneNumber:self.phoneField.text
-                                                   andVerifyCode:self.codeField.text
-                                                   callbackBlcok:^(NSError *error, NSDictionary *responseData) {
-
-                                                       NSString * msg = nil;
-                                                       if (error) {
-                                                           JYDLog(@"regist error", error);
-                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                       }
-                                                       else {
-                                                           NSString* status = responseData[KEY_STATUS];
+                [[JYModelInterface sharedInstance] registPhoneNumber:self.phoneField.text
+                                                       andVerifyCode:self.codeField.text
+                                                       callbackBlcok:^(NSError *error, NSDictionary *responseData) {
                                                            
-                                                           switch (status.integerValue) {
-                                                               case 200:
-                                                               {
-                                                                   [self showLoadingViewWith:JYLoading_registWithUsernameSuccess];
-                                                                   [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
-                                                                   
-                                                                   [TalkingDataAppCpa onRegister:[JYUserCache sharedInstance].currentUser.userid];
-                                                                   [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_registWithUsernameSuccess]];
-                                                                   return;
-                                                               }
-                                                                   break;
-                                                               case 101:
-                                                               case 102:
-                                                               case 103:
-                                                               case 104:
-                                                               case 105:
-                                                               case 106:
-                                                               {
-                                                                   //101 appid不能为空
-                                                                   //102 手机号不能为空
-                                                                   //103 手机号不合法
-                                                                   //104 验证码不能为空
-                                                                   //105 ckid不能为空
-                                                                   //106 渠道id不能为空
-                                                                   msg = responseData[KEY_MSG];
-                                                               }
-                                                                   break;
-                                                                case 107:
-                                                               {
-                                                                   //107 验证码不正确
-                                                                   msg = [@"验证码不正确" localizedString];
-                                                               }
-                                                                   break;
-                                                               case 108:
-                                                               {
-                                                                   //108用户名已存在
-                                                                   msg = [@"用户名已存在" localizedString];
-                                                               }
-                                                                   break;
-                                                               case 109:
-                                                               {
-                                                                   //109 手机号已经注册过
-                                                                   msg = [@"手机号已经注册过" localizedString];
-                                                               }
-                                                                   break;
-                                                               default:
-                                                                   msg= responseData[KEY_MSG];
-                                                                   break;
+                                                           NSString * msg = nil;
+                                                           if (error) {
+                                                               JYDLog(@"regist error", error);
+                                                               msg = [@"网络状态不好，请稍后重试" localizedString];
                                                            }
-                                                       }
-                                                       [self showPopText:msg withView:nil];
-                                                       [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
-                                                   }];
+                                                           else {
+                                                               NSString* status = responseData[KEY_STATUS];
+                                                               
+                                                               switch (status.integerValue) {
+                                                                   case 200:
+                                                                   {
+                                                                       [self showLoadingViewWith:JYLoading_registWithUsernameSuccess];
+                                                                       [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                                       
+                                                                       [TalkingDataAppCpa onRegister:[JYUserCache sharedInstance].currentUser.userid];
+                                                                       [[NSNotificationCenter defaultCenter] postNotificationName:JYNotificationShowSuccess object:[NSNumber numberWithInteger:JYLoading_registWithUsernameSuccess]];
+                                                                       return;
+                                                                   }
+                                                                       break;
+                                                                   case 101:
+                                                                   case 102:
+                                                                   case 103:
+                                                                   case 104:
+                                                                   case 105:
+                                                                   case 106:
+                                                                   {
+                                                                       //101 appid不能为空
+                                                                       //102 手机号不能为空
+                                                                       //103 手机号不合法
+                                                                       //104 验证码不能为空
+                                                                       //105 ckid不能为空
+                                                                       //106 渠道id不能为空
+                                                                       msg = responseData[KEY_MSG];
+                                                                   }
+                                                                       break;
+                                                                   case 107:
+                                                                   {
+                                                                       //107 验证码不正确
+                                                                       msg = [@"验证码不正确" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   case 108:
+                                                                   {
+                                                                       //108用户名已存在
+                                                                       msg = [@"用户名已存在" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   case 109:
+                                                                   {
+                                                                       //109 手机号已经注册过
+                                                                       msg = [@"手机号已经注册过" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   default:
+                                                                       msg= responseData[KEY_MSG];
+                                                                       break;
+                                                               }
+                                                           }
+                                                           [self showPopText:msg withView:nil];
+                                                           [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
+                                                       }];
+            }
         }
     }
 }

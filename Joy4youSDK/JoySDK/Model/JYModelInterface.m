@@ -243,7 +243,7 @@ static dispatch_once_t token;
 }
 
 /**
- *  找回密码
+ *  通过邮箱找回密码
  *
  *  @param aUsername 用户名
  *  @param aEmail    邮箱
@@ -260,6 +260,23 @@ static dispatch_once_t token;
 }
 
 /**
+ *  通过邮箱找回密码
+ *
+ *  @param aPhone    手机号
+ *  @param aEmail    邮箱
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)findPasswordWithPhone:(NSString *)aPhone
+                     andEmail:(NSString *)aEmail
+                callbackBlock:(modelCallback)aCallback
+{
+    NSDictionary *param = @{KEY_PHONE:aPhone, KEY_EMAIL:aEmail};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestFindPhonePassword];
+    
+    [self requestWith:urlPath requestType:RequestFindPhonePassword andCallbacl:aCallback];
+}
+
+/**
  *  游客绑定正式账号
  *
  *  @param aUsername 用户名
@@ -267,7 +284,7 @@ static dispatch_once_t token;
  *  @param aUserId   用户id
  *  @param aCallback <#aCallback description#>
  */
-- (void)bindAccountWithUsername:(NSString *)aUsername
+- (void)bindTouristWithUsername:(NSString *)aUsername
                        password:(NSString *)aPassword
                          userId:(NSString *)aUserId
                   callbackBlock:(modelCallback)aCallback
@@ -276,6 +293,27 @@ static dispatch_once_t token;
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequestBindAccount];
     
     [self requestWith:urlPath requestType:RequestBindAccount andCallbacl:aCallback];
+}
+
+/**
+ *  游客绑定手机号
+ *
+ *  @param aPhone    手机号
+ *  @param code      验证码
+ *  @param aUserId   用户id
+ *  @param aCallback
+ */
+- (void)bindTouristWithPhone:(NSString *)aPhone
+                  verifyCode:(NSString *)code
+                      userId:(NSString *)aUserId
+               callbackBlock:(modelCallback)aCallback
+{
+    NSLog(@"code = %@", code);
+    NSDictionary *param = @{KEY_PHONE:aPhone, KEY_CODE:code, KEY_UID:aUserId};
+    NSString *urlPath = [JYServiceData pathUrlWithParam:param
+                                         andRequestType:RequestBindPhone];
+    
+    [self requestWith:urlPath requestType:RequestBindPhone andCallbacl:aCallback];
 }
 
 /**
@@ -350,16 +388,21 @@ static dispatch_once_t token;
 /**
  *  设置新密码
  *
+ *  @param aPhone    手机号
  *  @param aPassword 密码
+ *  @param aMark     标示
  *  @param aCallback <#aCallback description#>
  */
-- (void)setNewPassword:(NSString *)aPassword
-         callbackBlock:(modelCallback)aCallback
+- (void)setNewPasswordWithPhone:(NSString *)aPhone
+                       password:(NSString *)aPassword
+                           mark:(NSString *)aMark
+                  callbackBlock:(modelCallback)aCallback
 {
-    NSDictionary *param = @{KEY_PW:[aPassword MD5]};
+    NSDictionary *param = @{KEY_PW:[aPassword MD5], KEY_PHONE:aPhone, KEY_TOKEN:aMark};
     NSString *urlPath = [JYServiceData pathUrlWithParam:param andRequestType:RequesSetNewPassword];
     
     [self requestWith:urlPath requestType:RequesSetNewPassword andCallbacl:aCallback];
 }
+
 
 @end

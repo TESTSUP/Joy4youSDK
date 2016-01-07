@@ -22,6 +22,7 @@ typedef enum JYRequestType {
     RequestBindAccount,
     RequestBindPhone,
     RequestFindPassword,
+    RequestFindPhonePassword,
     RequestGetVerifyCode,
     RequestVerifyCode,
     RequesSetNewPassword

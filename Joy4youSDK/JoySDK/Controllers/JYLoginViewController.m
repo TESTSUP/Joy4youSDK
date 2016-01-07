@@ -254,7 +254,7 @@
                 }
                     break;
                 default:
-                    msg= [@"游客登录失败" localizedString];
+                    msg = responseData[KEY_MSG];;
                     break;
             }
         }

@@ -10,31 +10,31 @@
 
 @implementation JYUserContent
 
+- (NSString *)valueFromDic:(NSDictionary*)aDic withKey:(NSString *)aKey
+{
+   id value = aDic[aKey];
+    if (value) {
+        if ([NSNull null] != value) {
+            return value;
+        } else {
+            return @"";
+        }
+    }
+    return @"";
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)aUserData
 {
     self = [super init];
     if (self) {
-        id tusername = aUserData[@"username"];
-        if (tusername != [NSNull null]) {
-            //用户名中文编码
-            NSString *un = [aUserData[@"username"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            self.username = un;
-        } else {
-            self.username = @"";
-        }
-        
-        id tPhone = aUserData[@"phone"];
-        if (tPhone != [NSNull null]) {
-            self.phone = tPhone;
-        } else {
-            self.username = @"";
-        }
-        
-        self.userid = (NSString *) aUserData[@"userid"];
-        self.email = aUserData[@"email"];
-        self.ckid = aUserData[@"ckid"];
-        self.sessionid = aUserData[@"sessionid"];
-        self.token = aUserData[@"token"];
+        self.username = [self valueFromDic:aUserData withKey:KEY_UN];
+        self.username = [self.username stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        self.phone = [self valueFromDic:aUserData withKey:KEY_PHONE];
+        self.userid = [self valueFromDic:aUserData withKey:KEY_UID];;
+        self.email = [self valueFromDic:aUserData withKey:KEY_EMAIL];
+        self.ckid = [self valueFromDic:aUserData withKey:KEY_CKID];
+        self.sessionid = [self valueFromDic:aUserData withKey:KEY_SID];
+        self.token = [self valueFromDic:aUserData withKey:KEY_TOKEN];
     }
     
     return self;

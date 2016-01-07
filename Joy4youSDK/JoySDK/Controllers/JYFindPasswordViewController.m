@@ -64,73 +64,140 @@
     if ([popText length] > 0) {
         [self showPopText:popText withView:self.accountBg];;
     } else {
-        [self showLoadingViewWith:JYLoading_Sending];
-        
-        [[JYModelInterface sharedInstance] findPasswordWithUsername:nickname
-                                                           andEmail:email
-                                                      callbackBlock:^(NSError *error, NSDictionary *responseData) {
-                                                          
-                                                          NSString * msg = nil;
-                                                          if (!error)
-                                                          {
-                                                              NSString* status = responseData[KEY_STATUS];
+         [self showLoadingViewWith:JYLoading_Sending];
+        if ([nickname validatePhoneNumber]) {
+            [[JYModelInterface sharedInstance] findPasswordWithPhone:nickname
+                                                            andEmail:email
+                                                       callbackBlock:^(NSError *error, NSDictionary *responseData) {
+                                                           
+                                                           NSString * msg = nil;
+                                                           if (!error)
+                                                           {
+                                                               NSString* status = responseData[KEY_STATUS];
+                                                               
+                                                               switch (status.integerValue) {
+                                                                   case 200:
+                                                                   {
+                                                                       [self showLoadingViewWith:JYLoading_SendSuccess];
+                                                                       [self performSelector:@selector(dismissWithCompletion:)
+                                                                                  withObject:^{
+                                                                                      [self.navigationController popViewControllerAnimated:YES];
+                                                                                  }
+                                                                                  afterDelay:1];
+                                                                       return;
+                                                                   }
+                                                                       break;
+                                                                   case 101:
+                                                                   case 102:
+                                                                   case 103:
+                                                                   case 104:
+                                                                   case 105:
+                                                                   {
+                                                                       //101 ckid不能为空
+                                                                       //102 手机号不能为空
+                                                                       //103 手机号不合法
+                                                                       //104 邮箱不能为空
+                                                                       //105 您输入的电子邮件地址不合法
+                                                                       msg = responseData[KEY_MSG];
+                                                                   }
+                                                                       break;
+                                                                   case 106:
+                                                                   {
+                                                                       
+                                                                       //106 输入的邮箱与绑定的邮箱不一致
+                                                                       msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
+                                                                       
+                                                                   }
+                                                                       break;
+                                                                   case 107:
+                                                                   {
+                                                                       //107 该用户没有绑定过邮箱
+                                                                       msg = [@"该手机号没有绑定过邮箱" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   default:
+                                                                       msg= responseData[KEY_MSG];
+                                                                       break;
+                                                               }
+                                                           }
+                                                           else
+                                                           {
+                                                               JYDLog(@"Tourist login error", error);
+                                                               msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                           }
+                                                           
+                                                           [self performSelector:@selector(dismissWithCompletion:)
+                                                                      withObject:nil
+                                                                      afterDelay:1];
+                                                           [self showPopText:msg withView:nil];
+                                                       }];
+        } else {
+            [[JYModelInterface sharedInstance] findPasswordWithUsername:nickname
+                                                               andEmail:email
+                                                          callbackBlock:^(NSError *error, NSDictionary *responseData) {
                                                               
-                                                              switch (status.integerValue) {
-                                                                  case 200:
-                                                                  {
-                                                                      [self showLoadingViewWith:JYLoading_SendSuccess];
-                                                                      [self performSelector:@selector(dismissWithCompletion:)
-                                                                                      withObject:^{
-                                                                                          [self.navigationController popViewControllerAnimated:YES];
-                                                                                      }
-                                                                                      afterDelay:1];
-                                                                      return;
+                                                              NSString * msg = nil;
+                                                              if (!error)
+                                                              {
+                                                                  NSString* status = responseData[KEY_STATUS];
+                                                                  
+                                                                  switch (status.integerValue) {
+                                                                      case 200:
+                                                                      {
+                                                                          [self showLoadingViewWith:JYLoading_SendSuccess];
+                                                                          [self performSelector:@selector(dismissWithCompletion:)
+                                                                                     withObject:^{
+                                                                                         [self.navigationController popToRootViewControllerAnimated:YES];
+                                                                                     }
+                                                                                     afterDelay:1];
+                                                                          return;
+                                                                      }
+                                                                          break;
+                                                                      case 101:
+                                                                      case 102:
+                                                                      case 103:
+                                                                      case 104:
+                                                                      case 105:
+                                                                      {
+                                                                          //101 ckid不能为空
+                                                                          //102用户名不能为空
+                                                                          //103 用户名不合法
+                                                                          //104邮箱不能为空
+                                                                          //105 您输入的电子邮件地址不合法
+                                                                          msg = responseData[KEY_MSG];
+                                                                      }
+                                                                          break;
+                                                                      case 106:
+                                                                      {
+                                                                          
+                                                                          //106 输入的邮箱与绑定的邮箱不一致
+                                                                          msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
+                                                                          
+                                                                      }
+                                                                          break;
+                                                                      case 107:
+                                                                      {
+                                                                          //107 该用户没有绑定过邮箱
+                                                                          msg = [@"该用户没有绑定过邮箱" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      default:
+                                                                          msg= responseData[KEY_MSG];
+                                                                          break;
                                                                   }
-                                                                      break;
-                                                                  case 101:
-                                                                  case 102:
-                                                                  case 103:
-                                                                  case 104:
-                                                                  case 105:
-                                                                  {
-                                                                      //101 ckid不能为空
-                                                                      //102用户名不能为空
-                                                                      //103 用户名不合法
-                                                                      //104邮箱不能为空
-                                                                      //105 您输入的电子邮件地址不合法
-                                                                      msg = responseData[KEY_MSG];
-                                                                  }
-                                                                      break;
-                                                                  case 106:
-                                                                  {
-                                                                      
-                                                                      //106 输入的邮箱与绑定的邮箱不一致
-                                                                      msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
-                                                                      
-                                                                  }
-                                                                      break;
-                                                                  case 107:
-                                                                  {
-                                                                      //107 该用户没有绑定过邮箱
-                                                                      msg = [@"该用户没有绑定过邮箱" localizedString];
-                                                                  }
-                                                                      break;
-                                                                  default:
-                                                                      msg= responseData[KEY_MSG];
-                                                                      break;
                                                               }
-                                                          }
-                                                          else
-                                                          {
-                                                              JYDLog(@"Tourist login error", error);
-                                                              msg = [@"网络状态不好，请稍后重试" localizedString];
-                                                          }
-                                                          
-                                                          [self performSelector:@selector(dismissWithCompletion:)
-                                                                          withObject:nil
-                                                                          afterDelay:1];
-                                                          [self showPopText:msg withView:nil];
-                                                      }];
+                                                              else
+                                                              {
+                                                                  JYDLog(@"Tourist login error", error);
+                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                              }
+                                                              
+                                                              [self performSelector:@selector(dismissWithCompletion:)
+                                                                         withObject:nil
+                                                                         afterDelay:1];
+                                                              [self showPopText:msg withView:nil];
+                                                          }];
+        }
     }
 }
 

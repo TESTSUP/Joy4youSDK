@@ -140,7 +140,7 @@
 - (void)setLodingType:(JYLoadingType)aLodingType
 {
     JYUserContent *userInfo = [[JYUserCache sharedInstance] currentUser];
-    NSString *account = userInfo.username? userInfo.username:userInfo.phone;
+    NSString *account = [userInfo.username length]? userInfo.username:userInfo.phone;
     NSString *username = userInfo.type == 2? @"游客":account;
     NSString *title = [NSString stringWithFormat:@"账号：%@", username];
     
@@ -222,8 +222,7 @@
         {
             self.showButton = NO;
             self.loading = NO;
-            self.title = title;
-            self.detail = [@"绑定成功" localizedString];
+            self.title = [@"绑定成功" localizedString];
         }
             break;
         case JYLoading_Sending:

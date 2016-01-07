@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="accountBg" destination="FvC-RG-zBE" id="KUb-6i-F3o"/>
                 <outlet property="backButton" destination="LAR-rY-yXd" id="Ot1-TQ-wWi"/>
-                <outlet property="bindButton" destination="rPd-pg-VGs" id="OTB-Cu-hIW"/>
                 <outlet property="confirmAgreementBtn" destination="JnL-V1-w51" id="BSf-4b-Qf0"/>
                 <outlet property="passwordBg" destination="CM3-bP-HMs" id="05O-EJ-O6V"/>
                 <outlet property="passwordField" destination="msV-0w-k3u" id="cSB-HY-P81"/>
@@ -143,18 +142,6 @@
                         <action selector="handleRegistAction:" destination="-1" eventType="touchUpInside" id="k3a-4G-xF8"/>
                     </connections>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rPd-pg-VGs" customClass="JYButton">
-                    <rect key="frame" x="93" y="209" width="125" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <state key="normal" title="立即绑定" backgroundImage="jy_button_blue.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="jy_button_blue_pressed.png"/>
-                    <connections>
-                        <action selector="handleBindAccountAction:" destination="-1" eventType="touchUpInside" id="0Gw-tw-JEU"/>
-                    </connections>
-                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
@@ -166,8 +153,6 @@
     <resources>
         <image name="jy_back.png" width="14" height="14"/>
         <image name="jy_back_pressed.png" width="14" height="14"/>
-        <image name="jy_button_blue.png" width="8" height="9"/>
-        <image name="jy_button_blue_pressed.png" width="8" height="9"/>
         <image name="jy_button_orange.png" width="8" height="9"/>
         <image name="jy_button_orange_pressed.png" width="8" height="9"/>
         <image name="jy_img_checkbox_off.png" width="15" height="15"/>

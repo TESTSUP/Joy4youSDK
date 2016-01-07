@@ -116,10 +116,23 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
  *  @param aUserId   用户id
  *  @param aCallback <#aCallback description#>
  */
-- (void)bindAccountWithUsername:(NSString *)aUsername
+- (void)bindTouristWithUsername:(NSString *)aUsername
                        password:(NSString *)aPassword
                          userId:(NSString *)aUserId
                   callbackBlock:(modelCallback)aCallback;
+
+/**
+ *  游客绑定手机号
+ *
+ *  @param aPhone    手机号
+ *  @param code      验证码
+ *  @param aUserId   用户id
+ *  @param aCallback
+ */
+- (void)bindTouristWithPhone:(NSString *)aPhone
+                  verifyCode:(NSString *)code
+                      userId:(NSString *)aUserId
+               callbackBlock:(modelCallback)aCallback;
 
 /**
  *  绑定邮箱
@@ -160,6 +173,17 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
                    callbackBlock:(modelCallback)aCallback;
 
 /**
+ *  通过邮箱找回密码
+ *
+ *  @param aPhone    手机号
+ *  @param aEmail    邮箱
+ *  @param aCallback <#aCallback description#>
+ */
+- (void)findPasswordWithPhone:(NSString *)aPhone
+                     andEmail:(NSString *)aEmail
+                callbackBlock:(modelCallback)aCallback;
+
+/**
  *  获取验证码
  *
  *  @param aCallback <#aCallback description#>
@@ -180,9 +204,14 @@ typedef void (^modelCallback)(NSError *error, NSDictionary* responseData);
 /**
  *  设置新密码
  *
+ *  @param aPhone    手机号
  *  @param aPassword 密码
+ *  @param aMark     标示
  *  @param aCallback <#aCallback description#>
  */
-- (void)setNewPassword:(NSString *)aPassword
-         callbackBlock:(modelCallback)aCallback;
+- (void)setNewPasswordWithPhone:(NSString *)aPhone
+                       password:(NSString *)aPassword
+                           mark:(NSString *)aMark
+                  callbackBlock:(modelCallback)aCallback;
+
 @end

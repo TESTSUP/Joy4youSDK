@@ -131,13 +131,17 @@
                                                      if (!error)
                                                      {
                                                          NSString* status = responseData[KEY_STATUS];
-                                                         
+                                                         NSDictionary *data = (NSDictionary *)responseData[KEY_DATA];
+                                                         NSString *phone = data[KEY_PHONE];
+                                                         NSString *token = data[KEY_TOKEN];
                                                          switch (status.integerValue) {
                                                              case 200:
                                                              {
                                                                  [self performSelector:@selector(dismissWithCompletion:)
                                                                                  withObject:^{
                                                                                      JYSetNewPWViewController *setVC = [[JYSetNewPWViewController alloc] initWithNibName:@"JYSetNewPWViewController" bundle:[NSBundle resourceBundle]];
+                                                                                     setVC.phone = phone;
+                                                                                     setVC.token = token;
                                                                                      [self.navigationController pushViewController:setVC animated:YES];
                                                                                  }
                                                                                  afterDelay:1];
@@ -195,6 +199,8 @@
 }
 
 - (IBAction)handleGetCodeAction:(id)sender {
+    [self hideKeybord];
+    
     if ([self.phoneField.text length] == 0) {
         [self showPopText:[@"手机号不能为空" localizedString] withView:self.accountBG];
     }else if (![self.phoneField.text validatePhoneNumber]){
@@ -231,7 +237,7 @@
                                                                                 //102 手机号不合法
                                                                                 //103 ckid不能为空
                                                                                 //106 为第三方返回的错误信息  （请客户端直接使用msg）
-                                                                                //107 appid不合法
+                                                                                //107 获取验证码次数过多，请明天再试
                                                                                 msg = responseData[KEY_MSG];
                                                                             }
                                                                                 break;

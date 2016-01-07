@@ -15,6 +15,7 @@
 #define KEY_DATA        @"data"
 #define KEY_MSG         @"msg"
 #define KEY_STATUS      @"status"
+#define KEY_TOKEN       @"token"
 
 //用户相关
 #define KEY_UN          @"username"         //用户名
@@ -76,6 +77,7 @@
 #define PATH_PHONE_BIND_EMAIL   @"/joysdk/index.php/UserApi/phoneBindEmail/"            //手机号绑定邮箱
 #define PATH_BIND_EMAIL         @"/joysdk/index.php/UserApi/bindEmail/"                 //绑定邮箱
 #define PATH_FIND_PW            @"/joysdk/index.php/FindPwdApi/findPwd/"                //找回密码
+#define PATH_FIND_PHONE_PW      @"/joysdk/index.php/FindPwdApi/findPwdForPhone/"        //找回手机号密码
 #define PATH_REGIST_GET_CODE    @"/joysdk/index.php/UserApi/getVerifyCodeForRegister/"  //手机号注册时获取验证码
 #define PATH_FIND_PW_GET_CODE   @"/joysdk/index.php/UserApi/getVerifyCodeForFindPwd/"   //通过手机找回密码时获取验证码
 #define PATH_VERIFY_CODE        @"/joysdk/index.php/UserApi/CheckVerifyCode/"           //验证验证码

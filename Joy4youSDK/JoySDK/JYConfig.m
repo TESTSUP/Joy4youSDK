@@ -8,12 +8,12 @@
 
 #import "JYConfig.h"
 
-#define HOST    3   //1:本地；2：线上沙箱；其它正式环境
+#define HOST    2   //1:本地；2：线上沙箱；其它正式环境
 
 /**
  *  SDK版本号
  */
-const NSString *Joy4youSDK_VERSION = @"1.1.0";
+const NSString *Joy4youSDK_VERSION = @"1.2.0";
 
 /**
  *  加解密Key

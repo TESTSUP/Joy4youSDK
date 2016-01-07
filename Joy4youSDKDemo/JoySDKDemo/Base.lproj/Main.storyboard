@@ -111,7 +111,6 @@
                             <constraint firstAttribute="trailing" secondItem="ma5-BS-auQ" secondAttribute="trailing" constant="20" id="UJQ-Mf-FJx"/>
                             <constraint firstItem="sF4-Q2-JiL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="W3l-4N-f7Y"/>
                             <constraint firstItem="ma5-BS-auQ" firstAttribute="top" secondItem="nds-pi-A2w" secondAttribute="top" constant="80" id="laz-tB-X59"/>
-                            <constraint firstItem="WM3-4u-nhP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lep-0h-NjI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ma5-BS-auQ" secondAttribute="bottom" constant="20" id="zAv-gN-MhQ"/>
                             <constraint firstItem="ma5-BS-auQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="zNL-EY-cEz"/>
                         </constraints>

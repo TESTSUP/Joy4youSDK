@@ -22,7 +22,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *confirmAgreementBtn;
 @property (weak, nonatomic) IBOutlet UIButton *showAgreementBtn;
 @property (weak, nonatomic) IBOutlet JYButton *registBtn;
-@property (weak, nonatomic) IBOutlet JYButton *bindButton;
 
 - (IBAction)handleShowAgreementAction:(id)sender;
 
@@ -31,7 +30,5 @@
 - (IBAction)handleConfirmAgreementAction:(id)sender;
 
 - (IBAction)handleRegistAction:(id)sender;
-
-- (IBAction)handleBindAccountAction:(id)sender;
 
 @end

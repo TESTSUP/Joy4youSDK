@@ -244,7 +244,7 @@ static dispatch_once_t token;
                                                                      break;
                                                                      
                                                                  default:
-                                                                     msg = [@"缓存登录失败" localizedString];
+                                                                     msg = responseData[KEY_MSG];
                                                                      break;
                                                              }
                                                          }

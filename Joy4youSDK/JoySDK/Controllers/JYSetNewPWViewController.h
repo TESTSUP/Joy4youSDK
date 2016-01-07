@@ -10,6 +10,9 @@
 
 @interface JYSetNewPWViewController : JYViewController
 
+@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong) NSString *token;
+
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIImageView *passwordBg;
 @property (weak, nonatomic) IBOutlet JYButton *confirmBtn;
