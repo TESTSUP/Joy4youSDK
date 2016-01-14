@@ -45,13 +45,13 @@
 
 /**
  *  @method onRegister      登录
- *  @param  account         帐号            类型:NSString
+ *  @param  account         账号            类型:NSString
  */
 + (void)onRegister:(NSString *)account;
 
 /**
  *  @method onLogin         登录
- *  @param  account         帐号            类型:NSString
+ *  @param  account         账号            类型:NSString
  */
 + (void)onLogin:(NSString *)account;
 
@@ -63,7 +63,7 @@
 
 /**
  *  @method onPay           支付
- *  @param  account         帐号            类型:NSString
+ *  @param  account         账号            类型:NSString
  *  @param  orderId         订单id          类型:NSString
  *  @param  amount          金额            类型:int
  *  @param  currencyType    币种            类型:NSString
@@ -73,14 +73,14 @@
 
 /**
  *  @method onPlaceOrder    下单
- *  @param  account         帐号            类型:NSString
+ *  @param  account         账号            类型:NSString
  *  @param  order           订单            类型:TDOrder
  */
 + (void)onPlaceOrder:(NSString *)account withOrder:(TDOrder *)order;
 
 /**
  *  @method onOrderPaySucc  支付
- *  @param  account         帐号            类型:NSString
+ *  @param  account         账号            类型:NSString
  *  @param  orderId         订单id          类型:NSString
  *  @param  amount          金额            类型:int
  *  @param  currencyType    币种            类型:NSString

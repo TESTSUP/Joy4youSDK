@@ -56,9 +56,9 @@
     NSString *popText = nil;
     
     if ([nickname length] == 0 || [email length] == 0) {
-        popText = [@"帐号或邮箱不能为空" localizedString];
+        popText = [@"账号和邮箱不能为空" localizedString];
     } else if(![email validateEmailAddress]) {
-        popText = [@"请输入合法的邮箱地址" localizedString];
+        popText = [@"请填写正确的邮箱地址" localizedString];
     }
     
     if ([popText length] > 0) {
@@ -91,28 +91,30 @@
                                                                    case 102:
                                                                    case 103:
                                                                    case 104:
-                                                                   case 105:
                                                                    {
                                                                        //101 ckid不能为空
                                                                        //102 手机号不能为空
                                                                        //103 手机号不合法
                                                                        //104 邮箱不能为空
+                                                                       msg = [@"参数错误" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   case 105:
+                                                                   {
                                                                        //105 您输入的电子邮件地址不合法
-                                                                       msg = responseData[KEY_MSG];
+                                                                       msg = [@"请填写正确的邮箱地址" localizedString];
                                                                    }
                                                                        break;
                                                                    case 106:
                                                                    {
-                                                                       
                                                                        //106 输入的邮箱与绑定的邮箱不一致
-                                                                       msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
-                                                                       
+                                                                       msg = [@"您输入的邮箱与绑定邮箱不一致" localizedString];
                                                                    }
                                                                        break;
                                                                    case 107:
                                                                    {
                                                                        //107 该用户没有绑定过邮箱
-                                                                       msg = [@"该手机号没有绑定过邮箱" localizedString];
+                                                                       msg = [@"该手机号未绑定邮箱" localizedString];
                                                                    }
                                                                        break;
                                                                    default:
@@ -123,7 +125,7 @@
                                                            else
                                                            {
                                                                JYDLog(@"Tourist login error", error);
-                                                               msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                               msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                            }
                                                            
                                                            [self performSelector:@selector(dismissWithCompletion:)
@@ -157,28 +159,33 @@
                                                                       case 102:
                                                                       case 103:
                                                                       case 104:
-                                                                      case 105:
                                                                       {
                                                                           //101 ckid不能为空
                                                                           //102用户名不能为空
                                                                           //103 用户名不合法
                                                                           //104邮箱不能为空
+                                                                          
+                                                                          msg = [@"参数错误" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      case 105:
+                                                                      {
                                                                           //105 您输入的电子邮件地址不合法
-                                                                          msg = responseData[KEY_MSG];
+                                                                          msg = [@"请填写正确的邮箱地址" localizedString];
                                                                       }
                                                                           break;
                                                                       case 106:
                                                                       {
                                                                           
                                                                           //106 输入的邮箱与绑定的邮箱不一致
-                                                                          msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
+                                                                          msg = [@"您输入的邮箱与绑定邮箱不一致" localizedString];
                                                                           
                                                                       }
                                                                           break;
                                                                       case 107:
                                                                       {
                                                                           //107 该用户没有绑定过邮箱
-                                                                          msg = [@"该用户没有绑定过邮箱" localizedString];
+                                                                          msg = [@"该用户名未绑定邮箱" localizedString];
                                                                       }
                                                                           break;
                                                                       default:
@@ -189,7 +196,7 @@
                                                               else
                                                               {
                                                                   JYDLog(@"Tourist login error", error);
-                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                                  msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                               }
                                                               
                                                               [self performSelector:@selector(dismissWithCompletion:)

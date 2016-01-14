@@ -224,7 +224,7 @@
         NSString * msg= nil;
         if (error) {
             JYDLog(@"Tourist login error = %@", error);
-            msg = [@"网络状态不好，请稍后重试" localizedString];
+            msg = [@"网络状态不好，请您检查网络后重试" localizedString];
         }
         else {
             NSString* status = responseData[KEY_STATUS];
@@ -240,17 +240,13 @@
                 case 101:
                 case 102:
                 case 103:
+                case 104:
                 {
                     //101 appid不能为空
                     //102 ckid不能为空
                     //103 渠道id不能为空
-                    msg = responseData[KEY_MSG];
-                }
-                    break;
-                case 104:
-                {
-                    //appid不合法
-                    msg = [@"appid不合法" localizedString];
+                    //104 appid不合法
+                    msg = [@"参数错误" localizedString];
                 }
                     break;
                 default:
@@ -271,13 +267,14 @@
     NSString *popText = nil;
     
     if ([nickname length] == 0 || [password length] == 0) {
-        popText = [@"帐号或密码不能为空" localizedString];
-    }else if ([nickname length] < 6 ||
-              [nickname length] > 20 ||
-              [password length] < 6 ||
-              [password length] > 15) {
-        popText = [@"帐号或密码错误" localizedString];
+        popText = [@"账号和密码不能为空" localizedString];
     }
+//    else if ([nickname length] < 6 ||
+//              [nickname length] > 20 ||
+//              [password length] < 6 ||
+//              [password length] > 15) {
+//        popText = [@"账号或密码错误" localizedString];
+//    }
     
     if ([popText length] > 0) {
         [self showPopText:popText withView:self.accountBg];;
@@ -294,7 +291,7 @@
                                                           NSString * msg = nil;
                                                           if (error) {
                                                               JYDLog(@"Tourist login error", error);
-                                                              msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                              msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                           }
                                                           else {
                                                               NSString* status = responseData[KEY_STATUS];
@@ -312,25 +309,21 @@
                                                                   case 104:
                                                                   case 105:
                                                                   case 106:
+                                                                  case 107:
                                                                   {
                                                                       //101 appid不能为空
                                                                       //102手机号不能为空
                                                                       //104密码不能为空
                                                                       //105 ckid不能为空
                                                                       //106渠道id不能为空
-                                                                      msg = responseData[KEY_MSG];
+                                                                      //107 appid不合法
+                                                                      msg = [@"参数错误" localizedString];
                                                                   }
                                                                       break;
                                                                   case 103:
                                                                   {
                                                                       //103手机号不合法
                                                                       msg = [@"手机号不合法" localizedString]; 
-                                                                  }
-                                                                      break;
-                                                                  case 107:
-                                                                  {
-                                                                      //107 appid不合法
-                                                                      msg = [@"appid不合法" localizedString];
                                                                   }
                                                                       break;
                                                                   case 108:
@@ -341,8 +334,8 @@
                                                                       break;
                                                                   case 109:
                                                                   {
-                                                                      //109手机号不存在
-                                                                      msg = [@"手机号密码不匹配" localizedString];
+                                                                      //109手机号密码不匹配
+                                                                      msg = [@"手机号或密码错误" localizedString];
                                                                   }
                                                                       break;
                                                                   default:
@@ -362,7 +355,7 @@
                                                        NSString * msg = nil;
                                                        if (error) {
                                                            JYDLog(@"Tourist login error", error);
-                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                           msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                        }
                                                        else {
                                                            NSString* status = responseData[KEY_STATUS];
@@ -381,6 +374,7 @@
                                                                case 104:
                                                                case 105:
                                                                case 106:
+                                                               case 107:
                                                                {
                                                                    //101 appid不能为空
                                                                    //102用户名不能为空
@@ -388,14 +382,8 @@
                                                                    //104密码不能为空
                                                                    //105 ckid不能为空
                                                                    //106渠道id不能为空
-                                                                   
-                                                                   msg = responseData[KEY_MSG];
-                                                               }
-                                                                   break;
-                                                               case 107:
-                                                               {
-                                                                   //appid不合法
-                                                                   msg = [@"appid不合法" localizedString];
+                                                                   //107appid不合法
+                                                                   msg = [@"参数错误" localizedString];
                                                                }
                                                                    break;
                                                                case 108:
@@ -407,7 +395,7 @@
                                                                case 109:
                                                                {
                                                                    //109 用户名密码不匹配
-                                                                   msg = [@"用户名密码不匹配" localizedString];
+                                                                   msg = [@"用户名或密码错误" localizedString];
                                                                }
                                                                    break;
                                                                default:

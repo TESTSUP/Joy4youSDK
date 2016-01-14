@@ -132,7 +132,7 @@
 
 /**
  *  @method onPay           支付
- *  @param  account         帐号            类型:NSString
+ *  @param  account         账号            类型:NSString
  *  @param  orderId         订单id          类型:NSString
  *  @param  amount          金额            类型:int
  *  @param  currencyType    币种            类型:NSString

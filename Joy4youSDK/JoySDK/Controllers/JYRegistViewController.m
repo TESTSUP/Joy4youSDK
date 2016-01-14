@@ -97,17 +97,17 @@
 - (IBAction)handleRegistAction:(id)sender {
     
     if (!self.confirmAgreementBtn.selected) {
-        [self showPopText:[@"请同意《乐恒帐户使用协议》" localizedString] withView:nil];
+        [self showPopText:[@"请同意《乐恒账户使用协议》" localizedString] withView:nil];
         self.confirmAgreementBtn.selected = YES;
     }else{
         if ([self.usernameTextField.text length] == 0 || [self.passwordField.text length] == 0) {
-            [self showPopText:[@"帐号或密码不能为空" localizedString] withView:self.accountBg];
+            [self showPopText:[@"请输入用户名和密码" localizedString] withView:self.accountBg];
         }else if ([self.usernameTextField.text length] < 6 || [self.usernameTextField.text length] > 20){
-            [self showPopText:[@"帐号为6–20位，请修改" localizedString] withView:self.accountBg];
+            [self showPopText:[@"用户名为6–20位，请修改" localizedString] withView:self.accountBg];
         }else if ([self.passwordField.text length]<6 || [self.passwordField.text length]>15){
             [self showPopText:[@"密码为6—15位，请修改" localizedString] withView:self.passwordBg];
         }else if (NO == [self.usernameTextField.text validateUserAccount]){
-            [self showPopText:[@"帐号为6–20位字母数字组合，可使用“_”" localizedString] withView:self.accountBg];
+            [self showPopText:[@"用户名为6–20位字母数字组合，可使用“_”" localizedString] withView:self.accountBg];
         }else if (NO == [self.passwordField.text validateUserPassword]){
             [self showPopText:[@"密码必须为6—15位，仅支持英文、数字和符号" localizedString] withView:self.passwordBg];
         }else{
@@ -125,7 +125,7 @@
                                                                  NSString * msg= nil;
                                                                  if (error) {
                                                                      JYDLog(@"Tourist login error = %@", error);
-                                                                     msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                                     msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                                  }
                                                                  else {
                                                                      NSString* status = responseData[KEY_STATUS];
@@ -150,25 +150,25 @@
                                                                              //103 用户名不能为空
                                                                              //104 用户名不合法
                                                                              //105 密码不能为空
-                                                                             msg = responseData[KEY_MSG];
+                                                                             msg = [@"参数错误" localizedString];
                                                                          }
                                                                              break;
                                                                          case 106:
                                                                          {
                                                                              //106 该用户已经绑定过
-                                                                             msg= [@"该用户已经绑定过" localizedString];
+                                                                             msg= [@"此用户名已经绑定" localizedString];
                                                                          }
                                                                              break;
                                                                          case 107:
                                                                          {
                                                                              //107 查无此用户
-                                                                             msg= [@"查无此用户" localizedString];
+                                                                             msg= [@"此用户名不存在" localizedString];
                                                                          }
                                                                              break;
                                                                          case 108:
                                                                          {
                                                                              //108用户名存在，请更换用户名在绑定 （新增）
-                                                                             msg= [@"用户名存在，请更换用户名在绑定" localizedString];
+                                                                             msg= [@"用户名已存在" localizedString];
                                                                          }
                                                                              break;
                                                                          default:
@@ -187,7 +187,7 @@
                                                        NSString * msg = nil;
                                                        if (error) {
                                                            JYDLog(@"check username error", error);
-                                                           msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                           msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                            [self performSelector:@selector(dismissWithCompletion:) withObject:nil afterDelay:1];
                                                        }
                                                        else {
@@ -204,7 +204,7 @@
                                                                                                                NSString * msg = nil;
                                                                                                                if (error) {
                                                                                                                    JYDLog(@"regist error", error);
-                                                                                                                   msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                                                                                   msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                                                                                }
                                                                                                                else {
                                                                                                                    NSString* status = responseData[KEY_STATUS];
@@ -232,7 +232,7 @@
                                                                                                                            //105 ckid不能为空
                                                                                                                            //106 渠道id不能为空
                                                                                                                            //107 appid不合法
-                                                                                                                           msg = responseData[KEY_MSG];
+                                                                                                                           msg = [@"参数错误" localizedString];
                                                                                                                        }
                                                                                                                            break;
                                                                                                                        case 108:
@@ -258,7 +258,7 @@
                                                                    //101用户名不能为空
                                                                    //102用户名不合法
                                                                    //103 ckid不能为空
-                                                                   msg = responseData[KEY_MSG];
+                                                                   msg = [@"参数错误" localizedString];
                                                                }
                                                                    break;
                                                                case 104:

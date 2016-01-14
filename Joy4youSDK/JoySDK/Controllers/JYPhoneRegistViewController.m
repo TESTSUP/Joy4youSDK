@@ -151,10 +151,8 @@
 - (IBAction)handleGetCodeAction:(id)sender {
     [self hideKeybord];
     
-    if ([self.phoneField.text length] == 0) {
-        [self showPopText:[@"手机号不能为空" localizedString] withView:self.phoneBg];
-    }else if (![self.phoneField.text validatePhoneNumber]){
-        [self showPopText:[@"请填写正确的手机号" localizedString] withView:self.phoneBg];
+    if (![self.phoneField.text validatePhoneNumber]){
+        [self showPopText:[@"请输入11位正确的手机号" localizedString] withView:self.phoneBg];
     } else {
         [self showLoadingViewWith:JYLoading_GetCode];
         
@@ -165,7 +163,7 @@
                                                               NSString * msg = nil;
                                                               if (error) {
                                                                   JYDLog(@"regist error", error);
-                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                                  msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                               }
                                                               else {
                                                                   NSString* status = responseData[KEY_STATUS];
@@ -182,7 +180,6 @@
                                                                       case 102:
                                                                       case 103:
                                                                       case 106:
-                                                                      case 107:
                                                                       {
                                                                           //101 手机号不能为空
                                                                           //102 手机号不合法
@@ -190,18 +187,23 @@
                                                                           //104 电话号已经被注册过，请重新输入
                                                                           //105 两次发送时间间隔不能少于1分钟
                                                                           //106 为第三方返回的错误信息  （请客户端直接使用msg）
+                                                                          msg = [@"参数错误" localizedString];
+                                                                      }
+                                                                          break;
+                                                                      case 107:
+                                                                      {
                                                                           //107 获取验证码次数过多，请明天再试
-                                                                          msg = responseData[KEY_MSG];
+                                                                          msg= responseData[KEY_MSG];
                                                                       }
                                                                           break;
                                                                       case 104:
                                                                       {
-                                                                          msg = [@"电话号已经被注册过，请重新输入" localizedString];
+                                                                          msg = [@"手机号已经被注册过,请重新输入" localizedString];
                                                                       }
                                                                           break;
                                                                       case 105:
                                                                       {
-                                                                          msg = [@"两次发送时间间隔不能少于1分钟" localizedString];
+                                                                          msg = [@"验证码获取频繁" localizedString];
                                                                       }
                                                                           break;
                                                                       default:
@@ -216,17 +218,15 @@
 
 - (IBAction)handleVerifyCodeAction:(id)sender {
     if (!self.confirmAgreementBtn.selected) {
-        [self showPopText:[@"请同意《乐恒帐户使用协议》" localizedString] withView:nil];
+        [self showPopText:[@"请同意《乐恒账户使用协议》" localizedString] withView:nil];
         self.confirmAgreementBtn.selected = YES;
     }else{
-        if ([self.phoneField.text length] == 0) {
-            [self showPopText:[@"手机号不能为空" localizedString] withView:self.phoneBg];
+        if ([self.phoneField.text length] == 0 || [self.codeField.text length] == 0) {
+            [self showPopText:[@"手机号和验证码不能为空" localizedString] withView:self.phoneBg];
         }else if (![self.phoneField.text validatePhoneNumber]){
-            [self showPopText:[@"请填写正确的手机号" localizedString] withView:self.phoneBg];
-        }else if ([self.codeField.text length] == 0){
-            [self showPopText:[@"验证码不能为空" localizedString] withView:self.codeBg];
+            [self showPopText:[@"请输入11位正确的手机号" localizedString] withView:self.phoneBg];
         }else if (![self.codeField.text validateVerifyCode] ){
-            [self showPopText:[@"验证码为6位数字" localizedString] withView:self.codeBg];
+            [self showPopText:[@"请输入6位数字验证码" localizedString] withView:self.codeBg];
         }else{
             if (_isBind) {
                 [self showLoadingViewWith:JYLoading_Binding];
@@ -240,7 +240,7 @@
                                                               NSString * msg= nil;
                                                               if (error) {
                                                                   JYDLog(@"Tourist login error = %@", error);
-                                                                  msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                                  msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                               }
                                                               else {
                                                                   NSString* status = responseData[KEY_STATUS];
@@ -260,13 +260,15 @@
                                                                       case 104:
                                                                       case 105:
                                                                       case 109:
+                                                                      case 110:
                                                                       {
                                                                           //101 用户id不能为空
                                                                           //102 ckid不能为空
                                                                           //103 手机号不能为空
                                                                           //104 手机号不合法
                                                                           //105 密码不能为空
-                                                                          msg = responseData[KEY_MSG];
+                                                                          //110 uid已经被绑定过
+                                                                          msg = [@"参数错误" localizedString];
                                                                       }
                                                                           break;
                                                                       case 106:
@@ -284,13 +286,7 @@
                                                                       case 108:
                                                                       {
                                                                           //106 该手机已经绑定过
-                                                                          msg= [@"该手机已经绑定过" localizedString];
-                                                                      }
-                                                                          break;
-                                                                      case 110:
-                                                                      {
-                                                                          //108用户名存在，请更换用户名在绑定 （新增）
-                                                                          msg= [@"手机号存在，请更换手机号在绑定" localizedString];
+                                                                          msg= [@"手机号已经被注册过,请重新输入" localizedString];
                                                                       }
                                                                           break;
                                                                       default:
@@ -310,7 +306,7 @@
                                                            NSString * msg = nil;
                                                            if (error) {
                                                                JYDLog(@"regist error", error);
-                                                               msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                               msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                            }
                                                            else {
                                                                NSString* status = responseData[KEY_STATUS];
@@ -332,6 +328,7 @@
                                                                    case 104:
                                                                    case 105:
                                                                    case 106:
+                                                                   case 108:
                                                                    {
                                                                        //101 appid不能为空
                                                                        //102 手机号不能为空
@@ -339,7 +336,7 @@
                                                                        //104 验证码不能为空
                                                                        //105 ckid不能为空
                                                                        //106 渠道id不能为空
-                                                                       msg = responseData[KEY_MSG];
+                                                                       msg = [@"参数错误" localizedString];
                                                                    }
                                                                        break;
                                                                    case 107:
@@ -348,16 +345,15 @@
                                                                        msg = [@"验证码不正确" localizedString];
                                                                    }
                                                                        break;
-                                                                   case 108:
-                                                                   {
-                                                                       //108用户名已存在
-                                                                       msg = [@"用户名已存在" localizedString];
-                                                                   }
-                                                                       break;
                                                                    case 109:
                                                                    {
                                                                        //109 手机号已经注册过
-                                                                       msg = [@"手机号已经注册过" localizedString];
+                                                                       msg = [@"手机号已经被注册过,请重新输入" localizedString];
+                                                                   }
+                                                                       break;
+                                                                   case 110:
+                                                                   {
+                                                                       msg= [@"验证码已经失效" localizedString];
                                                                    }
                                                                        break;
                                                                    default:

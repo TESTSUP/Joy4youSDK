@@ -49,31 +49,18 @@
                                                                  }
                                                                      break;
                                                                  case 101:
-                                                                 case 102:
                                                                  case 103:
-                                                                 case 104:
-                                                                 case 105:
                                                                  {
-                                                                     //101 ckid不能为空
-                                                                     //102用户名不能为空
-                                                                     //103 用户名不合法
-                                                                     //104邮箱不能为空
-                                                                     //105 您输入的电子邮件地址不合法
-                                                                     msg = responseData[KEY_MSG];
+                                                                     //101 密码不能为空
+                                                                     //102 修改失败
+                                                                     //103 token校验失败
+                                                                     msg = [@"参数错误" localizedString];
                                                                  }
                                                                      break;
-                                                                 case 106:
+                                                                 case 102:
                                                                  {
-                                                                     
-                                                                     //106 输入的邮箱与绑定的邮箱不一致
-                                                                     msg = [@"输入的邮箱与绑定的邮箱不一致" localizedString];
-                                                                     
-                                                                 }
-                                                                     break;
-                                                                 case 107:
-                                                                 {
-                                                                     //107 该用户没有绑定过邮箱
-                                                                     msg = [@"该用户没有绑定过邮箱" localizedString];
+                                                                     //102 修改失败
+                                                                     msg = [@"密码修改失败" localizedString];
                                                                  }
                                                                      break;
                                                                  default:
@@ -84,7 +71,7 @@
                                                          else
                                                          {
                                                              JYDLog(@"Tourist login error", error);
-                                                             msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                             msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                          }
                                                          
                                                          [self performSelector:@selector(dismissWithCompletion:)

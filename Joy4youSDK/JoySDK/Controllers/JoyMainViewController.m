@@ -168,7 +168,6 @@ static dispatch_once_t token;
     }
     else
     {
-        self.isRemoving = YES;
         [self removeAllviews];
     }
 }
@@ -199,7 +198,7 @@ static dispatch_once_t token;
                                                          NSString * msg= nil;
                                                          if (error) {
                                                              JYDLog(@"Tourist login error", error);
-                                                             msg = [@"网络状态不好，请稍后重试" localizedString];
+                                                             msg = [@"网络状态不好，请您检查网络后重试" localizedString];
                                                          } else {
                                                              NSString* status = responseData[KEY_STATUS];
                                                              switch (status.integerValue) {
@@ -215,31 +214,27 @@ static dispatch_once_t token;
                                                                  case 103:
                                                                  case 104:
                                                                  case 105:
+                                                                 case 106:
                                                                  {
                                                                      //101 appid不能为空
                                                                      //102sessionid不能为空
                                                                      //103 userid不能为空
-                                                                     //104ckid不能为空
+                                                                     //104 ckid不能为空
                                                                      //105 渠道id不能为空
-                                                                     msg = responseData[KEY_MSG];
-                                                                 }
-                                                                     break;
-                                                                 case 106:
-                                                                 {
-                                                                     //appid不合法
-                                                                     msg = [@"appid不合法" localizedString];
+                                                                     //106 appid不合法
+                                                                     msg = [@"参数错误" localizedString];
                                                                  }
                                                                      break;
                                                                  case 107:
                                                                  {
-                                                                     //该用户不存在
-                                                                     msg = [@"该用户不存在" localizedString];
+                                                                     //此用户名不存在
+                                                                     msg = [@"此用户名不存在" localizedString];
                                                                  }
                                                                      break;
                                                                  case 108:
                                                                  {
                                                                      //sessionid已经过期
-                                                                     msg = [@"缓存登录已过期，请输入账号密码登录" localizedString];
+                                                                     msg = [@"自动登录已过期，请输入用户名密码进行登录" localizedString];
                                                                  }
                                                                      break;
                                                                      
@@ -275,6 +270,7 @@ static dispatch_once_t token;
     [_navigationVC.view removeFromSuperview];
     _navigationVC = nil;
     [[JYModelInterface sharedInstance] cancelAllRequest];
+    [_alertView dismissWithCompletion:nil];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(loginSuccessRemove) object:nil];
     self.isRemoving = NO;
 }
@@ -327,6 +323,11 @@ static dispatch_once_t token;
 
 - (void)loginAction
 {
+    if (self.isRemoving == YES) {
+        NSLog(@"Joy4youSDK warning：you should not call login method in the callback!!!");
+        return;
+    }
+    
     [self reset];
 
     JYLoginViewController *loginVC = [[JYLoginViewController alloc] initWithNibName:@"JYLoginViewController" bundle:[NSBundle resourceBundle]];

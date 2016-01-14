@@ -36,8 +36,9 @@
 }
 
 - (IBAction)handleLogin:(id)sender {
-    
+    //启动SDK
     [Joy4youSDK login:self];
+    //设置log开关
 //    [Joy4youSDK setLogEnabled:NO];
 }
 
@@ -62,14 +63,12 @@
 //回调实现
 - (void)loginCallback:(NSDictionary *)jsonDic
 {
-//    NSString *newLog = [NSString stringWithFormat:@"\n%@", jsonDic];
-//    
-//    self.logView.text = [self.logView.text stringByAppendingString:newLog];
-    
     NSString *dateStr = [[self dateFormatter] stringFromDate:[NSDate date]];
     NSString *text = [dateStr stringByAppendingString:[NSString stringWithFormat:@"\n%@\n\n", jsonDic]];
     text = [text stringByAppendingString:_logView.text];
     self.logView.text = text;
+    
+    //token验证
 }
 
 @end
