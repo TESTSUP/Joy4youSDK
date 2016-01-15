@@ -117,7 +117,7 @@
         [self showPopText:[@"手机号和验证码不能为空" localizedString] withView:self.accountBG];
     }else if (![self.phoneField.text validatePhoneNumber]){
         [self showPopText:[@"请输入11位正确的手机号" localizedString] withView:self.accountBG];
-    }else if ([self.codeField.text validateVerifyCode] ){
+    }else if (![self.codeField.text validateVerifyCode] ){
         [self showPopText:[@"请输入6位数字验证码" localizedString] withView:self.codeBg];
     }else{
         [self showLoadingViewWith:JYLoading_VerifyCode];
