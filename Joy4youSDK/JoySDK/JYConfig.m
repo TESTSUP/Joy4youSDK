@@ -8,7 +8,7 @@
 
 #import "JYConfig.h"
 
-#define HOST    2   //1:本地；2：线上沙箱；其它正式环境
+#define HOST    0   //1:本地；2：线上沙箱；其它正式环境
 
 /**
  *  SDK版本号

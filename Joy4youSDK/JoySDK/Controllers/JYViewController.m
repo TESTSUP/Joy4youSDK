@@ -265,9 +265,20 @@ NSString *const JYNotificationHideKeybord = @"joy4you_notification_hideKeybord";
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSUInteger limitLength = [self getLimitLengthWith:textField];
-
-    if ([textField.text length] >= limitLength && ![string isEqualToString:@""])
+    NSRange tempRange = [string rangeOfString:@" "];
+    
+    if ([string isEqualToString:@""] && range.length>0)
     {
+        return YES;
+    }
+    else if ([textField.text length] >= limitLength)
+    {
+        return NO;
+    }
+    else if (tempRange.location != NSNotFound)
+    {
+        NSString *temp = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+        textField.text = [textField.text stringByAppendingString:temp];
         return NO;
     }
     else

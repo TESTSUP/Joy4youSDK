@@ -81,7 +81,7 @@
                                                                        [self showLoadingViewWith:JYLoading_SendSuccess];
                                                                        [self performSelector:@selector(dismissWithCompletion:)
                                                                                   withObject:^{
-                                                                                      [self.navigationController popViewControllerAnimated:YES];
+                                                                                      [self.navigationController popToRootViewControllerAnimated:YES];
                                                                                   }
                                                                                   afterDelay:1];
                                                                        return;
