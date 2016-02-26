@@ -22,7 +22,6 @@
 		3F2AB8781C2B94CA0068330B /* JYSetNewPWViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2AB8761C2B94CA0068330B /* JYSetNewPWViewController.xib */; };
 		3F4A78AD1C06D0F800F4DB50 /* JYAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78AC1C06D0F800F4DB50 /* JYAlertView.m */; };
 		3F4A78AF1C06E48F00F4DB50 /* jy_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78AE1C06E48F00F4DB50 /* jy_logo@2x.png */; };
-		3F4A78B31C06E5D600F4DB50 /* UIColor+JYColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78B21C06E5D600F4DB50 /* UIColor+JYColor.m */; };
 		3F4A78B51C06E7DF00F4DB50 /* jy_img_edittext@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78B41C06E7DF00F4DB50 /* jy_img_edittext@2x.png */; };
 		3F4A78B81C06E9FE00F4DB50 /* jy_pwd_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78B61C06E9FE00F4DB50 /* jy_pwd_login@2x.png */; };
 		3F4A78B91C06E9FE00F4DB50 /* jy_user_login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F4A78B71C06E9FE00F4DB50 /* jy_user_login@2x.png */; };
@@ -95,6 +94,7 @@
 		3FE9101E1C18274E000F3B15 /* loading_circle_half@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910081C18274E000F3B15 /* loading_circle_half@3x.png */; };
 		3FE9101F1C18274E000F3B15 /* loading_success.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE910091C18274E000F3B15 /* loading_success.png */; };
 		3FE910201C18274E000F3B15 /* loading_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE9100A1C18274E000F3B15 /* loading_success@3x.png */; };
+		3FF28DB51C805E3C00B25D19 /* UIColor+JYColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A78B21C06E5D600F4DB50 /* UIColor+JYColor.m */; };
 		3FFB739C1C06976700C81D68 /* JYLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFB739B1C06976700C81D68 /* JYLoadingView.xib */; };
 		3FFB73BD1C06992A00C81D68 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB739E1C06978400C81D68 /* JYNavigationController.m */; };
 		3FFB73BE1C06996F00C81D68 /* NSString+JYString.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFB73AB1C0697AF00C81D68 /* NSString+JYString.m */; };
@@ -861,7 +861,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F4A78B31C06E5D600F4DB50 /* UIColor+JYColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +894,7 @@
 				2480E54D1C0461F300388900 /* JYUtil.m in Sources */,
 				3F4A78AD1C06D0F800F4DB50 /* JYAlertView.m in Sources */,
 				3F4A78E51C0806D200F4DB50 /* JYBindAlertViewController.m in Sources */,
+				3FF28DB51C805E3C00B25D19 /* UIColor+JYColor.m in Sources */,
 				3FFB73C21C0699A400C81D68 /* JYServiceViewController.m in Sources */,
 				CFF6AC881BF9BE25006A7DA2 /* JoyEncryption.m in Sources */,
 				3FFB73C11C0699A100C81D68 /* JYFindPasswordViewController.m in Sources */,
